@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
 import type { ConfidenceScore } from "@/data/types";
 
 // ── Gauge config ───────────────────────────────────────────────────────────────
@@ -39,8 +39,9 @@ interface GaugeBarProps {
 }
 
 function GaugeBar({ value, color, label }: GaugeBarProps) {
+  const prefersReducedMotion = useReducedMotion();
   const motionVal = useMotionValue(value);
-  const spring = useSpring(motionVal, { stiffness: 180, damping: 22 });
+  const spring = useSpring(motionVal, { stiffness: prefersReducedMotion ? 10000 : 180, damping: 22 });
   const heightPct = useTransform(spring, (v) => `${Math.round(v * 100)}%`);
 
   // Pulse state tracking via ref to avoid re-render loops

@@ -67,6 +67,16 @@ export function TeachingCallout({
           isExpandable ? "cursor-pointer" : "cursor-default"
         )}
         onClick={isExpandable ? () => setExpanded((v) => !v) : undefined}
+        onKeyDown={
+          isExpandable
+            ? (e) => {
+                if (e.key === "Escape" && expanded) {
+                  e.preventDefault();
+                  setExpanded(false);
+                }
+              }
+            : undefined
+        }
         aria-expanded={expanded}
         disabled={!isExpandable}
       >

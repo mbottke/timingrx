@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import { useMethodology } from "./methodology-provider";
 import { riskFactorMultipliers } from "@/data/risk-models/risk-factor-multipliers";
 import { getFactorColor } from "@/data/methodology/factor-colors";
@@ -23,6 +24,9 @@ export function FactorToolbar() {
     reset,
   } = useMethodology();
 
+  // Roving tabindex: track which pill index has tabIndex=0
+  const pillRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
   function handleDecrement() {
     const next = (ga - GA_STEP) as GestationalAgeDays;
     if (next >= GA_MIN) setGA(next);
@@ -31,6 +35,27 @@ export function FactorToolbar() {
   function handleIncrement() {
     const next = (ga + GA_STEP) as GestationalAgeDays;
     if (next <= GA_MAX) setGA(next);
+  }
+
+  function handleToolbarKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
+    const pills = pillRefs.current.filter((r): r is HTMLButtonElement => r !== null);
+    if (pills.length === 0) return;
+
+    const focused = document.activeElement;
+    const currentIdx = pills.indexOf(focused as HTMLButtonElement);
+
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+      e.preventDefault();
+      const next = (currentIdx + 1) % pills.length;
+      // Update tabIndex for roving
+      pills.forEach((p, i) => { p.tabIndex = i === next ? 0 : -1; });
+      pills[next].focus();
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const prev = (currentIdx - 1 + pills.length) % pills.length;
+      pills.forEach((p, i) => { p.tabIndex = i === prev ? 0 : -1; });
+      pills[prev].focus();
+    }
   }
 
   return (
@@ -63,16 +88,25 @@ export function FactorToolbar() {
         {/* Divider */}
         <div className="hidden h-5 w-px bg-border sm:block" aria-hidden="true" />
 
-        {/* Factor toggle pills */}
-        <div className="flex flex-wrap items-center gap-1.5">
-          {riskFactorMultipliers.map((factor) => {
+        {/* Factor toggle pills — roving tabindex toolbar */}
+        <div
+          role="toolbar"
+          aria-label="Risk factor toggles"
+          className="flex flex-wrap items-center gap-1.5"
+          onKeyDown={handleToolbarKeyDown}
+        >
+          {riskFactorMultipliers.map((factor, idx) => {
             const isActive = activeFactorIds.includes(factor.id);
+            const isFirst = idx === 0;
             const color = getFactorColor(factor.id);
             return (
               <button
                 key={factor.id}
+                ref={(el) => { pillRefs.current[idx] = el; }}
                 onClick={() => toggleFactor(factor.id)}
                 aria-pressed={isActive}
+                data-factor-pill
+                tabIndex={isFirst ? 0 : -1}
                 className={[
                   "inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors",
                   isActive
