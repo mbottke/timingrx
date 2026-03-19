@@ -80,6 +80,23 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* TimingRx medical color tokens */
+  --risk-high: oklch(0.577 0.245 27.325);
+  --risk-moderate: oklch(0.705 0.213 47.604);
+  --risk-low: oklch(0.627 0.14 164.789);
+  --evidence-high: oklch(0.627 0.194 149.214);
+  --evidence-moderate: oklch(0.623 0.214 259.815);
+  --evidence-low: oklch(0.795 0.184 86.047);
+  --evidence-consensus: oklch(0.556 0 0);
+  --ga-safe: oklch(0.627 0.194 149.214);
+  --ga-caution: oklch(0.795 0.184 86.047);
+  --ga-danger: oklch(0.577 0.245 27.325);
+  --confidence-a: oklch(0.627 0.194 149.214);
+  --confidence-b: oklch(0.623 0.214 259.815);
+  --confidence-c: oklch(0.795 0.184 86.047);
+  --confidence-d: oklch(0.705 0.213 47.604);
+  --confidence-f: oklch(0.577 0.245 27.325);
 }
 
 .dark {
@@ -114,6 +131,23 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /* TimingRx medical color tokens (dark) */
+  --risk-high: oklch(0.704 0.191 22.216);
+  --risk-moderate: oklch(0.795 0.184 86.047);
+  --risk-low: oklch(0.627 0.14 164.789);
+  --evidence-high: oklch(0.627 0.194 149.214);
+  --evidence-moderate: oklch(0.623 0.214 259.815);
+  --evidence-low: oklch(0.795 0.184 86.047);
+  --evidence-consensus: oklch(0.708 0 0);
+  --ga-safe: oklch(0.627 0.194 149.214);
+  --ga-caution: oklch(0.795 0.184 86.047);
+  --ga-danger: oklch(0.704 0.191 22.216);
+  --confidence-a: oklch(0.627 0.194 149.214);
+  --confidence-b: oklch(0.623 0.214 259.815);
+  --confidence-c: oklch(0.795 0.184 86.047);
+  --confidence-d: oklch(0.705 0.213 47.604);
+  --confidence-f: oklch(0.704 0.191 22.216);
 }
 
 @layer base {
