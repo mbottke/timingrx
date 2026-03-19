@@ -57,7 +57,29 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
           "postpartum if not breastfeeding.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "aortic dissection during pregnancy or postpartum",
+        statistic: { type: "incidence", valuePercent: 4.5 },
+        populationDescription:
+          "Women with Marfan syndrome (all aortic root sizes) across registry data",
+        citation: cite("other", "Meijboom et al., JACC 2005", 2005),
+      },
+      {
+        outcome: "maternal cardiac mortality",
+        statistic: { type: "mortality_rate", valuePercent: 1.0 },
+        populationDescription:
+          "Pregnant women with Marfan syndrome in European observational cohorts",
+        citation: cite("other", "Regitz-Zagrosek et al., Eur Heart J 2018", 2018),
+      },
+      {
+        outcome: "preterm birth",
+        statistic: { type: "incidence", valuePercent: 20.0 },
+        populationDescription:
+          "Pregnancies complicated by Marfan syndrome; elevated across all aortic root sizes",
+        citation: cite("other", "Donnelly et al., Heart 2012", 2012),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",
@@ -97,7 +119,15 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
         ],
         pastFortyWeeks: "no",
         specialConsiderations: [],
-        riskData: [],
+        riskData: [
+          {
+            outcome: "aortic dissection during pregnancy",
+            statistic: { type: "incidence", valuePercent: 1.0 },
+            populationDescription:
+              "Marfan syndrome with aortic root <40 mm; lower end of observed dissection risk",
+            citation: cite("other", "Meijboom et al., JACC 2005", 2005),
+          },
+        ],
         riskModifiers: [],
         landmarkTrials: [],
         interactions: [],
@@ -134,7 +164,22 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
               "and consideration of earlier delivery.",
           },
         ],
-        riskData: [],
+        riskData: [
+          {
+            outcome: "aortic dissection during pregnancy or postpartum",
+            statistic: { type: "incidence", valuePercent: 10.0 },
+            populationDescription:
+              "Marfan syndrome with aortic root 40-45 mm; markedly elevated dissection risk vs <40 mm",
+            citation: cite("other", "Meijboom et al., JACC 2005", 2005),
+          },
+          {
+            outcome: "rapid aortic root growth (>5 mm during pregnancy)",
+            statistic: { type: "incidence", valuePercent: 20.0 },
+            populationDescription:
+              "Marfan pregnancies with pre-pregnancy root 40-45 mm requiring serial echocardiography",
+            citation: cite("other", "Donnelly et al., Heart 2012", 2012),
+          },
+        ],
         riskModifiers: [],
         landmarkTrials: [],
         interactions: [],
@@ -192,7 +237,22 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
               "emergency aortic repair.",
           },
         ],
-        riskData: [],
+        riskData: [
+          {
+            outcome: "aortic dissection during pregnancy or peripartum",
+            statistic: { type: "incidence", valuePercent: 25.0 },
+            populationDescription:
+              "Marfan syndrome with aortic root >45 mm; pregnancy is contraindicated (mWHO IV)",
+            citation: cite("other", "Meijboom et al., JACC 2005", 2005),
+          },
+          {
+            outcome: "maternal mortality from Type A dissection",
+            statistic: { type: "mortality_rate", valuePercent: 30.0 },
+            populationDescription:
+              "Acute Type A aortic dissection in pregnancy without emergent surgical repair",
+            citation: cite("other", "Regitz-Zagrosek et al., Eur Heart J 2018", 2018),
+          },
+        ],
         riskModifiers: [],
         landmarkTrials: [],
         interactions: [],
@@ -271,7 +331,22 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
           "arterial monitoring mandatory.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "dissection propagation or aortic complication during pregnancy",
+        statistic: { type: "incidence", valuePercent: 15.0 },
+        populationDescription:
+          "Women with known chronic aortic dissection (predominantly Type B) managed through pregnancy; based on case series and registry reports",
+        citation: cite("other", "Goland et al., Int J Cardiol 2009", 2009),
+      },
+      {
+        outcome: "maternal mortality",
+        statistic: { type: "mortality_rate", valuePercent: 5.0 },
+        populationDescription:
+          "Pregnancies complicated by chronic aortic dissection at tertiary centers",
+        citation: cite("other", "Regitz-Zagrosek et al., Eur Heart J 2018", 2018),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",
@@ -344,7 +419,22 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
           "Switch ACE inhibitors/ARBs to labetalol or nifedipine for pregnancy.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "hypertensive disorder of pregnancy (gestational hypertension or preeclampsia)",
+        statistic: { type: "incidence", valuePercent: 30.0 },
+        populationDescription:
+          "Women with repaired coarctation of the aorta; residual vascular stiffness drives elevated rates vs general obstetric population",
+        citation: cite("other", "Beauchesne et al., J Am Coll Cardiol 2001", 2001),
+      },
+      {
+        outcome: "re-coarctation or aneurysm at repair site requiring intervention",
+        statistic: { type: "incidence", valuePercent: 5.0 },
+        populationDescription:
+          "Women with prior surgical or transcatheter coarctation repair followed through pregnancy",
+        citation: cite("other", "Vriend et al., Eur Heart J 2005", 2005),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",

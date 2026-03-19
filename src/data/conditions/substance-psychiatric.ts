@@ -40,7 +40,26 @@ export const substancePsychiatricConditions: ObstetricCondition[] = [
           "Breastfeeding is encouraged if mother is stable on MAT and not using illicit substances.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "neonatal abstinence syndrome (NAS) in neonates exposed to methadone MAT",
+        statistic: { type: "incidence", valuePercent: 60 },
+        populationDescription: "Neonates born to mothers on methadone maintenance (pooled cohort data)",
+        citation: cite("other", "Cleary et al., Drug Alcohol Depend 2010", 2010),
+      },
+      {
+        outcome: "NAS requiring pharmacologic treatment in buprenorphine-exposed neonates",
+        statistic: { type: "incidence", valuePercent: 43 },
+        populationDescription: "Neonates born to mothers on buprenorphine MAT (MOTHER trial)",
+        citation: cite("other", "Jones et al., NEJM 2010", 2010),
+      },
+      {
+        outcome: "preterm birth in opioid use disorder on MAT vs no treatment",
+        statistic: { type: "odds_ratio", value: 0.54, ci95: [0.35, 0.83] },
+        populationDescription: "MAT (methadone or buprenorphine) vs untreated OUD in pregnancy; MAT reduces preterm risk",
+        citation: cite("other", "Wiegand et al., Am J Obstet Gynecol 2015", 2015),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -65,7 +84,20 @@ export const substancePsychiatricConditions: ObstetricCondition[] = [
       "only if complications develop (FGR, placental abruption, preterm labor). Screening and " +
       "brief intervention should be offered throughout pregnancy.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "fetal alcohol spectrum disorder (FASD) with any alcohol use in pregnancy",
+        statistic: { type: "incidence", valuePercent: 2 },
+        populationDescription: "Children born to mothers with documented alcohol use during pregnancy (US population estimate)",
+        citation: cite("other", "May et al., Alcohol Clin Exp Res 2018", 2018),
+      },
+      {
+        outcome: "placental abruption with heavy alcohol use (>5 drinks/week)",
+        statistic: { type: "odds_ratio", value: 1.72, ci95: [1.27, 2.32] },
+        populationDescription: "Heavy alcohol use (>5 drinks/week) vs abstinent pregnant women",
+        citation: cite("other", "Aliyu et al., J Obstet Gynaecol 2011", 2011),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -97,7 +129,20 @@ export const substancePsychiatricConditions: ObstetricCondition[] = [
           "Urine drug screening as clinically indicated.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "fetal growth restriction with methamphetamine use in pregnancy",
+        statistic: { type: "odds_ratio", value: 3.16, ci95: [1.34, 7.44] },
+        populationDescription: "Methamphetamine-exposed pregnancies vs non-exposed controls (Infant Development, Environment and Lifestyle Study)",
+        citation: cite("other", "Smith et al., Neurotoxicol Teratol 2006", 2006),
+      },
+      {
+        outcome: "placental abruption with methamphetamine use",
+        statistic: { type: "odds_ratio", value: 2.38, ci95: [1.09, 5.20] },
+        populationDescription: "Methamphetamine-exposed vs non-exposed pregnancies (cohort data)",
+        citation: cite("other", "Gorman et al., J Perinatol 2014", 2014),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -130,7 +175,26 @@ export const substancePsychiatricConditions: ObstetricCondition[] = [
           "Monitor for abruption symptoms.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "fetal growth restriction (SGA <10th percentile) with active smoking",
+        statistic: { type: "odds_ratio", value: 2.10, ci95: [1.90, 2.30] },
+        populationDescription: "Pregnant smokers vs non-smokers (meta-analysis of cohort studies)",
+        citation: cite("other", "Cnattingius, Prog Cardiovasc Dis 2004", 2004),
+      },
+      {
+        outcome: "placental abruption with cigarette smoking in pregnancy",
+        statistic: { type: "odds_ratio", value: 1.90, ci95: [1.60, 2.20] },
+        populationDescription: "Smokers vs non-smokers in pregnancy (systematic review)",
+        citation: cite("other", "Ananth et al., Obstet Gynecol 1999", 1999),
+      },
+      {
+        outcome: "sudden infant death syndrome (SIDS) with maternal smoking",
+        statistic: { type: "relative_risk", value: 2.27, ci95: [1.92, 2.68] },
+        populationDescription: "Infants of mothers who smoked during pregnancy vs non-smokers (meta-analysis)",
+        citation: cite("other", "Zhang & Wang, J Paediatr Child Health 2013", 2013),
+      },
+    ],
     riskModifiers: [
       {
         factor: "smoking",
@@ -233,7 +297,20 @@ export const substancePsychiatricConditions: ObstetricCondition[] = [
           "Establish postpartum safety plan before delivery.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "preterm birth in women with schizophrenia or bipolar disorder",
+        statistic: { type: "odds_ratio", value: 1.79, ci95: [1.59, 2.02] },
+        populationDescription: "Women with severe mental illness (schizophrenia, bipolar disorder) vs general obstetric population (national registry)",
+        citation: cite("other", "Vigod et al., BJOG 2014", 2014),
+      },
+      {
+        outcome: "postpartum psychosis risk in women with bipolar disorder",
+        statistic: { type: "incidence", valuePercent: 25 },
+        populationDescription: "Women with bipolar disorder in the first 4 weeks postpartum (prospective cohort)",
+        citation: cite("other", "Bergink et al., Am J Psychiatry 2012", 2012),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],

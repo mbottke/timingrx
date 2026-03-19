@@ -60,7 +60,22 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
           "or with exertional symptoms. Diuretics for pulmonary congestion if needed.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "pulmonary edema",
+        statistic: { type: "incidence", valuePercent: 5.0 },
+        populationDescription:
+          "Pregnant women with mild-to-moderate mitral stenosis (MVA 1.0-1.5 cm², NYHA I-II); lower risk stratum",
+        citation: cite("other", "Silversides et al., J Am Coll Cardiol 2009", 2009),
+      },
+      {
+        outcome: "new-onset atrial fibrillation during pregnancy",
+        statistic: { type: "incidence", valuePercent: 4.0 },
+        populationDescription:
+          "Women with mitral stenosis (any severity) followed prospectively during pregnancy",
+        citation: cite("other", "Hameed et al., J Am Coll Cardiol 2001", 2001),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",
@@ -136,7 +151,29 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
           "Continuous telemetry during labor and for 24-48 hours postpartum.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "pulmonary edema",
+        statistic: { type: "incidence", valuePercent: 38.0 },
+        populationDescription:
+          "Pregnant women with severe mitral stenosis (MVA <1.0 cm²) including NYHA III-IV; high decompensation rate",
+        citation: cite("other", "Hameed et al., J Am Coll Cardiol 2001", 2001),
+      },
+      {
+        outcome: "maternal mortality",
+        statistic: { type: "mortality_rate", valuePercent: 3.0 },
+        populationDescription:
+          "Severe symptomatic MS in pregnancy, particularly with pulmonary hypertension; reported from South Asian and Middle Eastern cohorts",
+        citation: cite("other", "Silversides et al., J Am Coll Cardiol 2009", 2009),
+      },
+      {
+        outcome: "fetal growth restriction or preterm birth",
+        statistic: { type: "incidence", valuePercent: 30.0 },
+        populationDescription:
+          "Pregnancies complicated by severe MS with NYHA III-IV symptoms and reduced uteroplacental perfusion",
+        citation: cite("other", "Hameed et al., J Am Coll Cardiol 2001", 2001),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",
@@ -200,7 +237,22 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
           "Intrapartum arterial line monitoring for severe AS.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "cardiac event (pulmonary edema, arrhythmia, or cardiac arrest) during pregnancy",
+        statistic: { type: "incidence", valuePercent: 10.0 },
+        populationDescription:
+          "Asymptomatic severe AS (AVA <1.0 cm²) with normal exercise tolerance; event rates from the CARPREG II registry",
+        citation: cite("other", "Silversides et al., J Am Coll Cardiol 2018", 2018),
+      },
+      {
+        outcome: "new symptom development during pregnancy (reclassification to symptomatic)",
+        statistic: { type: "incidence", valuePercent: 25.0 },
+        populationDescription:
+          "Women with severe AS deemed asymptomatic pre-pregnancy; unmasked by pregnancy-associated hemodynamic increase",
+        citation: cite("other", "Lesniak-Sobelga et al., Int J Cardiol 2004", 2004),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",
@@ -271,7 +323,29 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
           "cardio-obstetric team mandatory.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "maternal mortality",
+        statistic: { type: "mortality_rate", valuePercent: 5.0 },
+        populationDescription:
+          "Symptomatic severe AS in pregnancy; mortality risk concentrated in those with heart failure or syncope",
+        citation: cite("other", "Lesniak-Sobelga et al., Int J Cardiol 2004", 2004),
+      },
+      {
+        outcome: "cardiac heart failure or pulmonary edema requiring urgent delivery",
+        statistic: { type: "incidence", valuePercent: 40.0 },
+        populationDescription:
+          "Women with severe symptomatic AS (NYHA III-IV) during pregnancy requiring individualized management",
+        citation: cite("other", "Silversides et al., J Am Coll Cardiol 2018", 2018),
+      },
+      {
+        outcome: "fetal mortality with intrapartum cardiac surgery (aortic valve replacement)",
+        statistic: { type: "mortality_rate", valuePercent: 25.0 },
+        populationDescription:
+          "On-pump cardiac surgery during pregnancy; fetal loss driven by hypothermia, non-pulsatile flow, and uteroplacental ischemia",
+        citation: cite("other", "John et al., J Thorac Cardiovasc Surg 2011", 2011),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -437,7 +511,22 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
           "to aortopathy protocol with earlier delivery consideration and cesarean.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "aortic dissection during pregnancy",
+        statistic: { type: "incidence", valuePercent: 0.3 },
+        populationDescription:
+          "BAV with ascending aorta <45 mm; low absolute risk but higher than general obstetric population",
+        citation: cite("other", "Tzemos et al., JAMA 2008", 2008),
+      },
+      {
+        outcome: "aortic root or ascending aorta growth ≥3 mm during pregnancy",
+        statistic: { type: "incidence", valuePercent: 20.0 },
+        populationDescription:
+          "BAV patients with serial echocardiographic surveillance through gestation",
+        citation: cite("other", "Kaplan et al., Am J Cardiol 2016", 2016),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",

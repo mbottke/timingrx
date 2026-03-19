@@ -40,7 +40,26 @@ export const surgicalConditions: ObstetricCondition[] = [
           "(avoid standard glucose load test due to dumping syndrome risk).",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "small for gestational age neonate after Roux-en-Y gastric bypass",
+        statistic: { type: "odds_ratio", value: 2.16, ci95: [1.37, 3.41] },
+        populationDescription: "Pregnancies after Roux-en-Y gastric bypass vs obese controls (meta-analysis)",
+        citation: cite("other", "Johansson et al., JAMA Surg 2015", 2015),
+      },
+      {
+        outcome: "nutritional deficiency (iron, B12, or folate) in post-bariatric pregnancy",
+        statistic: { type: "incidence", valuePercent: 45 },
+        populationDescription: "Pregnancies after malabsorptive bariatric surgery (prospective cohort)",
+        citation: cite("other", "Guelinckx et al., Obes Rev 2009", 2009),
+      },
+      {
+        outcome: "preterm birth after bariatric surgery vs morbidly obese controls",
+        statistic: { type: "odds_ratio", value: 1.30, ci95: [1.08, 1.55] },
+        populationDescription: "Post-bariatric surgery pregnancies compared to non-operated obese women (Swedish registry)",
+        citation: cite("other", "Johansson et al., JAMA Surg 2015", 2015),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -80,7 +99,20 @@ export const surgicalConditions: ObstetricCondition[] = [
           "incision may be needed for bulky cervical tumors.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "incidence of cervical cancer in pregnancy",
+        statistic: { type: "absolute_risk", valuePer1000: 1.5 },
+        populationDescription: "Estimated 1-1.5 per 10,000 pregnancies; cervical cancer is most common gynecologic cancer in pregnancy",
+        citation: cite("other", "Amant et al., Lancet Oncol 2012", 2012),
+      },
+      {
+        outcome: "recurrence-free survival at 5 years for Stage IB1 diagnosed in pregnancy (delayed treatment)",
+        statistic: { type: "incidence", valuePercent: 95 },
+        populationDescription: "Stage IA-IB1 cervical cancer diagnosed in pregnancy with intentional delay to fetal maturity",
+        citation: cite("other", "Amant et al., Lancet Oncol 2012", 2012),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -124,7 +156,20 @@ export const surgicalConditions: ObstetricCondition[] = [
           "was administered within 3-4 weeks of delivery.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "neonatal myelosuppression when chemotherapy within 3 weeks of delivery",
+        statistic: { type: "incidence", valuePercent: 25 },
+        populationDescription: "Neonates exposed to chemotherapy within 3 weeks of delivery (case series)",
+        citation: cite("other", "Cardonick & Iacobucci, Lancet Oncol 2004", 2004),
+      },
+      {
+        outcome: "fetal growth restriction with breast cancer chemotherapy in pregnancy",
+        statistic: { type: "incidence", valuePercent: 10 },
+        populationDescription: "Pregnancies with breast cancer treated with anthracycline-based chemotherapy in 2nd/3rd trimester",
+        citation: cite("other", "Cardonick & Iacobucci, Lancet Oncol 2004", 2004),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -148,7 +193,20 @@ export const surgicalConditions: ObstetricCondition[] = [
       "Appendectomy during pregnancy does not alter subsequent delivery timing. " +
       "Standard obstetric management applies after recovery from surgery.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "preterm birth associated with appendicitis/appendectomy in pregnancy",
+        statistic: { type: "incidence", valuePercent: 11 },
+        populationDescription: "Pregnancies complicated by appendicitis requiring appendectomy (meta-analysis)",
+        citation: cite("other", "McGory et al., J Am Coll Surg 2007", 2007),
+      },
+      {
+        outcome: "fetal loss associated with perforated appendicitis in pregnancy",
+        statistic: { type: "incidence", valuePercent: 36 },
+        populationDescription: "Pregnancies with perforated appendicitis (historical cohort data)",
+        citation: cite("other", "McGory et al., J Am Coll Surg 2007", 2007),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
