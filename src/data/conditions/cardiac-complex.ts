@@ -165,7 +165,20 @@ export const cardiacComplexConditions: ObstetricCondition[] = [
           "Cardiology consultation for delivery planning.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "sustained ventricular arrhythmia during pregnancy",
+        statistic: { type: "incidence", valuePercent: 5 },
+        populationDescription: "Repaired TOF patients in pregnancy; incidence higher with RVEDV >150 mL/m² or RVEF <40%",
+        citation: cite("ESC", "ESC CVD in Pregnancy", 2018),
+      },
+      {
+        outcome: "maternal cardiac event (arrhythmia, heart failure, or intervention)",
+        statistic: { type: "incidence", valuePercent: 12 },
+        populationDescription: "Repaired TOF pregnancies with residual hemodynamic lesions (PR, RVOTO, or RV dilation)",
+        citation: cite("ESC", "ESC CVD in Pregnancy", 2018),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",

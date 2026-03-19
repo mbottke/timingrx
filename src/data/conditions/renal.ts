@@ -303,7 +303,20 @@ export const renalConditions: ObstetricCondition[] = [
           "Growth ultrasound every 3-4 weeks. Antenatal surveillance from 32 wk.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "VTE during pregnancy (serum albumin <2.5 g/dL)",
+        statistic: { type: "incidence", valuePercent: 12 },
+        populationDescription: "Nephrotic syndrome in pregnancy with serum albumin <2.5 g/dL; urinary loss of antithrombin III markedly increases VTE risk",
+        citation: cite("other", "Expert consensus", 2023),
+      },
+      {
+        outcome: "preeclampsia superimposed on nephrotic syndrome",
+        statistic: { type: "incidence", valuePercent: 35 },
+        populationDescription: "Pregnancies with active nephrotic syndrome; difficult to distinguish from severe preeclampsia",
+        citation: cite("other", "Expert consensus", 2023),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -357,7 +370,20 @@ export const renalConditions: ObstetricCondition[] = [
         citation: cite("SMFM", "#64", 2023),
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "preeclampsia or superimposed preeclampsia",
+        statistic: { type: "incidence", valuePercent: 40 },
+        populationDescription: "Pregnancies with active lupus nephritis; preeclampsia and nephritis flare are clinically difficult to distinguish",
+        citation: cite("SMFM", "#64", 2023),
+      },
+      {
+        outcome: "fetal growth restriction",
+        statistic: { type: "incidence", valuePercent: 30 },
+        populationDescription: "Pregnancies with active lupus nephritis",
+        citation: cite("SMFM", "#64", 2023),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",

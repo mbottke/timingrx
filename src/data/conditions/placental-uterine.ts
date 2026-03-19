@@ -176,7 +176,19 @@ export const placentalUterineConditions: ObstetricCondition[] = [
         description: "Serial growth ultrasounds to confirm normal fetal growth trajectory.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "fetal growth restriction",
+        statistic: { type: "relative_risk", value: 2.0, ci95: [1.4, 2.9] },
+        populationDescription: "Velamentous cord insertion vs. central cord insertion",
+        citation: cite("other", "Ebbing et al., BJOG 2013", 2013),
+      },
+      {
+        outcome: "antepartum hemorrhage",
+        statistic: { type: "incidence", valuePercent: 6 },
+        populationDescription: "Velamentous cord insertion — antepartum hemorrhage (range 4–8%)",
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -205,7 +217,19 @@ export const placentalUterineConditions: ObstetricCondition[] = [
         description: "Serial growth ultrasound every 4 weeks starting at 28 weeks.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "fetal growth restriction",
+        statistic: { type: "incidence", valuePercent: 15 },
+        populationDescription: "Isolated single umbilical artery (range 10–20%)",
+        citation: cite("other", "Persutte & Hobbins, Ultrasound Obstet Gynecol 1995", 1995),
+      },
+      {
+        outcome: "associated structural anomaly when isolated SUA",
+        statistic: { type: "incidence", valuePercent: 5 },
+        populationDescription: "Isolated SUA after detailed anatomy survey (range 3–7%)",
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -233,7 +257,19 @@ export const placentalUterineConditions: ObstetricCondition[] = [
       "Circumvallate placenta is associated with increased risk of abruption, preterm " +
       "birth, and FGR. No fixed GA target; delivery timing driven by complications.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "placental abruption",
+        statistic: { type: "relative_risk", value: 3.0, ci95: [1.8, 5.0] },
+        populationDescription: "Circumvallate placenta vs. normal placental morphology",
+        citation: cite("other", "Harris et al., Obstet Gynecol 1997", 1997),
+      },
+      {
+        outcome: "preterm birth <37 weeks",
+        statistic: { type: "incidence", valuePercent: 30 },
+        populationDescription: "Circumvallate placenta (range 25–35%)",
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -261,7 +297,19 @@ export const placentalUterineConditions: ObstetricCondition[] = [
       "Large obstructing fibroids may necessitate cesarean delivery. Timing is " +
       "individualized based on fibroid location, size, and complications.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "cesarean delivery",
+        statistic: { type: "relative_risk", value: 3.7, ci95: [2.7, 5.0] },
+        populationDescription: "Uterine fibroids in pregnancy vs. no fibroids",
+        citation: cite("other", "Klatsky et al., Obstet Gynecol 2008", 2008),
+      },
+      {
+        outcome: "fetal malpresentation",
+        statistic: { type: "incidence", valuePercent: 20 },
+        populationDescription: "Large fibroids (>5 cm) distorting uterine cavity (range 15–25%)",
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -285,7 +333,19 @@ export const placentalUterineConditions: ObstetricCondition[] = [
       "Transvaginal cerclage is removed at 36w0d-37w0d. After removal, delivery timing " +
       "follows standard obstetric indications. Vaginal delivery is appropriate.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "reduction in preterm birth <35 weeks vs. no cerclage (high-risk, short cervix)",
+        statistic: { type: "relative_risk", value: 0.61, ci95: [0.48, 0.77] },
+        populationDescription: "History-indicated and ultrasound-indicated cerclage in singleton pregnancies",
+        citation: cite("other", "Berghella et al., Am J Obstet Gynecol 2011", 2011),
+      },
+      {
+        outcome: "preterm birth <34 weeks in cerclage patients with prior PTB",
+        statistic: { type: "incidence", valuePercent: 22 },
+        populationDescription: "Cervical cerclage placed for prior PTB or short cervix",
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -314,7 +374,19 @@ export const placentalUterineConditions: ObstetricCondition[] = [
         description: "Cerclage left in situ at cesarean for future fertility preservation.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "preterm birth <34 weeks with TAC",
+        statistic: { type: "incidence", valuePercent: 8 },
+        populationDescription: "Transabdominal cerclage pregnancies — high-risk patients (range 5–12%)",
+        citation: cite("other", "Zaveri et al., Am J Obstet Gynecol 2002", 2002),
+      },
+      {
+        outcome: "pregnancy loss or delivery <24 weeks",
+        statistic: { type: "incidence", valuePercent: 5 },
+        populationDescription: "TAC — first pregnancy after placement (range 3–7%)",
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -339,7 +411,14 @@ export const placentalUterineConditions: ObstetricCondition[] = [
       "to prior classical cesarean regarding labor avoidance, though evidence is limited. " +
       "Delivery route individualized by operative details.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "uterine rupture during labor after transmural myomectomy",
+        statistic: { type: "absolute_risk", valuePer1000: 10 },
+        populationDescription: "Transmural myomectomy with cavity entry — estimated rupture risk (range 5–15 per 1000)",
+        citation: cite("other", "Gambacorti-Passerini et al., Acta Obstet Gynecol Scand 2016", 2016),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -363,7 +442,14 @@ export const placentalUterineConditions: ObstetricCondition[] = [
       "Superficial or non-transmural myomectomy without cavity entry may allow trial " +
       "of labor. Decision should be individualized based on operative report details.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "uterine rupture during labor after non-transmural myomectomy",
+        statistic: { type: "absolute_risk", valuePer1000: 2 },
+        populationDescription: "Non-transmural myomectomy without cavity entry — estimated rupture risk (<3 per 1000)",
+        citation: cite("other", "Gambacorti-Passerini et al., Acta Obstet Gynecol Scand 2016", 2016),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],

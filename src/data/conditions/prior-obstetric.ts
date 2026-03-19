@@ -68,7 +68,14 @@ export const priorObstetricConditions: ObstetricCondition[] = [
         description: "TOLAC is contraindicated with prior T or J uterine incision.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "uterine rupture during labor",
+        statistic: { type: "incidence", valuePercent: 7 },
+        populationDescription: "Women with prior T- or J-incision extension attempting labor; risk comparable to classical cesarean (0.6-11.5%)",
+        citation: cite("ACOG", "CO 831", 2021),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -96,7 +103,14 @@ export const priorObstetricConditions: ObstetricCondition[] = [
         description: "TOLAC is absolutely contraindicated after prior uterine rupture.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "uterine rupture with subsequent labor",
+        statistic: { type: "incidence", valuePercent: 22 },
+        populationDescription: "Women with prior uterine rupture attempting TOLAC; TOLAC is absolutely contraindicated",
+        citation: cite("ACOG", "CO 831", 2021),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -234,7 +248,14 @@ export const priorObstetricConditions: ObstetricCondition[] = [
           "Consider experienced surgical team.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "placenta accreta spectrum",
+        statistic: { type: "incidence", valuePercent: 2.1 },
+        populationDescription: "Women with 3 prior cesareans with anterior placenta previa; PAS risk rises with each repeat cesarean",
+        citation: cite("ACOG", "PB 205"),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -320,7 +341,14 @@ export const priorObstetricConditions: ObstetricCondition[] = [
       "When the cause of prior stillbirth is identified, delivery timing is guided " +
       "by the specific underlying condition (e.g., preeclampsia, FGR, diabetes).",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "recurrent stillbirth (explained etiology, etiology-specific risk)",
+        statistic: { type: "relative_risk", value: 2.0 },
+        populationDescription: "Women with prior explained stillbirth; recurrence risk depends on whether underlying condition (e.g., diabetes, preeclampsia) recurs",
+        citation: cite("ACOG", "CO 831", 2021),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -388,7 +416,20 @@ export const priorObstetricConditions: ObstetricCondition[] = [
       "elective cesarean may be discussed, particularly if the patient has ongoing " +
       "fecal incontinence symptoms.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "recurrent OASIS (3rd or 4th degree laceration) in subsequent vaginal birth",
+        statistic: { type: "incidence", valuePercent: 7 },
+        populationDescription: "Women with prior 3rd/4th degree laceration delivering vaginally; range 4-10%",
+        citation: cite("other", "Expert consensus"),
+      },
+      {
+        outcome: "fecal incontinence after prior 4th degree laceration",
+        statistic: { type: "incidence", valuePercent: 35 },
+        populationDescription: "Women with prior 4th degree laceration at any subsequent assessment",
+        citation: cite("other", "Expert consensus"),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -416,7 +457,14 @@ export const priorObstetricConditions: ObstetricCondition[] = [
       "earlier delivery. Progesterone supplementation for preterm birth prevention " +
       "does not alter delivery timing.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "recurrent preterm birth <37 weeks on progesterone supplementation",
+        statistic: { type: "incidence", valuePercent: 28 },
+        populationDescription: "Women with prior spontaneous preterm birth on 17-OHPC or vaginal progesterone",
+        citation: cite("ACOG", "PB 234"),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -445,7 +493,14 @@ export const priorObstetricConditions: ObstetricCondition[] = [
       "is preparedness planning: proximity to hospital, birth plan, and recognition " +
       "of labor signs.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "recurrent precipitous labor (<3 hours)",
+        statistic: { type: "incidence", valuePercent: 55 },
+        populationDescription: "Women with one prior precipitous labor in subsequent delivery",
+        citation: cite("other", "Expert consensus"),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],

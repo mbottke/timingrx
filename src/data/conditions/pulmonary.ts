@@ -194,7 +194,20 @@ export const pulmonaryConditions: ObstetricCondition[] = [
           "Deliver at a center with transplant medicine, pulmonology, MFM, and NICU.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "preterm delivery",
+        statistic: { type: "incidence", valuePercent: 50 },
+        populationDescription: "Lung transplant recipients completing pregnancy; among highest preterm rates of any solid organ transplant",
+        citation: cite("ISHLT", "Transplant guidelines"),
+      },
+      {
+        outcome: "preeclampsia",
+        statistic: { type: "incidence", valuePercent: 30 },
+        populationDescription: "Lung transplant recipients completing pregnancy",
+        citation: cite("ISHLT", "Transplant guidelines"),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -241,7 +254,14 @@ export const pulmonaryConditions: ObstetricCondition[] = [
           "general anesthesia may be needed for cesarean.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "recurrent VTE despite therapeutic anticoagulation",
+        statistic: { type: "incidence", valuePercent: 4.5 },
+        populationDescription: "Pregnant women on therapeutic LMWH for PE (range 3-6%)",
+        citation: cite("ACOG", "PB 196"),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -292,7 +312,14 @@ export const pulmonaryConditions: ObstetricCondition[] = [
           "reduced compliance. Low tidal volume ventilation strategy.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "fetal growth restriction from chronic maternal hypoxia",
+        statistic: { type: "incidence", valuePercent: 25 },
+        populationDescription: "Pregnancies complicated by restrictive lung disease with FVC <1.5L or chronic SpO2 <95%",
+        citation: cite("other", "Expert consensus"),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",

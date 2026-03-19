@@ -92,7 +92,19 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
         ],
         pastFortyWeeks: "no",
         specialConsiderations: [],
-        riskData: [],
+        riskData: [
+          {
+            outcome: "stillbirth",
+            statistic: { type: "odds_ratio", value: 1.6, ci95: [1.1, 2.4] },
+            populationDescription: "SGA 3rd–10th percentile vs. AGA",
+            citation: cite("other", "Flenady et al., Lancet 2011", 2011),
+          },
+          {
+            outcome: "neonatal intensive care admission",
+            statistic: { type: "incidence", valuePercent: 15 },
+            populationDescription: "FGR EFW 3rd–10th percentile (range 10–20%)",
+          },
+        ],
         riskModifiers: [],
         landmarkTrials: [],
         interactions: [],
@@ -113,7 +125,19 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
         ],
         pastFortyWeeks: "no",
         specialConsiderations: [],
-        riskData: [],
+        riskData: [
+          {
+            outcome: "stillbirth",
+            statistic: { type: "odds_ratio", value: 4.7, ci95: [3.1, 7.1] },
+            populationDescription: "SGA <3rd percentile vs. AGA",
+            citation: cite("other", "Flenady et al., Lancet 2011", 2011),
+          },
+          {
+            outcome: "perinatal mortality",
+            statistic: { type: "incidence", valuePercent: 3.5 },
+            populationDescription: "FGR EFW <3rd percentile (range 2.5–5%)",
+          },
+        ],
         riskModifiers: [],
         landmarkTrials: [],
         interactions: [],
@@ -261,7 +285,19 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
       "Isolated oligohydramnios defined as DVP <2 cm without FGR or ruptured membranes. " +
       "DVP is preferred over AFI for fluid assessment as AFI overdiagnoses oligohydramnios.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "stillbirth",
+        statistic: { type: "relative_risk", value: 2.2, ci95: [1.4, 3.4] },
+        populationDescription: "Isolated oligohydramnios (DVP <2 cm) vs. normal fluid",
+        citation: cite("other", "Chauhan et al., Am J Obstet Gynecol 1999", 1999),
+      },
+      {
+        outcome: "intrapartum fetal heart rate abnormality",
+        statistic: { type: "incidence", valuePercent: 35 },
+        populationDescription: "Isolated oligohydramnios at term (range 30–40%)",
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -291,7 +327,19 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
       "Evaluate for fetal anomalies (esophageal atresia, CNS abnormalities) and " +
       "maternal diabetes. Amnioreduction may be considered for symptomatic relief.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "preterm birth <37 weeks",
+        statistic: { type: "incidence", valuePercent: 20 },
+        populationDescription: "Uncomplicated polyhydramnios (range 15–26%)",
+        citation: cite("other", "Magann et al., Obstet Gynecol 2010", 2010),
+      },
+      {
+        outcome: "cord prolapse",
+        statistic: { type: "relative_risk", value: 2.4, ci95: [1.3, 4.3] },
+        populationDescription: "Polyhydramnios vs. normal fluid at labor",
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -329,7 +377,19 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
           "MCA-PSV >1.5 MoM suggests moderate-severe fetal anemia requiring IUT.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "progression to severe fetal anemia requiring IUT",
+        statistic: { type: "incidence", valuePercent: 25 },
+        populationDescription: "Alloimmunization without initial IUT requirement (range 20–30%)",
+        citation: cite("other", "Moise, N Engl J Med 2002", 2002),
+      },
+      {
+        outcome: "hydrops fetalis",
+        statistic: { type: "incidence", valuePercent: 10 },
+        populationDescription: "Red cell alloimmunization — untreated moderate-severe disease",
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -367,7 +427,19 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
       "cause. Mirror syndrome (maternal edema and hypertension mirroring fetal hydrops) " +
       "is an indication for delivery.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "perinatal mortality",
+        statistic: { type: "mortality_rate", valuePercent: 50 },
+        populationDescription: "Nonimmune hydrops fetalis overall (range 40–75%)",
+        citation: cite("other", "Bellini et al., J Matern Fetal Neonatal Med 2009", 2009),
+      },
+      {
+        outcome: "identifiable underlying etiology",
+        statistic: { type: "incidence", valuePercent: 75 },
+        populationDescription: "NIHF cases with systematic workup",
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -397,7 +469,19 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
       "follows standard delivery timing. If a cardiac defect is present, manage per fetal " +
       "cardiac guidelines.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "congenital heart defect",
+        statistic: { type: "incidence", valuePercent: 44 },
+        populationDescription: "Trisomy 21 pregnancies (range 40–50%)",
+        citation: cite("other", "Freeman et al., Pediatrics 1998", 1998),
+      },
+      {
+        outcome: "duodenal atresia or GI anomaly",
+        statistic: { type: "incidence", valuePercent: 8 },
+        populationDescription: "Trisomy 21 — gastrointestinal malformations",
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [
@@ -440,7 +524,19 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
       "route are individualized based on family goals of care. Palliative care consultation " +
       "and birth planning are essential components of management.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "stillbirth before delivery",
+        statistic: { type: "incidence", valuePercent: 30 },
+        populationDescription: "Trisomy 18 continuing pregnancies after 20 weeks (range 20–40%)",
+        citation: cite("other", "Peroos et al., Arch Dis Child Fetal Neonatal Ed 2012", 2012),
+      },
+      {
+        outcome: "neonatal death within first week",
+        statistic: { type: "incidence", valuePercent: 50 },
+        populationDescription: "Liveborn trisomy 18 or 13 neonates",
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -473,7 +569,14 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
       "Lethal skeletal dysplasias (e.g., thanatophoric dysplasia, OI type II) are managed " +
       "with palliative care planning. Delivery timing and route are guided by family goals.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "neonatal death due to pulmonary hypoplasia",
+        statistic: { type: "mortality_rate", valuePercent: 99 },
+        populationDescription: "Thanatophoric dysplasia and homozygous achondroplasia — virtually universal",
+        citation: cite("other", "Witters et al., Eur J Pediatr 2002", 2002),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -505,7 +608,19 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
       "Cesarean may be indicated for macrocephaly, which is common in achondroplasia. " +
       "Route of delivery is individualized based on head size and pelvic adequacy.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "cesarean delivery",
+        statistic: { type: "incidence", valuePercent: 70 },
+        populationDescription: "Achondroplasia — cesarean rate due to macrocephaly (range 60–80%)",
+        citation: cite("other", "Wynn et al., Am J Med Genet 2007", 2007),
+      },
+      {
+        outcome: "cervicomedullary compression in neonate",
+        statistic: { type: "incidence", valuePercent: 20 },
+        populationDescription: "Achondroplasia neonates — clinically significant stenosis",
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -537,7 +652,19 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
       "an indication for early delivery or prophylactic cesarean. Ultrasound estimation of " +
       "fetal weight has a margin of error of 15-20%.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "shoulder dystocia",
+        statistic: { type: "incidence", valuePercent: 5 },
+        populationDescription: "Non-diabetic, birthweight 4,000–4,499 g (range 4–6%)",
+        citation: cite("ACOG", "PB 216", 2020),
+      },
+      {
+        outcome: "cesarean delivery",
+        statistic: { type: "incidence", valuePercent: 35 },
+        populationDescription: "Suspected macrosomia EFW >4,000 g, non-diabetic (range 30–40%)",
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -570,7 +697,19 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
       "This threshold is higher than for diabetic patients (>=4,500 g) given the " +
       "additional risk of shoulder dystocia with diabetes.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "shoulder dystocia",
+        statistic: { type: "incidence", valuePercent: 14 },
+        populationDescription: "Non-diabetic, birthweight ≥5,000 g (range 10–18%)",
+        citation: cite("ACOG", "PB 216", 2020),
+      },
+      {
+        outcome: "brachial plexus injury",
+        statistic: { type: "absolute_risk", valuePer1000: 25 },
+        populationDescription: "Births complicated by shoulder dystocia (range 20–30 per 1000)",
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -608,7 +747,20 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
       "offered. The lower threshold (4,500 vs 5,000 g) reflects the additional risk " +
       "conferred by diabetes on shoulder dystocia.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "shoulder dystocia",
+        statistic: { type: "incidence", valuePercent: 20 },
+        populationDescription: "Diabetic, birthweight ≥4,500 g (range 15–25%)",
+        citation: cite("ACOG", "PB 216", 2020),
+      },
+      {
+        outcome: "shoulder dystocia vs. non-diabetic at same weight",
+        statistic: { type: "relative_risk", value: 2.2, ci95: [1.5, 3.2] },
+        populationDescription: "Diabetic vs. non-diabetic with EFW 4,000–4,499 g",
+        citation: cite("ACOG", "PB 216", 2020),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],

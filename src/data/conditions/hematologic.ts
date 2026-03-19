@@ -122,7 +122,20 @@ export const hematologicConditions: ObstetricCondition[] = [
         citation: cite("SMFM", "#68", 2024),
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "acute chest syndrome during pregnancy",
+        statistic: { type: "incidence", valuePercent: 20 },
+        populationDescription: "Pregnant women with complicated SCD (HbSS with prior ACS/frequent crises)",
+        citation: cite("SMFM", "#68", 2024),
+      },
+      {
+        outcome: "preterm delivery",
+        statistic: { type: "incidence", valuePercent: 45 },
+        populationDescription: "Pregnancies with complicated SCD requiring intervention before 37 weeks",
+        citation: cite("SMFM", "#68", 2024),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -217,7 +230,14 @@ export const hematologicConditions: ObstetricCondition[] = [
           "count on admission to labor and delivery.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "proportion of all gestational thrombocytopenia cases with platelet nadir >100,000/uL",
+        statistic: { type: "incidence", valuePercent: 92 },
+        populationDescription: "Gestational thrombocytopenia; almost all cases remain above 100,000/uL and resolve spontaneously postpartum",
+        citation: cite("ACOG", "PB 207", 2019),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -264,7 +284,20 @@ export const hematologicConditions: ObstetricCondition[] = [
           "plasma exchange.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "maternal mortality (untreated TTP)",
+        statistic: { type: "mortality_rate", valuePercent: 90 },
+        populationDescription: "TTP in pregnancy prior to plasma exchange era; modern mortality <15% with prompt PEX",
+        citation: cite("other", "Expert consensus", 2023),
+      },
+      {
+        outcome: "maternal mortality (TTP treated with plasma exchange)",
+        statistic: { type: "mortality_rate", valuePercent: 10 },
+        populationDescription: "TTP in pregnancy with prompt plasma exchange therapy",
+        citation: cite("other", "Expert consensus", 2023),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -317,7 +350,20 @@ export const hematologicConditions: ObstetricCondition[] = [
           "may identify high-risk pregnancies. Weekly NST/BPP from 32 wk.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "preeclampsia",
+        statistic: { type: "incidence", valuePercent: 30 },
+        populationDescription: "Pregnancies with APS on treatment (LMWH + aspirin); range 10-50%",
+        citation: cite("ACR", "APS Guidelines", 2020),
+      },
+      {
+        outcome: "fetal growth restriction",
+        statistic: { type: "incidence", valuePercent: 20 },
+        populationDescription: "Pregnancies with APS on treatment; range 15-25%",
+        citation: cite("ACOG", "PB 118", 2011),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",
@@ -444,7 +490,20 @@ export const hematologicConditions: ObstetricCondition[] = [
           "needed for 1-2 weeks postpartum.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "primary postpartum hemorrhage (PPH)",
+        statistic: { type: "incidence", valuePercent: 22 },
+        populationDescription: "Women with VWD type 1-3 at delivery; range 16-29%",
+        citation: cite("other", "ASH 2020 VWD Guidelines", 2020),
+      },
+      {
+        outcome: "delayed PPH (>24h postpartum)",
+        statistic: { type: "incidence", valuePercent: 20 },
+        populationDescription: "Women with VWD (type 1-3); occurs as VWF/FVIII levels fall postpartum",
+        citation: cite("other", "ASH 2020 VWD Guidelines", 2020),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -489,7 +548,20 @@ export const hematologicConditions: ObstetricCondition[] = [
         citation: cite("other", "ASH 2020 Hemophilia Guidelines", 2020),
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "primary postpartum hemorrhage",
+        statistic: { type: "incidence", valuePercent: 22 },
+        populationDescription: "Hemophilia A or B carriers with factor levels <50 IU/dL at delivery",
+        citation: cite("MASAC", "#265", 2021),
+      },
+      {
+        outcome: "neonatal intracranial hemorrhage (affected male neonate, vaginal delivery)",
+        statistic: { type: "absolute_risk", valuePer1000: 4 },
+        populationDescription: "Neonates with confirmed hemophilia A or B born via vaginal delivery without operative intervention",
+        citation: cite("other", "ASH 2020 Hemophilia Guidelines", 2020),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -537,7 +609,20 @@ export const hematologicConditions: ObstetricCondition[] = [
           "postpartum prophylaxis regardless of VTE history.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "VTE risk during pregnancy (heterozygous FVL, no prior VTE)",
+        statistic: { type: "absolute_risk", valuePer1000: 10 },
+        populationDescription: "Heterozygous Factor V Leiden carriers with no prior VTE; background pregnancy VTE risk ~1-2/1,000",
+        citation: cite("ACOG", "PB 197", 2018),
+      },
+      {
+        outcome: "VTE risk during pregnancy (homozygous FVL or compound heterozygote)",
+        statistic: { type: "incidence", valuePercent: 4 },
+        populationDescription: "Homozygous FVL or compound heterozygote (FVL + prothrombin G20210A) in pregnancy",
+        citation: cite("ACOG", "PB 197", 2018),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],

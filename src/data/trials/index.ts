@@ -883,6 +883,579 @@ export const mbrrace: LandmarkTrial = {
 };
 
 // ═══════════════════════════════════════════════════════════════════════════════
+// PREECLAMPSIA PREVENTION & HYPERTENSION
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export const aspreTrial: LandmarkTrial = {
+  id: "aspre-2017",
+  name: "ASPRE Trial (Combined Screening for Preterm Preeclampsia)",
+  year: 2017,
+  journalCitation: "NEJM 2017;377:613-622",
+  sampleSize: 1776,
+  summary:
+    "First-trimester combined screening plus high-dose aspirin (150 mg) at " +
+    "11\u201314w reduced preterm preeclampsia by 62% in a high-risk screen-positive " +
+    "population. Established first-trimester screening + prophylactic aspirin as " +
+    "the standard of care for preterm preeclampsia prevention.",
+  keyFindings: [
+    "Preterm preeclampsia (<37w): 1.6% (aspirin) vs 4.3% (placebo), RR 0.38 (95% CI 0.20\u20130.74)",
+    "Term preeclampsia (\u226537w): 15.5% vs 17.2% (no significant difference)",
+    "Preterm birth <37w: 6.8% vs 5.4% (NS)",
+    "Aspirin 150 mg nightly from 11\u201314w to 36w; n=1776 screen-positive",
+    "First-trimester screen: MAP, uterine artery PI, PAPP-A, PlGF",
+  ],
+  relevantRiskData: [
+    {
+      outcome: "preterm preeclampsia (<37 weeks)",
+      statistic: { type: "relative_risk", value: 0.38, ci95: [0.20, 0.74] },
+      populationDescription:
+        "Screen-positive high-risk women, aspirin 150 mg vs placebo from 11\u201314w",
+      citation: cite("other", "Rolnik et al., NEJM 2017", 2017),
+    },
+    {
+      outcome: "preterm preeclampsia (<37 weeks) — absolute risk aspirin arm",
+      statistic: { type: "incidence", valuePercent: 1.6 },
+      populationDescription: "Aspirin arm (vs 4.3% placebo)",
+    },
+    {
+      outcome: "term preeclampsia (\u226537 weeks)",
+      statistic: { type: "relative_risk", value: 0.90, ci95: [0.73, 1.12] },
+      populationDescription: "Aspirin vs placebo, screen-positive women (NS)",
+    },
+  ],
+};
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// GESTATIONAL DIABETES
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export const hapoStudy: LandmarkTrial = {
+  id: "hapo-2008",
+  name: "HAPO Study (Hyperglycemia and Adverse Pregnancy Outcomes)",
+  year: 2008,
+  journalCitation: "NEJM 2008;358:1991-2002",
+  sampleSize: 23316,
+  summary:
+    "Landmark international observational study establishing a continuous, " +
+    "graded relationship between maternal glucose levels and adverse perinatal " +
+    "outcomes. Provided the epidemiologic foundation for IADPSG diagnostic " +
+    "thresholds for gestational diabetes.",
+  keyFindings: [
+    "Continuous, graded association between glucose and outcomes — no threshold effect",
+    "Macrosomia (birth weight >90th percentile): OR 5.01 at highest glucose quartile",
+    "Primary cesarean: OR 2.35 at highest glucose quartile",
+    "Neonatal hypoglycemia: OR 5.60 at highest glucose quartile",
+    "C-peptide >90th percentile (fetal hyperinsulinism): OR 9.75 at highest glucose quartile",
+    "25 centers in 9 countries; blinded glucose results; no treatment intervention",
+  ],
+  relevantRiskData: [
+    {
+      outcome: "birth weight >90th percentile (macrosomia)",
+      statistic: { type: "odds_ratio", value: 5.01, ci95: [3.94, 6.37] },
+      populationDescription:
+        "Highest vs lowest fasting glucose quartile (2-hour OGTT cohort)",
+      citation: cite("other", "HAPO Study Cooperative Research Group, NEJM 2008", 2008),
+    },
+    {
+      outcome: "primary cesarean delivery",
+      statistic: { type: "odds_ratio", value: 2.35, ci95: [2.03, 2.72] },
+      populationDescription: "Highest vs lowest fasting glucose quartile",
+    },
+    {
+      outcome: "neonatal hypoglycemia",
+      statistic: { type: "odds_ratio", value: 5.60, ci95: [3.43, 9.15] },
+      populationDescription: "Highest vs lowest 2-hour glucose quartile",
+    },
+    {
+      outcome: "cord C-peptide >90th percentile (fetal hyperinsulinism)",
+      statistic: { type: "odds_ratio", value: 9.75, ci95: [7.79, 12.20] },
+      populationDescription: "Highest vs lowest fasting glucose quartile",
+    },
+  ],
+};
+
+export const landonMfmuGdm: LandmarkTrial = {
+  id: "landon-mfmu-2009",
+  name: "Landon/MFMU Mild GDM Treatment Trial",
+  year: 2009,
+  journalCitation: "NEJM 2009;361:1339-1348",
+  sampleSize: 958,
+  summary:
+    "MFMU Network RCT demonstrating that treatment of mild gestational diabetes " +
+    "(diagnosed by OGTT but with fasting glucose <95 mg/dL) significantly reduces " +
+    "macrosomia, shoulder dystocia, and preeclampsia, while halving the primary " +
+    "cesarean rate. Expanded the indication for GDM treatment.",
+  keyFindings: [
+    "Birth weight >4000 g: 5.9% (treatment) vs 14.3% (control), RR 0.41",
+    "Shoulder dystocia: 1.5% vs 4.0%, RR 0.37",
+    "Preeclampsia: 8.6% vs 13.6%, RR 0.56",
+    "Primary cesarean: 26.9% vs 33.8%, RR 0.87 (P=0.02)",
+    "Neonatal composite: 32.4% vs 37.0%, RR 0.87 (P=0.14; NS)",
+    "Neonatal fat mass reduced by 41 g in treatment group",
+  ],
+  relevantRiskData: [
+    {
+      outcome: "macrosomia (birth weight >4000 g)",
+      statistic: { type: "relative_risk", value: 0.41, ci95: [0.26, 0.66] },
+      populationDescription:
+        "Mild GDM (fasting glucose <95 mg/dL), treatment vs no treatment",
+      citation: cite("other", "Landon et al., NEJM 2009", 2009),
+    },
+    {
+      outcome: "shoulder dystocia",
+      statistic: { type: "relative_risk", value: 0.37, ci95: [0.14, 0.97] },
+      populationDescription: "Mild GDM, treatment vs no treatment",
+    },
+    {
+      outcome: "preeclampsia",
+      statistic: { type: "relative_risk", value: 0.56, ci95: [0.37, 0.86] },
+      populationDescription: "Mild GDM, treatment vs no treatment",
+    },
+    {
+      outcome: "primary cesarean delivery",
+      statistic: { type: "relative_risk", value: 0.87, ci95: [0.75, 0.99] },
+      populationDescription: "Mild GDM, treatment vs no treatment",
+    },
+  ],
+};
+
+export const achoisTrial: LandmarkTrial = {
+  id: "achois-2005",
+  name: "ACHOIS (Australian Carbohydrate Intolerance Study in Pregnant Women)",
+  year: 2005,
+  journalCitation: "NEJM 2005;352:2477-2486",
+  sampleSize: 1000,
+  summary:
+    "First large RCT demonstrating that treatment of gestational diabetes " +
+    "(screen-positive by 75g OGTT at 24\u201334w) reduces serious perinatal " +
+    "complications. Changed obstetric practice by proving GDM treatment is " +
+    "beneficial, not merely theoretical.",
+  keyFindings: [
+    "Serious perinatal complications: 1% (treatment) vs 4% (routine care), RR 0.33 (0.14\u20130.75)",
+    "Composite includes perinatal death, shoulder dystocia, bone fracture, nerve palsy",
+    "Macrosomia (birth weight \u22654000 g): 10% vs 21%",
+    "Induction of labour: 39% vs 29% (more in treatment arm)",
+    "Maternal depression and health status improved in treatment arm",
+  ],
+  relevantRiskData: [
+    {
+      outcome: "serious perinatal composite (death, shoulder dystocia, bone fracture, nerve palsy)",
+      statistic: { type: "relative_risk", value: 0.33, ci95: [0.14, 0.75] },
+      populationDescription:
+        "Screen-positive GDM (75g OGTT at 24\u201334w), treatment vs routine care",
+      citation: cite("other", "Crowther et al. (ACHOIS), NEJM 2005", 2005),
+    },
+    {
+      outcome: "macrosomia (birth weight \u22654000 g)",
+      statistic: { type: "incidence", valuePercent: 10 },
+      populationDescription: "Treatment arm (vs 21% routine care)",
+    },
+    {
+      outcome: "induction of labour",
+      statistic: { type: "incidence", valuePercent: 39 },
+      populationDescription: "Treatment arm (vs 29% routine care; more frequent with treatment)",
+    },
+  ],
+};
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// PRETERM BIRTH PREVENTION & NEUROPROTECTION
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export const beamTrial: LandmarkTrial = {
+  id: "beam-2008",
+  name: "BEAM Trial (Beneficial Effects of Antenatal Magnesium Sulfate)",
+  year: 2008,
+  journalCitation: "NEJM 2008;359:895-905",
+  sampleSize: 2241,
+  summary:
+    "MFMU Network RCT demonstrating MgSO4 administered before anticipated " +
+    "preterm birth at 24\u201331+6 weeks reduces the risk of moderate/severe " +
+    "cerebral palsy. Established MgSO4 as standard neuroprotection for " +
+    "preterm birth <32 weeks.",
+  keyFindings: [
+    "Moderate/severe cerebral palsy: 1.9% (MgSO4) vs 3.5% (placebo), RR 0.55 (0.32\u20130.95)",
+    "Cerebral palsy or death: 11.3% vs 11.3% (no difference in combined outcome)",
+    "Death: 9.5% (MgSO4) vs 8.5% (placebo) — non-significant trend",
+    "Gross motor dysfunction: 3.4% vs 6.6%, RR 0.51 (0.31\u20130.83)",
+    "No significant safety concerns; flushing most common side effect",
+  ],
+  relevantRiskData: [
+    {
+      outcome: "moderate or severe cerebral palsy",
+      statistic: { type: "relative_risk", value: 0.55, ci95: [0.32, 0.95] },
+      populationDescription:
+        "Anticipated preterm birth at 24\u201331+6w, MgSO4 vs placebo",
+      citation: cite("other", "Rouse et al. (BEAM), NEJM 2008", 2008),
+    },
+    {
+      outcome: "gross motor dysfunction",
+      statistic: { type: "relative_risk", value: 0.51, ci95: [0.31, 0.83] },
+      populationDescription: "MgSO4 vs placebo, preterm birth 24\u201331+6w",
+    },
+    {
+      outcome: "cerebral palsy or death (combined outcome)",
+      statistic: { type: "incidence", valuePercent: 11.3 },
+      populationDescription: "No difference between arms (11.3% MgSO4 vs 11.3% placebo)",
+    },
+  ],
+};
+
+export const meisMfmu17ohpc: LandmarkTrial = {
+  id: "meis-mfmu-2003",
+  name: "MFMU 17-OHPC Trial (Meis et al.)",
+  year: 2003,
+  journalCitation: "NEJM 2003;348:2379-2385",
+  sampleSize: 463,
+  summary:
+    "MFMU Network RCT demonstrating that weekly intramuscular 17-alpha-hydroxyprogesterone " +
+    "caproate (17-OHPC) reduces recurrent spontaneous preterm birth in women with " +
+    "prior spontaneous preterm birth. Established progesterone as a key prevention " +
+    "strategy (later updated by subsequent meta-analyses for efficacy limitations).",
+  keyFindings: [
+    "Delivery <37w: 36.3% (17-OHPC) vs 54.9% (placebo), RR 0.66 (95% CI 0.54\u20130.81)",
+    "Delivery <35w: 20.6% vs 30.7%, RR 0.67 (0.48\u20130.93)",
+    "Delivery <32w: 11.4% vs 19.6%, RR 0.58 (0.37\u20130.91)",
+    "Neonatal composite (NEC, IVH, death): reduced with 17-OHPC",
+    "Treatment 16\u201320w to 36w; singleton with prior spontaneous PTB",
+  ],
+  relevantRiskData: [
+    {
+      outcome: "delivery before 37 weeks",
+      statistic: { type: "relative_risk", value: 0.66, ci95: [0.54, 0.81] },
+      populationDescription:
+        "Prior spontaneous preterm birth, 17-OHPC vs placebo from 16\u201320w",
+      citation: cite("other", "Meis et al. (MFMU), NEJM 2003", 2003),
+    },
+    {
+      outcome: "delivery before 35 weeks",
+      statistic: { type: "relative_risk", value: 0.67, ci95: [0.48, 0.93] },
+      populationDescription: "17-OHPC vs placebo, prior spontaneous PTB",
+    },
+    {
+      outcome: "delivery before 32 weeks",
+      statistic: { type: "relative_risk", value: 0.58, ci95: [0.37, 0.91] },
+      populationDescription: "17-OHPC vs placebo, prior spontaneous PTB",
+    },
+    {
+      outcome: "delivery <37w — absolute risk 17-OHPC arm",
+      statistic: { type: "incidence", valuePercent: 36.3 },
+      populationDescription: "17-OHPC arm (vs 54.9% placebo)",
+    },
+  ],
+};
+
+export const epppicMeta: LandmarkTrial = {
+  id: "epppic-2021",
+  name: "EPPPIC (Evaluating Progestogens for Preventing Preterm birth International Collaborative)",
+  year: 2021,
+  journalCitation: "Lancet 2021;397:571-583",
+  sampleSize: undefined,
+  summary:
+    "Individual patient data meta-analysis of 31 RCTs evaluating progesterone " +
+    "for preterm birth prevention. Found vaginal progesterone reduces birth " +
+    "before 34 weeks in women with short cervix; 17-OHPC benefit less certain " +
+    "in updated analyses. Informed subsequent FDA and ACOG guidance revisions.",
+  keyFindings: [
+    "Vaginal progesterone vs placebo: birth <34w RR 0.78 (0.68\u20130.90) in short cervix",
+    "17-OHPC vs placebo (prior PTB): birth <34w RR 0.83 (0.66\u20131.04) — not significant in IPD",
+    "Vaginal progesterone: neonatal composite RR 0.84 (0.73\u20130.97)",
+    "No significant increase in fetal/neonatal harm with either progestogen",
+    "Results contributed to FDA withdrawal of 17-OHPC (Makena) approval in 2023",
+  ],
+  relevantRiskData: [
+    {
+      outcome: "birth before 34 weeks (short cervix)",
+      statistic: { type: "relative_risk", value: 0.78, ci95: [0.68, 0.90] },
+      populationDescription:
+        "Vaginal progesterone vs placebo, short cervical length subgroup (31 RCTs IPD)",
+      citation: cite("other", "EPPPIC Group, Lancet 2021", 2021),
+    },
+    {
+      outcome: "neonatal composite adverse outcome (vaginal progesterone)",
+      statistic: { type: "relative_risk", value: 0.84, ci95: [0.73, 0.97] },
+      populationDescription: "Vaginal progesterone vs placebo",
+    },
+    {
+      outcome: "birth before 34 weeks (17-OHPC, prior PTB)",
+      statistic: { type: "relative_risk", value: 0.83, ci95: [0.66, 1.04] },
+      populationDescription: "17-OHPC vs placebo, prior spontaneous PTB (IPD; NS)",
+    },
+  ],
+};
+
+export const oracleITrial: LandmarkTrial = {
+  id: "oracle-i-2001",
+  name: "ORACLE I (Erythromycin in PPROM)",
+  year: 2001,
+  journalCitation: "Lancet 2001;357:979-988",
+  sampleSize: 4826,
+  summary:
+    "UK multicenter RCT evaluating antibiotics in preterm prelabour rupture of " +
+    "membranes (PPROM). Erythromycin prolonged pregnancy, reduced oxygen " +
+    "therapy, and improved composite neonatal outcomes. Co-amoxiclav (amoxicillin\u2013" +
+    "clavulanate) increased necrotising enterocolitis and is now contraindicated.",
+  keyFindings: [
+    "Erythromycin vs placebo: delivery within 48h RR 0.79 (0.66\u20130.95), median +5 days",
+    "Use of neonatal O2 therapy: reduced with erythromycin (RR 0.88)",
+    "Composite neonatal morbidity: erythromycin RR 0.86 (0.74\u20131.00)",
+    "Co-amoxiclav: necrotising enterocolitis increased 4.6% vs 2.9% (P=0.004)",
+    "Co-amoxiclav now contraindicated in PPROM; erythromycin remains standard",
+  ],
+  relevantRiskData: [
+    {
+      outcome: "delivery within 48 hours of randomisation",
+      statistic: { type: "relative_risk", value: 0.79, ci95: [0.66, 0.95] },
+      populationDescription:
+        "PPROM, erythromycin vs placebo",
+      citation: cite("other", "Kenyon et al. (ORACLE I), Lancet 2001", 2001),
+    },
+    {
+      outcome: "neonatal oxygen therapy requirement",
+      statistic: { type: "relative_risk", value: 0.88, ci95: [0.79, 0.99] },
+      populationDescription: "PPROM, erythromycin vs placebo",
+    },
+    {
+      outcome: "necrotising enterocolitis (co-amoxiclav arm)",
+      statistic: { type: "incidence", valuePercent: 4.6 },
+      populationDescription: "Co-amoxiclav arm (vs 2.9% placebo; P=0.004) — harm signal",
+    },
+    {
+      outcome: "composite neonatal morbidity (erythromycin)",
+      statistic: { type: "relative_risk", value: 0.86, ci95: [0.74, 1.00] },
+      populationDescription: "PPROM, erythromycin vs placebo",
+    },
+  ],
+};
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// POSTPARTUM HEMORRHAGE
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export const womanTrial: LandmarkTrial = {
+  id: "woman-2017",
+  name: "WOMAN Trial (World Maternal Antifibrinolytic Trial)",
+  year: 2017,
+  journalCitation: "Lancet 2017;389:2105-2116",
+  sampleSize: 20060,
+  summary:
+    "Massive international RCT (40 countries) demonstrating that tranexamic acid " +
+    "(TXA) within 3 hours of postpartum hemorrhage onset reduces death from " +
+    "bleeding without increasing thromboembolic events. Established TXA as " +
+    "standard care for PPH worldwide.",
+  keyFindings: [
+    "Death from bleeding: 1.5% (TXA) vs 1.9% (placebo), RR 0.81 (0.65\u20131.00)",
+    "Death from bleeding if given within 3h: RR 0.74 (0.59\u20130.93) — significant",
+    "Death from bleeding if given >3h: RR 1.07 (0.76\u20131.51) — no benefit",
+    "Hysterectomy: 3.5% vs 3.6% (no difference)",
+    "Thromboembolic events: 0.4% vs 0.4% (no increase)",
+    "Time to treatment critical — earlier is better; no benefit after 3h",
+  ],
+  relevantRiskData: [
+    {
+      outcome: "death from postpartum bleeding",
+      statistic: { type: "relative_risk", value: 0.81, ci95: [0.65, 1.00] },
+      populationDescription:
+        "PPH (any cause), TXA 1 g IV vs placebo, 40 countries",
+      citation: cite("other", "WOMAN Trial Collaborators, Lancet 2017", 2017),
+    },
+    {
+      outcome: "death from bleeding — TXA within 3 hours",
+      statistic: { type: "relative_risk", value: 0.74, ci95: [0.59, 0.93] },
+      populationDescription: "TXA given within 3h of PPH onset (significant subgroup)",
+    },
+    {
+      outcome: "thromboembolic events",
+      statistic: { type: "incidence", valuePercent: 0.4 },
+      populationDescription: "TXA arm (vs 0.4% placebo; no increase in thromboembolism)",
+    },
+    {
+      outcome: "hysterectomy",
+      statistic: { type: "relative_risk", value: 0.97, ci95: [0.82, 1.14] },
+      populationDescription: "TXA vs placebo (no difference)",
+    },
+  ],
+};
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// ANTENATAL CORTICOSTEROIDS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export const robertsDalzielCochrane: LandmarkTrial = {
+  id: "roberts-dalziel-2006",
+  name: "Roberts & Dalziel Cochrane Review (Antenatal Corticosteroids)",
+  year: 2006,
+  journalCitation: "Cochrane Database Syst Rev 2006;3:CD004454",
+  sampleSize: undefined,
+  summary:
+    "Definitive systematic review of 18 RCTs establishing antenatal corticosteroids " +
+    "(betamethasone or dexamethasone) as standard care before anticipated preterm " +
+    "birth. Demonstrated dramatic reductions in RDS, IVH, NEC, and neonatal death " +
+    "with a single course of ACS.",
+  keyFindings: [
+    "Respiratory distress syndrome: RR 0.66 (0.59\u20130.73), HIGH certainty",
+    "Intraventricular hemorrhage: RR 0.54 (0.43\u20130.69)",
+    "Necrotising enterocolitis: RR 0.46 (0.29\u20130.74)",
+    "Neonatal death: RR 0.69 (0.58\u20130.81)",
+    "Benefit across 24\u201334+6 weeks; greatest impact 24h\u20137d after first dose",
+    "18 RCTs; foundation of standard preterm birth care worldwide",
+  ],
+  relevantRiskData: [
+    {
+      outcome: "respiratory distress syndrome",
+      statistic: { type: "relative_risk", value: 0.66, ci95: [0.59, 0.73] },
+      populationDescription:
+        "Anticipated preterm birth, antenatal corticosteroids vs placebo (18 RCTs)",
+      citation: cite("other", "Roberts & Dalziel, Cochrane 2006", 2006),
+    },
+    {
+      outcome: "intraventricular hemorrhage",
+      statistic: { type: "relative_risk", value: 0.54, ci95: [0.43, 0.69] },
+      populationDescription: "ACS vs placebo, preterm birth",
+    },
+    {
+      outcome: "necrotising enterocolitis",
+      statistic: { type: "relative_risk", value: 0.46, ci95: [0.29, 0.74] },
+      populationDescription: "ACS vs placebo, preterm birth",
+    },
+    {
+      outcome: "neonatal death",
+      statistic: { type: "relative_risk", value: 0.69, ci95: [0.58, 0.81] },
+      populationDescription: "ACS vs placebo, preterm birth",
+    },
+  ],
+};
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// GUIDELINES
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export const niceNg207: LandmarkTrial = {
+  id: "nice-ng207-2021",
+  name: "NICE NG207 (Inducing Labour Guideline)",
+  year: 2021,
+  journalCitation: "NICE Guideline NG207, 2021",
+  sampleSize: undefined,
+  summary:
+    "UK National Institute for Health and Care Excellence guideline on inducing " +
+    "labour. Updated recommendation to offer IOL from 41+0 weeks rather than " +
+    "42+0 weeks, based on accumulated evidence from SWEPIS, INDEX, and Cochrane " +
+    "meta-analyses showing benefit of earlier induction.",
+  keyFindings: [
+    "Offer IOL between 41+0 and 42+0 (not after 42+0 as previously recommended)",
+    "Timing change driven by SWEPIS perinatal mortality data and Cochrane evidence",
+    "Membrane sweeping offered from 39+0 weeks",
+    "Bishop score alone should not determine method of cervical ripening",
+    "Expectant management beyond 42+0 should be discouraged",
+  ],
+  relevantRiskData: [
+    {
+      outcome: "guideline-recommended IOL threshold (weeks)",
+      statistic: { type: "incidence", valuePercent: 41.0 },
+      populationDescription:
+        "NICE NG207 2021: IOL offered from 41+0 (previously 42+0)",
+      citation: cite("other", "NICE NG207, 2021", 2021),
+    },
+    {
+      outcome: "perinatal death (induction 41w vs expectant — supporting evidence)",
+      statistic: { type: "relative_risk", value: 0.31, ci95: [0.15, 0.64] },
+      populationDescription: "Cochrane 2020 meta-analysis underpinning NG207 (34 RCTs)",
+    },
+  ],
+};
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// CONGENITAL HEART DISEASE & CARDIAC DISEASE IN PREGNANCY
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export const ohyeSvrTrial: LandmarkTrial = {
+  id: "ohye-svr-2010",
+  name: "SVR Trial (Single Ventricle Reconstruction — Ohye et al.)",
+  year: 2010,
+  journalCitation: "NEJM 2010;362:1980-1992",
+  sampleSize: 549,
+  summary:
+    "NHLBI-funded multicenter RCT comparing modified Blalock-Taussig (mBT) shunt " +
+    "vs right-ventricle-to-pulmonary-artery (RV-PA) shunt during the Norwood " +
+    "procedure for hypoplastic left heart syndrome. RV-PA shunt improved " +
+    "12-month transplant-free survival; long-term RV function differences persist.",
+  keyFindings: [
+    "12-month transplant-free survival: 74% (RV-PA) vs 64% (mBT shunt), P=0.01",
+    "Unintended interventions: more frequent in RV-PA group during first year",
+    "Right ventricular ejection fraction at 14 months: no significant difference",
+    "3-year survival: 65% (RV-PA) vs 59% (mBT; P=0.06 — trending)",
+    "Neurodevelopmental outcomes similar at 14 months",
+  ],
+  relevantRiskData: [
+    {
+      outcome: "12-month transplant-free survival",
+      statistic: { type: "incidence", valuePercent: 74 },
+      populationDescription:
+        "HLHS Norwood with RV-PA shunt (vs 64% modified BT shunt; P=0.01)",
+      citation: cite("other", "Ohye et al. (SVR Trial), NEJM 2010", 2010),
+    },
+    {
+      outcome: "12-month transplant-free survival (mBT shunt arm)",
+      statistic: { type: "incidence", valuePercent: 64 },
+      populationDescription: "HLHS Norwood with modified Blalock-Taussig shunt",
+    },
+    {
+      outcome: "12-month transplant-free survival — RV-PA vs mBT",
+      statistic: { type: "relative_risk", value: 1.16, ci95: [1.02, 1.32] },
+      populationDescription: "RV-PA shunt vs modified BT shunt for HLHS Norwood",
+    },
+  ],
+};
+
+export const escRegitzZagrosek2018: LandmarkTrial = {
+  id: "esc-regitz-zagrosek-2018",
+  name: "ESC Guidelines on Cardiovascular Disease During Pregnancy (Regitz-Zagrosek et al.)",
+  year: 2018,
+  journalCitation: "Eur Heart J 2018;39:3165-3241",
+  sampleSize: undefined,
+  summary:
+    "European Society of Cardiology guidelines establishing the WHO risk " +
+    "classification (I\u2013IV) for maternal cardiovascular risk in pregnancy. " +
+    "Provides structured risk stratification and delivery planning recommendations " +
+    "for women with cardiac disease, including timing and mode of delivery.",
+  keyFindings: [
+    "WHO class I: maternal mortality ~0.1%; vaginal delivery recommended",
+    "WHO class II: mortality 0.4%; individualized delivery planning",
+    "WHO class III: mortality 1\u20135%; tertiary centre delivery; consider early IOL",
+    "WHO class IV: mortality >15%; pregnancy contraindicated or highest-level MDT care",
+    "Specific cardiac diagnoses mapped to WHO class with management recommendations",
+    "Anticoagulation, cardiac medication, and delivery timing addressed by class",
+  ],
+  relevantRiskData: [
+    {
+      outcome: "maternal mortality — WHO class I cardiac disease",
+      statistic: { type: "incidence", valuePercent: 0.1 },
+      populationDescription:
+        "WHO class I (e.g., mild PS, PDA, MVP); vaginal delivery recommended",
+      citation: cite("other", "Regitz-Zagrosek et al. (ESC), Eur Heart J 2018", 2018),
+    },
+    {
+      outcome: "maternal mortality — WHO class III cardiac disease",
+      statistic: { type: "incidence", valuePercent: 3.0 },
+      populationDescription:
+        "WHO class III (e.g., moderate LV impairment, Marfan aorta 40\u201345 mm); range 1\u20135%",
+    },
+    {
+      outcome: "maternal mortality — WHO class IV cardiac disease",
+      statistic: { type: "incidence", valuePercent: 15.0 },
+      populationDescription:
+        "WHO class IV (e.g., PAH, severe LV dysfunction EF <30%); >15% mortality, pregnancy contraindicated",
+    },
+    {
+      outcome: "maternal mortality — WHO class II cardiac disease",
+      statistic: { type: "incidence", valuePercent: 0.4 },
+      populationDescription:
+        "WHO class II (e.g., repaired TOF, uncomplicated coarctation); range 0.4\u20130.5%",
+    },
+  ],
+};
+
+// ═══════════════════════════════════════════════════════════════════════════════
 // REGISTRY & EXPORTS
 // ═══════════════════════════════════════════════════════════════════════════════
 
@@ -916,6 +1489,33 @@ export const allTrials: LandmarkTrial[] = [
   smithFetalRisk,
   scrnStudy,
   mbrrace,
+
+  // Preeclampsia Prevention
+  aspreTrial,
+
+  // Gestational Diabetes
+  hapoStudy,
+  landonMfmuGdm,
+  achoisTrial,
+
+  // Preterm Birth Prevention & Neuroprotection
+  beamTrial,
+  meisMfmu17ohpc,
+  epppicMeta,
+  oracleITrial,
+
+  // Postpartum Hemorrhage
+  womanTrial,
+
+  // Antenatal Corticosteroids
+  robertsDalzielCochrane,
+
+  // Guidelines
+  niceNg207,
+
+  // Congenital Heart Disease & Cardiac Disease in Pregnancy
+  ohyeSvrTrial,
+  escRegitzZagrosek2018,
 ];
 
 export const trialById = new Map(allTrials.map((t) => [t.id, t]));

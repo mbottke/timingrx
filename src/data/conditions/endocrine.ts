@@ -46,7 +46,14 @@ export const endocrineConditions: ObstetricCondition[] = [
           "warrant neonatal thyroid function monitoring for fetal/neonatal Graves disease.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "fetal/neonatal thyrotoxicosis (elevated maternal TRAb)",
+        statistic: { type: "incidence", valuePercent: 5 },
+        populationDescription: "Neonates born to mothers with TRAb >3x upper limit of normal at 30-36 weeks",
+        citation: cite("ATA", "2017 Guidelines", 2017),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",
@@ -388,7 +395,14 @@ export const endocrineConditions: ObstetricCondition[] = [
           "IV normal saline with dextrose to prevent hypoglycemia and hyponatremia.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "adrenal crisis during labor (without stress-dose steroids)",
+        statistic: { type: "incidence", valuePercent: 50 },
+        populationDescription: "Women with Addison disease during labor who do not receive stress-dose hydrocortisone",
+        citation: cite("other", "European J Endocrinol", 2022),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -443,7 +457,14 @@ export const endocrineConditions: ObstetricCondition[] = [
           "Monitor neonatal calcium levels after delivery.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "neonatal hypocalcemia (symptomatic)",
+        statistic: { type: "incidence", valuePercent: 25 },
+        populationDescription: "Neonates born to mothers with untreated or undertreated primary hyperparathyroidism; suppression of fetal PTH leads to neonatal hypocalcemia",
+        citation: cite("other", "Expert consensus", 2023),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],

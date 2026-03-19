@@ -118,7 +118,20 @@ export const ageDemographicsConditions: ObstetricCondition[] = [
         description: "Antenatal surveillance starting at 32-36 weeks. Higher vigilance for comorbidities.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "stillbirth at 37-41 weeks",
+        statistic: { type: "relative_risk", value: 2.2 },
+        populationDescription: "Women age ≥45 vs <35; further elevated above ≥40 group",
+        citation: cite("ACOG", "OCC #11", 2022),
+      },
+      {
+        outcome: "gestational diabetes mellitus",
+        statistic: { type: "incidence", valuePercent: 20 },
+        populationDescription: "Women age ≥45 (range 15-25%; markedly elevated vs. younger cohorts)",
+        citation: cite("SMFM", "OCC #11", 2022),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -147,7 +160,14 @@ export const ageDemographicsConditions: ObstetricCondition[] = [
       "Gestational age should be calculated from the known transfer date rather than LMP. " +
       "Shared decision-making about 39-week induction is appropriate.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "preeclampsia",
+        statistic: { type: "odds_ratio", value: 1.5 },
+        populationDescription: "IVF (autologous) pregnancies vs. spontaneous conception, after adjusting for AMA",
+        citation: cite("SMFM", "#60", 2022),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -220,7 +240,20 @@ export const ageDemographicsConditions: ObstetricCondition[] = [
       "management applies. Higher rates of preeclampsia, anemia, and preterm birth " +
       "may be observed but are managed per those specific conditions.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "preeclampsia",
+        statistic: { type: "relative_risk", value: 1.5 },
+        populationDescription: "Adolescent pregnancies (<18) vs. adult pregnancies; higher risk likely driven by social determinants",
+        citation: cite("ACOG", "Clinical guidance"),
+      },
+      {
+        outcome: "preterm birth <37 weeks",
+        statistic: { type: "relative_risk", value: 1.3 },
+        populationDescription: "Adolescent pregnancies (<18) vs. women age 20-35",
+        citation: cite("ACOG", "Clinical guidance"),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -247,7 +280,14 @@ export const ageDemographicsConditions: ObstetricCondition[] = [
       "Grand multiparity alone does not alter delivery timing and is not an " +
       "independent risk factor for uterine rupture during TOLAC.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "postpartum hemorrhage",
+        statistic: { type: "relative_risk", value: 1.6 },
+        populationDescription: "Grand multiparous women (≥5 deliveries) vs. women with 1-4 prior deliveries; uterine atony risk increases with parity",
+        citation: cite("other", "Expert consensus"),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
