@@ -38,14 +38,14 @@ A 4-column table inside a Card:
 |--------|-----------|---------|
 | Outcome | left | `riskData[].outcome` |
 | Measure | right, tabular-nums, bold | Formatted via `formatRiskStatistic()` |
-| 95% CI | right, muted | `ci95` array formatted as "low–high", or "—" if absent |
-| Source | left, small muted | `citation` formatted via existing `formatCitation()` |
+| 95% CI | right, muted | `ci95` array formatted as "low–high", or "—" if absent. Note: `ci95` only exists on `relative_risk`, `odds_ratio`, and `absolute_risk` variants; `incidence` and `mortality_rate` always render "—". |
+| Source | left, small muted | `citation` formatted via singular `formatCitation()` from `citation-format.ts` (not `formatCitations`). Renders "—" when `citation` is undefined. |
 
 Header: card title "Risk Data" with count badge (e.g., "3 outcomes").
 
 Measure values are color-coded by severity:
-- Incidence/mortality ≥10% or RR/OR ≥2.0 → `--risk-high` (red)
-- Incidence 2–10% or RR/OR 1.5–2.0 → `--risk-moderate` (amber)
+- `incidence`/`mortality_rate` ≥10% or `relative_risk`/`odds_ratio` value ≥2.0 or `absolute_risk` ≥100 per 1,000 → `--risk-high` (red)
+- `incidence`/`mortality_rate` 2–10% or `relative_risk`/`odds_ratio` 1.5–2.0 or `absolute_risk` 20–100 per 1,000 → `--risk-moderate` (amber)
 - Below those thresholds → default text color
 
 ### Teaching Mode — Hover (default sub-mode)
@@ -86,7 +86,26 @@ Population description (`populationDescription`) is appended when present.
 
 ### Clinician Mode
 Bullet list inside a Card. Each item:
-- Factor badge: uppercase, gray background (`#555`), white text, `border-radius: 3px`. Factor names mapped to short display labels (e.g., `disease_severity` → "Severity", `maternal_age` → "Age", `bmi` → "BMI").
+- Factor badge: uppercase, gray background (`#555`), white text, `border-radius: 3px`. Complete factor-to-label mapping:
+
+| Factor | Label |
+|--------|-------|
+| `maternal_age` | Age |
+| `bmi` | BMI |
+| `parity` | Parity |
+| `prior_stillbirth` | Prior Stillbirth |
+| `prior_preterm_birth` | Prior Preterm |
+| `prior_cesarean_count` | Prior Cesarean |
+| `race_ethnicity` | Ethnicity |
+| `ivf_conception` | IVF |
+| `multiple_gestation` | Multiples |
+| `fetal_sex` | Fetal Sex |
+| `gestational_age_at_diagnosis` | GA at Dx |
+| `disease_severity` | Severity |
+| `medication_control_status` | Med Control |
+| `comorbidity_count` | Comorbidities |
+| `smoking` | Smoking |
+| `other` | Other |
 - Effect text beside the badge.
 
 ### Teaching Mode
@@ -149,14 +168,24 @@ Colors map to the EBM evidence pyramid, weakest→strongest. White text on all b
 
 Intensity (light/base/dark) within each type is determined by the source's relative strength — currently all sources use base color. Intensity variation is a future enhancement when a `strength` field is added to `KeyEvidenceSource`.
 
-Colors are defined as CSS custom properties in `globals.css`:
+Colors are defined as CSS custom properties in `globals.css` using oklch format (matching existing design system convention):
+
 ```css
---evidence-source-guideline: #8b8b8b;
---evidence-source-case-series: #d4834a;
---evidence-source-protocol: #b5445a;
---evidence-source-cohort: #2a8a6e;
---evidence-source-surveillance: #2e6bbf;
---evidence-source-registry: #5b3db5;
+/* :root (light mode) */
+--evidence-source-guideline: oklch(0.61 0 0);           /* #8b8b8b */
+--evidence-source-case-series: oklch(0.65 0.12 55);     /* #d4834a */
+--evidence-source-protocol: oklch(0.48 0.14 10);        /* #b5445a */
+--evidence-source-cohort: oklch(0.57 0.12 165);         /* #2a8a6e */
+--evidence-source-surveillance: oklch(0.52 0.14 255);   /* #2e6bbf */
+--evidence-source-registry: oklch(0.42 0.18 290);       /* #5b3db5 */
+
+/* .dark (dark mode — slightly lighter for contrast on dark backgrounds) */
+--evidence-source-guideline: oklch(0.70 0 0);
+--evidence-source-case-series: oklch(0.72 0.12 55);
+--evidence-source-protocol: oklch(0.58 0.14 10);
+--evidence-source-cohort: oklch(0.65 0.12 165);
+--evidence-source-surveillance: oklch(0.62 0.14 255);
+--evidence-source-registry: oklch(0.55 0.18 290);
 ```
 
 ## 6. Landmark Trials Enhancement
@@ -174,7 +203,7 @@ The existing landmark trials rendering in `ConditionDetail` is enhanced:
 ## 7. Condition Card Enhancement
 
 ### Changes to `ConditionCard`
-Add a muted text line at the bottom of the card, below the badge row:
+Add a muted text line as the last child inside `CardHeader` (below the badge row), since the card does not use `CardContent`:
 
 ```
 3 risk outcomes · 1 trial · 2 evidence sources
@@ -191,6 +220,7 @@ Add a `teachingExpanded` boolean to the `TeachingModeContext`:
 - `false` (default) = hover-to-reveal interpretation rows.
 - `true` = all interpretation rows expanded.
 - Persisted in localStorage as `timingrx-teaching-expanded`.
+- `teachingExpanded` is only meaningful when `teachingMode` is true. Its persisted value is preserved across teaching mode toggles (i.e., turning teaching mode off and on again restores the previous expanded preference).
 
 ### UI
 A small toggle icon in the header of any teaching-mode-enhanced card (Risk Data, Risk Modifiers, Landmark Trials). Clicking toggles between hover and expanded for ALL sections simultaneously (single global setting, not per-section).
@@ -211,7 +241,7 @@ A small toggle icon in the header of any teaching-mode-enhanced card (Risk Data,
 
 | File | Changes |
 |------|---------|
-| `src/components/condition/condition-detail.tsx` | Import new components, reorder sections, pass data |
+| `src/components/condition/condition-detail.tsx` | Import new components, reorder sections (Special Considerations moves from current position 5→10, Sub-variants 6→11, Landmark Trials 7→9), pass enriched data props |
 | `src/components/condition/condition-card.tsx` | Add evidence summary underline text |
 | `src/lib/hooks/use-teaching-mode.tsx` | Add `teachingExpanded` state + `toggleTeachingExpanded()` |
 | `src/app/globals.css` | Add `--evidence-source-*` CSS custom properties |
