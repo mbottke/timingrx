@@ -39,6 +39,12 @@ export function Header() {
             >
               Compare
             </Link>
+            <Link
+              href="/methodology"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Methodology
+            </Link>
           </nav>
         </div>
 
