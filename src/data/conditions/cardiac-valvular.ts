@@ -84,7 +84,24 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
           "to the severe category with earlier and potentially operative delivery.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "esc-regitz-zagrosek-2018",
+        name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+        year: 2018,
+        journalCitation: "Eur Heart J 2018;39:3165-3241",
+        summary:
+          "ESC guidelines classify mild mitral stenosis (NYHA I-II) as mWHO II-III and " +
+          "recommend term vaginal delivery with early epidural analgesia and assisted second " +
+          "stage to minimize tachycardia and hemodynamic swings.",
+        keyFindings: [
+          "Mild MS (MVA >1.5 cm², NYHA I-II): term delivery at ≥39 weeks, vaginal preferred",
+          "Early epidural analgesia strongly recommended to prevent pain-driven tachycardia",
+          "Beta-blockers for rate control if resting HR >100 bpm",
+          "Echocardiography each trimester with close attention to third trimester volume peak",
+        ],
+      },
+    ],
     interactions: [],
   },
   {
@@ -182,7 +199,25 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
           "maternal mortality risk and strongly favors cesarean delivery.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "esc-regitz-zagrosek-2018",
+        name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+        year: 2018,
+        journalCitation: "Eur Heart J 2018;39:3165-3241",
+        summary:
+          "ESC guidelines classify severe mitral stenosis with NYHA III-IV as mWHO III-IV " +
+          "and recommend individualized delivery timing with cesarean preferred when pulmonary " +
+          "hypertension is present. Percutaneous mitral balloon valvotomy can be considered " +
+          "as a bridge in refractory cases.",
+        keyFindings: [
+          "Severe MS (MVA <1.0 cm², NYHA III-IV): individualized timing, cesarean preferred",
+          "PMBV can be performed in the second trimester if refractory to medical therapy",
+          "Delivery at tertiary center with cardiac anesthesia and cardiac surgery backup",
+          "Pulmonary hypertension (PASP >50 mmHg) dramatically increases mortality and mandates cesarean",
+        ],
+      },
+    ],
     interactions: [],
   },
   {
@@ -261,7 +296,24 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
           "to the symptomatic severe category with individualized delivery and cesarean preference.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "esc-regitz-zagrosek-2018",
+        name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+        year: 2018,
+        journalCitation: "Eur Heart J 2018;39:3165-3241",
+        summary:
+          "ESC guidelines classify asymptomatic aortic stenosis as mWHO II-III and recommend " +
+          "term vaginal delivery with assisted second stage, slow titration of regional anesthesia, " +
+          "and echocardiographic surveillance each trimester.",
+        keyFindings: [
+          "Asymptomatic severe AS (AVA <1.0 cm²) with normal exercise tolerance: term delivery",
+          "Vaginal delivery with assisted second stage; avoid abrupt afterload changes",
+          "Regional anesthesia titrated slowly to avoid acute SVR drop",
+          "Pre-pregnancy exercise testing key to unmasking occult symptoms before pregnancy",
+        ],
+      },
+    ],
     interactions: [],
   },
   {
@@ -347,7 +399,25 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
       },
     ],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "esc-regitz-zagrosek-2018",
+        name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+        year: 2018,
+        journalCitation: "Eur Heart J 2018;39:3165-3241",
+        summary:
+          "ESC guidelines classify symptomatic severe aortic stenosis as mWHO III-IV and " +
+          "recommend individualized delivery timing with cesarean preferred to avoid unpredictable " +
+          "hemodynamic shifts of labor. Balloon aortic valvuloplasty can be considered as a " +
+          "bridge in refractory cases.",
+        keyFindings: [
+          "Symptomatic severe AS: individualized timing driven by hemodynamic status",
+          "Cesarean recommended to avoid unpredictable hemodynamic shifts of labor",
+          "Percutaneous BAV can be used as a palliative bridge if refractory to medical therapy",
+          "Surgical AVR carries ~25% fetal mortality and is last resort during pregnancy",
+        ],
+      },
+    ],
     interactions: [],
   },
   {
@@ -457,7 +527,25 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
           "thrombosis risk. Anti-Xa levels must be monitored weekly.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "esc-regitz-zagrosek-2018",
+        name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+        year: 2018,
+        journalCitation: "Eur Heart J 2018;39:3165-3241",
+        summary:
+          "ESC guidelines classify mechanical heart valves as mWHO III and provide the " +
+          "primary framework for anticoagulation management in pregnancy, including low-dose " +
+          "warfarin preference throughout pregnancy and planned delivery at 36-38 weeks " +
+          "to allow anticoagulation bridging.",
+        keyFindings: [
+          "Low-dose warfarin (≤5 mg/day) throughout pregnancy preferred (lowest valve thrombosis risk)",
+          "High-dose warfarin (>5 mg/day): switch to LMWH in weeks 6-12 to reduce embryopathy",
+          "Planned delivery at 36-38 weeks driven by anticoagulation bridging logistics",
+          "DOACs are absolutely contraindicated with mechanical valves in pregnancy",
+        ],
+      },
+    ],
     interactions: [],
   },
   {
@@ -536,7 +624,24 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
           "delivery and cesarean.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "esc-regitz-zagrosek-2018",
+        name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+        year: 2018,
+        journalCitation: "Eur Heart J 2018;39:3165-3241",
+        summary:
+          "ESC guidelines (and ACC/AHA 2022 aortic disease guidelines) classify BAV with " +
+          "ascending aorta <45 mm as mWHO II and recommend term vaginal delivery with " +
+          "echocardiographic surveillance each trimester.",
+        keyFindings: [
+          "BAV with aorta <45 mm: term delivery (39-40+6 weeks), vaginal delivery appropriate",
+          "Echocardiography each trimester with ascending aorta measurements",
+          "Reclassify to aortopathy protocol if aorta approaches 45 mm or grows >5 mm",
+          "Associated with intrinsic medial degeneration — monitor even when valve function is preserved",
+        ],
+      },
+    ],
     interactions: [],
   },
 ];

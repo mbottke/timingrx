@@ -1,5 +1,6 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, immediate, individualize, cite, grade } from "../helpers";
+import { ovadiaTrial } from "../trials";
 
 export const hepaticConditions: ObstetricCondition[] = [
   {
@@ -124,7 +125,7 @@ export const hepaticConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [ovadiaTrial],
         interactions: [],
       },
       {
@@ -161,7 +162,7 @@ export const hepaticConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [ovadiaTrial],
         interactions: [],
       },
       {
@@ -199,7 +200,7 @@ export const hepaticConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [ovadiaTrial],
         interactions: [],
       },
     ],

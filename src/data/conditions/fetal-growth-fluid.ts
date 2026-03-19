@@ -1,5 +1,6 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
+import { digitatTrial, flenadyMeta } from "../trials";
 
 export const fetalGrowthFluidConditions: ObstetricCondition[] = [
   {
@@ -106,7 +107,7 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [digitatTrial, flenadyMeta],
         interactions: [],
       },
       {
@@ -139,7 +140,7 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [digitatTrial, flenadyMeta],
         interactions: [],
       },
       {

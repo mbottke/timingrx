@@ -1,5 +1,6 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
+import { aspreTrial } from "../trials";
 
 export const autoimmuneConditions: ObstetricCondition[] = [
   {
@@ -84,7 +85,7 @@ export const autoimmuneConditions: ObstetricCondition[] = [
           "≥6 months before conception is strongly recommended.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [aspreTrial],
     interactions: [],
     subVariants: [
       {
@@ -234,7 +235,7 @@ export const autoimmuneConditions: ObstetricCondition[] = [
       },
     ],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [aspreTrial],
     interactions: [
       {
         interactingConditionId: "sle",

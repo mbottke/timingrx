@@ -1,5 +1,6 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
+import { meisMfmu17ohpc, epppicMeta, beamTrial, scrnStudy } from "../trials";
 
 export const priorObstetricConditions: ObstetricCondition[] = [
   {
@@ -466,7 +467,7 @@ export const priorObstetricConditions: ObstetricCondition[] = [
       },
     ],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [meisMfmu17ohpc, epppicMeta, beamTrial],
     interactions: [],
   },
   {

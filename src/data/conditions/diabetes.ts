@@ -1,5 +1,6 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
+import { hapoStudy, landonMfmuGdm, achoisTrial, flenadyMeta } from "../trials";
 
 export const diabetesConditions: ObstetricCondition[] = [
   {
@@ -84,7 +85,7 @@ export const diabetesConditions: ObstetricCondition[] = [
         effect: "Prior stillbirth in the setting of diabetes may prompt earlier delivery within the recommended range.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [flenadyMeta],
     interactions: [
       {
         interactingConditionId: "chronic_htn",
@@ -191,7 +192,7 @@ export const diabetesConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [flenadyMeta],
         interactions: [],
       },
     ],
@@ -276,7 +277,7 @@ export const diabetesConditions: ObstetricCondition[] = [
         effect: "Obesity compounds macrosomia risk and may influence decision to deliver at the earlier end of the range.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [hapoStudy, landonMfmuGdm, achoisTrial],
     interactions: [],
     subVariants: [
       {
@@ -310,7 +311,7 @@ export const diabetesConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [landonMfmuGdm, achoisTrial],
         interactions: [],
       },
       {
@@ -358,7 +359,7 @@ export const diabetesConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [landonMfmuGdm],
         interactions: [],
       },
       {

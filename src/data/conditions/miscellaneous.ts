@@ -1,5 +1,6 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, immediate, individualize, cite, grade } from "../helpers";
+import { termBreechTrial, oracleITrial, beamTrial, robertsDalzielCochrane } from "../trials";
 
 export const miscellaneousConditions: ObstetricCondition[] = [
   {
@@ -45,7 +46,7 @@ export const miscellaneousConditions: ObstetricCondition[] = [
       },
     ],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [termBreechTrial],
     interactions: [],
   },
   {
@@ -181,7 +182,7 @@ export const miscellaneousConditions: ObstetricCondition[] = [
       },
     ],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [oracleITrial, beamTrial, robertsDalzielCochrane],
     interactions: [],
   },
   {

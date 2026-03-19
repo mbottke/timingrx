@@ -94,7 +94,24 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
           "is an independent risk factor for dissection, even if absolute diameter is <40 mm.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "esc-regitz-zagrosek-2018",
+        name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+        year: 2018,
+        journalCitation: "Eur Heart J 2018;39:3165-3241",
+        summary:
+          "Comprehensive ESC guidelines covering management of all cardiovascular conditions in " +
+          "pregnancy, including risk classification using the modified WHO (mWHO) system. " +
+          "Provides delivery timing and route recommendations for aortopathy including Marfan syndrome.",
+        keyFindings: [
+          "mWHO IV classification for aortic root >45 mm in Marfan syndrome — pregnancy contraindicated",
+          "Recommends echocardiographic surveillance every trimester in Marfan syndrome",
+          "Beta-blocker therapy throughout pregnancy and postpartum for all Marfan patients",
+          "Pre-pregnancy aortic root repair recommended if >45 mm before conception",
+        ],
+      },
+    ],
     interactions: [],
     subVariants: [
       {
@@ -129,7 +146,22 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [
+          {
+            id: "esc-regitz-zagrosek-2018",
+            name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+            year: 2018,
+            journalCitation: "Eur Heart J 2018;39:3165-3241",
+            summary:
+              "ESC guidelines classify Marfan syndrome with aortic root <40 mm as mWHO II-III " +
+              "and recommend term vaginal delivery with assisted second stage and regional anesthesia.",
+            keyFindings: [
+              "Aortic root <40 mm: term delivery (39-40+6 weeks), vaginal with assisted second stage",
+              "Avoid Valsalva to limit aortic wall stress peaks",
+              "Beta-blocker therapy and trimester echocardiographic surveillance throughout pregnancy",
+            ],
+          },
+        ],
         interactions: [],
       },
       {
@@ -181,7 +213,23 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [
+          {
+            id: "esc-regitz-zagrosek-2018",
+            name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+            year: 2018,
+            journalCitation: "Eur Heart J 2018;39:3165-3241",
+            summary:
+              "ESC guidelines classify Marfan syndrome with aortic root 40-45 mm as mWHO III " +
+              "and recommend individualized delivery timing with echocardiography every 4-6 weeks " +
+              "and cesarean if rapid growth is documented.",
+            keyFindings: [
+              "Aortic root 40-45 mm: term delivery unless rapid growth (>5 mm during pregnancy)",
+              "Rapid growth triggers earlier delivery and cesarean",
+              "Echocardiography every 4-6 weeks given proximity to the 45 mm threshold",
+            ],
+          },
+        ],
         interactions: [],
       },
       {
@@ -254,7 +302,24 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [
+          {
+            id: "esc-regitz-zagrosek-2018",
+            name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+            year: 2018,
+            journalCitation: "Eur Heart J 2018;39:3165-3241",
+            summary:
+              "ESC guidelines classify Marfan syndrome with aortic root >45 mm as mWHO IV " +
+              "(pregnancy contraindicated) and recommend pre-pregnancy aortic root repair. " +
+              "If pregnancy occurs, early planned cesarean delivery is indicated.",
+            keyFindings: [
+              "Aortic root >45 mm: pregnancy contraindicated (mWHO IV)",
+              "Pre-pregnancy aortic root repair (David or Bentall procedure) recommended before conception",
+              "If already pregnant: early planned cesarean delivery by a multidisciplinary team",
+              "Mandatory delivery at a center with on-site cardiothoracic surgery",
+            ],
+          },
+        ],
         interactions: [],
       },
     ],
@@ -356,7 +421,25 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
           "cesarean.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "esc-regitz-zagrosek-2018",
+        name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+        year: 2018,
+        journalCitation: "Eur Heart J 2018;39:3165-3241",
+        summary:
+          "ESC guidelines provide the primary evidence-based framework for managing aortic " +
+          "dissection in pregnancy, recommending strict blood pressure and heart rate targets, " +
+          "individualized delivery timing (often 34-36 weeks), and cesarean delivery to avoid " +
+          "hemodynamic surges of labor.",
+        keyFindings: [
+          "Aggressive beta-blocker therapy (HR <80 bpm, SBP <120 mmHg) throughout pregnancy",
+          "MRI without gadolinium recommended for serial surveillance of dissection extent",
+          "Cesarean delivery preferred to minimize Valsalva and catecholamine surges",
+          "Delivery at a center with cardiothoracic surgery capability is mandatory",
+        ],
+      },
+    ],
     interactions: [],
   },
   {
@@ -444,7 +527,25 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
           "consideration.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "esc-regitz-zagrosek-2018",
+        name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+        year: 2018,
+        journalCitation: "Eur Heart J 2018;39:3165-3241",
+        summary:
+          "ESC guidelines classify repaired coarctation of the aorta as mWHO II (generally " +
+          "well tolerated in pregnancy) and recommend vaginal delivery with assisted second " +
+          "stage, blood pressure monitoring in the right arm, and echocardiographic " +
+          "surveillance each trimester.",
+        keyFindings: [
+          "Repaired CoA without residual aneurysm classified as mWHO II",
+          "Vaginal delivery with assisted second stage recommended to minimize aortic wall stress",
+          "BP measurement in the right arm (proximal to repair) throughout pregnancy",
+          "Echocardiography each trimester to assess repair site and associated BAV",
+        ],
+      },
+    ],
     interactions: [],
   },
 ];

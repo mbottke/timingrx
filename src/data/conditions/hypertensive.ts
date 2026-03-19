@@ -1,5 +1,6 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, immediate, cite, grade } from "../helpers";
+import { chapTrial, hypitatTrial, magpieTrial } from "../trials";
 
 export const hypertensiveConditions: ObstetricCondition[] = [
   {
@@ -105,7 +106,7 @@ export const hypertensiveConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [chapTrial],
         interactions: [],
       },
       {
@@ -146,7 +147,7 @@ export const hypertensiveConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [chapTrial],
         interactions: [],
       },
       {
@@ -186,7 +187,7 @@ export const hypertensiveConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [chapTrial],
         interactions: [],
       },
     ],
@@ -275,7 +276,7 @@ export const hypertensiveConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [hypitatTrial],
         interactions: [],
       },
       {
@@ -310,7 +311,7 @@ export const hypertensiveConditions: ObstetricCondition[] = [
           },
         ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [magpieTrial],
         interactions: [],
       },
     ],

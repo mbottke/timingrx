@@ -1,5 +1,6 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
+import { reddyStudy, flenadyMeta } from "../trials";
 
 export const ageDemographicsConditions: ObstetricCondition[] = [
   {
@@ -44,7 +45,7 @@ export const ageDemographicsConditions: ObstetricCondition[] = [
     ],
     specialConsiderations: [],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [reddyStudy, flenadyMeta],
     interactions: [],
   },
   {
@@ -90,7 +91,7 @@ export const ageDemographicsConditions: ObstetricCondition[] = [
       },
     ],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [reddyStudy, flenadyMeta],
     interactions: [],
   },
   {
@@ -133,7 +134,7 @@ export const ageDemographicsConditions: ObstetricCondition[] = [
       },
     ],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [reddyStudy, flenadyMeta],
     interactions: [],
   },
   {

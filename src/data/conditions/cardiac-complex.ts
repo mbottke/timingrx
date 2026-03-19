@@ -100,7 +100,25 @@ export const cardiacComplexConditions: ObstetricCondition[] = [
           "EF <20% may necessitate mechanical circulatory support.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "esc-regitz-zagrosek-2018",
+        name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+        year: 2018,
+        journalCitation: "Eur Heart J 2018;39:3165-3241",
+        summary:
+          "ESC guidelines classify PPCM as mWHO III-IV and provide the primary framework " +
+          "for antepartum and postpartum management, including bromocriptine consideration, " +
+          "anticoagulation, and contraindication of subsequent pregnancy if EF does not " +
+          "recover to >50%.",
+        keyFindings: [
+          "PPCM classified mWHO III-IV; delivery driven by cardiac status, no fixed GA target",
+          "Bromocriptine may be considered to inhibit pathologic prolactin cleavage",
+          "Subsequent pregnancy contraindicated if EF does not recover to >50%",
+          "Guideline-directed medical therapy (ACEi/ARB, beta-blocker, MRA) initiated postpartum",
+        ],
+      },
+    ],
     interactions: [],
   },
   {
@@ -188,7 +206,24 @@ export const cardiacComplexConditions: ObstetricCondition[] = [
           "to higher risk and may require earlier delivery.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "esc-regitz-zagrosek-2018",
+        name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+        year: 2018,
+        journalCitation: "Eur Heart J 2018;39:3165-3241",
+        summary:
+          "ESC guidelines classify repaired TOF as mWHO II (well tolerated in most) and " +
+          "recommend near-term delivery (~38 weeks) at a center with ACHD expertise, vaginal " +
+          "delivery preferred with maintenance of RV preload.",
+        keyFindings: [
+          "Repaired TOF: mWHO II classification when RV function is preserved",
+          "Near-term delivery (~38 weeks), vaginal delivery preferred",
+          "Baseline cardiac MRI to quantify RV size, function, and pulmonary regurgitation severity",
+          "Maintain RV preload; avoid increases in pulmonary vascular resistance",
+        ],
+      },
+    ],
     interactions: [],
   },
   {
@@ -294,7 +329,24 @@ export const cardiacComplexConditions: ObstetricCondition[] = [
           "severe ventricular dysfunction should be counseled against pregnancy.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "esc-regitz-zagrosek-2018",
+        name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+        year: 2018,
+        journalCitation: "Eur Heart J 2018;39:3165-3241",
+        summary:
+          "ESC guidelines classify Fontan circulation as mWHO III-IV and provide guidance on " +
+          "delivery timing (planned 34-37 weeks), thromboprophylaxis, FGR surveillance, and " +
+          "the importance of delivering at a center with ACHD expertise and NICU capability.",
+        keyFindings: [
+          "Fontan circulation: mWHO III-IV; planned delivery at 34-37 weeks",
+          "High rates of miscarriage (~50%), preterm birth (~65%), and FGR (~40%)",
+          "Thromboprophylaxis with LMWH throughout pregnancy (Fontan circuit is prothrombotic)",
+          "Avoid positive-pressure ventilation; maintain preload; lateral positioning",
+        ],
+      },
+    ],
     interactions: [],
   },
   {
@@ -413,7 +465,25 @@ export const cardiacComplexConditions: ObstetricCondition[] = [
           "than those initiated during pregnancy.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "esc-regitz-zagrosek-2018",
+        name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+        year: 2018,
+        journalCitation: "Eur Heart J 2018;39:3165-3241",
+        summary:
+          "ESC guidelines classify WHO Group 1 PAH as mWHO IV (pregnancy contraindicated) " +
+          "with reported maternal mortality of 10-33%. Guidelines recommend planned delivery " +
+          "at 34-36 weeks by cesarean at a PH center of excellence with ICU monitoring for " +
+          "at least 2 weeks postpartum.",
+        keyFindings: [
+          "PAH: mWHO IV — pregnancy contraindicated; maternal mortality 10-33%",
+          "Regional anesthesia strongly preferred (general anesthesia associated with 4x higher mortality)",
+          "IV prostacyclin to be initiated at least 8 weeks before planned delivery",
+          "ICU monitoring for at least 2 weeks postpartum — most deaths occur in the first 14 days",
+        ],
+      },
+    ],
     interactions: [],
   },
   {
@@ -511,7 +581,25 @@ export const cardiacComplexConditions: ObstetricCondition[] = [
           "highest mortality.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "esc-regitz-zagrosek-2018",
+        name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+        year: 2018,
+        journalCitation: "Eur Heart J 2018;39:3165-3241",
+        summary:
+          "ESC guidelines classify Eisenmenger syndrome as mWHO IV (pregnancy contraindicated) " +
+          "with historical maternal mortality of 30-56%. Guidelines recommend planned delivery " +
+          "at 34-36 weeks by cesarean, prolonged ICU monitoring, and early termination counseling " +
+          "if pregnancy occurs.",
+        keyFindings: [
+          "Eisenmenger syndrome: mWHO IV — pregnancy contraindicated; maternal mortality 30-56%",
+          "Pregnancy is strongly contraindicated; early termination should be strongly counseled",
+          "Planned delivery at 34-36 weeks by cesarean if pregnancy continues",
+          "Most lethal period is postpartum — ICU monitoring for at least 2 weeks",
+        ],
+      },
+    ],
     interactions: [],
   },
   {
@@ -613,7 +701,25 @@ export const cardiacComplexConditions: ObstetricCondition[] = [
           "Supratherapeutic levels increase infection and nephrotoxicity risk.",
       },
     ],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "esc-regitz-zagrosek-2018",
+        name: "ESC Guidelines for the Management of Cardiovascular Diseases During Pregnancy (2018)",
+        year: 2018,
+        journalCitation: "Eur Heart J 2018;39:3165-3241",
+        summary:
+          "ESC guidelines address pregnancy after cardiac transplantation as part of the " +
+          "cardiovascular disease in pregnancy framework, classifying most stable transplant " +
+          "recipients as mWHO II-III and recommending term delivery with vaginal preferred " +
+          "and close immunosuppression monitoring.",
+        keyFindings: [
+          "Stable heart transplant recipients: mWHO II-III; term delivery (37-39+6 weeks)",
+          "Vaginal delivery preferred; cesarean for standard obstetric indications",
+          "Mycophenolate mofetil is teratogenic — must be stopped ≥6 weeks before conception",
+          "mTOR inhibitors (sirolimus, everolimus) are contraindicated during pregnancy",
+        ],
+      },
+    ],
     interactions: [],
   },
 ];
