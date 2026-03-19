@@ -1,5 +1,6 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
+import { carpregII, ropac, cincinnatiScamp, anzFontanRegistry } from "../evidence-sources";
 
 export const cardiacComplexConditions: ObstetricCondition[] = [
   {
@@ -119,6 +120,7 @@ export const cardiacComplexConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [carpregII, ropac, cincinnatiScamp, anzFontanRegistry],
     interactions: [],
   },
   {
@@ -224,6 +226,7 @@ export const cardiacComplexConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [carpregII, ropac, cincinnatiScamp, anzFontanRegistry],
     interactions: [],
   },
   {
@@ -347,6 +350,7 @@ export const cardiacComplexConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [carpregII, ropac, cincinnatiScamp, anzFontanRegistry],
     interactions: [],
   },
   {
@@ -484,6 +488,7 @@ export const cardiacComplexConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [carpregII, ropac, cincinnatiScamp, anzFontanRegistry],
     interactions: [],
   },
   {
@@ -600,6 +605,7 @@ export const cardiacComplexConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [carpregII, ropac, cincinnatiScamp, anzFontanRegistry],
     interactions: [],
   },
   {
@@ -720,6 +726,7 @@ export const cardiacComplexConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [carpregII, ropac, cincinnatiScamp, anzFontanRegistry],
     interactions: [],
   },
 ];

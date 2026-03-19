@@ -1,6 +1,7 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
 import { meisMfmu17ohpc, epppicMeta, beamTrial, scrnStudy } from "../trials";
+import { scrnNetwork, mbrrace } from "../evidence-sources";
 
 export const priorObstetricConditions: ObstetricCondition[] = [
   {
@@ -43,6 +44,7 @@ export const priorObstetricConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -79,6 +81,7 @@ export const priorObstetricConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -114,6 +117,7 @@ export const priorObstetricConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -181,6 +185,7 @@ export const priorObstetricConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -217,6 +222,7 @@ export const priorObstetricConditions: ObstetricCondition[] = [
     specialConsiderations: [],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -259,6 +265,7 @@ export const priorObstetricConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -318,6 +325,7 @@ export const priorObstetricConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -352,6 +360,7 @@ export const priorObstetricConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -389,6 +398,7 @@ export const priorObstetricConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -433,6 +443,7 @@ export const priorObstetricConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -468,6 +479,7 @@ export const priorObstetricConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [meisMfmu17ohpc, epppicMeta, beamTrial],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -504,6 +516,7 @@ export const priorObstetricConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
 ];

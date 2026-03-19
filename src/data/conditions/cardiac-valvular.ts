@@ -1,5 +1,6 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
+import { carpregII, ropac } from "../evidence-sources";
 
 export const cardiacValvularConditions: ObstetricCondition[] = [
   {
@@ -102,6 +103,7 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [carpregII, ropac],
     interactions: [],
   },
   {
@@ -218,6 +220,7 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [carpregII, ropac],
     interactions: [],
   },
   {
@@ -314,6 +317,7 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [carpregII, ropac],
     interactions: [],
   },
   {
@@ -418,6 +422,7 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [carpregII, ropac],
     interactions: [],
   },
   {
@@ -546,6 +551,7 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [carpregII, ropac],
     interactions: [],
   },
   {
@@ -642,6 +648,7 @@ export const cardiacValvularConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [carpregII, ropac],
     interactions: [],
   },
 ];

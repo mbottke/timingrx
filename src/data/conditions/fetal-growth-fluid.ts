@@ -1,6 +1,7 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
 import { digitatTrial, flenadyMeta } from "../trials";
+import { nrnNetwork } from "../evidence-sources";
 
 export const fetalGrowthFluidConditions: ObstetricCondition[] = [
   {
@@ -72,6 +73,7 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [nrnNetwork],
     interactions: [],
     subVariants: [
       {
@@ -108,7 +110,8 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [digitatTrial, flenadyMeta],
-        interactions: [],
+        keyEvidenceSources: [nrnNetwork],
+    interactions: [],
       },
       {
         id: "fgr_less_3rd",
@@ -141,7 +144,8 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [digitatTrial, flenadyMeta],
-        interactions: [],
+        keyEvidenceSources: [nrnNetwork],
+    interactions: [],
       },
       {
         id: "fgr_aedv",
@@ -203,7 +207,8 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
             ],
           },
         ],
-        interactions: [],
+        keyEvidenceSources: [nrnNetwork],
+    interactions: [],
       },
       {
         id: "fgr_redv",
@@ -257,7 +262,8 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
             ],
           },
         ],
-        interactions: [],
+        keyEvidenceSources: [nrnNetwork],
+    interactions: [],
       },
     ],
   },
@@ -301,6 +307,7 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork],
     interactions: [],
   },
   {
@@ -343,6 +350,7 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork],
     interactions: [],
   },
   {
@@ -393,6 +401,7 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork],
     interactions: [],
   },
   {
@@ -443,6 +452,7 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork],
     interactions: [],
   },
   {
@@ -485,6 +495,7 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork],
     interactions: [
       {
         interactingConditionId: "fetal_chd_ductal_dependent",
@@ -540,6 +551,7 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork],
     interactions: [],
   },
   {
@@ -580,6 +592,7 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork],
     interactions: [],
   },
   {
@@ -624,6 +637,7 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork],
     interactions: [],
   },
   {
@@ -668,6 +682,7 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork],
     interactions: [],
   },
   {
@@ -713,6 +728,7 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork],
     interactions: [],
   },
   {
@@ -764,6 +780,7 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork],
     interactions: [],
   },
 ];

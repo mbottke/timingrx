@@ -1,6 +1,7 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, immediate, cite, grade } from "../helpers";
 import { chapTrial, hypitatTrial, magpieTrial } from "../trials";
+import { smfmConsortium, ukoss } from "../evidence-sources";
 
 export const hypertensiveConditions: ObstetricCondition[] = [
   {
@@ -73,6 +74,7 @@ export const hypertensiveConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [smfmConsortium, ukoss],
     interactions: [],
     subVariants: [
       {
@@ -107,7 +109,8 @@ export const hypertensiveConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [chapTrial],
-        interactions: [],
+        keyEvidenceSources: [smfmConsortium, ukoss],
+    interactions: [],
       },
       {
         id: "chronic_htn_controlled_meds",
@@ -148,7 +151,8 @@ export const hypertensiveConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [chapTrial],
-        interactions: [],
+        keyEvidenceSources: [smfmConsortium, ukoss],
+    interactions: [],
       },
       {
         id: "chronic_htn_difficult_control",
@@ -188,7 +192,8 @@ export const hypertensiveConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [chapTrial],
-        interactions: [],
+        keyEvidenceSources: [smfmConsortium, ukoss],
+    interactions: [],
       },
     ],
   },
@@ -242,6 +247,7 @@ export const hypertensiveConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [smfmConsortium, ukoss],
     interactions: [],
     subVariants: [
       {
@@ -277,7 +283,8 @@ export const hypertensiveConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [hypitatTrial],
-        interactions: [],
+        keyEvidenceSources: [smfmConsortium, ukoss],
+    interactions: [],
       },
       {
         id: "gestational_htn_severe",
@@ -312,7 +319,8 @@ export const hypertensiveConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [magpieTrial],
-        interactions: [],
+        keyEvidenceSources: [smfmConsortium, ukoss],
+    interactions: [],
       },
     ],
   },
@@ -415,6 +423,7 @@ export const hypertensiveConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [smfmConsortium, ukoss],
     interactions: [
       {
         interactingConditionId: "chronic_htn",
@@ -492,6 +501,7 @@ export const hypertensiveConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [smfmConsortium, ukoss],
     interactions: [],
   },
   {
@@ -560,6 +570,7 @@ export const hypertensiveConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [smfmConsortium, ukoss],
     interactions: [],
   },
 ];

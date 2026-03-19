@@ -1,6 +1,7 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, immediate, individualize, cite, grade } from "../helpers";
 import { termBreechTrial, oracleITrial, beamTrial, robertsDalzielCochrane } from "../trials";
+import { smfmConsortium } from "../evidence-sources";
 
 export const miscellaneousConditions: ObstetricCondition[] = [
   {
@@ -47,6 +48,7 @@ export const miscellaneousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [termBreechTrial],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -85,6 +87,7 @@ export const miscellaneousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -124,6 +127,7 @@ export const miscellaneousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -183,6 +187,7 @@ export const miscellaneousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [oracleITrial, beamTrial, robertsDalzielCochrane],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -225,6 +230,7 @@ export const miscellaneousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -285,6 +291,7 @@ export const miscellaneousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -346,6 +353,7 @@ export const miscellaneousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [smfmConsortium],
     interactions: [],
   },
 ];

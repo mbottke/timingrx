@@ -1,5 +1,6 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
+import { witsCohort, pactg, priorityCohort } from "../evidence-sources";
 
 export const infectiousConditions: ObstetricCondition[] = [
   {
@@ -51,6 +52,7 @@ export const infectiousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [witsCohort, pactg, priorityCohort],
     interactions: [],
     subVariants: [
       {
@@ -88,7 +90,8 @@ export const infectiousConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [],
-        interactions: [],
+        keyEvidenceSources: [witsCohort, pactg, priorityCohort],
+    interactions: [],
       },
       {
         id: "hiv_low_vl",
@@ -117,7 +120,8 @@ export const infectiousConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [],
-        interactions: [],
+        keyEvidenceSources: [witsCohort, pactg, priorityCohort],
+    interactions: [],
       },
     ],
   },
@@ -166,6 +170,7 @@ export const infectiousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [witsCohort, pactg, priorityCohort],
     interactions: [],
     subVariants: [
       {
@@ -203,7 +208,8 @@ export const infectiousConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [],
-        interactions: [],
+        keyEvidenceSources: [witsCohort, pactg, priorityCohort],
+    interactions: [],
       },
       {
         id: "hsv_recurrent_no_lesions",
@@ -240,7 +246,8 @@ export const infectiousConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [],
-        interactions: [],
+        keyEvidenceSources: [witsCohort, pactg, priorityCohort],
+    interactions: [],
       },
       {
         id: "hsv_primary_3rd_trimester",
@@ -281,7 +288,8 @@ export const infectiousConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [],
-        interactions: [],
+        keyEvidenceSources: [witsCohort, pactg, priorityCohort],
+    interactions: [],
       },
     ],
   },
@@ -342,6 +350,7 @@ export const infectiousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [witsCohort, pactg, priorityCohort],
     interactions: [],
   },
   {
@@ -380,6 +389,7 @@ export const infectiousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [witsCohort, pactg, priorityCohort],
     interactions: [],
   },
   {
@@ -426,6 +436,7 @@ export const infectiousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [witsCohort, pactg, priorityCohort],
     interactions: [],
   },
   {
@@ -471,6 +482,7 @@ export const infectiousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [witsCohort, pactg, priorityCohort],
     interactions: [],
   },
   {
@@ -516,6 +528,7 @@ export const infectiousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [witsCohort, pactg, priorityCohort],
     interactions: [],
   },
   {
@@ -547,6 +560,7 @@ export const infectiousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [witsCohort, pactg, priorityCohort],
     interactions: [],
   },
   {
@@ -599,6 +613,7 @@ export const infectiousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [witsCohort, pactg, priorityCohort],
     interactions: [],
   },
   {
@@ -655,6 +670,7 @@ export const infectiousConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [witsCohort, pactg, priorityCohort],
     interactions: [],
   },
 ];

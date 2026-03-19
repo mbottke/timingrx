@@ -1,5 +1,6 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
+import { nrnNetwork, smfmConsortium } from "../evidence-sources";
 
 export const multipleGestationConditions: ObstetricCondition[] = [
   {
@@ -68,6 +69,7 @@ export const multipleGestationConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [nrnNetwork, smfmConsortium],
     interactions: [],
   },
   {
@@ -130,6 +132,7 @@ export const multipleGestationConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork, smfmConsortium],
     interactions: [],
   },
   {
@@ -184,6 +187,7 @@ export const multipleGestationConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork, smfmConsortium],
     interactions: [],
   },
   {
@@ -236,6 +240,7 @@ export const multipleGestationConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork, smfmConsortium],
     interactions: [],
   },
   {
@@ -276,6 +281,7 @@ export const multipleGestationConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork, smfmConsortium],
     interactions: [],
   },
   {
@@ -319,6 +325,7 @@ export const multipleGestationConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork, smfmConsortium],
     interactions: [],
   },
   {
@@ -368,6 +375,7 @@ export const multipleGestationConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork, smfmConsortium],
     interactions: [],
   },
   {
@@ -415,6 +423,7 @@ export const multipleGestationConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork, smfmConsortium],
     interactions: [],
   },
   {
@@ -469,6 +478,7 @@ export const multipleGestationConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork, smfmConsortium],
     interactions: [],
   },
   {
@@ -508,6 +518,7 @@ export const multipleGestationConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork, smfmConsortium],
     interactions: [],
   },
   {
@@ -554,6 +565,7 @@ export const multipleGestationConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [nrnNetwork, smfmConsortium],
     interactions: [],
   },
 ];

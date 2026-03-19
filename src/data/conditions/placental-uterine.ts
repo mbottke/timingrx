@@ -1,5 +1,6 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
+import { smfmConsortium, mbrrace } from "../evidence-sources";
 
 export const placentalUterineConditions: ObstetricCondition[] = [
   {
@@ -43,6 +44,7 @@ export const placentalUterineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [smfmConsortium, mbrrace],
     interactions: [],
   },
   {
@@ -109,6 +111,7 @@ export const placentalUterineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [smfmConsortium, mbrrace],
     interactions: [],
   },
   {
@@ -150,6 +153,7 @@ export const placentalUterineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [smfmConsortium, mbrrace],
     interactions: [],
   },
   {
@@ -191,6 +195,7 @@ export const placentalUterineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [smfmConsortium, mbrrace],
     interactions: [],
   },
   {
@@ -232,6 +237,7 @@ export const placentalUterineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [smfmConsortium, mbrrace],
     interactions: [],
   },
   {
@@ -272,6 +278,7 @@ export const placentalUterineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [smfmConsortium, mbrrace],
     interactions: [],
   },
   {
@@ -312,6 +319,7 @@ export const placentalUterineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [smfmConsortium, mbrrace],
     interactions: [],
   },
   {
@@ -348,6 +356,7 @@ export const placentalUterineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [smfmConsortium, mbrrace],
     interactions: [],
   },
   {
@@ -389,6 +398,7 @@ export const placentalUterineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [smfmConsortium, mbrrace],
     interactions: [],
   },
   {
@@ -421,6 +431,7 @@ export const placentalUterineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [smfmConsortium, mbrrace],
     interactions: [],
   },
   {
@@ -452,6 +463,7 @@ export const placentalUterineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [smfmConsortium, mbrrace],
     interactions: [],
   },
   {
@@ -493,6 +505,7 @@ export const placentalUterineConditions: ObstetricCondition[] = [
     specialConsiderations: [],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [smfmConsortium, mbrrace],
     interactions: [],
   },
 ];

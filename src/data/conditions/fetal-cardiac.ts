@@ -1,6 +1,7 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
 import { ohyeSvrTrial } from "../trials";
+import { cincinnatiScamp } from "../evidence-sources";
 
 export const fetalCardiacConditions: ObstetricCondition[] = [
   {
@@ -83,6 +84,7 @@ export const fetalCardiacConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [ohyeSvrTrial],
+    keyEvidenceSources: [cincinnatiScamp],
     interactions: [],
   },
   {
@@ -156,6 +158,7 @@ export const fetalCardiacConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [cincinnatiScamp],
     interactions: [],
   },
   {
@@ -215,6 +218,7 @@ export const fetalCardiacConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [cincinnatiScamp],
     interactions: [],
   },
 ];

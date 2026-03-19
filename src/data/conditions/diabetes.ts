@@ -1,6 +1,7 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
 import { hapoStudy, landonMfmuGdm, achoisTrial, flenadyMeta } from "../trials";
+import { smfmConsortium } from "../evidence-sources";
 
 export const diabetesConditions: ObstetricCondition[] = [
   {
@@ -86,6 +87,7 @@ export const diabetesConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [flenadyMeta],
+    keyEvidenceSources: [smfmConsortium],
     interactions: [
       {
         interactingConditionId: "chronic_htn",
@@ -137,7 +139,8 @@ export const diabetesConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [],
-        interactions: [],
+        keyEvidenceSources: [smfmConsortium],
+    interactions: [],
       },
       {
         id: "pregestational_dm_vascular_poor_control",
@@ -193,7 +196,8 @@ export const diabetesConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [flenadyMeta],
-        interactions: [],
+        keyEvidenceSources: [smfmConsortium],
+    interactions: [],
       },
     ],
   },
@@ -278,6 +282,7 @@ export const diabetesConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [hapoStudy, landonMfmuGdm, achoisTrial],
+    keyEvidenceSources: [smfmConsortium],
     interactions: [],
     subVariants: [
       {
@@ -312,7 +317,8 @@ export const diabetesConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [landonMfmuGdm, achoisTrial],
-        interactions: [],
+        keyEvidenceSources: [smfmConsortium],
+    interactions: [],
       },
       {
         id: "gdm_medication_controlled",
@@ -360,7 +366,8 @@ export const diabetesConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [landonMfmuGdm],
-        interactions: [],
+        keyEvidenceSources: [smfmConsortium],
+    interactions: [],
       },
       {
         id: "gdm_poorly_controlled",
@@ -405,7 +412,8 @@ export const diabetesConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [],
-        interactions: [],
+        keyEvidenceSources: [smfmConsortium],
+    interactions: [],
       },
     ],
   },

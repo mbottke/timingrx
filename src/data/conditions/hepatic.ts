@@ -94,6 +94,7 @@ export const hepaticConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [],
     interactions: [],
     subVariants: [
       {
@@ -126,7 +127,8 @@ export const hepaticConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [ovadiaTrial],
-        interactions: [],
+        keyEvidenceSources: [],
+    interactions: [],
       },
       {
         id: "icp_moderate",
@@ -163,7 +165,8 @@ export const hepaticConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [ovadiaTrial],
-        interactions: [],
+        keyEvidenceSources: [],
+    interactions: [],
       },
       {
         id: "icp_severe",
@@ -201,7 +204,8 @@ export const hepaticConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [ovadiaTrial],
-        interactions: [],
+        keyEvidenceSources: [],
+    interactions: [],
       },
     ],
   },
@@ -265,6 +269,7 @@ export const hepaticConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -320,6 +325,7 @@ export const hepaticConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -364,6 +370,7 @@ export const hepaticConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -420,6 +427,7 @@ export const hepaticConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -477,6 +485,7 @@ export const hepaticConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -543,6 +552,7 @@ export const hepaticConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
 ];

@@ -59,6 +59,7 @@ export const neurologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -98,6 +99,7 @@ export const neurologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -146,6 +148,7 @@ export const neurologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -201,6 +204,7 @@ export const neurologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -253,6 +257,7 @@ export const neurologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -292,6 +297,7 @@ export const neurologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -335,6 +341,7 @@ export const neurologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -402,6 +409,7 @@ export const neurologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -448,6 +456,7 @@ export const neurologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -501,6 +510,7 @@ export const neurologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
 ];

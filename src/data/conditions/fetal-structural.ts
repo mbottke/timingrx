@@ -1,6 +1,7 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
 import { momsTrial } from "../trials";
+import { eurocat, cdcNbdps, chopFetal, ucssFetal } from "../evidence-sources";
 
 export const fetalStructuralConditions: ObstetricCondition[] = [
   {
@@ -66,6 +67,7 @@ export const fetalStructuralConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [eurocat, cdcNbdps, chopFetal, ucssFetal],
     interactions: [],
   },
   {
@@ -114,6 +116,7 @@ export const fetalStructuralConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [eurocat, cdcNbdps, chopFetal, ucssFetal],
     interactions: [],
   },
   {
@@ -170,6 +173,7 @@ export const fetalStructuralConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [eurocat, cdcNbdps, chopFetal, ucssFetal],
     interactions: [],
   },
   {
@@ -233,6 +237,7 @@ export const fetalStructuralConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [eurocat, cdcNbdps, chopFetal, ucssFetal],
     interactions: [],
   },
   {
@@ -289,6 +294,7 @@ export const fetalStructuralConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [momsTrial],
+    keyEvidenceSources: [eurocat, cdcNbdps, chopFetal, ucssFetal],
     interactions: [],
   },
   {
@@ -365,6 +371,7 @@ export const fetalStructuralConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [eurocat, cdcNbdps, chopFetal, ucssFetal],
     interactions: [],
   },
   {
@@ -419,6 +426,7 @@ export const fetalStructuralConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [eurocat, cdcNbdps, chopFetal, ucssFetal],
     interactions: [],
   },
   {
@@ -486,6 +494,7 @@ export const fetalStructuralConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [eurocat, cdcNbdps, chopFetal, ucssFetal],
     interactions: [],
   },
   {
@@ -553,6 +562,7 @@ export const fetalStructuralConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [eurocat, cdcNbdps, chopFetal, ucssFetal],
     interactions: [],
   },
 ];

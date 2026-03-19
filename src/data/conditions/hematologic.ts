@@ -1,6 +1,7 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, immediate, individualize, cite, grade } from "../helpers";
 import { womanTrial } from "../trials";
+import { isth } from "../evidence-sources";
 
 export const hematologicConditions: ObstetricCondition[] = [
   {
@@ -82,6 +83,7 @@ export const hematologicConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [],
+    keyEvidenceSources: [isth],
     interactions: [],
   },
   {
@@ -139,6 +141,7 @@ export const hematologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [isth],
     interactions: [],
   },
   {
@@ -201,6 +204,7 @@ export const hematologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [isth],
     interactions: [],
   },
   {
@@ -241,6 +245,7 @@ export const hematologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [isth],
     interactions: [],
   },
   {
@@ -301,6 +306,7 @@ export const hematologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [isth],
     interactions: [],
   },
   {
@@ -374,6 +380,7 @@ export const hematologicConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [],
+    keyEvidenceSources: [isth],
     interactions: [
       {
         interactingConditionId: "lupus_nephritis_active",
@@ -443,6 +450,7 @@ export const hematologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [isth],
     interactions: [],
   },
   {
@@ -507,6 +515,7 @@ export const hematologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [womanTrial],
+    keyEvidenceSources: [isth],
     interactions: [],
   },
   {
@@ -565,6 +574,7 @@ export const hematologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [womanTrial],
+    keyEvidenceSources: [isth],
     interactions: [],
   },
   {
@@ -626,6 +636,7 @@ export const hematologicConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [isth],
     interactions: [],
   },
 ];

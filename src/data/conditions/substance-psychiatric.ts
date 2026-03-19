@@ -62,6 +62,7 @@ export const substancePsychiatricConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -100,6 +101,7 @@ export const substancePsychiatricConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -145,6 +147,7 @@ export const substancePsychiatricConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -204,6 +207,7 @@ export const substancePsychiatricConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -261,6 +265,7 @@ export const substancePsychiatricConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -313,6 +318,7 @@ export const substancePsychiatricConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
 ];

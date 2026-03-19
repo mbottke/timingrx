@@ -61,6 +61,7 @@ export const endocrineConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -122,6 +123,7 @@ export const endocrineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -189,6 +191,7 @@ export const endocrineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -273,6 +276,7 @@ export const endocrineConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [
       {
         interactingConditionId: "preeclampsia_severe",
@@ -341,6 +345,7 @@ export const endocrineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -405,6 +410,7 @@ export const endocrineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -467,6 +473,7 @@ export const endocrineConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
 ];

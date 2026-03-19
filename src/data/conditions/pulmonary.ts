@@ -75,6 +75,7 @@ export const pulmonaryConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -140,6 +141,7 @@ export const pulmonaryConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -210,6 +212,7 @@ export const pulmonaryConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -264,6 +267,7 @@ export const pulmonaryConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -329,6 +333,7 @@ export const pulmonaryConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
 ];

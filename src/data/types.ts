@@ -190,6 +190,25 @@ export interface LandmarkTrial {
   relevantRiskData?: RiskDataPoint[];
 }
 
+export type EvidenceSourceType =
+  | "registry"
+  | "cohort"
+  | "surveillance"
+  | "protocol"
+  | "case_series"
+  | "guideline_derived";
+
+export interface KeyEvidenceSource {
+  id: string;
+  name: string;
+  type: EvidenceSourceType;
+  description: string;
+  yearStarted?: number;
+  yearPublished?: number;
+  region?: string;
+  url?: string;
+}
+
 // ── Risk Modifiers ───────────────────────────────────────────────────────────
 
 export type RiskModifierFactor =
@@ -277,6 +296,7 @@ export interface ObstetricCondition {
   riskData: RiskDataPoint[];
   riskModifiers: RiskModifier[];
   landmarkTrials: LandmarkTrial[];
+  keyEvidenceSources: KeyEvidenceSource[];
 
   interactions: ConditionInteraction[];
 

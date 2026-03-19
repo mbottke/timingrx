@@ -1,6 +1,7 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
 import { aspreTrial } from "../trials";
+import { promisse } from "../evidence-sources";
 
 export const autoimmuneConditions: ObstetricCondition[] = [
   {
@@ -86,6 +87,7 @@ export const autoimmuneConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [aspreTrial],
+    keyEvidenceSources: [promisse],
     interactions: [],
     subVariants: [
       {
@@ -114,7 +116,8 @@ export const autoimmuneConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [],
-        interactions: [],
+        keyEvidenceSources: [promisse],
+    interactions: [],
       },
       {
         id: "sle_complicated",
@@ -167,7 +170,8 @@ export const autoimmuneConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [],
-        interactions: [],
+        keyEvidenceSources: [promisse],
+    interactions: [],
       },
     ],
   },
@@ -236,6 +240,7 @@ export const autoimmuneConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [aspreTrial],
+    keyEvidenceSources: [promisse],
     interactions: [
       {
         interactingConditionId: "sle",
@@ -296,6 +301,7 @@ export const autoimmuneConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [promisse],
     interactions: [],
   },
   {
@@ -358,6 +364,7 @@ export const autoimmuneConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [],
+    keyEvidenceSources: [promisse],
     interactions: [],
   },
   {
@@ -404,6 +411,7 @@ export const autoimmuneConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [promisse],
     interactions: [],
   },
   {
@@ -451,6 +459,7 @@ export const autoimmuneConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [promisse],
     interactions: [],
   },
 ];

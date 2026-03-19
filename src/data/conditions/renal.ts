@@ -1,5 +1,6 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
+import { ntpr } from "../evidence-sources";
 
 export const renalConditions: ObstetricCondition[] = [
   {
@@ -56,6 +57,7 @@ export const renalConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [
       {
         interactingConditionId: "chronic_htn",
@@ -129,6 +131,7 @@ export const renalConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -190,6 +193,7 @@ export const renalConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -253,6 +257,7 @@ export const renalConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [],
+    keyEvidenceSources: [ntpr],
     interactions: [
       {
         interactingConditionId: "chronic_htn",
@@ -319,6 +324,7 @@ export const renalConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [],
   },
   {
@@ -393,6 +399,7 @@ export const renalConditions: ObstetricCondition[] = [
       },
     ],
     landmarkTrials: [],
+    keyEvidenceSources: [],
     interactions: [
       {
         interactingConditionId: "preeclampsia_without_severe",

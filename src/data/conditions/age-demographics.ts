@@ -1,6 +1,7 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
 import { reddyStudy, flenadyMeta } from "../trials";
+import { scrnNetwork, mbrrace } from "../evidence-sources";
 
 export const ageDemographicsConditions: ObstetricCondition[] = [
   {
@@ -46,6 +47,7 @@ export const ageDemographicsConditions: ObstetricCondition[] = [
     specialConsiderations: [],
     riskModifiers: [],
     landmarkTrials: [reddyStudy, flenadyMeta],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -92,6 +94,7 @@ export const ageDemographicsConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [reddyStudy, flenadyMeta],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -135,6 +138,7 @@ export const ageDemographicsConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [reddyStudy, flenadyMeta],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -171,6 +175,7 @@ export const ageDemographicsConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -216,6 +221,7 @@ export const ageDemographicsConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -257,6 +263,7 @@ export const ageDemographicsConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
   {
@@ -291,6 +298,7 @@ export const ageDemographicsConditions: ObstetricCondition[] = [
     ],
     riskModifiers: [],
     landmarkTrials: [],
+    keyEvidenceSources: [scrnNetwork, mbrrace],
     interactions: [],
   },
 ];

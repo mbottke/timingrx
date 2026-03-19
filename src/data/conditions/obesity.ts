@@ -1,6 +1,7 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
 import { arriveTrial, flenadyMeta } from "../trials";
+import { smfmConsortium } from "../evidence-sources";
 
 export const obesityConditions: ObstetricCondition[] = [
   {
@@ -76,6 +77,7 @@ export const obesityConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [smfmConsortium],
     interactions: [],
     subVariants: [
       {
@@ -112,7 +114,8 @@ export const obesityConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [],
-        interactions: [],
+        keyEvidenceSources: [smfmConsortium],
+    interactions: [],
       },
       {
         id: "obesity_class_ii",
@@ -157,7 +160,8 @@ export const obesityConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [],
-        interactions: [],
+        keyEvidenceSources: [smfmConsortium],
+    interactions: [],
       },
       {
         id: "obesity_class_iii",
@@ -218,7 +222,8 @@ export const obesityConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [arriveTrial, flenadyMeta],
-        interactions: [],
+        keyEvidenceSources: [smfmConsortium],
+    interactions: [],
       },
       {
         id: "obesity_super_morbid",
@@ -284,7 +289,8 @@ export const obesityConditions: ObstetricCondition[] = [
         ],
         riskModifiers: [],
         landmarkTrials: [arriveTrial, flenadyMeta],
-        interactions: [],
+        keyEvidenceSources: [smfmConsortium],
+    interactions: [],
       },
     ],
   },

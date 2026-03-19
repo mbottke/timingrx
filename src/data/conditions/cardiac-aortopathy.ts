@@ -1,5 +1,6 @@
 import type { ObstetricCondition } from "../types";
 import { w, range, individualize, cite, grade } from "../helpers";
+import { carpregII, ropac } from "../evidence-sources";
 
 export const cardiacAortopathyConditions: ObstetricCondition[] = [
   {
@@ -112,6 +113,7 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [carpregII, ropac],
     interactions: [],
     subVariants: [
       {
@@ -162,7 +164,8 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
             ],
           },
         ],
-        interactions: [],
+        keyEvidenceSources: [carpregII, ropac],
+    interactions: [],
       },
       {
         id: "marfan_root_40_45",
@@ -230,7 +233,8 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
             ],
           },
         ],
-        interactions: [],
+        keyEvidenceSources: [carpregII, ropac],
+    interactions: [],
       },
       {
         id: "marfan_root_gt45",
@@ -320,7 +324,8 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
             ],
           },
         ],
-        interactions: [],
+        keyEvidenceSources: [carpregII, ropac],
+    interactions: [],
       },
     ],
   },
@@ -440,6 +445,7 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [carpregII, ropac],
     interactions: [],
   },
   {
@@ -546,6 +552,7 @@ export const cardiacAortopathyConditions: ObstetricCondition[] = [
         ],
       },
     ],
+    keyEvidenceSources: [carpregII, ropac],
     interactions: [],
   },
 ];
