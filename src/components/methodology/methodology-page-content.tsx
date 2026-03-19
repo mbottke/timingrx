@@ -11,6 +11,7 @@ import { SectionCIPropagation } from "@/components/methodology/section-ci-propag
 import { SectionConfidence } from "@/components/methodology/section-confidence";
 import { SectionOrCorrection } from "@/components/methodology/section-or-correction";
 import { SectionGradeMapping } from "@/components/methodology/section-grade-mapping";
+import { PipelineView } from "./pipeline/pipeline-view";
 
 // ── Inner component (uses useSearchParams) ────────────────────────────────────
 
@@ -77,8 +78,8 @@ function MethodologyPageInner() {
 
         {activeTab === "pipeline" && (
           <div role="tabpanel" aria-label="Pipeline view">
-            <div className="py-8 text-sm text-muted-foreground">
-              Pipeline view loading...
+            <div className="py-8">
+              <PipelineView />
             </div>
           </div>
         )}
