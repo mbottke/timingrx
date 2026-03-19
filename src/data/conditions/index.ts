@@ -1,10 +1,35 @@
 import type { ObstetricCondition } from "../types";
 import { hypertensiveConditions } from "./hypertensive";
+import { diabetesConditions } from "./diabetes";
+import { cardiacValvularConditions } from "./cardiac-valvular";
+import { cardiacAortopathyConditions } from "./cardiac-aortopathy";
+import { cardiacComplexConditions } from "./cardiac-complex";
+import { renalConditions } from "./renal";
+import { hepaticConditions } from "./hepatic";
+import { hematologicConditions } from "./hematologic";
+import { autoimmuneConditions } from "./autoimmune";
+import { endocrineConditions } from "./endocrine";
+import { neurologicConditions } from "./neurologic";
+import { pulmonaryConditions } from "./pulmonary";
+import { infectiousConditions } from "./infectious";
+import { substancePsychiatricConditions } from "./substance-psychiatric";
+import { obesityConditions } from "./obesity";
+import { fetalCardiacConditions } from "./fetal-cardiac";
+import { fetalStructuralConditions } from "./fetal-structural";
+import { fetalGrowthFluidConditions } from "./fetal-growth-fluid";
+import { placentalUterineConditions } from "./placental-uterine";
+import { multipleGestationConditions } from "./multiple-gestation";
+import { priorObstetricConditions } from "./prior-obstetric";
+import { ageDemographicsConditions } from "./age-demographics";
+import { surgicalConditions } from "./surgical";
+import { miscellaneousConditions } from "./miscellaneous";
 
 /**
  * Flatten all conditions including sub-variants into a single searchable array.
  */
-function flattenConditions(conditions: ObstetricCondition[]): ObstetricCondition[] {
+function flattenConditions(
+  conditions: ObstetricCondition[]
+): ObstetricCondition[] {
   const result: ObstetricCondition[] = [];
   for (const condition of conditions) {
     result.push(condition);
@@ -15,10 +40,32 @@ function flattenConditions(conditions: ObstetricCondition[]): ObstetricCondition
   return result;
 }
 
-/** All condition files — add imports here as files are created */
+/** All condition files */
 const allConditionGroups: ObstetricCondition[][] = [
   hypertensiveConditions,
-  // Add new condition files here as they are created
+  diabetesConditions,
+  cardiacValvularConditions,
+  cardiacAortopathyConditions,
+  cardiacComplexConditions,
+  renalConditions,
+  hepaticConditions,
+  hematologicConditions,
+  autoimmuneConditions,
+  endocrineConditions,
+  neurologicConditions,
+  pulmonaryConditions,
+  infectiousConditions,
+  substancePsychiatricConditions,
+  obesityConditions,
+  fetalCardiacConditions,
+  fetalStructuralConditions,
+  fetalGrowthFluidConditions,
+  placentalUterineConditions,
+  multipleGestationConditions,
+  priorObstetricConditions,
+  ageDemographicsConditions,
+  surgicalConditions,
+  miscellaneousConditions,
 ];
 
 /** Top-level conditions (with sub-variants nested) */

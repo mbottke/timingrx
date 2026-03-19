@@ -238,8 +238,8 @@ export const hematologicConditions: ObstetricCondition[] = [
     interactions: [],
   },
   {
-    id: "antiphospholipid_syndrome",
-    name: "Antiphospholipid syndrome",
+    id: "antiphospholipid_syndrome_hematologic",
+    name: "Antiphospholipid syndrome (thrombotic management)",
     category: "hematologic",
     tags: [
       "antiphospholipid", "APS", "APLS", "lupus anticoagulant", "anticardiolipin",
