@@ -2,6 +2,9 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import type { StageLayout } from "./pipeline-types";
+import { useMethodology } from "@/components/methodology/methodology-provider";
+import { gaToDisplay } from "@/lib/utils/ga-format";
+import { AnimatedNumber } from "@/components/methodology/animated-number";
 
 // ── Shared helpers ────────────────────────────────────────────────────────────
 
@@ -92,13 +95,15 @@ function StageContainer({
 
 export function MugluNode({ stage, onHover, onClick }: StageNodeProps) {
   const { x, y, width, height, value } = stage;
+  const { ga } = useMethodology();
+  const gaLabel = gaToDisplay(ga);
 
   return (
     <StageContainer
       stage={stage}
       onHover={onHover}
       onClick={onClick}
-      ariaLabel={`Muglu 2019 baseline node. Baseline risk: ${value?.toFixed(2) ?? "—"} per 1000.`}
+      ariaLabel={`Muglu 2019 baseline node. GA: ${gaLabel}. Baseline risk: ${value?.toFixed(2) ?? "—"} per 1000.`}
     >
       <rect
         x={x}
@@ -113,7 +118,7 @@ export function MugluNode({ stage, onHover, onClick }: StageNodeProps) {
       />
       <text
         x={x + width / 2}
-        y={y + height * 0.38}
+        y={y + height * 0.28}
         textAnchor="middle"
         dominantBaseline="middle"
         fontSize={11}
@@ -124,15 +129,48 @@ export function MugluNode({ stage, onHover, onClick }: StageNodeProps) {
       </text>
       <text
         x={x + width / 2}
-        y={y + height * 0.72}
+        y={y + height * 0.55}
         textAnchor="middle"
         dominantBaseline="middle"
-        fontSize={13}
-        fontWeight={700}
-        fill="var(--primary)"
+        fontSize={9}
+        fill="var(--muted-foreground)"
       >
-        {value !== undefined ? `${value.toFixed(2)}/1000` : "—"}
+        {gaLabel}
       </text>
+      {value !== undefined ? (
+        <foreignObject
+          x={x}
+          y={y + height * 0.68}
+          width={width}
+          height={20}
+          style={{ overflow: "visible" }}
+        >
+          <div
+            style={{
+              width: "100%",
+              textAlign: "center",
+              fontSize: 13,
+              fontWeight: 700,
+              color: "var(--primary)",
+              lineHeight: 1,
+            }}
+          >
+            <AnimatedNumber value={value} decimals={2} suffix="/1000" />
+          </div>
+        </foreignObject>
+      ) : (
+        <text
+          x={x + width / 2}
+          y={y + height * 0.78}
+          textAnchor="middle"
+          dominantBaseline="middle"
+          fontSize={13}
+          fontWeight={700}
+          fill="var(--primary)"
+        >
+          —
+        </text>
+      )}
     </StageContainer>
   );
 }
@@ -216,14 +254,35 @@ export function GateNode({ stage, onHover, onClick }: StageNodeProps) {
 
 export function CINode({ stage, onHover, onClick }: StageNodeProps) {
   const { x, y, width, height, value } = stage;
+  const reducedMotion = useReducedMotion();
+  const { selectedGaCalculation } = useMethodology();
+  const [ciLo, ciHi] = selectedGaCalculation.adjustedRiskCI95;
 
   return (
     <StageContainer
       stage={stage}
       onHover={onHover}
       onClick={onClick}
-      ariaLabel={`95% Confidence Interval chamber. Adjusted risk: ${value?.toFixed(2) ?? "—"} per 1000.`}
+      ariaLabel={`95% Confidence Interval chamber. Adjusted risk: ${value?.toFixed(2) ?? "—"} per 1000. CI: ${ciLo.toFixed(2)}–${ciHi.toFixed(2)}.`}
     >
+      {/* Pulse ring around the CI node */}
+      {!reducedMotion ? (
+        <motion.rect
+          x={x - 2}
+          y={y - 2}
+          width={width + 4}
+          height={height + 4}
+          rx={12}
+          ry={12}
+          fill="none"
+          stroke="#7c3aed"
+          strokeWidth={1.5}
+          opacity={0.4}
+          animate={{ scale: [1.0, 1.02, 1.0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          style={{ transformOrigin: `${x + width / 2}px ${y + height / 2}px` }}
+        />
+      ) : null}
       <rect
         x={x}
         y={y}
@@ -237,7 +296,7 @@ export function CINode({ stage, onHover, onClick }: StageNodeProps) {
       />
       <text
         x={x + width / 2}
-        y={y + height * 0.38}
+        y={y + height * 0.28}
         textAnchor="middle"
         dominantBaseline="middle"
         fontSize={10}
@@ -249,7 +308,7 @@ export function CINode({ stage, onHover, onClick }: StageNodeProps) {
       {value !== undefined && (
         <text
           x={x + width / 2}
-          y={y + height * 0.72}
+          y={y + height * 0.55}
           textAnchor="middle"
           dominantBaseline="middle"
           fontSize={13}
@@ -259,6 +318,16 @@ export function CINode({ stage, onHover, onClick }: StageNodeProps) {
           {value.toFixed(2)}/1000
         </text>
       )}
+      <text
+        x={x + width / 2}
+        y={y + height * 0.82}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fontSize={8}
+        fill="var(--muted-foreground)"
+      >
+        {ciLo.toFixed(2)}–{ciHi.toFixed(2)} /1000
+      </text>
     </StageContainer>
   );
 }
@@ -267,15 +336,21 @@ export function CINode({ stage, onHover, onClick }: StageNodeProps) {
 
 export function OutputNode({ stage, onHover, onClick }: StageNodeProps) {
   const { x, y, width, height, color = "#94a3b8", label = "", value } = stage;
+  const { selectedGaCalculation } = useMethodology();
+  const { orCorrectedRiskPer1000 } = selectedGaCalculation;
 
   const bgColor = withOpacity(color, 0.12);
+
+  // Badge dimensions
+  const BADGE_H = 14;
+  const BADGE_Y = y + height + 6;
 
   return (
     <StageContainer
       stage={stage}
       onHover={onHover}
       onClick={onClick}
-      ariaLabel={`Output node. Confidence grade: ${label}. Adjusted risk: ${value?.toFixed(2) ?? "—"} per 1000.`}
+      ariaLabel={`Output node. Confidence grade: ${label}. Adjusted risk: ${value?.toFixed(2) ?? "—"} per 1000.${orCorrectedRiskPer1000 !== undefined ? ` OR corrected: ${orCorrectedRiskPer1000.toFixed(2)} per 1000.` : ""}`}
     >
       <rect
         x={x}
@@ -324,6 +399,33 @@ export function OutputNode({ stage, onHover, onClick }: StageNodeProps) {
       >
         adjusted risk
       </text>
+      {/* OR correction badge */}
+      {orCorrectedRiskPer1000 !== undefined && (
+        <g aria-label={`OR corrected: ${orCorrectedRiskPer1000.toFixed(2)} per 1000`}>
+          <rect
+            x={x + (width - 140) / 2}
+            y={BADGE_Y}
+            width={140}
+            height={BADGE_H}
+            rx={4}
+            ry={4}
+            fill="#fef3c7"
+            stroke="#d97706"
+            strokeWidth={1}
+          />
+          <text
+            x={x + width / 2}
+            y={BADGE_Y + BADGE_H / 2}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fontSize={8}
+            fontWeight={600}
+            fill="#92400e"
+          >
+            Corrected: {orCorrectedRiskPer1000.toFixed(2)} /1,000
+          </text>
+        </g>
+      )}
     </StageContainer>
   );
 }

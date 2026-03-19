@@ -30,6 +30,10 @@ export function PipelineView() {
   const { selectedGaCalculation, stepByStepBreakdown, activeFactorIds } =
     useMethodology();
 
+  // Fix 2: Calculation error guard
+  const adjustedRisk = selectedGaCalculation.adjustedRiskPer1000;
+  const hasCalcError = !isFinite(adjustedRisk) || isNaN(adjustedRisk);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerWidth, setContainerWidth] = useState(600);
 
@@ -59,13 +63,13 @@ export function PipelineView() {
 
   const [hoveredStage, setHoveredStage] = useState<StageLayout | null>(null);
 
-  // Stage click: navigate to pipeline tab then scroll to the relevant section
+  // Stage click: navigate to explorer tab then scroll to the relevant section
   const handleStageClick = useCallback(
     (stage: StageLayout) => {
       const sectionId = SECTION_MAP[stage.type];
 
-      // Switch to explorer tab (removes ?view=pipeline)
-      router.replace("/methodology", { scroll: false });
+      // Switch to explorer tab
+      router.replace("/methodology?view=explorer", { scroll: false });
 
       // After navigation tick, scroll the section into view
       requestAnimationFrame(() => {
@@ -92,6 +96,19 @@ export function PipelineView() {
   const nonFilterStages = stages.filter((s) => s.type !== "filter");
   const filterStages = stages.filter((s) => s.type === "filter");
 
+  if (hasCalcError) {
+    return (
+      <div className="w-full flex flex-col items-center gap-2 py-8">
+        <p className="text-amber-600 dark:text-amber-400 font-semibold text-sm">
+          Calculation error — showing baseline
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Try removing one or more risk factors to restore a valid calculation.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full">
       {/* Screen reader summary */}
@@ -114,6 +131,8 @@ export function PipelineView() {
 
       {/* Full pipeline (md+) */}
       <div className="hidden md:block">
+        {/* Fix 7: tablet responsive container */}
+        <div className="mx-auto w-full md:max-w-[90%] lg:max-w-[800px]">
         <div
           ref={containerRef}
           className="relative w-full"
@@ -145,6 +164,53 @@ export function PipelineView() {
                 onClick={handleStageClick}
               />
             )}
+
+            {/* Fix 1: "No factors selected" annotation between muglu and CI */}
+            {stepByStepBreakdown.length === 0 && (() => {
+              const mugluStage = stages.find((s) => s.type === "muglu");
+              const ciStage = stages.find((s) => s.type === "ci");
+              if (!mugluStage || !ciStage) return null;
+              const annotY = (mugluStage.y + mugluStage.height + ciStage.y) / 2;
+              return (
+                <text
+                  key="no-factors-annotation"
+                  x={centerX}
+                  y={annotY}
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  fontSize={10}
+                  fontStyle="italic"
+                  fill="var(--muted-foreground)"
+                >
+                  No risk factors selected — showing baseline only
+                </text>
+              );
+            })()}
+
+            {/* Fix 6: × badge at filter reconvergence point */}
+            {filterStages.length > 0 && (() => {
+              const outputStage = stages.find((s) => s.type === "output");
+              if (!outputStage) return null;
+              const bx = centerX;
+              const by = (outputStage.pipeInY ?? outputStage.y) - 14;
+              const BADGE_R = 9;
+              return (
+                <g key="reconvergence-badge" aria-hidden="true">
+                  <circle cx={bx} cy={by} r={BADGE_R} fill="var(--muted)" opacity={0.7} />
+                  <text
+                    x={bx}
+                    y={by}
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    fontSize={11}
+                    fontWeight={700}
+                    fill="var(--muted-foreground)"
+                  >
+                    ×
+                  </text>
+                </g>
+              );
+            })()}
           </svg>
 
           {/* Canvas particle overlay */}
@@ -171,6 +237,7 @@ export function PipelineView() {
           has not been prospectively validated. Clinical judgment supersedes all
           calculator output.
         </p>
+        </div>
       </div>
     </div>
   );
