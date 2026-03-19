@@ -6,6 +6,17 @@ import { useTeachingMode } from "@/lib/hooks/use-teaching-mode";
 import { GAWindowBadge } from "./ga-window-badge";
 import { EvidenceGradeBadge } from "./evidence-grade-badge";
 import { formatCitations } from "@/lib/utils/citation-format";
+import {
+  formatRiskStatistic,
+  getRiskSeverity,
+  severityColorClass,
+  formatCI95,
+  generateTeachingInterpretation,
+} from "@/lib/utils/risk-format";
+import { RiskDataTable } from "./risk-data-table";
+import { RiskModifiersList } from "./risk-modifiers-list";
+import { ConditionInteractions } from "./condition-interactions";
+import { EvidenceSourcesSection } from "./evidence-sources-section";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -67,7 +78,7 @@ export function ConditionDetail({
       {condition.guidelineRecommendations.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">
+            <CardTitle className="text-base font-semibold tracking-tight">
               Delivery Timing Recommendations
             </CardTitle>
           </CardHeader>
@@ -102,7 +113,7 @@ export function ConditionDetail({
       {condition.clinicalNotes && (
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Clinical Notes</CardTitle>
+            <CardTitle className="text-base font-semibold tracking-tight">Clinical Notes</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-sm leading-relaxed">{condition.clinicalNotes}</p>
@@ -129,11 +140,95 @@ export function ConditionDetail({
         </Card>
       )}
 
+      {/* Risk Data */}
+      <RiskDataTable riskData={condition.riskData} />
+
+      {/* Risk Modifiers */}
+      <RiskModifiersList modifiers={condition.riskModifiers} />
+
+      {/* Interactions */}
+      <ConditionInteractions interactions={condition.interactions} />
+
+      {/* Key Evidence Sources */}
+      <EvidenceSourcesSection sources={condition.keyEvidenceSources} />
+
+      {/* Landmark Trials */}
+      {condition.landmarkTrials.length > 0 && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base font-semibold tracking-tight">Landmark Trials</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {condition.landmarkTrials.map((trial) => (
+              <div key={trial.id}>
+                <div className="flex items-baseline gap-2">
+                  <span className="font-medium text-sm">{trial.name}</span>
+                  {trial.sampleSize !== undefined && (
+                    <span className="text-[10px] bg-muted text-muted-foreground px-1.5 py-0.5 rounded">
+                      n = {trial.sampleSize.toLocaleString()}
+                    </span>
+                  )}
+                  <span className="text-xs text-muted-foreground">
+                    {trial.journalCitation}
+                  </span>
+                </div>
+                <p className="text-sm mt-1">{trial.summary}</p>
+                <ul className="mt-2 space-y-1">
+                  {trial.keyFindings.map((f, i) => (
+                    <li
+                      key={i}
+                      className="text-xs text-muted-foreground flex gap-1.5"
+                    >
+                      <span className="text-muted-foreground/50">•</span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                {teachingMode && trial.relevantRiskData && trial.relevantRiskData.length > 0 && (
+                  <div className="mt-3 bg-[#f0f7ff] border border-[#dbeafe] rounded-lg p-3">
+                    <p className="text-xs font-semibold text-[#1e40af] mb-2">Trial Risk Data</p>
+                    <table className="w-full text-xs">
+                      <thead>
+                        <tr className="text-left text-muted-foreground border-b">
+                          <th className="pb-1 pr-3 font-medium">Outcome</th>
+                          <th className="pb-1 pr-3 text-right font-medium">Measure</th>
+                          <th className="pb-1 text-right font-medium">CI</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {trial.relevantRiskData.map((rd, j) => (
+                          <tr key={j} className="border-b last:border-0">
+                            <td className="py-1 pr-3">{rd.outcome}</td>
+                            <td className={`py-1 pr-3 text-right tabular-nums font-bold ${severityColorClass(getRiskSeverity(rd.statistic))}`}>
+                              {formatRiskStatistic(rd.statistic)}
+                            </td>
+                            <td className="py-1 text-right text-muted-foreground tabular-nums">
+                              {formatCI95(rd.statistic)}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    <div className="mt-2 border-l-[3px] border-[#93b4f4] pl-3 text-sm italic text-[#1e40af]">
+                      {trial.relevantRiskData.map((rd, j) => (
+                        <p key={j} className="mb-1 last:mb-0">
+                          → {generateTeachingInterpretation(rd.statistic, rd.populationDescription)}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      )}
+
       {/* Special Considerations */}
       {condition.specialConsiderations.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">
+            <CardTitle className="text-base font-semibold tracking-tight">
               Special Considerations
             </CardTitle>
           </CardHeader>
@@ -161,7 +256,7 @@ export function ConditionDetail({
       {condition.subVariants && condition.subVariants.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Sub-variants</CardTitle>
+            <CardTitle className="text-base font-semibold tracking-tight">Sub-variants</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             {condition.subVariants.map((sv) => {
@@ -181,39 +276,6 @@ export function ConditionDetail({
                 </div>
               );
             })}
-          </CardContent>
-        </Card>
-      )}
-
-      {/* Landmark Trials */}
-      {condition.landmarkTrials.length > 0 && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">Landmark Trials</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {condition.landmarkTrials.map((trial) => (
-              <div key={trial.id}>
-                <div className="flex items-baseline gap-2">
-                  <span className="font-medium text-sm">{trial.name}</span>
-                  <span className="text-xs text-muted-foreground">
-                    {trial.journalCitation}
-                  </span>
-                </div>
-                <p className="text-sm mt-1">{trial.summary}</p>
-                <ul className="mt-2 space-y-1">
-                  {trial.keyFindings.map((f, i) => (
-                    <li
-                      key={i}
-                      className="text-xs text-muted-foreground flex gap-1.5"
-                    >
-                      <span className="text-muted-foreground/50">•</span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
           </CardContent>
         </Card>
       )}

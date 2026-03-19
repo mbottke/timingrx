@@ -23,13 +23,17 @@ export function ConditionCard({
 
   return (
     <Link href={`/conditions/${condition.id}`}>
-      <Card className="h-full transition-colors hover:bg-accent/50">
+      <Card className="h-full transition-all hover:bg-accent/50 hover:shadow-md">
         <CardHeader className="space-y-2 p-4">
           <div className="flex items-start justify-between gap-2">
-            <CardTitle className="text-sm font-medium leading-tight">
+            <CardTitle className="text-base font-semibold leading-tight">
               {condition.name}
             </CardTitle>
-            {primaryRec && <GAWindowBadge timing={primaryRec.timing} />}
+            {primaryRec && (
+              <div className="shrink-0">
+                <GAWindowBadge timing={primaryRec.timing} />
+              </div>
+            )}
           </div>
           <CardDescription className="text-xs line-clamp-2">
             {condition.clinicalNotes ?? CATEGORY_DISPLAY_NAMES[condition.category]}
@@ -47,6 +51,22 @@ export function ConditionCard({
               </Badge>
             )}
           </div>
+          {(condition.riskData.length > 0 ||
+            condition.landmarkTrials.length > 0 ||
+            condition.keyEvidenceSources.length > 0) && (
+            <p className="text-[11px] text-muted-foreground/70 pt-1">
+              {[
+                condition.riskData.length > 0 &&
+                  `${condition.riskData.length} risk outcome${condition.riskData.length !== 1 ? "s" : ""}`,
+                condition.landmarkTrials.length > 0 &&
+                  `${condition.landmarkTrials.length} trial${condition.landmarkTrials.length !== 1 ? "s" : ""}`,
+                condition.keyEvidenceSources.length > 0 &&
+                  `${condition.keyEvidenceSources.length} evidence source${condition.keyEvidenceSources.length !== 1 ? "s" : ""}`,
+              ]
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+          )}
         </CardHeader>
       </Card>
     </Link>

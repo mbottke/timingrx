@@ -12,19 +12,27 @@ import {
 interface TeachingModeContextValue {
   teachingMode: boolean;
   toggleTeachingMode: () => void;
+  teachingExpanded: boolean;
+  toggleTeachingExpanded: () => void;
 }
 
 const TeachingModeContext = createContext<TeachingModeContextValue>({
   teachingMode: false,
   toggleTeachingMode: () => {},
+  teachingExpanded: false,
+  toggleTeachingExpanded: () => {},
 });
 
 export function TeachingModeProvider({ children }: { children: ReactNode }) {
   const [teachingMode, setTeachingMode] = useState(false);
+  const [teachingExpanded, setTeachingExpanded] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("timingrx-teaching-mode");
-    if (stored === "true") setTeachingMode(true);
+    const storedMode = localStorage.getItem("timingrx-teaching-mode");
+    if (storedMode === "true") setTeachingMode(true);
+
+    const storedExpanded = localStorage.getItem("timingrx-teaching-expanded");
+    if (storedExpanded === "true") setTeachingExpanded(true);
   }, []);
 
   const toggleTeachingMode = useCallback(() => {
@@ -35,8 +43,18 @@ export function TeachingModeProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  const toggleTeachingExpanded = useCallback(() => {
+    setTeachingExpanded((prev) => {
+      const next = !prev;
+      localStorage.setItem("timingrx-teaching-expanded", String(next));
+      return next;
+    });
+  }, []);
+
   return (
-    <TeachingModeContext.Provider value={{ teachingMode, toggleTeachingMode }}>
+    <TeachingModeContext.Provider
+      value={{ teachingMode, toggleTeachingMode, teachingExpanded, toggleTeachingExpanded }}
+    >
       {children}
     </TeachingModeContext.Provider>
   );

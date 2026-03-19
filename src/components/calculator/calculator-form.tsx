@@ -2,13 +2,12 @@
 
 import { riskFactorMultipliers } from "@/data/risk-models/risk-factor-multipliers";
 import type { CalculatorState } from "@/lib/hooks/use-calculator";
-import { gaToDisplay } from "@/lib/utils/ga-format";
-import { w } from "@/data/helpers";
 import { EvidenceGradeBadge } from "@/components/condition/evidence-grade-badge";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
-import { Slider } from "@/components/ui/slider";
+import { GAEntry } from "@/components/calculator/ga-entry";
+import { CheckIcon } from "lucide-react";
 
 interface Props {
   state: CalculatorState;
@@ -46,34 +45,8 @@ export function CalculatorForm({
 
   return (
     <div className="space-y-4">
-      {/* GA Slider */}
-      <Card>
-        <CardHeader className="pb-2">
-          <CardTitle className="text-sm">Gestational Age</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-2">
-            <div className="text-center">
-              <span className="text-2xl font-bold font-mono">
-                {gaToDisplay(state.ga)}
-              </span>
-            </div>
-            <Slider
-              value={[state.ga]}
-              onValueChange={(v) => setGA(Array.isArray(v) ? v[0] : v)}
-              min={w(37)}
-              max={w(42)}
-              step={1}
-            />
-            <div className="flex justify-between text-[10px] text-muted-foreground">
-              <span>37w0d</span>
-              <span>39w0d</span>
-              <span>41w0d</span>
-              <span>42w0d</span>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+      {/* GA Entry — multiple methods */}
+      <GAEntry currentGA={state.ga} onGAChange={setGA} />
 
       {/* Risk Factors by Category */}
       {categoryOrder.map((cat) => {
@@ -93,35 +66,46 @@ export function CalculatorForm({
                   <button
                     key={factor.id}
                     onClick={() => toggleFactor(factor.id)}
-                    className={`w-full flex items-center justify-between rounded-md border p-2 text-left text-xs transition-colors ${
+                    className={`w-full flex items-center justify-between rounded-md border border-l-2 p-2 text-left transition-all ${
                       isActive
-                        ? "border-[var(--risk-high)] bg-[var(--risk-high)]/5"
-                        : "border-transparent hover:bg-accent/50"
+                        ? "border-[var(--risk-high)] border-l-[var(--risk-high)] bg-[var(--risk-high)]/5 shadow-sm"
+                        : "border-border border-l-primary/30 hover:bg-accent/50 hover:shadow-sm"
                     }`}
                   >
-                    <div className="flex flex-col gap-0.5 flex-1 min-w-0">
-                      <div className="flex items-center gap-1.5">
-                        <span
-                          className={`font-medium ${isActive ? "text-[var(--risk-high)]" : ""}`}
-                        >
-                          {factor.label}
-                        </span>
-                        <EvidenceGradeBadge grade={factor.evidenceGrade} />
-                        {factor.isHypothesized && (
-                          <Badge
-                            variant="outline"
-                            className="text-[8px] px-1"
+                    <div className="flex items-center gap-2 flex-1 min-w-0">
+                      {isActive && (
+                        <CheckIcon className="h-4 w-4 shrink-0 text-[var(--risk-high)]" />
+                      )}
+                      <div className="flex flex-col gap-0.5 flex-1 min-w-0">
+                        <div className="flex items-center gap-1.5">
+                          <span
+                            className={`text-sm font-semibold ${isActive ? "text-[var(--risk-high)]" : ""}`}
                           >
-                            Est.
-                          </Badge>
-                        )}
+                            {factor.label}
+                          </span>
+                          <EvidenceGradeBadge grade={factor.evidenceGrade} />
+                          {factor.isHypothesized && (
+                            <Badge
+                              variant="outline"
+                              className="text-[8px] px-1"
+                            >
+                              Est.
+                            </Badge>
+                          )}
+                        </div>
+                        <span className="text-xs text-muted-foreground truncate">
+                          {factor.description}
+                        </span>
                       </div>
-                      <span className="text-muted-foreground truncate">
-                        {factor.description}
-                      </span>
                     </div>
-                    <span className="font-mono text-xs ml-2 whitespace-nowrap">
-                      {isActive ? `×${factor.multiplier}` : ""}
+                    <span
+                      className={`font-mono text-xs ml-2 whitespace-nowrap ${
+                        isActive
+                          ? "font-bold text-[var(--risk-high)]"
+                          : "text-muted-foreground"
+                      }`}
+                    >
+                      {`×${factor.multiplier}`}
                     </span>
                   </button>
                 );

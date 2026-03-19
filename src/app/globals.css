@@ -97,6 +97,14 @@
   --confidence-c: oklch(0.795 0.184 86.047);
   --confidence-d: oklch(0.705 0.213 47.604);
   --confidence-f: oklch(0.577 0.245 27.325);
+
+  /* Evidence source type colors (EBM pyramid) */
+  --evidence-source-guideline: oklch(0.61 0 0);
+  --evidence-source-case-series: oklch(0.65 0.12 55);
+  --evidence-source-protocol: oklch(0.48 0.14 10);
+  --evidence-source-cohort: oklch(0.57 0.12 165);
+  --evidence-source-surveillance: oklch(0.52 0.14 255);
+  --evidence-source-registry: oklch(0.42 0.18 290);
 }
 
 .dark {
@@ -148,6 +156,14 @@
   --confidence-c: oklch(0.795 0.184 86.047);
   --confidence-d: oklch(0.705 0.213 47.604);
   --confidence-f: oklch(0.704 0.191 22.216);
+
+  /* Evidence source type colors (dark) */
+  --evidence-source-guideline: oklch(0.70 0 0);
+  --evidence-source-case-series: oklch(0.72 0.12 55);
+  --evidence-source-protocol: oklch(0.58 0.14 10);
+  --evidence-source-cohort: oklch(0.65 0.12 165);
+  --evidence-source-surveillance: oklch(0.62 0.14 255);
+  --evidence-source-registry: oklch(0.55 0.18 290);
 }
 
 @layer base {

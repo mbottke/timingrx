@@ -22,9 +22,11 @@ interface Props {
   riskCurve: RiskCalculation[];
   currentGA: number;
   hasFactors: boolean;
+  /** Override chart container height (CSS value, e.g. "250px" or "100%") */
+  height?: string;
 }
 
-export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors }: Props) {
+export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }: Props) {
   const data = riskCurve.map((point, i) => ({
     ga: gaToDisplay(point.ga),
     gaRaw: point.ga,
@@ -41,9 +43,9 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors }: Props)
   const yMax = Math.ceil(maxY * 1.2 * 10) / 10;
 
   return (
-    <div className="w-full h-[350px]">
+    <div className="w-full" style={{ height: height ?? "350px" }}>
       <ResponsiveContainer width="100%" height="100%">
-        <ComposedChart data={data} margin={{ top: 10, right: 20, bottom: 20, left: 10 }}>
+        <ComposedChart data={data} margin={{ top: 30, right: 30, bottom: 20, left: 10 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} />
 
           {/* Risk zone shading */}
@@ -66,16 +68,17 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors }: Props)
             fillOpacity={1}
           />
 
-          {/* ACOG guideline annotation */}
+          {/* ACOG guideline annotations */}
           <ReferenceLine
             x="41w0d"
             stroke={chartColors.text}
             strokeDasharray="4 4"
             label={{
-              value: "ACOG: offer induction",
-              position: "top",
+              value: "ACOG: Offer induction →",
+              position: "insideTopLeft",
               fill: chartColors.text,
               fontSize: 10,
+              offset: 5,
             }}
           />
           <ReferenceLine
@@ -83,10 +86,11 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors }: Props)
             stroke={chartColors.stillbirth}
             strokeDasharray="4 4"
             label={{
-              value: "Never beyond 42w",
-              position: "top",
+              value: "← Never beyond",
+              position: "insideTopRight",
               fill: chartColors.stillbirth,
               fontSize: 10,
+              offset: 5,
             }}
           />
 
