@@ -133,9 +133,39 @@ export const priorObstetricConditions: ObstetricCondition[] = [
         citation: cite("ACOG", "PB 205"),
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "TOLAC success (vaginal birth after cesarean)",
+        statistic: { type: "incidence", valuePercent: 70 },
+        populationDescription: "Women with one prior low transverse cesarean attempting TOLAC (range 60-80%)",
+        citation: cite("ACOG", "PB 205"),
+      },
+      {
+        outcome: "uterine rupture during TOLAC",
+        statistic: { type: "incidence", valuePercent: 0.6 },
+        populationDescription: "Women with one prior low transverse cesarean attempting TOLAC (range 0.5-0.7%)",
+        citation: cite("ACOG", "PB 205"),
+      },
+    ],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "acog-pb205",
+        name: "ACOG Practice Bulletin 205: Vaginal Birth After Cesarean Delivery",
+        year: 2019,
+        journalCitation: "Obstet Gynecol 2019;133:e110-e127",
+        summary:
+          "Comprehensive ACOG practice bulletin establishing evidence-based guidance for TOLAC " +
+          "candidacy, facility requirements, and counseling. Established TOLAC success rate " +
+          "of 60-80% and uterine rupture rate of 0.5-0.7% for one prior low transverse cesarean.",
+        keyFindings: [
+          "TOLAC success rate 60-80% depending on indication for prior cesarean",
+          "Uterine rupture rate 0.5-0.7% with one prior low transverse cesarean",
+          "TOLAC should be attempted at facilities capable of emergency cesarean delivery",
+          "Prior vaginal delivery (before or after cesarean) is the single strongest predictor of TOLAC success",
+        ],
+      },
+    ],
     interactions: [],
   },
   {
@@ -239,9 +269,33 @@ export const priorObstetricConditions: ObstetricCondition[] = [
         description: "Enhanced antenatal surveillance (weekly or twice-weekly NST/BPP) from 32 weeks.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "recurrent stillbirth",
+        statistic: { type: "relative_risk", value: 4.6, ci95: [3.2, 6.5] },
+        populationDescription: "Women with one prior unexplained stillbirth vs. no prior stillbirth; risk 2-10x baseline depending on etiology",
+        citation: cite("other", "SCRN (Stillbirth Collaborative Research Network) 2014", 2014),
+      },
+    ],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "scrn-2014",
+        name: "Stillbirth Collaborative Research Network (SCRN) — Recurrence Analysis",
+        year: 2014,
+        journalCitation: "Obstet Gynecol 2014;123:1104-1111",
+        summary:
+          "Multisite NICHD-funded cohort study examining risk factors and recurrence of stillbirth " +
+          "in subsequent pregnancies. Established that prior stillbirth confers a 2-10x increase in " +
+          "recurrence risk, with the magnitude dependent on the identified etiology.",
+        keyFindings: [
+          "Prior stillbirth associated with aOR ~3.0 for recurrent stillbirth",
+          "Recurrence risk 2-10x baseline depending on etiology",
+          "Unexplained stillbirth carries significant recurrence risk warranting enhanced surveillance",
+          "Etiology-directed workup informs recurrence counseling and management",
+        ],
+      },
+    ],
     interactions: [],
   },
   {
@@ -294,7 +348,16 @@ export const priorObstetricConditions: ObstetricCondition[] = [
       "consideration: cesarean may be offered with EFW >=4,500 g in diabetic mothers " +
       "or >=5,000 g in non-diabetic mothers.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "recurrent shoulder dystocia",
+        statistic: { type: "incidence", valuePercent: 10 },
+        populationDescription:
+          "Women with prior shoulder dystocia in subsequent vaginal delivery (range 1-25%; " +
+          "higher end with prior severe dystocia, prior brachial plexus injury, or current macrosomia)",
+        citation: cite("ACOG", "PB 178"),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],

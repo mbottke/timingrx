@@ -35,7 +35,20 @@ export const infectiousConditions: ObstetricCondition[] = [
           "Regimen is determined by maternal viral load and ART adherence.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "vertical HIV transmission with ART and viral suppression",
+        statistic: { type: "incidence", valuePercent: 0.5 },
+        populationDescription: "Women on effective ART with suppressed viral load; range <1%",
+        citation: cite("CDC", "HIV in pregnancy guidelines", 2020),
+      },
+      {
+        outcome: "vertical HIV transmission without treatment",
+        statistic: { type: "incidence", valuePercent: 20 },
+        populationDescription: "Untreated women; range 15-25%",
+        citation: cite("ACOG", "CO 831", 2021),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -338,7 +351,20 @@ export const infectiousConditions: ObstetricCondition[] = [
       "benefit, particularly in the third trimester when delivery can improve respiratory " +
       "mechanics.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "ICU admission compared to non-pregnant adults",
+        statistic: { type: "relative_risk", value: 7, ci95: [5, 10] },
+        populationDescription: "Pregnant women with COVID-19 versus general population; range 5-10x",
+        citation: cite("other", "PRIORITY cohort; Allotey et al BMJ 2020"),
+      },
+      {
+        outcome: "preterm birth",
+        statistic: { type: "odds_ratio", value: 2.0, ci95: [1.6, 3.0] },
+        populationDescription: "Pregnant women with COVID-19",
+        citation: cite("other", "Allotey et al BMJ 2020"),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -370,7 +396,20 @@ export const infectiousConditions: ObstetricCondition[] = [
           "Hearing screening and cranial imaging. Consider valganciclovir for symptomatic neonates.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "fetal CMV transmission with primary maternal infection",
+        statistic: { type: "incidence", valuePercent: 35 },
+        populationDescription: "Women with primary CMV infection during pregnancy; range 30-40%",
+        citation: cite("ACOG", "CMV guidance", 2023),
+      },
+      {
+        outcome: "fetal CMV transmission with recurrent maternal infection",
+        statistic: { type: "incidence", valuePercent: 1.5 },
+        populationDescription: "Women with recurrent (non-primary) CMV during pregnancy; range 1-2%",
+        citation: cite("ACOG", "CMV guidance", 2023),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -394,7 +433,14 @@ export const infectiousConditions: ObstetricCondition[] = [
       "Zika virus infection does not alter delivery timing. Serial ultrasound for fetal " +
       "head circumference and neuroanatomy is recommended following maternal Zika infection.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "congenital Zika syndrome with first trimester maternal infection",
+        statistic: { type: "incidence", valuePercent: 10 },
+        populationDescription: "Pregnant women with confirmed Zika in the first trimester; range 5-15%",
+        citation: cite("CDC", "Zika guidance", 2018),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -434,6 +480,62 @@ export const infectiousConditions: ObstetricCondition[] = [
       },
     ],
     riskData: [],
+    riskModifiers: [],
+    landmarkTrials: [],
+    interactions: [],
+  },
+  {
+    id: "group_b_strep",
+    name: "Group B Streptococcus (GBS)",
+    category: "infectious",
+    tags: [
+      "GBS", "group B strep", "group B streptococcus", "Streptococcus agalactiae",
+      "neonatal sepsis", "intrapartum antibiotic prophylaxis", "IAP",
+    ],
+    guidelineRecommendations: [
+      {
+        citations: [cite("CDC", "GBS prevention guidelines", 2020), cite("ACOG", "CO 797", 2020)],
+        timing: range(w(39), w(40, 6)),
+        route: "either",
+        grade: grade("A"),
+        notes:
+          "Term delivery. GBS colonization does not alter delivery timing. Intrapartum " +
+          "antibiotic prophylaxis (penicillin G) for GBS-positive patients reduces " +
+          "early-onset neonatal sepsis from ~1.8/1000 to ~0.5/1000.",
+      },
+    ],
+    pastFortyWeeks: "case_by_case",
+    clinicalNotes:
+      "GBS colonization (10-30% of pregnant women) does not alter delivery timing. " +
+      "Universal screening at 35-37 weeks with rectovaginal culture is recommended. " +
+      "Intrapartum antibiotic prophylaxis with penicillin G (or ampicillin) is given " +
+      "to GBS-positive patients, those with unknown status and risk factors, or those " +
+      "with prior GBS bacteriuria in the current pregnancy. Clindamycin is used for " +
+      "penicillin-allergic patients with susceptible isolates.",
+    specialConsiderations: [
+      {
+        type: "medication_continuation",
+        description:
+          "Intrapartum penicillin G 5 million units IV, then 2.5-3 million units IV q4h " +
+          "until delivery. Alternative: ampicillin 2g IV load then 1g IV q4h. " +
+          "For penicillin allergy: clindamycin (if susceptible) or vancomycin.",
+        citation: cite("CDC", "GBS prevention guidelines", 2020),
+      },
+    ],
+    riskData: [
+      {
+        outcome: "early-onset neonatal GBS sepsis without intrapartum antibiotic prophylaxis",
+        statistic: { type: "absolute_risk", valuePer1000: 1.8 },
+        populationDescription: "Neonates born to GBS-positive mothers without IAP",
+        citation: cite("CDC", "GBS prevention guidelines", 2020),
+      },
+      {
+        outcome: "early-onset neonatal GBS sepsis with intrapartum antibiotic prophylaxis",
+        statistic: { type: "absolute_risk", valuePer1000: 0.5 },
+        populationDescription: "Neonates born to GBS-positive mothers receiving IAP",
+        citation: cite("CDC", "GBS prevention guidelines", 2020),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],

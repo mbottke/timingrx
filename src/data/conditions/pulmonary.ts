@@ -46,7 +46,26 @@ export const pulmonaryConditions: ObstetricCondition[] = [
           "induction agent (bronchodilator).",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "preeclampsia",
+        statistic: { type: "odds_ratio", value: 1.75, ci95: [1.5, 2.0] },
+        populationDescription: "Pregnancies with severe asthma vs. no asthma",
+        citation: cite("ACOG", "PB 90"),
+      },
+      {
+        outcome: "preterm birth",
+        statistic: { type: "odds_ratio", value: 1.4, ci95: [1.3, 1.5] },
+        populationDescription: "Pregnancies with severe asthma vs. no asthma",
+        citation: cite("ACOG", "PB 90"),
+      },
+      {
+        outcome: "small for gestational age (SGA)",
+        statistic: { type: "odds_ratio", value: 1.3, ci95: [1.2, 1.4] },
+        populationDescription: "Pregnancies with severe asthma vs. no asthma",
+        citation: cite("ACOG", "PB 90"),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",
@@ -104,7 +123,14 @@ export const pulmonaryConditions: ObstetricCondition[] = [
           "Chest physiotherapy should continue through labor.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "maternal mortality within 2 years of pregnancy",
+        statistic: { type: "mortality_rate", valuePercent: 5 },
+        populationDescription: "CF patients with FEV1 <60% predicted (range 2-8%)",
+        citation: cite("other", "CFF Consensus guidelines"),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",

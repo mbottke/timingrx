@@ -160,7 +160,26 @@ export const endocrineConditions: ObstetricCondition[] = [
           "at 6 weeks. Postpartum thyroiditis occurs in 5-10% and may mimic hypothyroidism.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "preeclampsia (if untreated/inadequately treated)",
+        statistic: { type: "odds_ratio", value: 1.6 },
+        populationDescription: "Hypothyroid pregnancies with subtherapeutic levothyroxine vs. euthyroid",
+        citation: cite("ATA", "2017 Guidelines", 2017),
+      },
+      {
+        outcome: "preterm birth (if untreated/inadequately treated)",
+        statistic: { type: "odds_ratio", value: 1.7 },
+        populationDescription: "Hypothyroid pregnancies with subtherapeutic levothyroxine vs. euthyroid",
+        citation: cite("ATA", "2017 Guidelines", 2017),
+      },
+      {
+        outcome: "placental abruption (if untreated/inadequately treated)",
+        statistic: { type: "odds_ratio", value: 2.0 },
+        populationDescription: "Hypothyroid pregnancies with subtherapeutic levothyroxine vs. euthyroid",
+        citation: cite("ATA", "2017 Guidelines", 2017),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],

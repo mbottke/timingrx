@@ -49,7 +49,32 @@ export const autoimmuneConditions: ObstetricCondition[] = [
         citation: cite("SMFM", "#64", 2023),
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "preeclampsia",
+        statistic: { type: "incidence", valuePercent: 20 },
+        populationDescription: "Pregnant women with SLE; range 15-25%",
+        citation: cite("SMFM", "#64", 2023),
+      },
+      {
+        outcome: "fetal growth restriction",
+        statistic: { type: "incidence", valuePercent: 20 },
+        populationDescription: "Pregnant women with SLE; range 10-30%",
+        citation: cite("SMFM", "#64", 2023),
+      },
+      {
+        outcome: "preterm birth",
+        statistic: { type: "incidence", valuePercent: 30 },
+        populationDescription: "Pregnant women with SLE; range 20-40%",
+        citation: cite("SMFM", "#64", 2023),
+      },
+      {
+        outcome: "disease flare during pregnancy",
+        statistic: { type: "incidence", valuePercent: 40 },
+        populationDescription: "Pregnant women with SLE; range 25-65% depending on disease activity",
+        citation: cite("ACR", "Reproductive health guideline", 2020),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",
@@ -168,7 +193,26 @@ export const autoimmuneConditions: ObstetricCondition[] = [
           "Uterine artery Doppler assessment in mid-trimester may identify placental insufficiency.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "recurrent pregnancy loss (untreated)",
+        statistic: { type: "incidence", valuePercent: 65 },
+        populationDescription: "Women with APS and no anticoagulation; range 50-80%",
+        citation: cite("ACR", "2020 guidelines", 2020),
+      },
+      {
+        outcome: "live birth rate with treatment (LMWH + low-dose aspirin)",
+        statistic: { type: "incidence", valuePercent: 75 },
+        populationDescription: "Women with APS on LMWH + aspirin; range 70-80%",
+        citation: cite("ACR", "2020 guidelines", 2020),
+      },
+      {
+        outcome: "preeclampsia",
+        statistic: { type: "incidence", valuePercent: 30 },
+        populationDescription: "Pregnant women with APS; range 10-50%",
+        citation: cite("ACOG", "PB 118", 2011),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [
@@ -350,7 +394,20 @@ export const autoimmuneConditions: ObstetricCondition[] = [
           "(or after cholestyramine washout) before conception.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "disease remission or improvement during pregnancy",
+        statistic: { type: "incidence", valuePercent: 70 },
+        populationDescription: "Women with RA during pregnancy; range 60-80%",
+        citation: cite("ACR", "Reproductive health guideline", 2020),
+      },
+      {
+        outcome: "postpartum flare",
+        statistic: { type: "incidence", valuePercent: 85 },
+        populationDescription: "Women with RA in the first 6 months postpartum; range 80-90%",
+        citation: cite("ACR", "Reproductive health guideline", 2020),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],

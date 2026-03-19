@@ -270,7 +270,20 @@ export const hepaticConditions: ObstetricCondition[] = [
           "and 6 months. Post-vaccination serology at 9-12 months.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "vertical transmission without prophylaxis",
+        statistic: { type: "incidence", valuePercent: 90 },
+        populationDescription: "HBeAg-positive mothers with high viral load, no neonatal prophylaxis",
+        citation: cite("CDC", "Hepatitis B in Pregnancy", 2023),
+      },
+      {
+        outcome: "vertical transmission with HBIG + vaccine",
+        statistic: { type: "incidence", valuePercent: 3 },
+        populationDescription: "Neonates receiving HBIG + HBV vaccine series within 12 hours of birth (range <5%)",
+        citation: cite("CDC", "Hepatitis B in Pregnancy", 2023),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -307,7 +320,14 @@ export const hepaticConditions: ObstetricCondition[] = [
         citation: cite("SMFM", "#56", 2024),
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "vertical (perinatal) transmission of HCV",
+        statistic: { type: "incidence", valuePercent: 6 },
+        populationDescription: "HCV RNA-positive mothers without HIV co-infection (range 5-8%)",
+        citation: cite("SMFM", "#56", 2024),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],

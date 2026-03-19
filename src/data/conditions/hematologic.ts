@@ -53,7 +53,26 @@ export const hematologicConditions: ObstetricCondition[] = [
           "Maintain hydration, oxygenation, and normothermia throughout labor and delivery.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "vaso-occlusive pain crisis during pregnancy",
+        statistic: { type: "incidence", valuePercent: 60 },
+        populationDescription: "Pregnant women with SCD (HbSS), range 50-70%",
+        citation: cite("SMFM", "#68", 2024),
+      },
+      {
+        outcome: "fetal growth restriction",
+        statistic: { type: "incidence", valuePercent: 30 },
+        populationDescription: "Pregnancies complicated by SCD (range 20-40%)",
+        citation: cite("SMFM", "#68", 2024),
+      },
+      {
+        outcome: "maternal mortality",
+        statistic: { type: "mortality_rate", valuePercent: 1.5 },
+        populationDescription: "Pregnant women with SCD (range 1-2%)",
+        citation: cite("ACOG", "CO 831", 2021),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",
@@ -152,7 +171,20 @@ export const hematologicConditions: ObstetricCondition[] = [
           "bleeding risk. Fetal scalp electrode and operative vaginal delivery are acceptable.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "neonatal thrombocytopenia",
+        statistic: { type: "incidence", valuePercent: 12 },
+        populationDescription: "Neonates born to mothers with ITP (range 10-15%)",
+        citation: cite("ACOG", "PB 207", 2019),
+      },
+      {
+        outcome: "severe neonatal thrombocytopenia (<50,000/uL)",
+        statistic: { type: "incidence", valuePercent: 4.5 },
+        populationDescription: "Neonates born to mothers with ITP (range 4-5%)",
+        citation: cite("ACOG", "PB 207", 2019),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -354,7 +386,14 @@ export const hematologicConditions: ObstetricCondition[] = [
           "DOACs are an alternative but have limited breastfeeding data.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "recurrent VTE despite therapeutic anticoagulation",
+        statistic: { type: "incidence", valuePercent: 4.5 },
+        populationDescription: "Pregnant women on therapeutic LMWH for VTE (range 3-6%)",
+        citation: cite("ACOG", "PB 196", 2018),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],

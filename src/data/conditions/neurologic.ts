@@ -43,7 +43,20 @@ export const neurologicConditions: ObstetricCondition[] = [
           "Vitamin K supplementation for the neonate if mother is on enzyme-inducing AEDs.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "seizure frequency unchanged during pregnancy",
+        statistic: { type: "incidence", valuePercent: 58 },
+        populationDescription: "Women with epilepsy on AEDs",
+        citation: cite("AAN", "AAN/AES/SMFM 2024 guideline", 2024),
+      },
+      {
+        outcome: "major fetal malformation with AED exposure",
+        statistic: { type: "incidence", valuePercent: 6 },
+        populationDescription: "Fetuses exposed to antiepileptic drugs in utero (range 4-8% vs 2-3% baseline)",
+        citation: cite("AAN", "AAN/AES/SMFM 2024 guideline", 2024),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -398,7 +411,20 @@ export const neurologicConditions: ObstetricCondition[] = [
           "resumption of disease-modifying therapy. Discuss breastfeeding compatibility.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "relapse rate reduction in third trimester",
+        statistic: { type: "relative_risk", value: 0.3 },
+        populationDescription: "Women with MS in third trimester vs pre-pregnancy rate (70% reduction)",
+        citation: cite("AAN", "Practice guideline", 2019),
+      },
+      {
+        outcome: "postpartum relapse in first 3 months",
+        statistic: { type: "incidence", valuePercent: 30 },
+        populationDescription: "Women with MS in first 3 months postpartum (range 20-40%)",
+        citation: cite("AAN", "Practice guideline", 2019),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],

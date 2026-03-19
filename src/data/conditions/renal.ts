@@ -35,7 +35,20 @@ export const renalConditions: ObstetricCondition[] = [
         citation: cite("KDIGO", "CKD in Pregnancy", 2017),
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "preeclampsia",
+        statistic: { type: "incidence", valuePercent: 30 },
+        populationDescription: "Women with CKD stages 1-3 (range 20-40%; lower risk than stages 4-5)",
+        citation: cite("KDIGO", "CKD in Pregnancy", 2017),
+      },
+      {
+        outcome: "preterm birth",
+        statistic: { type: "incidence", valuePercent: 25 },
+        populationDescription: "Women with CKD stages 1-3 (range 20-30%)",
+        citation: cite("KDIGO", "CKD in Pregnancy", 2017),
+      },
+    ],
     riskModifiers: [
       {
         factor: "disease_severity",
