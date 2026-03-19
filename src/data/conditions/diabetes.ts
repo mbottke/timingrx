@@ -61,6 +61,18 @@ export const diabetesConditions: ObstetricCondition[] = [
         statistic: { type: "incidence", valuePercent: 18 },
         populationDescription: "Women with pregestational diabetes",
       },
+      {
+        outcome: "stillbirth",
+        statistic: { type: "odds_ratio", value: 2.9, ci95: [2.05, 4.1] },
+        populationDescription: "Pregestational diabetes vs general obstetric population",
+        citation: cite("other", "Flenady et al., Lancet 2011", 2011),
+      },
+      {
+        outcome: "macrosomia",
+        statistic: { type: "incidence", valuePercent: 33 },
+        populationDescription:
+          "Pregestational DM pregnancies (range 25-42%)",
+      },
     ],
     riskModifiers: [
       {
@@ -201,8 +213,25 @@ export const diabetesConditions: ObstetricCondition[] = [
     riskData: [
       {
         outcome: "macrosomia (>4000g)",
-        statistic: { type: "incidence", valuePercent: 15 },
-        populationDescription: "GDM pregnancies overall",
+        statistic: { type: "incidence", valuePercent: 20 },
+        populationDescription: "GDM pregnancies overall (range 15-25%)",
+      },
+      {
+        outcome: "shoulder dystocia",
+        statistic: { type: "incidence", valuePercent: 3 },
+        populationDescription: "GDM pregnancies (range 2-4%)",
+      },
+      {
+        outcome: "cesarean delivery",
+        statistic: { type: "relative_risk", value: 1.3 },
+        populationDescription:
+          "GDM vs non-diabetic pregnancies (~30% increased risk)",
+      },
+      {
+        outcome: "stillbirth",
+        statistic: { type: "incidence", valuePercent: 0.4 },
+        populationDescription:
+          "Well-controlled GDM — stillbirth risk not significantly elevated above background rate",
       },
     ],
     riskModifiers: [

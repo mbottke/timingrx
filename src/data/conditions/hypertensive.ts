@@ -163,9 +163,39 @@ export const hypertensiveConditions: ObstetricCondition[] = [
       "endothelial dysfunction and increased vascular reactivity overlaps substantially. The high " +
       "progression rate to preeclampsia (25-50%) reflects this shared mechanism.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "progression to preeclampsia",
+        statistic: { type: "incidence", valuePercent: 25 },
+        populationDescription: "Women with gestational HTN — lower bound estimate",
+        citation: cite("ACOG", "PB 222", 2020),
+      },
+      {
+        outcome: "progression to preeclampsia",
+        statistic: { type: "incidence", valuePercent: 50 },
+        populationDescription: "Women with gestational HTN — upper bound estimate",
+        citation: cite("ACOG", "PB 222", 2020),
+      },
+    ],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "hypitat-2009",
+        name: "HYPITAT Trial",
+        year: 2009,
+        journalCitation: "Lancet 2009;374:979-988",
+        sampleSize: 756,
+        summary:
+          "RCT comparing induction of labor vs expectant monitoring in women with " +
+          "gestational HTN or mild preeclampsia at 36–41 weeks. Induction reduced " +
+          "adverse maternal outcomes without increasing cesarean delivery rates.",
+        keyFindings: [
+          "Adverse maternal outcomes: 31% induction vs 44% expectant (RR 0.71, 95% CI 0.59-0.86)",
+          "No significant difference in cesarean delivery rate",
+          "Established evidence base for delivery at 37w for gestational HTN/mild PEC",
+        ],
+      },
+    ],
     interactions: [],
     subVariants: [
       {
@@ -185,7 +215,20 @@ export const hypertensiveConditions: ObstetricCondition[] = [
         ],
         pastFortyWeeks: "no",
         specialConsiderations: [],
-        riskData: [],
+        riskData: [
+          {
+            outcome: "progression to severe disease",
+            statistic: { type: "incidence", valuePercent: 31 },
+            populationDescription: "Gestational HTN/mild PEC managed with induction (HYPITAT)",
+            citation: cite("other", "Koopmans et al., Lancet 2009", 2009),
+          },
+          {
+            outcome: "progression to severe disease",
+            statistic: { type: "incidence", valuePercent: 44 },
+            populationDescription: "Gestational HTN/mild PEC managed expectantly (HYPITAT)",
+            citation: cite("other", "Koopmans et al., Lancet 2009", 2009),
+          },
+        ],
         riskModifiers: [],
         landmarkTrials: [],
         interactions: [],
@@ -259,9 +302,60 @@ export const hypertensiveConditions: ObstetricCondition[] = [
           "Antihypertensives for severe-range BPs (≥160/110).",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "eclampsia",
+        statistic: { type: "incidence", valuePercent: 0.7 },
+        populationDescription: "Women with preeclampsia without severe features — midpoint of reported 0.6–0.8% range",
+        citation: cite("ACOG", "PB 222", 2020),
+      },
+      {
+        outcome: "maternal mortality",
+        statistic: { type: "mortality_rate", valuePercent: 0.15 },
+        populationDescription: "Preeclampsia without severe features — midpoint of 0.1–0.2% range",
+        citation: cite("ACOG", "PB 222", 2020),
+      },
+      {
+        outcome: "progression to severe features",
+        statistic: { type: "incidence", valuePercent: 25 },
+        populationDescription: "Preeclampsia without severe features managed expectantly — midpoint 20–30%",
+        citation: cite("ACOG", "PB 222", 2020),
+      },
+    ],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "hypitat-2009",
+        name: "HYPITAT Trial",
+        year: 2009,
+        journalCitation: "Lancet 2009;374:979-988",
+        sampleSize: 756,
+        summary:
+          "RCT in women with gestational HTN or mild preeclampsia at 36–41 weeks. " +
+          "Induction of labor reduced adverse maternal outcomes vs expectant monitoring " +
+          "without increasing cesarean rates. Directly supports 37w delivery for mild PEC.",
+        keyFindings: [
+          "Adverse maternal outcomes: 31% induction vs 44% expectant (RR 0.71, 95% CI 0.59-0.86)",
+          "No significant difference in cesarean delivery rate",
+          "Landmark evidence base for ACOG PB 222 recommendation of delivery at 37w0d",
+        ],
+      },
+      {
+        id: "magpie-2002",
+        name: "Magpie Trial",
+        year: 2002,
+        journalCitation: "Lancet 2002;359:1877-1890",
+        sampleSize: 10141,
+        summary:
+          "Multinational RCT of magnesium sulfate vs placebo for women with preeclampsia. " +
+          "MgSO4 halved the risk of eclampsia and appeared to reduce maternal mortality.",
+        keyFindings: [
+          "Eclampsia risk: 0.8% MgSO4 vs 1.9% placebo (RR 0.42, 95% CI 0.29-0.60)",
+          "Maternal mortality non-significantly reduced (0.8% vs 1.2%)",
+          "Established MgSO4 as standard-of-care for seizure prophylaxis in preeclampsia",
+        ],
+      },
+    ],
     interactions: [
       {
         interactingConditionId: "chronic_htn",
@@ -300,9 +394,45 @@ export const hypertensiveConditions: ObstetricCondition[] = [
         description: "Expectant management <34w should only occur at centers with NICU.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "eclampsia without MgSO4 prophylaxis",
+        statistic: { type: "incidence", valuePercent: 1.5 },
+        populationDescription: "Women with severe preeclampsia — midpoint of 1–2% range",
+        citation: cite("ACOG", "PB 222", 2020),
+      },
+      {
+        outcome: "maternal mortality",
+        statistic: { type: "mortality_rate", valuePercent: 0.35 },
+        populationDescription: "Preeclampsia with severe features — midpoint of 0.2–0.5% range",
+        citation: cite("ACOG", "PB 222", 2020),
+      },
+      {
+        outcome: "HELLP syndrome",
+        statistic: { type: "incidence", valuePercent: 15 },
+        populationDescription: "Preeclampsia with severe features — midpoint of 10–20% range",
+        citation: cite("ACOG", "PB 222", 2020),
+      },
+    ],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "phoenix-2019",
+        name: "PHOENIX Trial",
+        year: 2019,
+        journalCitation: "NEJM 2019;380:1589-1601",
+        sampleSize: 901,
+        summary:
+          "RCT of planned delivery vs expectant management for women with preeclampsia " +
+          "at 34–36+6 weeks. Planned delivery reduced adverse maternal outcomes without " +
+          "significantly worsening neonatal outcomes at this late preterm gestational age.",
+        keyFindings: [
+          "Adverse maternal outcomes: 41% planned delivery vs 49% expectant (aOR 0.75, 95% CI 0.55-1.02; p=0.06 — near significant)",
+          "Serious neonatal morbidity not significantly increased with planned delivery",
+          "Supports individualized delivery planning for late preterm severe preeclampsia",
+        ],
+      },
+    ],
     interactions: [],
   },
   {
@@ -331,9 +461,46 @@ export const hypertensiveConditions: ObstetricCondition[] = [
         description: "MgSO4: 4-6g IV load, then 1-2g/hr. Monitor for toxicity (reflexes, RR, urine output).",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "maternal mortality (HELLP syndrome)",
+        statistic: { type: "mortality_rate", valuePercent: 2 },
+        populationDescription: "Women with HELLP syndrome — midpoint of 1–3% range",
+        citation: cite("ACOG", "PB 222", 2020),
+      },
+      {
+        outcome: "maternal mortality (eclampsia)",
+        statistic: { type: "mortality_rate", valuePercent: 2 },
+        populationDescription: "Women with eclampsia — midpoint of 1–3% range",
+        citation: cite("ACOG", "PB 222", 2020),
+      },
+      {
+        outcome: "DIC complicating HELLP",
+        statistic: { type: "incidence", valuePercent: 20 },
+        populationDescription: "Women with HELLP syndrome",
+        citation: cite("ACOG", "PB 222", 2020),
+      },
+    ],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "magpie-2002",
+        name: "Magpie Trial",
+        year: 2002,
+        journalCitation: "Lancet 2002;359:1877-1890",
+        sampleSize: 10141,
+        summary:
+          "Multinational RCT of magnesium sulfate vs placebo in preeclampsia. " +
+          "Established MgSO4 as the definitive treatment for eclampsia prevention " +
+          "and cornerstone of management in severe disease and HELLP syndrome.",
+        keyFindings: [
+          "Eclampsia risk halved: 0.8% MgSO4 vs 1.9% placebo (RR 0.42, 95% CI 0.29-0.60)",
+          "Maternal mortality non-significantly reduced (0.8% vs 1.2%)",
+          "Benefit consistent across subgroups including severe preeclampsia and HELLP",
+          "Standard-of-care basis for MgSO4 in eclampsia/HELLP management globally",
+        ],
+      },
+    ],
     interactions: [],
   },
 ];

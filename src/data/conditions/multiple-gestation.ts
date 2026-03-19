@@ -31,9 +31,43 @@ export const multipleGestationConditions: ObstetricCondition[] = [
       "2023 AJOG review of 28 guidelines from 11 professional societies confirmed that " +
       "delivery timing for twins is a key area of international disagreement.",
     specialConsiderations: [],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "stillbirth at 37 weeks",
+        statistic: { type: "absolute_risk", valuePer1000: 1.0 },
+        populationDescription: "DCDA twins at 37 weeks",
+        citation: cite("ACOG", "CO 831", 2021),
+      },
+      {
+        outcome: "stillbirth at 38 weeks",
+        statistic: { type: "absolute_risk", valuePer1000: 1.9 },
+        populationDescription: "DCDA twins at 38 weeks (vs singletons)",
+        citation: cite("ACOG", "CO 831", 2021),
+      },
+      {
+        outcome: "preterm birth <37 weeks",
+        statistic: { type: "incidence", valuePercent: 50 },
+        populationDescription: "DCDA twin pregnancies",
+        citation: cite("ACOG", "CO 831", 2021),
+      },
+    ],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "twin-birth-2013",
+        name: "Twin Birth Study",
+        year: 2013,
+        journalCitation: "NEJM 2013;369:1295-1305",
+        sampleSize: 2804,
+        summary:
+          "International RCT: planned CS vs vaginal for twins ≥32w with cephalic first twin. " +
+          "No difference in outcomes.",
+        keyFindings: [
+          "Composite: 2.2% vs 1.9% (NS)",
+          "Planned vaginal delivery safe for cephalic-presenting first twin",
+        ],
+      },
+    ],
     interactions: [],
   },
   {
@@ -68,7 +102,32 @@ export const multipleGestationConditions: ObstetricCondition[] = [
           "(deepest vertical pocket discordance, bladder visualization, Dopplers).",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "twin-to-twin transfusion syndrome (TTTS)",
+        statistic: { type: "incidence", valuePercent: 12.5 },
+        populationDescription: "MCDA twin pregnancies (range 10–15%)",
+        citation: cite("ACOG", "CO 831", 2021),
+      },
+      {
+        outcome: "stillbirth",
+        statistic: { type: "relative_risk", value: 2.5, ci95: [2.0, 3.0] },
+        populationDescription: "MCDA twins compared to DCDA twins",
+        citation: cite("NICE", "NG137", 2019),
+      },
+      {
+        outcome: "fetal death of one twin",
+        statistic: { type: "incidence", valuePercent: 13 },
+        populationDescription: "MCDA twin pregnancies (range 12–15%)",
+        citation: cite("ACOG", "CO 831", 2021),
+      },
+      {
+        outcome: "neurologic injury to surviving twin after single fetal death",
+        statistic: { type: "incidence", valuePercent: 25 },
+        populationDescription: "MCDA pregnancies with loss of one twin",
+        citation: cite("ACOG", "CO 831", 2021),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],
@@ -103,7 +162,26 @@ export const multipleGestationConditions: ObstetricCondition[] = [
         description: "Delivery at center with NICU and experienced neonatal team.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "perinatal mortality",
+        statistic: { type: "mortality_rate", valuePercent: 12.5 },
+        populationDescription: "MCMA twin pregnancies overall (range 10–15%)",
+        citation: cite("ACOG", "CO 831", 2021),
+      },
+      {
+        outcome: "cord entanglement",
+        statistic: { type: "incidence", valuePercent: 100 },
+        populationDescription: "MCMA twin pregnancies",
+        citation: cite("ACOG", "CO 831", 2021),
+      },
+      {
+        outcome: "stillbirth after viability",
+        statistic: { type: "incidence", valuePercent: 4 },
+        populationDescription: "MCMA twin pregnancies after viability (range 3–5%)",
+        citation: cite("NICE", "NG137", 2019),
+      },
+    ],
     riskModifiers: [],
     landmarkTrials: [],
     interactions: [],

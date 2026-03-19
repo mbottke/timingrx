@@ -40,9 +40,37 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
           "AEDV/REDV. BPP or modified BPP as adjunct.",
       },
     ],
-    riskData: [],
+    riskData: [
+      {
+        outcome: "stillbirth",
+        statistic: { type: "odds_ratio", value: 3.5, ci95: [2.6, 4.8] },
+        populationDescription: "SGA <10th percentile",
+        citation: cite("other", "Flenady et al., Lancet 2011", 2011),
+      },
+      {
+        outcome: "perinatal mortality",
+        statistic: { type: "mortality_rate", valuePercent: 1.5 },
+        populationDescription: "FGR pregnancies overall",
+      },
+    ],
     riskModifiers: [],
-    landmarkTrials: [],
+    landmarkTrials: [
+      {
+        id: "digitat-2010",
+        name: "DIGITAT",
+        year: 2010,
+        journalCitation: "BMJ 2010;341:c7087",
+        sampleSize: 650,
+        summary:
+          "Dutch RCT: induction vs expectant for suspected FGR at 36-41w. No difference in composite neonatal outcome. Preeclampsia lower with induction.",
+        keyFindings: [
+          "Composite neonatal: 5.3% vs 6.1% (NS)",
+          "Birthweight: 2208g vs 2326g",
+          "Cesarean: 14% vs 14%",
+          "Preeclampsia: 3.7% vs 7.9% (P=0.03)",
+        ],
+      },
+    ],
     interactions: [],
     subVariants: [
       {
@@ -120,9 +148,36 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
         ],
         pastFortyWeeks: "no",
         specialConsiderations: [],
-        riskData: [],
+        riskData: [
+          {
+            outcome: "perinatal mortality",
+            statistic: { type: "incidence", valuePercent: 12.5 },
+            populationDescription:
+              "FGR with AEDV managed expectantly (range 10-15%)",
+          },
+          {
+            outcome: "stillbirth",
+            statistic: { type: "absolute_risk", valuePer1000: 25 },
+            populationDescription:
+              "FGR with AEDV — approximate weekly stillbirth risk without delivery",
+          },
+        ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [
+          {
+            id: "truffle-2015",
+            name: "TRUFFLE",
+            year: 2015,
+            journalCitation: "Ultrasound Obstet Gynecol 2015",
+            sampleSize: 503,
+            summary:
+              "European RCT for early FGR with abnormal UA Doppler. DV-based timing improved 2-year outcomes.",
+            keyFindings: [
+              "Survival without impairment: 85% (late DV) vs 77% (cCTG)",
+              "Perinatal survival 92%",
+            ],
+          },
+        ],
         interactions: [],
       },
       {
@@ -147,9 +202,36 @@ export const fetalGrowthFluidConditions: ObstetricCondition[] = [
         ],
         pastFortyWeeks: "no",
         specialConsiderations: [],
-        riskData: [],
+        riskData: [
+          {
+            outcome: "perinatal mortality",
+            statistic: { type: "incidence", valuePercent: 35 },
+            populationDescription:
+              "FGR with REDV managed without delivery (range 30-40%)",
+          },
+          {
+            outcome: "stillbirth",
+            statistic: { type: "absolute_risk", valuePer1000: 50 },
+            populationDescription:
+              "FGR with REDV — approximate weekly stillbirth risk without delivery",
+          },
+        ],
         riskModifiers: [],
-        landmarkTrials: [],
+        landmarkTrials: [
+          {
+            id: "grit-2004",
+            name: "GRIT",
+            year: 2004,
+            journalCitation: "Lancet 2004;364:513-520",
+            sampleSize: 588,
+            summary:
+              "International RCT for compromised FGR. No clear advantage of immediate vs delayed delivery.",
+            keyFindings: [
+              "Death/disability at 2y: 19% vs 16% (NS)",
+              "Mean GA: 31.1w vs 32.5w",
+            ],
+          },
+        ],
         interactions: [],
       },
     ],
