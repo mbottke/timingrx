@@ -1,0 +1,360 @@
+import type { ObstetricCondition } from "../types";
+import { w, range, individualize, cite, grade } from "../helpers";
+
+export const cardiacAortopathyConditions: ObstetricCondition[] = [
+  {
+    id: "marfan_syndrome",
+    name: "Marfan Syndrome",
+    category: "cardiac_aortopathy",
+    tags: [
+      "Marfan",
+      "Marfan syndrome",
+      "aortopathy",
+      "aortic root",
+      "FBN1",
+      "connective tissue disorder",
+      "aortic dissection",
+    ],
+    stratificationAxis: "aortic root diameter",
+    guidelineRecommendations: [],
+    pastFortyWeeks: "no",
+    clinicalNotes:
+      "Marfan syndrome is an autosomal dominant connective tissue disorder (FBN1 mutation) " +
+      "with a prevalence of 1:5,000. The primary pregnancy risk is aortic dissection, which " +
+      "occurs most often in the third trimester or early postpartum when hemodynamic stress " +
+      "is greatest. Risk is stratified by aortic root diameter, rate of growth, and family " +
+      "history of dissection.",
+    physiologyExplanation:
+      "Fibrillin-1 deficiency leads to fragmentation of elastic fibers in the aortic media " +
+      "(cystic medial degeneration), weakening the aortic wall. Pregnancy compounds this " +
+      "through three mechanisms: (1) increased cardiac output and stroke volume raise " +
+      "aortic wall stress, (2) estrogen-mediated inhibition of collagen and elastin " +
+      "deposition in the aortic wall, and (3) relaxin-induced extracellular matrix " +
+      "remodeling. The combination of intrinsic wall weakness and pregnancy-induced " +
+      "hemodynamic/hormonal changes creates the substrate for dissection.",
+    specialConsiderations: [
+      {
+        type: "medication_continuation",
+        description:
+          "Beta-blocker therapy (metoprolol or atenolol) should continue throughout pregnancy " +
+          "and postpartum for all Marfan patients, targeting resting HR <100 bpm. " +
+          "ACE inhibitors and ARBs are contraindicated in pregnancy.",
+        citation: cite("ESC", "ESC CVD in Pregnancy", 2018),
+      },
+      {
+        type: "imaging_surveillance",
+        description:
+          "Echocardiographic measurement of aortic root diameter every trimester (every 4-8 " +
+          "weeks if root >40 mm or growing). Repeat at 6 weeks postpartum. MRI without " +
+          "gadolinium can be used if echocardiographic windows are suboptimal.",
+        citation: cite("ESC", "ESC CVD in Pregnancy", 2018),
+      },
+      {
+        type: "postpartum_management",
+        description:
+          "The postpartum period carries continued dissection risk for 6-12 months. Maintain " +
+          "beta-blocker therapy and echocardiographic surveillance. Resume ARB/losartan " +
+          "postpartum if not breastfeeding.",
+      },
+    ],
+    riskData: [],
+    riskModifiers: [
+      {
+        factor: "disease_severity",
+        effect:
+          "Family history of aortic dissection at <40 mm root diameter increases risk " +
+          "regardless of current measurements and shifts management earlier.",
+      },
+      {
+        factor: "other",
+        effect:
+          "Rapid aortic root growth (>5 mm during pregnancy or >3 mm/year pre-pregnancy) " +
+          "is an independent risk factor for dissection, even if absolute diameter is <40 mm.",
+      },
+    ],
+    landmarkTrials: [],
+    interactions: [],
+    subVariants: [
+      {
+        id: "marfan_root_lt40",
+        name: "Marfan Syndrome, Aortic Root <40 mm",
+        category: "cardiac_aortopathy",
+        tags: ["Marfan", "aortic root", "<40 mm", "low risk", "mWHO II-III"],
+        parentConditionId: "marfan_syndrome",
+        guidelineRecommendations: [
+          {
+            citations: [
+              cite("ESC", "ESC CVD in Pregnancy", 2018),
+              cite("ACC", "ACC/AHA Aortic Disease", 2022),
+            ],
+            timing: range(w(39), w(40, 6)),
+            route: "vaginal_preferred",
+            grade: grade("C"),
+            notes:
+              "Term delivery. Vaginal with assisted second stage and regional anesthesia. " +
+              "Avoid Valsalva to limit aortic wall stress peaks.",
+          },
+        ],
+        pastFortyWeeks: "no",
+        specialConsiderations: [],
+        riskData: [],
+        riskModifiers: [],
+        landmarkTrials: [],
+        interactions: [],
+      },
+      {
+        id: "marfan_root_40_45",
+        name: "Marfan Syndrome, Aortic Root 40-45 mm",
+        category: "cardiac_aortopathy",
+        tags: ["Marfan", "aortic root", "40-45 mm", "moderate risk", "mWHO III"],
+        parentConditionId: "marfan_syndrome",
+        guidelineRecommendations: [
+          {
+            citations: [
+              cite("ESC", "ESC CVD in Pregnancy", 2018),
+              cite("ACC", "ACC/AHA Aortic Disease", 2022),
+            ],
+            timing: range(w(39), w(40, 6)),
+            route: "either",
+            grade: grade("C"),
+            notes:
+              "Term delivery unless rapid aortic root growth (>5 mm during pregnancy) is " +
+              "documented, in which case earlier delivery and cesarean are indicated. " +
+              "Vaginal vs cesarean is individualized based on growth trajectory and " +
+              "family history.",
+          },
+        ],
+        pastFortyWeeks: "no",
+        specialConsiderations: [
+          {
+            type: "imaging_surveillance",
+            description:
+              "Echocardiography every 4-6 weeks given proximity to the 45 mm threshold. " +
+              "Any growth >3 mm in a single trimester warrants multidisciplinary reassessment " +
+              "and consideration of earlier delivery.",
+          },
+        ],
+        riskData: [],
+        riskModifiers: [],
+        landmarkTrials: [],
+        interactions: [],
+      },
+      {
+        id: "marfan_root_gt45",
+        name: "Marfan Syndrome, Aortic Root >45 mm",
+        category: "cardiac_aortopathy",
+        tags: [
+          "Marfan",
+          "aortic root",
+          ">45 mm",
+          "high risk",
+          "mWHO IV",
+          "pregnancy contraindicated",
+        ],
+        parentConditionId: "marfan_syndrome",
+        guidelineRecommendations: [
+          {
+            citations: [cite("ESC", "ESC CVD in Pregnancy", 2018)],
+            timing: individualize(
+              "Pregnancy is contraindicated (mWHO IV)",
+              "If already pregnant, early planned delivery to minimize dissection risk",
+              "Urgent delivery if aortic dissection occurs or root grows rapidly",
+            ),
+            route: "cesarean_required",
+            grade: grade("C"),
+            notes:
+              "Pregnancy is contraindicated at aortic root >45 mm (mWHO IV). If pregnancy " +
+              "occurs, early delivery by cesarean is recommended to minimize the duration " +
+              "of exposure to pregnancy-associated hemodynamic and hormonal stress. " +
+              "Pre-pregnancy aortic root replacement should be offered.",
+          },
+        ],
+        pastFortyWeeks: "no",
+        clinicalNotes:
+          "Aortic root >45 mm in Marfan syndrome carries a high risk of Type A dissection " +
+          "during pregnancy. Pre-pregnancy counseling should strongly recommend aortic root " +
+          "replacement (David procedure or Bentall) before conception. If pregnancy is " +
+          "discovered, multidisciplinary management with cardiothoracic surgery on standby " +
+          "is mandatory.",
+        specialConsiderations: [
+          {
+            type: "contraindication",
+            description:
+              "Pregnancy is contraindicated (mWHO IV classification). Pre-pregnancy aortic " +
+              "root repair (David or Bentall procedure) should be offered before conception.",
+            citation: cite("ESC", "ESC CVD in Pregnancy", 2018),
+          },
+          {
+            type: "delivery_site_requirement",
+            description:
+              "Must deliver at a center with on-site cardiothoracic surgery capability " +
+              "and a multidisciplinary aorta team. Operating room must be prepared for " +
+              "emergency aortic repair.",
+          },
+        ],
+        riskData: [],
+        riskModifiers: [],
+        landmarkTrials: [],
+        interactions: [],
+      },
+    ],
+  },
+  {
+    id: "aortic_dissection_chronic",
+    name: "Aortic Dissection, Chronic Stable",
+    category: "cardiac_aortopathy",
+    tags: [
+      "aortic dissection",
+      "chronic dissection",
+      "Type B dissection",
+      "DeBakey",
+      "Stanford",
+      "mWHO III-IV",
+    ],
+    guidelineRecommendations: [
+      {
+        citations: [cite("ESC", "ESC CVD in Pregnancy", 2018)],
+        timing: individualize(
+          "Often planned at 34-36 weeks to balance prematurity against dissection extension risk",
+          "Hemodynamic instability or dissection propagation",
+          "Development of malperfusion syndrome",
+          "Uncontrollable hypertension despite maximal medical therapy",
+        ),
+        route: "cesarean_preferred",
+        grade: grade("C"),
+        notes:
+          "Individualized timing, often 34-36 weeks. Cesarean delivery to avoid the " +
+          "hemodynamic surges of labor (Valsalva, catecholamine release) that could " +
+          "propagate the dissection.",
+      },
+    ],
+    pastFortyWeeks: "no",
+    clinicalNotes:
+      "Chronic stable aortic dissection in pregnancy is rare and extremely high risk. " +
+      "Most cases are Type B (descending aorta) that were diagnosed before or early in " +
+      "pregnancy. Strict blood pressure control (SBP <120 mmHg) and heart rate control " +
+      "(HR <80 bpm) with beta-blockers are the cornerstone of management.",
+    physiologyExplanation:
+      "In chronic aortic dissection, the intimal flap creates a false lumen that can " +
+      "propagate with increased aortic wall stress. Pregnancy increases wall stress via " +
+      "higher cardiac output, blood volume, and heart rate. Additionally, pregnancy-associated " +
+      "connective tissue changes (estrogen, relaxin) weaken the already compromised aortic " +
+      "wall. The goal is to minimize the duration of pregnancy-associated hemodynamic " +
+      "stress while achieving fetal viability.",
+    specialConsiderations: [
+      {
+        type: "medication_continuation",
+        description:
+          "Aggressive beta-blocker therapy (target HR <80 bpm, SBP <120 mmHg) throughout " +
+          "pregnancy. Labetalol is first-line. Add hydralazine or nifedipine if additional " +
+          "BP control is needed. ACE inhibitors/ARBs are contraindicated.",
+        citation: cite("ESC", "ESC CVD in Pregnancy", 2018),
+      },
+      {
+        type: "imaging_surveillance",
+        description:
+          "MRI without gadolinium or echocardiography every 4 weeks to monitor false lumen " +
+          "size, branch vessel involvement, and any propagation. CT angiography reserved " +
+          "for acute concerns.",
+      },
+      {
+        type: "delivery_site_requirement",
+        description:
+          "Delivery must occur at a center with cardiothoracic surgery and aortic surgery " +
+          "expertise. Operating room must be prepared for emergency aortic intervention.",
+      },
+      {
+        type: "anesthesia_consideration",
+        description:
+          "General anesthesia with controlled hemodynamics for cesarean delivery. Avoid " +
+          "hypertensive surges during intubation (esmolol, remifentanil). Invasive " +
+          "arterial monitoring mandatory.",
+      },
+    ],
+    riskData: [],
+    riskModifiers: [
+      {
+        factor: "disease_severity",
+        effect:
+          "Type A dissection (involving ascending aorta) carries higher risk than Type B " +
+          "and may necessitate earlier delivery or emergency aortic repair with concurrent " +
+          "cesarean.",
+      },
+    ],
+    landmarkTrials: [],
+    interactions: [],
+  },
+  {
+    id: "coarctation_aorta_repaired",
+    name: "Coarctation of Aorta, Repaired",
+    category: "cardiac_aortopathy",
+    tags: [
+      "coarctation",
+      "aortic coarctation",
+      "CoA",
+      "repaired",
+      "congenital heart disease",
+      "mWHO II",
+    ],
+    guidelineRecommendations: [
+      {
+        citations: [cite("ESC", "ESC CVD in Pregnancy", 2018)],
+        timing: range(w(39), w(40, 6)),
+        route: "vaginal_preferred",
+        grade: grade("C"),
+        notes:
+          "Term delivery. Vaginal delivery with blood pressure monitoring in the right arm " +
+          "(proximal to repair site). Assisted second stage to avoid Valsalva and minimize " +
+          "acute aortic wall stress.",
+      },
+    ],
+    pastFortyWeeks: "case_by_case",
+    clinicalNotes:
+      "Repaired coarctation of the aorta without residual aneurysm or re-coarctation is " +
+      "generally well tolerated in pregnancy (mWHO II). Key concerns include residual " +
+      "hypertension (present in up to 30% even after successful repair), re-coarctation " +
+      "at the repair site, and associated bicuspid aortic valve (present in 50-80% of CoA).",
+    physiologyExplanation:
+      "Coarctation creates a fixed aortic narrowing with proximal hypertension and distal " +
+      "hypoperfusion. Even after repair, vascular remodeling may be incomplete with residual " +
+      "proximal stiffness and endothelial dysfunction. Pregnancy-associated volume expansion " +
+      "increases the hemodynamic burden on the proximal aorta. The Valsalva maneuver during " +
+      "pushing generates acute spikes in aortic wall stress, creating risk at the repair " +
+      "site or in a previously dilated proximal aorta.",
+    specialConsiderations: [
+      {
+        type: "monitoring_requirement",
+        description:
+          "Blood pressure should be measured in the right arm (proximal to repair). " +
+          "Four-limb BP assessment at baseline to assess gradient. Echocardiography each " +
+          "trimester including assessment of repair site, ascending aorta, and bicuspid " +
+          "valve if present.",
+        citation: cite("ESC", "ESC CVD in Pregnancy", 2018),
+      },
+      {
+        type: "anesthesia_consideration",
+        description:
+          "Regional anesthesia is preferred for vaginal delivery. Avoid Valsalva with " +
+          "assisted second stage (vacuum or forceps). Maintain adequate preload.",
+      },
+      {
+        type: "medication_continuation",
+        description:
+          "Continue antihypertensives if used pre-pregnancy. Target BP <140/90 mmHg. " +
+          "Switch ACE inhibitors/ARBs to labetalol or nifedipine for pregnancy.",
+      },
+    ],
+    riskData: [],
+    riskModifiers: [
+      {
+        factor: "disease_severity",
+        effect:
+          "Residual aneurysm at the repair site or ascending aortic dilation >45 mm " +
+          "shifts management to higher-risk protocol with earlier delivery and cesarean " +
+          "consideration.",
+      },
+    ],
+    landmarkTrials: [],
+    interactions: [],
+  },
+];

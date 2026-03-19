@@ -1,0 +1,534 @@
+import type { ObstetricCondition } from "../types";
+import { w, range, individualize, cite, grade } from "../helpers";
+
+export const fetalGrowthFluidConditions: ObstetricCondition[] = [
+  {
+    id: "fgr",
+    name: "Fetal Growth Restriction (FGR)",
+    category: "fetal_growth_fluid",
+    tags: [
+      "FGR",
+      "IUGR",
+      "fetal growth restriction",
+      "intrauterine growth restriction",
+      "small for gestational age",
+      "SGA",
+      "Doppler",
+      "umbilical artery",
+    ],
+    stratificationAxis: "Doppler findings and EFW percentile",
+    guidelineRecommendations: [],
+    pastFortyWeeks: "no",
+    clinicalNotes:
+      "Fetal growth restriction is stratified by estimated fetal weight percentile and " +
+      "umbilical artery Doppler findings. Delivery timing depends on severity: the worse " +
+      "the Doppler pattern, the earlier delivery is indicated. FIGO 2021 FGR initiative " +
+      "aligns closely with ACOG/SMFM but recommends slightly earlier delivery for absent " +
+      "end-diastolic velocity (32 wk vs ACOG 33-34 wk).",
+    physiologyExplanation:
+      "FGR results from placental insufficiency leading to inadequate nutrient and oxygen " +
+      "delivery. Progressive Doppler changes reflect worsening placental vascular resistance: " +
+      "elevated S/D ratio, then absent end-diastolic velocity (AEDV), then reversed " +
+      "end-diastolic velocity (REDV). REDV indicates severe placental failure with risk " +
+      "of acidemia and stillbirth.",
+    specialConsiderations: [
+      {
+        type: "monitoring_requirement",
+        description:
+          "Serial Doppler assessment of umbilical artery, MCA, and ductus venosus. " +
+          "Frequency depends on severity: weekly for mild, twice-weekly or more for " +
+          "AEDV/REDV. BPP or modified BPP as adjunct.",
+      },
+    ],
+    riskData: [],
+    riskModifiers: [],
+    landmarkTrials: [],
+    interactions: [],
+    subVariants: [
+      {
+        id: "fgr_3rd_10th",
+        name: "FGR, EFW 3rd-10th Percentile",
+        category: "fetal_growth_fluid",
+        tags: ["FGR", "SGA", "3rd percentile", "10th percentile", "mild FGR"],
+        parentConditionId: "fgr",
+        guidelineRecommendations: [
+          {
+            citations: [
+              cite("ACOG", "CO 831", 2021),
+              cite("SMFM", "Consult Series #52"),
+            ],
+            timing: range(w(38), w(39)),
+            route: "either",
+            grade: grade("B"),
+          },
+        ],
+        pastFortyWeeks: "no",
+        specialConsiderations: [],
+        riskData: [],
+        riskModifiers: [],
+        landmarkTrials: [],
+        interactions: [],
+      },
+      {
+        id: "fgr_less_3rd",
+        name: "FGR, EFW <3rd Percentile",
+        category: "fetal_growth_fluid",
+        tags: ["FGR", "severe FGR", "less than 3rd percentile", "SGA"],
+        parentConditionId: "fgr",
+        guidelineRecommendations: [
+          {
+            citations: [cite("ACOG", "CO 831", 2021)],
+            timing: range(w(37), w(37)),
+            route: "either",
+            grade: grade("B"),
+          },
+        ],
+        pastFortyWeeks: "no",
+        specialConsiderations: [],
+        riskData: [],
+        riskModifiers: [],
+        landmarkTrials: [],
+        interactions: [],
+      },
+      {
+        id: "fgr_aedv",
+        name: "FGR, Absent End-Diastolic Velocity",
+        category: "fetal_growth_fluid",
+        tags: [
+          "FGR",
+          "AEDV",
+          "absent end-diastolic velocity",
+          "umbilical artery Doppler",
+        ],
+        parentConditionId: "fgr",
+        guidelineRecommendations: [
+          {
+            citations: [cite("ACOG", "CO 831", 2021)],
+            timing: range(w(33), w(34)),
+            route: "either",
+            grade: grade("B"),
+            notes:
+              "ACOG recommends 33w0d-34w0d. FIGO 2021 recommends 32 weeks.",
+          },
+          {
+            citations: [cite("FIGO", "FGR Initiative", 2021)],
+            timing: range(w(32), w(32)),
+            route: "either",
+            grade: grade("B"),
+            notes: "FIGO gives slightly earlier target of 32 weeks for AEDV.",
+          },
+        ],
+        pastFortyWeeks: "no",
+        specialConsiderations: [],
+        riskData: [],
+        riskModifiers: [],
+        landmarkTrials: [],
+        interactions: [],
+      },
+      {
+        id: "fgr_redv",
+        name: "FGR, Reversed End-Diastolic Velocity",
+        category: "fetal_growth_fluid",
+        tags: [
+          "FGR",
+          "REDV",
+          "reversed end-diastolic velocity",
+          "umbilical artery Doppler",
+          "severe",
+        ],
+        parentConditionId: "fgr",
+        guidelineRecommendations: [
+          {
+            citations: [cite("ACOG", "CO 831", 2021)],
+            timing: range(w(30), w(32)),
+            route: "either",
+            grade: grade("B"),
+          },
+        ],
+        pastFortyWeeks: "no",
+        specialConsiderations: [],
+        riskData: [],
+        riskModifiers: [],
+        landmarkTrials: [],
+        interactions: [],
+      },
+    ],
+  },
+  {
+    id: "isolated_oligohydramnios",
+    name: "Isolated Oligohydramnios (DVP <2 cm)",
+    category: "fetal_growth_fluid",
+    tags: [
+      "oligohydramnios",
+      "low fluid",
+      "DVP",
+      "deepest vertical pocket",
+      "AFI",
+      "amniotic fluid",
+    ],
+    guidelineRecommendations: [
+      {
+        citations: [cite("ACOG", "CO 831", 2021)],
+        timing: range(w(36), w(37, 6)),
+        route: "either",
+        grade: grade("B"),
+      },
+    ],
+    pastFortyWeeks: "no",
+    clinicalNotes:
+      "Isolated oligohydramnios defined as DVP <2 cm without FGR or ruptured membranes. " +
+      "DVP is preferred over AFI for fluid assessment as AFI overdiagnoses oligohydramnios.",
+    specialConsiderations: [],
+    riskData: [],
+    riskModifiers: [],
+    landmarkTrials: [],
+    interactions: [],
+  },
+  {
+    id: "polyhydramnios_uncomplicated",
+    name: "Polyhydramnios (Uncomplicated)",
+    category: "fetal_growth_fluid",
+    tags: [
+      "polyhydramnios",
+      "high fluid",
+      "excess amniotic fluid",
+      "AFI",
+      "DVP",
+    ],
+    guidelineRecommendations: [
+      {
+        citations: [cite("ACOG", "CO 831", 2021)],
+        timing: range(w(39), w(39, 6)),
+        route: "either",
+        grade: grade("B"),
+      },
+    ],
+    pastFortyWeeks: "no",
+    clinicalNotes:
+      "Uncomplicated polyhydramnios without identified fetal anomaly or diabetes. " +
+      "Evaluate for fetal anomalies (esophageal atresia, CNS abnormalities) and " +
+      "maternal diabetes. Amnioreduction may be considered for symptomatic relief.",
+    specialConsiderations: [],
+    riskData: [],
+    riskModifiers: [],
+    landmarkTrials: [],
+    interactions: [],
+  },
+  {
+    id: "alloimmunization_no_iut",
+    name: "Alloimmunization (No IUT Needed)",
+    category: "fetal_growth_fluid",
+    tags: [
+      "alloimmunization",
+      "Rh disease",
+      "Kell",
+      "anti-D",
+      "anti-K",
+      "hemolytic disease",
+      "isoimmunization",
+    ],
+    guidelineRecommendations: [
+      {
+        citations: [cite("ACOG", "CO 831", 2021)],
+        timing: range(w(37), w(38, 6)),
+        route: "either",
+        grade: grade("B"),
+      },
+    ],
+    pastFortyWeeks: "no",
+    clinicalNotes:
+      "Red cell alloimmunization without need for intrauterine transfusion, indicating " +
+      "mild to moderate disease. Serial MCA Doppler monitoring for fetal anemia.",
+    specialConsiderations: [
+      {
+        type: "monitoring_requirement",
+        description:
+          "Serial middle cerebral artery peak systolic velocity (MCA-PSV) every 1-2 weeks. " +
+          "MCA-PSV >1.5 MoM suggests moderate-severe fetal anemia requiring IUT.",
+      },
+    ],
+    riskData: [],
+    riskModifiers: [],
+    landmarkTrials: [],
+    interactions: [],
+  },
+  {
+    id: "hydrops_fetalis_nonimmune",
+    name: "Hydrops Fetalis (Nonimmune)",
+    category: "fetal_growth_fluid",
+    tags: [
+      "hydrops",
+      "nonimmune hydrops",
+      "NIHF",
+      "fetal hydrops",
+      "mirror syndrome",
+    ],
+    guidelineRecommendations: [
+      {
+        citations: [cite("SMFM", "Clinical Guideline #7")],
+        timing: individualize(
+          "Mirror syndrome (maternal edema, hypertension)",
+          "Obstetric indications for delivery",
+          "Worsening fetal status despite treatment of underlying cause",
+        ),
+        route: "either",
+        grade: grade("C"),
+        notes:
+          "Deliver for mirror syndrome or obstetric indications; otherwise individualize " +
+          "based on etiology and response to treatment.",
+      },
+    ],
+    pastFortyWeeks: "case_by_case",
+    clinicalNotes:
+      "Nonimmune hydrops has diverse etiologies including cardiac, chromosomal, infectious, " +
+      "and hematologic causes. Management depends on identifying and treating the underlying " +
+      "cause. Mirror syndrome (maternal edema and hypertension mirroring fetal hydrops) " +
+      "is an indication for delivery.",
+    specialConsiderations: [],
+    riskData: [],
+    riskModifiers: [],
+    landmarkTrials: [],
+    interactions: [],
+  },
+  {
+    id: "trisomy_21_uncomplicated",
+    name: "Trisomy 21 (Without Complications)",
+    category: "fetal_growth_fluid",
+    tags: [
+      "trisomy 21",
+      "Down syndrome",
+      "T21",
+      "aneuploidy",
+    ],
+    guidelineRecommendations: [
+      {
+        citations: [cite("other", "Expert consensus")],
+        timing: range(w(39), w(41, 6)),
+        route: "either",
+        grade: grade("C"),
+        notes: "Standard timing unless complications (cardiac defect, FGR) alter management.",
+      },
+    ],
+    pastFortyWeeks: "yes",
+    clinicalNotes:
+      "Trisomy 21 without associated complications (cardiac defects, FGR, polyhydramnios) " +
+      "follows standard delivery timing. If a cardiac defect is present, manage per fetal " +
+      "cardiac guidelines.",
+    specialConsiderations: [],
+    riskData: [],
+    riskModifiers: [],
+    landmarkTrials: [],
+    interactions: [
+      {
+        interactingConditionId: "fetal_chd_ductal_dependent",
+        interactionType: "timing_shift",
+        description:
+          "If associated CHD is present, delivery timing shifts to fetal cardiac guidelines.",
+      },
+    ],
+  },
+  {
+    id: "trisomy_18_13_continuing",
+    name: "Trisomy 18 / Trisomy 13 (Continuing Pregnancy)",
+    category: "fetal_growth_fluid",
+    tags: [
+      "trisomy 18",
+      "trisomy 13",
+      "Edwards syndrome",
+      "Patau syndrome",
+      "aneuploidy",
+      "lethal aneuploidy",
+    ],
+    guidelineRecommendations: [
+      {
+        citations: [cite("other", "Expert consensus")],
+        timing: individualize(
+          "Family goals of care",
+          "Fetal or maternal complications",
+          "Comfort-focused birth plan",
+        ),
+        route: "individualize",
+        grade: grade("C"),
+        notes: "Individualize per family goals of care. Palliative care planning.",
+      },
+    ],
+    pastFortyWeeks: "case_by_case",
+    clinicalNotes:
+      "For families continuing pregnancies with trisomy 18 or 13, delivery timing and " +
+      "route are individualized based on family goals of care. Palliative care consultation " +
+      "and birth planning are essential components of management.",
+    specialConsiderations: [],
+    riskData: [],
+    riskModifiers: [],
+    landmarkTrials: [],
+    interactions: [],
+  },
+  {
+    id: "skeletal_dysplasia_lethal",
+    name: "Skeletal Dysplasia (Lethal)",
+    category: "fetal_growth_fluid",
+    tags: [
+      "skeletal dysplasia",
+      "lethal skeletal dysplasia",
+      "thanatophoric dysplasia",
+      "osteogenesis imperfecta type II",
+    ],
+    guidelineRecommendations: [
+      {
+        citations: [cite("other", "Expert consensus")],
+        timing: individualize(
+          "Family goals of care",
+          "Comfort-focused birth plan",
+          "Maternal complications",
+        ),
+        route: "individualize",
+        grade: grade("C"),
+        notes: "Individualize per family goals of care.",
+      },
+    ],
+    pastFortyWeeks: "case_by_case",
+    clinicalNotes:
+      "Lethal skeletal dysplasias (e.g., thanatophoric dysplasia, OI type II) are managed " +
+      "with palliative care planning. Delivery timing and route are guided by family goals.",
+    specialConsiderations: [],
+    riskData: [],
+    riskModifiers: [],
+    landmarkTrials: [],
+    interactions: [],
+  },
+  {
+    id: "skeletal_dysplasia_non_lethal",
+    name: "Skeletal Dysplasia (Non-Lethal)",
+    category: "fetal_growth_fluid",
+    tags: [
+      "skeletal dysplasia",
+      "non-lethal",
+      "achondroplasia",
+      "osteogenesis imperfecta",
+      "short-limbed dwarfism",
+    ],
+    guidelineRecommendations: [
+      {
+        citations: [cite("other", "Expert consensus")],
+        timing: range(w(39), w(41, 6)),
+        route: "individualize",
+        grade: grade("C"),
+        notes:
+          "Term delivery. Cesarean may be needed for macrocephaly or other obstetric indications.",
+      },
+    ],
+    pastFortyWeeks: "yes",
+    clinicalNotes:
+      "Non-lethal skeletal dysplasias (e.g., achondroplasia) are delivered at term. " +
+      "Cesarean may be indicated for macrocephaly, which is common in achondroplasia. " +
+      "Route of delivery is individualized based on head size and pelvic adequacy.",
+    specialConsiderations: [],
+    riskData: [],
+    riskModifiers: [],
+    landmarkTrials: [],
+    interactions: [],
+  },
+  {
+    id: "macrosomia_non_diabetic",
+    name: "Macrosomia (Non-Diabetic, EFW >4,000-4,999 g)",
+    category: "fetal_growth_fluid",
+    tags: [
+      "macrosomia",
+      "LGA",
+      "large for gestational age",
+      "fetal macrosomia",
+      "big baby",
+    ],
+    guidelineRecommendations: [
+      {
+        citations: [cite("ACOG", "PB 216", 2020)],
+        timing: range(w(39), w(41, 6)),
+        route: "either",
+        grade: grade("B"),
+        notes:
+          "Macrosomia with EFW >4,000-4,999 g is NOT an indication for delivery before 39 weeks.",
+      },
+    ],
+    pastFortyWeeks: "yes",
+    clinicalNotes:
+      "Suspected fetal macrosomia (EFW >4,000-4,999 g) in a non-diabetic patient is not " +
+      "an indication for early delivery or prophylactic cesarean. Ultrasound estimation of " +
+      "fetal weight has a margin of error of 15-20%.",
+    specialConsiderations: [],
+    riskData: [],
+    riskModifiers: [],
+    landmarkTrials: [],
+    interactions: [],
+  },
+  {
+    id: "macrosomia_non_diabetic_5000",
+    name: "Macrosomia (Non-Diabetic, EFW >=5,000 g)",
+    category: "fetal_growth_fluid",
+    tags: [
+      "macrosomia",
+      "extreme macrosomia",
+      "EFW 5000",
+      "LGA",
+    ],
+    guidelineRecommendations: [
+      {
+        citations: [cite("ACOG", "PB 216", 2020)],
+        timing: individualize(
+          "EFW >=5,000 g on ultrasound",
+          "Cesarean delivery may be offered",
+        ),
+        route: "cesarean_preferred",
+        grade: grade("C"),
+        notes: "Cesarean may be offered for EFW >=5,000 g in non-diabetic patients.",
+      },
+    ],
+    pastFortyWeeks: "case_by_case",
+    clinicalNotes:
+      "For non-diabetic patients with EFW >=5,000 g, cesarean delivery may be offered. " +
+      "This threshold is higher than for diabetic patients (>=4,500 g) given the " +
+      "additional risk of shoulder dystocia with diabetes.",
+    specialConsiderations: [],
+    riskData: [],
+    riskModifiers: [],
+    landmarkTrials: [],
+    interactions: [],
+  },
+  {
+    id: "macrosomia_diabetic_4500",
+    name: "Macrosomia (Diabetic, EFW >=4,500 g)",
+    category: "fetal_growth_fluid",
+    tags: [
+      "macrosomia",
+      "diabetic macrosomia",
+      "EFW 4500",
+      "GDM",
+      "diabetes",
+      "shoulder dystocia",
+    ],
+    guidelineRecommendations: [
+      {
+        citations: [cite("ACOG", "PB 216", 2020)],
+        timing: individualize(
+          "EFW >=4,500 g with maternal diabetes",
+          "Cesarean delivery may be offered",
+        ),
+        route: "cesarean_preferred",
+        grade: grade("C"),
+        notes:
+          "Cesarean may be offered for EFW >=4,500 g in diabetic patients due to " +
+          "increased shoulder dystocia risk.",
+      },
+    ],
+    pastFortyWeeks: "case_by_case",
+    clinicalNotes:
+      "Diabetic patients with EFW >=4,500 g have increased risk of shoulder dystocia " +
+      "compared to non-diabetic patients of the same weight. Cesarean delivery may be " +
+      "offered. The lower threshold (4,500 vs 5,000 g) reflects the additional risk " +
+      "conferred by diabetes on shoulder dystocia.",
+    specialConsiderations: [],
+    riskData: [],
+    riskModifiers: [],
+    landmarkTrials: [],
+    interactions: [],
+  },
+];
