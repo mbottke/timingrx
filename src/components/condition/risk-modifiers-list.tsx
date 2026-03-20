@@ -41,7 +41,7 @@ export function RiskModifiersList({ modifiers }: { modifiers: RiskModifier[] }) 
           {modifiers.map((mod, i) => (
             <li key={i}>
               <div className="flex items-start gap-2">
-                <span className="shrink-0 text-[10px] uppercase font-semibold bg-[#555] text-white px-1.5 py-0.5 rounded-[3px]">
+                <span className="shrink-0 text-[11px] uppercase font-semibold bg-[#555] text-white px-1.5 py-0.5 rounded-[3px]">
                   {FACTOR_LABELS[mod.factor]}
                 </span>
                 <span className="text-sm">

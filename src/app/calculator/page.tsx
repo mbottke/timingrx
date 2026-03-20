@@ -51,7 +51,7 @@ export default function CalculatorPage() {
   }, [chartSize, closeFullscreen]);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-6 lg:px-6">
+    <div className="mx-auto max-w-6xl px-4 py-6 lg:px-6">
       <div className="mb-6">
         <h1 className="text-2xl font-semibold tracking-tight">
           Risk Calculator
@@ -75,11 +75,11 @@ export default function CalculatorPage() {
 
         {/* Right: Chart + Glass Box */}
         <div className="flex-1 space-y-6">
-          {/* Risk Curve */}
-          <Card>
+          {/* Risk Curve — dark canvas */}
+          <Card className="chart-dark bg-[oklch(0.14_0.015_245)] border-[oklch(0.25_0.01_245)]">
             <CardHeader>
               <div className="flex items-center justify-between">
-                <CardTitle className="text-base">
+                <CardTitle className="text-base text-[oklch(0.92_0.005_245)]">
                   Stillbirth Risk by Gestational Age
                 </CardTitle>
                 <div className="flex items-center gap-1">
@@ -89,6 +89,7 @@ export default function CalculatorPage() {
                       variant={chartSize === value ? "default" : "outline"}
                       size="xs"
                       onClick={() => setChartSize(value)}
+                      className={chartSize !== value ? "border-white/20 text-[oklch(0.75_0.01_245)] hover:bg-white/10 hover:text-white" : ""}
                     >
                       {label}
                     </Button>
@@ -103,20 +104,20 @@ export default function CalculatorPage() {
                 hasFactors={hasFactors}
                 height={chartSize === "fullscreen" ? "350px" : sizeHeights[chartSize]}
               />
-              <div className="mt-3 flex flex-wrap gap-3 text-[10px] text-muted-foreground">
+              <div className="mt-3 flex flex-wrap gap-3 text-[11px] text-[oklch(0.65_0.01_245)]">
                 <span className="flex items-center gap-1">
-                  <span className="w-3 h-0.5 bg-[#94a3b8] inline-block" />
+                  <span className="w-3 h-0.5 bg-[var(--chart-baseline)] inline-block" />
                   Baseline (Muglu 2019, n=15M)
                 </span>
                 {hasFactors && (
                   <span className="flex items-center gap-1">
-                    <span className="w-3 h-0.5 bg-[#ef4444] inline-block" />
+                    <span className="w-3 h-0.5 bg-[var(--chart-adjusted)] inline-block" />
                     Adjusted risk
                   </span>
                 )}
                 {hasFactors && (
                   <span className="flex items-center gap-1">
-                    <span className="w-3 h-2 bg-[rgba(239,68,68,0.12)] inline-block" />
+                    <span className="w-3 h-2 bg-[var(--chart-ci)] inline-block" />
                     95% CI (propagated)
                   </span>
                 )}
@@ -141,7 +142,7 @@ export default function CalculatorPage() {
                 </Button>
               </div>
               <div className="flex-1 px-6 pb-6">
-                <div className="h-full rounded-lg bg-background p-4">
+                <div className="chart-dark h-full rounded-lg bg-[oklch(0.14_0.015_245)] p-4">
                   <StillbirthRiskCurve
                     riskCurve={riskCurve}
                     currentGA={state.ga}
@@ -157,7 +158,7 @@ export default function CalculatorPage() {
           <GlassBoxDisplay result={currentRisk} />
 
           {/* Disclaimer */}
-          <p className="text-[10px] text-muted-foreground text-center px-4">
+          <p className="text-[11px] text-muted-foreground text-center px-4">
             This calculator uses population-level data and a multiplicative
             model that has not been prospectively validated. The confidence
             score reflects data quality and model assumptions, not clinical

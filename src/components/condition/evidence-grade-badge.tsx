@@ -11,7 +11,7 @@ const gradeColors: Record<string, string> = {
 
 export function EvidenceGradeBadge({ grade }: { grade: EvidenceGrade }) {
   return (
-    <Badge className={`text-[10px] ${gradeColors[grade.strength] ?? ""}`}>
+    <Badge className={`text-[11px] ${gradeColors[grade.strength] ?? ""}`}>
       Grade {grade.raw}
     </Badge>
   );

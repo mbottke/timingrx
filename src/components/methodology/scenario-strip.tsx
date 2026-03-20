@@ -36,7 +36,7 @@ export function ScenarioStrip() {
             {scenario.label}
             <span
               className={cn(
-                "ml-1.5 rounded px-1 py-0.5 text-[10px] font-bold",
+                "ml-1.5 rounded px-1 py-0.5 text-[11px] font-bold",
                 isActive
                   ? "bg-primary-foreground/20 text-primary-foreground"
                   : "bg-muted-foreground/10"

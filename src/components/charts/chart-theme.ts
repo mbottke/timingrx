@@ -1,16 +1,24 @@
+/**
+ * Chart color theme using CSS custom properties.
+ *
+ * These reference tokens defined in globals.css, which are automatically
+ * overridden by the `.chart-dark` class on the chart container.
+ * This keeps chart colors in sync with the app's design token system.
+ */
 export const chartColors = {
-  baseline: "#94a3b8", // slate-400
-  adjusted: "#ef4444", // red-500
-  ci: "rgba(239, 68, 68, 0.12)",
-  safe: "rgba(34, 197, 94, 0.08)",
-  caution: "rgba(234, 179, 8, 0.08)",
-  danger: "rgba(239, 68, 68, 0.08)",
-  grid: "rgba(0, 0, 0, 0.06)",
-  text: "#71717a", // zinc-500
-  fluid: "#3b82f6", // blue-500
-  meconium: "#f59e0b", // amber-500
-  macrosomia: "#22c55e", // green-500
-  stillbirth: "#ef4444", // red-500
+  baseline: "var(--chart-baseline)",
+  adjusted: "var(--chart-adjusted)",
+  ci: "var(--chart-ci)",
+  safe: "var(--chart-zone-safe)",
+  caution: "var(--chart-zone-caution)",
+  danger: "var(--chart-zone-danger)",
+  grid: "var(--chart-grid)",
+  text: "var(--chart-text)",
+  // Semantic colors for specific outcomes (unchanged)
+  fluid: "var(--evidence-moderate)",
+  meconium: "var(--ga-caution)",
+  macrosomia: "var(--ga-safe)",
+  stillbirth: "var(--chart-adjusted)",
 };
 
 export const chartFont = {

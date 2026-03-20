@@ -241,7 +241,7 @@ export function GAEntry({ currentGA, onGAChange }: Props) {
                 />
               </div>
               {lmpDate && computedGA !== null && (
-                <p className="text-[10px] text-muted-foreground">
+                <p className="text-[11px] text-muted-foreground">
                   EDD (Naegele&apos;s): {(() => {
                     const lmp = new Date(lmpDate + "T00:00:00");
                     const edd = new Date(lmp.getTime() + 280 * 24 * 60 * 60 * 1000);
@@ -289,12 +289,12 @@ export function GAEntry({ currentGA, onGAChange }: Props) {
                 <span className="text-xs text-muted-foreground">d</span>
               </div>
               {method === "ultrasound_crl" && (
-                <p className="text-[10px] text-muted-foreground italic">
+                <p className="text-[11px] text-muted-foreground italic">
                   CRL dating (6w0d–13w6d) is the most accurate biometric dating method.
                 </p>
               )}
               {method === "ultrasound_dating" && (
-                <p className="text-[10px] text-muted-foreground italic">
+                <p className="text-[11px] text-muted-foreground italic">
                   Accuracy decreases with later scans: ±7d at 14–15w, ±10d at 16–21w, ±14d at 22–27w, ±21d at ≥28w.
                 </p>
               )}
@@ -328,7 +328,7 @@ export function GAEntry({ currentGA, onGAChange }: Props) {
                   <option value={6}>Day 6 (blastocyst)</option>
                 </select>
               </div>
-              <p className="text-[10px] text-muted-foreground italic">
+              <p className="text-[11px] text-muted-foreground italic">
                 IVF dating is the most precise method — fertilization date is known exactly.
               </p>
             </div>
@@ -346,7 +346,7 @@ export function GAEntry({ currentGA, onGAChange }: Props) {
         )}
 
         {computedGA === null && method !== "manual" && (
-          <p className="text-[10px] text-center text-muted-foreground">
+          <p className="text-[11px] text-center text-muted-foreground">
             Enter dates above to calculate GA
           </p>
         )}

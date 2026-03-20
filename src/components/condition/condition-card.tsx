@@ -23,7 +23,7 @@ export function ConditionCard({
 
   return (
     <Link href={`/conditions/${condition.id}`}>
-      <Card className="h-full transition-all hover:bg-accent/50 hover:shadow-md">
+      <Card className="h-full transition-all duration-200 hover:bg-accent/50 hover:shadow-lg hover:-translate-y-0.5">
         <CardHeader className="space-y-2 p-4">
           <div className="flex items-start justify-between gap-2">
             <CardTitle className="text-base font-semibold leading-tight">
@@ -42,11 +42,11 @@ export function ConditionCard({
             {primaryRec && (
               <EvidenceGradeBadge grade={primaryRec.grade} />
             )}
-            <Badge className={`text-[10px] ${p40.className}`}>
+            <Badge className={`text-[11px] ${p40.className}`}>
               {p40.text}
             </Badge>
             {condition.guidelineRecommendations.length > 1 && (
-              <Badge variant="outline" className="text-[10px]">
+              <Badge variant="outline" className="text-[11px]">
                 {condition.guidelineRecommendations.length} guidelines
               </Badge>
             )}

@@ -16,7 +16,7 @@ export function Footer() {
             <span>v1.0.0</span>
           </div>
         </div>
-        <p className="mt-4 text-center text-[10px] text-muted-foreground/60">
+        <p className="mt-4 text-center text-xs text-muted-foreground/80 max-w-xl mx-auto leading-relaxed">
           Clinical decision support tool for educational purposes. Not a
           substitute for clinical judgment. Verify all management decisions
           against current institutional protocols.

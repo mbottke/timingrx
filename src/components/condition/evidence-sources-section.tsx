@@ -81,7 +81,7 @@ export function EvidenceSourcesSection({
                     </a>
                   )}
                 </div>
-                <div className="text-[10px] text-muted-foreground">
+                <div className="text-[11px] text-muted-foreground">
                   {src.yearStarted && `Est. ${src.yearStarted}`}
                   {src.yearStarted && src.region && " · "}
                   {src.region}

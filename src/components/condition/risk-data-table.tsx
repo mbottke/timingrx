@@ -22,17 +22,17 @@ export function RiskDataTable({ riskData }: { riskData: RiskDataPoint[] }) {
   if (riskData.length === 0) return null;
 
   return (
-    <Card>
+    <Card className="border-l-4 border-l-[var(--brand-coral)]">
       <CardHeader
         className={
-          teachingMode ? "bg-[#eff6ff]" : undefined
+          teachingMode ? "bg-primary/5" : undefined
         }
       >
         <div className="flex items-center justify-between">
           <CardTitle className="text-base font-semibold tracking-tight flex items-center gap-2">
             Risk Data
             {teachingMode && (
-              <span className="text-xs bg-[var(--evidence-moderate)] text-white px-1.5 py-0.5 rounded">
+              <span className="text-xs bg-amber-500 text-white px-1.5 py-0.5 rounded font-semibold">
                 TEACHING
               </span>
             )}
@@ -85,11 +85,11 @@ export function RiskDataTable({ riskData }: { riskData: RiskDataPoint[] }) {
                         )}
                       </td>
                       <td
-                        className={`py-2 pr-4 text-right tabular-nums font-bold whitespace-nowrap ${severityColorClass(severity)}`}
+                        className={`py-2 pr-4 text-right font-mono tabular-nums font-bold whitespace-nowrap ${severityColorClass(severity)}`}
                       >
                         {formatRiskStatistic(dp.statistic)}
                       </td>
-                      <td className="py-2 pr-4 text-right text-muted-foreground tabular-nums whitespace-nowrap">
+                      <td className="py-2 pr-4 text-right text-muted-foreground font-mono tabular-nums whitespace-nowrap">
                         {formatCI95(dp.statistic)}
                       </td>
                       <td className="py-2 text-xs text-muted-foreground whitespace-nowrap">
@@ -99,7 +99,7 @@ export function RiskDataTable({ riskData }: { riskData: RiskDataPoint[] }) {
                     {showInterpretation && (
                       <tr>
                         <td colSpan={4} className="pb-2">
-                          <div className="border-l-[3px] border-[#93b4f4] pl-3 text-sm italic text-[#1e40af]">
+                          <div className="border-l-[3px] border-primary/30 pl-3 text-sm italic text-primary">
                             → {generateTeachingInterpretation(dp.statistic, dp.populationDescription)}
                           </div>
                         </td>

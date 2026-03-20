@@ -108,7 +108,7 @@ export function PipelineMobile({
           ariaLabel="Muglu 2019 baseline — tap to explore"
           onClick={() => onStageClick?.(mugluStage)}
         >
-          <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">
+          <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wide">
             Baseline (Muglu 2019)
           </p>
           <p className="mt-0.5 text-lg font-bold font-mono">
@@ -164,7 +164,7 @@ export function PipelineMobile({
             ariaLabel="95% Confidence Interval — tap to explore"
             onClick={() => onStageClick?.(ciStage)}
           >
-            <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">
+            <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wide">
               95% CI Propagation
             </p>
             <p className="mt-0.5 text-lg font-bold font-mono text-purple-600">
@@ -193,7 +193,7 @@ export function PipelineMobile({
                   style={{ borderColor: cfg.color }}
                 >
                   <p
-                    className="text-[10px] font-bold"
+                    className="text-[11px] font-bold"
                     style={{ color: cfg.color }}
                   >
                     {cfg.abbr}
@@ -223,7 +223,7 @@ export function PipelineMobile({
                 {grade}
               </span>
               <div>
-                <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">
+                <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wide">
                   {calc.confidenceScore.label}
                 </p>
                 <p className="text-sm font-bold font-mono">

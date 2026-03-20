@@ -42,7 +42,7 @@ function MugluContent() {
               <td className="py-0.5 pr-2 text-right font-mono text-foreground">
                 {pt.riskPer1000.toFixed(2)}
               </td>
-              <td className="py-0.5 text-right font-mono text-muted-foreground text-[10px]">
+              <td className="py-0.5 text-right font-mono text-muted-foreground text-[11px]">
                 {pt.ci95Low.toFixed(2)}–{pt.ci95High.toFixed(2)}
               </td>
             </tr>
@@ -68,7 +68,7 @@ function GateContent({ stage }: { stage: StageLayout }) {
           <p className="text-[11px] text-muted-foreground">{factor.description}</p>
           <div className="flex items-center gap-2 flex-wrap">
             <EvidenceGradeBadge grade={factor.evidenceGrade} />
-            <span className="text-[10px] text-muted-foreground">
+            <span className="text-[11px] text-muted-foreground">
               Data reliability: {(factor.dataReliability * 100).toFixed(0)}%
             </span>
           </div>
@@ -140,7 +140,7 @@ function FilterContent({ stage }: { stage: StageLayout }) {
         {cfg?.abbr ?? stage.label} — Confidence Filter
       </p>
       {hint && (
-        <p className="text-[10px] font-mono text-muted-foreground bg-muted/50 rounded px-1.5 py-0.5">
+        <p className="text-[11px] font-mono text-muted-foreground bg-muted/50 rounded px-1.5 py-0.5">
           {hint}
         </p>
       )}
@@ -257,7 +257,7 @@ export function PipelineHoverCard({
     >
       <div className="rounded-lg border border-border bg-popover shadow-lg p-3 space-y-2">
         <CardBody stage={stage} confidenceScore={confidenceScore} />
-        <p className="text-[10px] text-primary border-t border-border/50 pt-2 mt-1">
+        <p className="text-[11px] text-primary border-t border-border/50 pt-2 mt-1">
           Click to explore in detail →
         </p>
       </div>

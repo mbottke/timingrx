@@ -133,7 +133,7 @@ export function SectionGradeMapping() {
                   </div>
 
                   {/* Score range labels below each zone */}
-                  <div className="mt-1 flex text-[10px] text-muted-foreground">
+                  <div className="mt-1 flex text-[11px] text-muted-foreground">
                     {GRADE_ZONES.map((zone) => (
                       <div
                         key={zone.grade}

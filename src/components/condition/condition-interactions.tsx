@@ -34,7 +34,7 @@ export function ConditionInteractions({
         {interactions.map((ix, i) => (
           <div key={i} className="border border-[#f0e4c4] rounded-lg p-3 bg-white/60">
             <div className="flex flex-wrap items-center gap-2 mb-1.5">
-              <Badge className="text-[10px] uppercase bg-[#92610a]/20 text-[#92610a] border-[#f0e4c4]">
+              <Badge className="text-[11px] uppercase bg-[#92610a]/20 text-[#92610a] border-[#f0e4c4]">
                 {INTERACTION_LABELS[ix.interactionType]}
               </Badge>
               <Link

@@ -87,7 +87,7 @@ export function CalculatorForm({
                           {factor.isHypothesized && (
                             <Badge
                               variant="outline"
-                              className="text-[8px] px-1"
+                              className="text-[9px] px-1"
                             >
                               Est.
                             </Badge>
