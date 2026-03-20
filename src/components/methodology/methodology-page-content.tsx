@@ -12,6 +12,8 @@ import { SectionConfidence } from "@/components/methodology/section-confidence";
 import { SectionOrCorrection } from "@/components/methodology/section-or-correction";
 import { SectionGradeMapping } from "@/components/methodology/section-grade-mapping";
 import { PipelineView } from "./pipeline/pipeline-view";
+import { TimelineView } from "./timeline/timeline-view";
+import { TimingRxLogo } from "@/components/layout/timing-rx-logo";
 
 // ── Inner component (uses useSearchParams) ────────────────────────────────────
 
@@ -42,8 +44,8 @@ function MethodologyPageInner() {
 
       <div className="mx-auto max-w-6xl px-4 lg:px-6 xl:pl-16">
         <div className="py-8">
-          <h1 className="text-2xl font-semibold tracking-tight">
-            How TimingRx Works
+          <h1 className="text-2xl font-semibold tracking-tight flex items-baseline gap-1.5">
+            How <TimingRxLogo variant="heading" /> Works
           </h1>
           <p className="mt-1 text-sm text-muted-foreground max-w-2xl">
             An interactive exploration of the risk calculation methodology.
@@ -86,8 +88,8 @@ function MethodologyPageInner() {
 
         {activeTab === "timeline" && (
           <div role="tabpanel" aria-label="Timeline view">
-            <div className="py-8 text-sm text-muted-foreground">
-              Coming Soon
+            <div className="py-8">
+              <TimelineView />
             </div>
           </div>
         )}
