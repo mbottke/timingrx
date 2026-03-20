@@ -238,8 +238,17 @@
 /* Neon glow on hover — reads --card-glow CSS variable set per card */
 .dark .glow-hover:hover {
   box-shadow:
+    0 0 0 1px var(--ring-color, oklch(0.3 0.01 245)),
     0 0 8px color-mix(in oklch, var(--card-glow, oklch(0.6 0.15 290)) 40%, transparent),
     0 0 16px color-mix(in oklch, var(--card-glow, oklch(0.6 0.15 290)) 15%, transparent);
+}
+
+/* White glow on hover for condition cards in dark mode */
+.dark .white-glow:hover {
+  box-shadow:
+    0 0 0 1px oklch(0.3 0.01 245),
+    0 0 8px rgba(255, 255, 255, 0.25),
+    0 0 16px rgba(255, 255, 255, 0.1);
 }
 
 @layer base {
