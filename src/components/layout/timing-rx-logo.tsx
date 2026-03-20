@@ -81,33 +81,20 @@ export function TimingRxLogo({
         Timing
       </text>
 
-      {/* ── Prescription ℞ ── hand-crafted R with bowl, leg, and diagonal slash */}
+      {/* ── Prescription ℞ ── single continuous path for proper gradient rendering */}
       <g transform="translate(100, 5)">
-        {/* R vertical stem (left side of the letter) */}
-        <line
-          x1="0"
-          y1="0"
-          x2="0"
-          y2="28"
-          stroke={`url(#${rxGrad})`}
-          strokeWidth="3"
-          strokeLinecap="round"
-        />
-        {/* R bowl — open curve, no horizontal bar back to stem */}
+        {/*
+          R drawn as one path: stem up → bowl across top → curve down → back to
+          junction → leg down-right. Single path ensures the gradient bounding box
+          spans the full letter width (fixing the zero-width vertical line bug).
+        */}
         <path
-          d="M0,0 L12,0 C20,0 24,4 24,10 C24,16 20,19 12,19"
+          d="M0,28 L0,0 L12,0 C20,0 24,4 24,10 C24,16 20,19 12,19 L0,19 M12,19 L26,30"
           stroke={`url(#${rxGrad})`}
-          strokeWidth="2.4"
+          strokeWidth="2.6"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-        />
-        {/* R leg descending from bowl junction */}
-        <path
-          d="M12,19 L26,30"
-          stroke={`url(#${rxGrad})`}
-          strokeWidth="2.4"
-          strokeLinecap="round"
         />
         {/* ℞ prescription slash — diagonal crossing through the leg */}
         <line
