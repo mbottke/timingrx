@@ -139,8 +139,14 @@ export default function CalculatorPage() {
 
         {/* Right: Chart + Glass Box */}
         <div className="flex-1 space-y-6">
-          {/* Risk Curve — dark canvas */}
-          <Card className="chart-dark bg-[oklch(0.26_0.015_245)] border-[oklch(0.35_0.01_245)]">
+          {/* Risk Curve — dark canvas with brand glow */}
+          <Card className="relative chart-dark bg-[oklch(0.26_0.015_245)] border-[oklch(0.35_0.01_245)] overflow-hidden">
+            {/* Gradient glow behind chart */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-4 opacity-[0.07] blur-[40px]"
+              style={{ background: "var(--kairos-gradient)" }}
+            />
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="text-base text-[oklch(0.95_0.005_245)]">

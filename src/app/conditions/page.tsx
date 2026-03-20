@@ -275,6 +275,27 @@ export default function ConditionsPage() {
 
       {totalShowing === 0 && (
         <div className="py-16 text-center text-muted-foreground">
+          {/* Faded diverging-curves motif */}
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 120 60"
+            fill="none"
+            className="mx-auto mb-4 w-24 opacity-20"
+          >
+            <path
+              d="M10 50 C30 48, 60 40, 80 30 S100 18, 110 10"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+            <path
+              d="M10 48 C30 42, 50 28, 70 15 S95 2, 110 0"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+            <circle cx="30" cy="45" r="2.5" fill="currentColor" />
+          </svg>
           <p className="text-lg font-medium">No conditions found</p>
           <p className="mt-1 text-sm">
             Try adjusting your search or filters.

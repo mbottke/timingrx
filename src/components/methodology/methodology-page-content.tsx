@@ -57,7 +57,7 @@ function MethodologyPageInner() {
         <MethodologyTabs activeTab={activeTab} onTabChange={handleTabChange} />
 
         {activeTab === "explorer" && (
-          <div role="tabpanel" aria-label="Explorer view">
+          <div role="tabpanel" aria-label="Explorer view" className="animate-fade-in">
             <SectionBaseline />
             <SectionMultiplication />
             <SectionCIPropagation />
@@ -79,7 +79,7 @@ function MethodologyPageInner() {
         )}
 
         {activeTab === "pipeline" && (
-          <div role="tabpanel" aria-label="Pipeline view">
+          <div role="tabpanel" aria-label="Pipeline view" className="animate-fade-in">
             <div className="py-8">
               <PipelineView />
             </div>
@@ -87,7 +87,7 @@ function MethodologyPageInner() {
         )}
 
         {activeTab === "timeline" && (
-          <div role="tabpanel" aria-label="Timeline view">
+          <div role="tabpanel" aria-label="Timeline view" className="animate-fade-in">
             <div className="py-8">
               <TimelineView />
             </div>
