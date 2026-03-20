@@ -6,15 +6,17 @@ import { useId } from "react";
  * TimingRx wordmark — HTML "Timing" + SVG pharmacy ℞ symbol.
  *
  * "Timing" is a real <span> so it inherits the page's Geist font naturally.
- * The ℞ is an inline SVG: R with fused x crossing at the leg.
+ * The ℞ is an inline SVG with a stylized, bold pharmacy symbol.
  *
- * hero variant: larger, centered, with "Evidence-Based Obstetric Guidance" subtitle.
- * header variant: compact for the nav bar.
+ * Variants:
+ * - header: compact for the nav bar
+ * - hero: large, centered, with subtitle
+ * - footer: small, subtle for page footers
  */
 
 interface TimingRxLogoProps {
   className?: string;
-  variant?: "header" | "hero";
+  variant?: "header" | "hero" | "footer";
 }
 
 export function TimingRxLogo({
@@ -25,65 +27,75 @@ export function TimingRxLogo({
   const rxGrad = `rx-${uid}`;
 
   const isHero = variant === "hero";
+  const isFooter = variant === "footer";
+
+  // Size config per variant
+  const textSize = isHero ? "text-4xl" : isFooter ? "text-sm" : "text-lg";
+  const textColor = isHero || isFooter ? "text-foreground" : "text-[var(--header-fg,#f0f0f5)]";
+  const svgSize = isHero ? "h-11 w-11" : isFooter ? "h-4 w-4" : "h-5 w-5";
+  const svgDrop = isHero ? "-9px" : isFooter ? "-3px" : "-5px";
+  const strokeW = isHero ? "4.5" : isFooter ? "3.5" : "3.5";
 
   const wordmark = (
     <span className="inline-flex items-baseline gap-0">
       {/* "Timing" — real HTML text, inherits Geist font */}
-      <span
-        className={`font-semibold tracking-tight ${
-          isHero
-            ? "text-4xl text-foreground"
-            : "text-lg text-[var(--header-fg,#f0f0f5)]"
-        }`}
-      >
+      <span className={`font-semibold tracking-tight ${textSize} ${textColor}`}>
         Timing
       </span>
 
-      {/* ℞ pharmacy symbol */}
+      {/* ℞ pharmacy symbol — stylized, bold */}
       <svg
-        viewBox="0 0 38 42"
+        viewBox="0 0 42 44"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={isHero ? "h-10 w-10" : "h-5 w-5"}
-        style={{ marginBottom: isHero ? "-8px" : "-5px" }}
+        className={svgSize}
+        style={{ marginBottom: svgDrop }}
       >
         <defs>
           <linearGradient id={rxGrad} x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#5b8def" />
-            <stop offset="50%" stopColor="#a855f7" />
-            <stop offset="100%" stopColor="#d946a8" />
+            <stop offset="0%" stopColor="#6b93ef" />
+            <stop offset="40%" stopColor="#b055f7" />
+            <stop offset="100%" stopColor="#e04cb0" />
           </linearGradient>
         </defs>
 
-        {/* R body: stem + bowl + bar back to stem — bold stroke */}
+        {/* R vertical stem — thick and prominent */}
         <path
-          d="M2,38 L2,2 L16,2 C24,2 28,6.5 28,13 C28,19 24,23 16,23 L2,23"
+          d="M3,40 L3,2"
           stroke={`url(#${rxGrad})`}
-          strokeWidth={isHero ? "4" : "3"}
+          strokeWidth={strokeW}
+          strokeLinecap="round"
+        />
+
+        {/* R bowl — wide, confident curve */}
+        <path
+          d="M3,2 L18,2 C27,2 32,7 32,14 C32,21 27,25 18,25 L3,25"
+          stroke={`url(#${rxGrad})`}
+          strokeWidth={strokeW}
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
 
-        {/* R leg — descends from bowl junction (first X stroke) */}
+        {/* R leg / first X stroke — bold diagonal from junction */}
         <line
-          x1="16"
-          y1="23"
-          x2="34"
-          y2="40"
+          x1="18"
+          y1="25"
+          x2="38"
+          y2="42"
           stroke={`url(#${rxGrad})`}
-          strokeWidth={isHero ? "4" : "3"}
+          strokeWidth={strokeW}
           strokeLinecap="round"
         />
 
-        {/* X cross stroke — from R's bowl junction corner */}
+        {/* X cross stroke — from junction corner */}
         <line
-          x1="34"
-          y1="23"
-          x2="16"
-          y2="40"
+          x1="38"
+          y1="25"
+          x2="18"
+          y2="42"
           stroke={`url(#${rxGrad})`}
-          strokeWidth={isHero ? "4" : "3"}
+          strokeWidth={strokeW}
           strokeLinecap="round"
         />
       </svg>
@@ -106,11 +118,7 @@ export function TimingRxLogo({
   }
 
   return (
-    <span
-      className={`${className}`}
-      role="img"
-      aria-label="TimingRx"
-    >
+    <span className={className} role="img" aria-label="TimingRx">
       {wordmark}
     </span>
   );

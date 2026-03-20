@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Attribution } from "./attribution";
+import { TimingRxLogo } from "./timing-rx-logo";
 
 export function Footer() {
   return (
@@ -7,7 +8,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 lg:px-6">
         <div className="flex flex-col items-center justify-between gap-4 text-xs text-muted-foreground sm:flex-row">
           <div className="flex items-center gap-4">
-            <span className="font-medium text-foreground">TimingRx</span>
+            <TimingRxLogo variant="footer" />
             <span>Evidence-based delivery timing</span>
           </div>
           <div className="flex items-center gap-4">
