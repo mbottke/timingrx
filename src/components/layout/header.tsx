@@ -9,7 +9,7 @@ import { TimingRxLogo } from "./timing-rx-logo";
 
 const navLinks = [
   { href: "/conditions", label: "Conditions" },
-  { href: "/calculator", label: "Calculator" },
+  { href: "/calculator", label: "Risk Curve" },
   { href: "/evidence", label: "Evidence" },
   { href: "/compare", label: "Compare" },
   { href: "/methodology", label: "Methodology" },

@@ -54,12 +54,76 @@ export default function CalculatorPage() {
     <div className="mx-auto max-w-6xl px-4 py-6 lg:px-6">
       <div className="mb-6">
         <h1 className="text-2xl font-semibold tracking-tight">
-          Risk Calculator
+          Risk Curve
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Stillbirth risk estimation with transparent glass-box methodology and
           dynamic confidence scoring.
         </p>
+      </div>
+
+      {/* Evidence Grade Key */}
+      <div className="mb-6 rounded-lg border bg-card p-4">
+        <h2 className="text-sm font-semibold mb-3">Evidence & Confidence Grade Key</h2>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {/* Evidence Strength */}
+          <div>
+            <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wide">
+              Evidence Strength
+            </h3>
+            <dl className="space-y-1.5 text-xs">
+              <div className="flex items-start gap-2">
+                <dt className="shrink-0 rounded-full bg-emerald-500/15 px-2 py-0.5 font-medium text-emerald-700 dark:text-emerald-400">High</dt>
+                <dd className="text-muted-foreground">Further research is very unlikely to change confidence in the estimate of effect.</dd>
+              </div>
+              <div className="flex items-start gap-2">
+                <dt className="shrink-0 rounded-full bg-blue-500/15 px-2 py-0.5 font-medium text-blue-700 dark:text-blue-400">Moderate</dt>
+                <dd className="text-muted-foreground">Further research is likely to have an important impact on confidence and may change the estimate.</dd>
+              </div>
+              <div className="flex items-start gap-2">
+                <dt className="shrink-0 rounded-full bg-amber-500/15 px-2 py-0.5 font-medium text-amber-700 dark:text-amber-400">Low</dt>
+                <dd className="text-muted-foreground">Further research is very likely to have an important impact and is likely to change the estimate.</dd>
+              </div>
+              <div className="flex items-start gap-2">
+                <dt className="shrink-0 rounded-full bg-muted px-2 py-0.5 font-medium text-muted-foreground">Very Low</dt>
+                <dd className="text-muted-foreground">Any estimate of effect is very uncertain.</dd>
+              </div>
+              <div className="flex items-start gap-2">
+                <dt className="shrink-0 rounded-full bg-muted px-2 py-0.5 font-medium text-muted-foreground">Expert</dt>
+                <dd className="text-muted-foreground">Based on clinical experience and expert opinion rather than systematic research.</dd>
+              </div>
+            </dl>
+          </div>
+
+          {/* Confidence Grades */}
+          <div>
+            <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wide">
+              Confidence Grades
+            </h3>
+            <dl className="space-y-1.5 text-xs">
+              <div className="flex items-start gap-2">
+                <dt className="shrink-0 rounded-full bg-emerald-500/15 px-2 py-0.5 font-semibold text-emerald-700 dark:text-emerald-400">A</dt>
+                <dd className="text-muted-foreground">Very high confidence — multiple concordant high-quality sources with narrow CIs.</dd>
+              </div>
+              <div className="flex items-start gap-2">
+                <dt className="shrink-0 rounded-full bg-blue-500/15 px-2 py-0.5 font-semibold text-blue-700 dark:text-blue-400">B</dt>
+                <dd className="text-muted-foreground">High confidence — good-quality data with consistent findings across sources.</dd>
+              </div>
+              <div className="flex items-start gap-2">
+                <dt className="shrink-0 rounded-full bg-amber-500/15 px-2 py-0.5 font-semibold text-amber-700 dark:text-amber-400">C</dt>
+                <dd className="text-muted-foreground">Moderate confidence — limited data or some inconsistency between sources.</dd>
+              </div>
+              <div className="flex items-start gap-2">
+                <dt className="shrink-0 rounded-full bg-orange-500/15 px-2 py-0.5 font-semibold text-orange-700 dark:text-orange-400">D</dt>
+                <dd className="text-muted-foreground">Low confidence — sparse data, wide CIs, or extrapolated from indirect evidence.</dd>
+              </div>
+              <div className="flex items-start gap-2">
+                <dt className="shrink-0 rounded-full bg-red-500/15 px-2 py-0.5 font-semibold text-red-700 dark:text-red-400">F</dt>
+                <dd className="text-muted-foreground">Very low confidence — insufficient data; estimate is largely expert opinion or modeling assumption.</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-6">
