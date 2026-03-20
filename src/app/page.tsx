@@ -4,6 +4,7 @@ import { CATEGORY_DISPLAY_NAMES, type ConditionCategory } from "@/data/types";
 import { allTrials } from "@/data/trials";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { KairosLogo } from "@/components/layout/kairos-logo";
+import { HeroMotif } from "@/components/layout/hero-motif";
 
 /** Subtle color tints per medical category for visual identity */
 const categoryAccents: Partial<Record<ConditionCategory, { border: string; glow: string }>> = {
@@ -32,8 +33,9 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 lg:px-6">
       {/* Hero */}
-      <section className="text-center mb-14">
-        <div className="mx-auto max-w-2xl">
+      <section className="relative text-center mb-14 overflow-hidden">
+        <HeroMotif className="absolute inset-0 w-full h-full pointer-events-none z-0" />
+        <div className="relative z-10 mx-auto max-w-2xl">
           <KairosLogo variant="hero" />
           <p className="mt-4 text-base text-muted-foreground leading-relaxed">
             Delivery timing for every maternal and fetal condition.
@@ -57,6 +59,8 @@ export default function Home() {
         </div>
       </section>
 
+      <hr className="kairos-divider mb-14" />
+
       {/* Stats — hero numbers */}
       <section className="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-14">
         <StatCard label="Conditions" value={String(allConditions.length)} accent="text-primary" />
@@ -64,6 +68,8 @@ export default function Home() {
         <StatCard label="Landmark Trials" value={String(allTrials.length)} accent="text-[var(--evidence-moderate)]" />
         <StatCard label="Risk Factors" value="13" accent="text-[var(--brand-coral)]" />
       </section>
+
+      <hr className="kairos-divider mb-14" />
 
       {/* Category Grid */}
       <section>
@@ -78,7 +84,7 @@ export default function Home() {
             return (
               <Link key={cat} href="/conditions">
                 <Card
-                  className={`glow-hover h-full border-l-4 ${accent.border} transition-all duration-200 hover:shadow-md hover:-translate-y-0.5`}
+                  className={`glow-hover kairos-card-hover h-full border-l-4 ${accent.border} transition-all duration-200 hover:-translate-y-0.5`}
                   style={{ "--card-glow": accent.glow } as React.CSSProperties}
                 >
                   <CardHeader className="p-4">

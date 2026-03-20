@@ -23,7 +23,7 @@ export function ConditionCard({
 
   return (
     <Link href={`/conditions/${condition.id}`}>
-      <Card className="white-glow h-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+      <Card className="white-glow kairos-card-hover h-full transition-all duration-200 hover:-translate-y-0.5">
         <CardHeader className="space-y-2 p-4">
           <div className="flex items-start justify-between gap-2">
             <CardTitle className="text-base font-semibold leading-tight">

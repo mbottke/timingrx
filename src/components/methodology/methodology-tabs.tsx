@@ -82,11 +82,11 @@ export function MethodologyTabs({ activeTab, onTabChange }: MethodologyTabsProps
             tabIndex={isActive ? 0 : -1}
             onClick={() => onTabChange(tab.id)}
             className={[
-              "relative px-4 py-2 text-sm font-medium transition-colors",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+              "relative px-4 py-2 text-sm font-medium transition-colors rounded-t-md",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--kairos-focus)] focus-visible:ring-offset-1",
               isActive
-                ? "bg-primary text-primary-foreground rounded-t-md"
-                : "bg-transparent text-muted-foreground hover:text-foreground hover:bg-muted rounded-t-md",
+                ? "kairos-tab-active text-foreground"
+                : "bg-transparent text-muted-foreground hover:text-foreground hover:bg-muted",
             ].join(" ")}
           >
             {tab.label}
