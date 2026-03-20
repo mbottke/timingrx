@@ -45,7 +45,7 @@ export function TimingRxLogo({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={isHero ? "h-9 w-9" : "h-5 w-5"}
-        style={{ marginBottom: isHero ? "-2px" : "-1px" }}
+        style={{ marginBottom: isHero ? "-4px" : "-3px" }}
       >
         <defs>
           <linearGradient id={rxGrad} x1="0" y1="0" x2="1" y2="0">
@@ -85,18 +85,6 @@ export function TimingRxLogo({
           stroke={`url(#${rxGrad})`}
           strokeWidth="3"
           strokeLinecap="round"
-        />
-
-        {/* ℞ prescription slash */}
-        <line
-          x1="8"
-          y1="38"
-          x2="24"
-          y2="16"
-          stroke={`url(#${rxGrad})`}
-          strokeWidth="2"
-          strokeLinecap="round"
-          opacity="0.6"
         />
       </svg>
     </span>
