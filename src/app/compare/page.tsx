@@ -677,7 +677,7 @@ export default function ComparePage() {
 // ── GA Timeline Component ────────────────────────────────────────────────────
 
 function GATimeline({ conditions }: { conditions: ObstetricCondition[] }) {
-  const weekMarkers = [34, 35, 36, 37, 38, 39, 40, 41, 42];
+  const weekMarkers = [35, 36, 37, 38, 39, 40, 41, 42];
 
   const bars: {
     label: string;
@@ -711,7 +711,7 @@ function GATimeline({ conditions }: { conditions: ObstetricCondition[] }) {
 
   return (
     <div className="space-y-3">
-      <div className="relative h-6 ml-36">
+      <div className="relative h-6 ml-48">
         {weekMarkers.map((wk) => (
           <span
             key={wk}
@@ -724,7 +724,7 @@ function GATimeline({ conditions }: { conditions: ObstetricCondition[] }) {
       </div>
 
       <div className="relative">
-        <div className="absolute inset-0 ml-36">
+        <div className="absolute inset-0 ml-48">
           {weekMarkers.map((wk) => (
             <div
               key={wk}
@@ -742,13 +742,13 @@ function GATimeline({ conditions }: { conditions: ObstetricCondition[] }) {
             const color = CONDITION_COLORS[bar.colorIdx];
 
             return (
-              <div key={i} className="flex items-center gap-3 h-8">
-                <div className="w-32 shrink-0 text-right pr-1">
-                  <span className={`text-[11px] font-semibold truncate block ${color.text}`}>
+              <div key={i} className="flex items-center gap-3 h-9">
+                <div className="w-44 shrink-0 text-right pr-1">
+                  <span className={`text-sm font-semibold truncate block ${color.text}`}>
                     {conditions.length > 1 ? bar.label : bar.body}
                   </span>
                   {conditions.length > 1 && (
-                    <span className="text-[10px] text-muted-foreground block truncate">
+                    <span className="text-xs text-muted-foreground block truncate">
                       {bar.body}
                     </span>
                   )}
