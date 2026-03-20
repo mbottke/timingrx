@@ -34,8 +34,8 @@ export function Header() {
             <span className={`block h-0.5 w-5 bg-[var(--header-fg)] transition-transform duration-200 ${mobileOpen ? "-translate-y-1.5 -rotate-45" : ""}`} />
           </button>
 
-          <Link href="/" className="flex items-center gap-2">
-            <TimingRxLogo className="h-8" />
+          <Link href="/" className="flex items-center">
+            <TimingRxLogo />
           </Link>
 
           <nav className="hidden items-center gap-5 text-sm md:flex">
