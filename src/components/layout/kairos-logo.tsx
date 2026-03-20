@@ -88,9 +88,6 @@ export function KairosLogo({
             strokeLinecap="round"
             fill="none"
           />
-          {/* Decision node with glow */}
-          <circle cx={100} cy={40} r={8} fill="#b055f7" opacity={0.1} />
-          <circle cx={100} cy={40} r={4} fill="#b055f7" />
           {/* Wordmark */}
           <text
             x={8}
@@ -104,6 +101,8 @@ export function KairosLogo({
           >
             kairos
           </text>
+          {/* Pink dot — period accent after "s" */}
+          <circle cx={107} cy={44} r={2.5} fill="#e04cb0" />
         </svg>
         <span className="text-xs font-medium tracking-[0.2em] text-muted-foreground">
           OBSTETRIC DECISION INTELLIGENCE
@@ -138,8 +137,6 @@ export function KairosLogo({
               <stop offset="100%" stopColor="#6b93ef" />
             </linearGradient>
           </defs>
-          {/* Decision node */}
-          <circle cx={8} cy={38} r={3.5} fill="#b055f7" />
           {/* Steep curve — adjusted risk */}
           <path
             d="M8,38 C16,34 24,24 32,14 C36,9 38,6 42,4"
@@ -169,6 +166,8 @@ export function KairosLogo({
           >
             kairos
           </text>
+          {/* Pink dot — period accent after "s" */}
+          <circle cx={113} cy={31} r={2} fill="#e04cb0" />
         </svg>
       </span>
     );
@@ -194,7 +193,6 @@ export function KairosLogo({
             <stop offset="100%" stopColor="#6b93ef" />
           </linearGradient>
         </defs>
-        <circle cx={8} cy={38} r={3.5} fill="#b055f7" />
         <path
           d="M8,38 C16,34 24,24 32,14 C36,9 38,6 42,4"
           stroke={`url(#${g1})`}
@@ -221,6 +219,7 @@ export function KairosLogo({
         >
           kairos
         </text>
+        <circle cx={113} cy={31} r={2} fill="#e04cb0" />
       </svg>
     </span>
   );
