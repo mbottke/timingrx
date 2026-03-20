@@ -83,35 +83,38 @@ export function TimingRxLogo({
 
       {/* ── Prescription ℞ ── hand-crafted R with bowl, leg, and diagonal slash */}
       <g transform="translate(100, 5)">
-        {/* R vertical stem */}
-        <path
-          d="M0,27 L0,0"
+        {/* R vertical stem (left side of the letter) */}
+        <line
+          x1="0"
+          y1="0"
+          x2="0"
+          y2="28"
           stroke={`url(#${rxGrad})`}
-          strokeWidth="3.2"
+          strokeWidth="3"
           strokeLinecap="round"
         />
-        {/* R bowl (the curved top of the R) */}
+        {/* R bowl — open curve, no horizontal bar back to stem */}
         <path
-          d="M0,0 L13,0 C19,0 23,4 23,10 C23,15 19,19 13,19 L0,19"
+          d="M0,0 L12,0 C20,0 24,4 24,10 C24,16 20,19 12,19"
           stroke={`url(#${rxGrad})`}
           strokeWidth="2.4"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        {/* R leg descending to the right */}
+        {/* R leg descending from bowl junction */}
         <path
-          d="M13,19 L26,29"
+          d="M12,19 L26,30"
           stroke={`url(#${rxGrad})`}
           strokeWidth="2.4"
           strokeLinecap="round"
         />
-        {/* ℞ prescription slash — the iconic diagonal through the R's leg */}
+        {/* ℞ prescription slash — diagonal crossing through the leg */}
         <line
-          x1="5"
-          y1="31"
-          x2="19"
-          y2="13"
+          x1="8"
+          y1="32"
+          x2="22"
+          y2="15"
           stroke={`url(#${rxGrad})`}
           strokeWidth="1.7"
           strokeLinecap="round"
