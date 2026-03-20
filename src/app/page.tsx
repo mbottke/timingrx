@@ -6,23 +6,25 @@ import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/ca
 import { TimingRxLogo } from "@/components/layout/timing-rx-logo";
 
 /** Subtle color tints per medical category for visual identity */
-const categoryAccents: Partial<Record<ConditionCategory, string>> = {
-  hypertensive: "border-l-[var(--brand-coral)]",
-  diabetes: "border-l-[var(--ga-caution)]",
-  cardiac_valvular: "border-l-[var(--risk-high)]",
-  cardiac_aortopathy: "border-l-[var(--risk-high)]",
-  cardiac_cardiomyopathy: "border-l-[var(--risk-high)]",
-  cardiac_complex: "border-l-[var(--risk-high)]",
-  renal: "border-l-[var(--brand-teal)]",
-  hepatic: "border-l-[var(--brand-teal)]",
-  hematologic: "border-l-[var(--evidence-moderate)]",
-  fetal_cardiac: "border-l-[var(--evidence-source-surveillance)]",
-  fetal_growth_fluid: "border-l-[var(--evidence-source-surveillance)]",
-  fetal_structural: "border-l-[var(--evidence-source-surveillance)]",
-  infectious: "border-l-[var(--evidence-source-protocol)]",
-  neurologic: "border-l-[var(--evidence-high)]",
-  pulmonary: "border-l-[var(--evidence-high)]",
+const categoryAccents: Partial<Record<ConditionCategory, { border: string; glow: string }>> = {
+  hypertensive: { border: "border-l-[var(--brand-coral)]", glow: "var(--brand-coral)" },
+  diabetes: { border: "border-l-[var(--ga-caution)]", glow: "var(--ga-caution)" },
+  cardiac_valvular: { border: "border-l-[var(--risk-high)]", glow: "var(--risk-high)" },
+  cardiac_aortopathy: { border: "border-l-[var(--risk-high)]", glow: "var(--risk-high)" },
+  cardiac_cardiomyopathy: { border: "border-l-[var(--risk-high)]", glow: "var(--risk-high)" },
+  cardiac_complex: { border: "border-l-[var(--risk-high)]", glow: "var(--risk-high)" },
+  renal: { border: "border-l-[var(--brand-teal)]", glow: "var(--brand-teal)" },
+  hepatic: { border: "border-l-[var(--brand-teal)]", glow: "var(--brand-teal)" },
+  hematologic: { border: "border-l-[var(--evidence-moderate)]", glow: "var(--evidence-moderate)" },
+  fetal_cardiac: { border: "border-l-[var(--evidence-source-surveillance)]", glow: "var(--evidence-source-surveillance)" },
+  fetal_growth_fluid: { border: "border-l-[var(--evidence-source-surveillance)]", glow: "var(--evidence-source-surveillance)" },
+  fetal_structural: { border: "border-l-[var(--evidence-source-surveillance)]", glow: "var(--evidence-source-surveillance)" },
+  infectious: { border: "border-l-[var(--evidence-source-protocol)]", glow: "var(--evidence-source-protocol)" },
+  neurologic: { border: "border-l-[var(--evidence-high)]", glow: "var(--evidence-high)" },
+  pulmonary: { border: "border-l-[var(--evidence-high)]", glow: "var(--evidence-high)" },
 };
+
+const defaultAccent = { border: "border-l-border", glow: "oklch(0.6 0.15 290)" };
 
 export default function Home() {
   const categories = conditionsByCategory();
@@ -72,10 +74,13 @@ export default function Home() {
           ).map((cat) => {
             const conditions = categories.get(cat);
             if (!conditions || conditions.length === 0) return null;
-            const accent = categoryAccents[cat] ?? "border-l-border";
+            const accent = categoryAccents[cat] ?? defaultAccent;
             return (
               <Link key={cat} href="/conditions">
-                <Card className={`h-full border-l-4 ${accent} transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 dark:hover:shadow-[0_0_15px_rgba(139,92,246,0.3),0_0_30px_rgba(139,92,246,0.1)]`}>
+                <Card
+                  className={`glow-hover h-full border-l-4 ${accent.border} transition-all duration-200 hover:shadow-md hover:-translate-y-0.5`}
+                  style={{ "--card-glow": accent.glow } as React.CSSProperties}
+                >
                   <CardHeader className="p-4">
                     <CardTitle className="text-sm font-semibold">
                       {CATEGORY_DISPLAY_NAMES[cat]}

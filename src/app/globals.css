@@ -235,6 +235,13 @@
   animation: fade-in-up 0.3s ease-out;
 }
 
+/* Neon glow on hover — reads --card-glow CSS variable set per card */
+.dark .glow-hover:hover {
+  box-shadow:
+    0 0 8px color-mix(in oklch, var(--card-glow, oklch(0.6 0.15 290)) 40%, transparent),
+    0 0 16px color-mix(in oklch, var(--card-glow, oklch(0.6 0.15 290)) 15%, transparent);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
