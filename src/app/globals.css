@@ -314,6 +314,79 @@
   box-shadow: var(--kairos-glow), 0 4px 12px oklch(0 0 0 / 0.06);
 }
 
+/* Gradient text — use on stat numbers, badges, or any inline text */
+.kairos-gradient-text {
+  background: var(--kairos-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Page heading underline — 70px gradient bar below h1 elements */
+.kairos-heading {
+  position: relative;
+  padding-bottom: 12px;
+}
+.kairos-heading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70px;
+  height: 2px;
+  background: var(--kairos-gradient);
+  border-radius: 1px;
+}
+
+/* Custom scrollbar — branded gradient thumb */
+html {
+  scrollbar-color: var(--brand-purple) transparent;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--kairos-gradient);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--kairos-gradient);
+  filter: brightness(1.1);
+}
+
+/* Loading shimmer — branded gradient sweep for skeletons */
+@keyframes kairos-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.kairos-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--muted) 25%,
+    var(--brand-purple) 50%,
+    var(--muted) 75%
+  );
+  background-size: 200% 100%;
+  animation: kairos-shimmer 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kairos-shimmer {
+    animation: none;
+    background: var(--muted);
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
