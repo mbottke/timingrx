@@ -74,7 +74,7 @@ export function Header() {
 
       {/* Teaching mode indicator bar */}
       {teachingMode && (
-        <div className="h-[3px] bg-gradient-to-r from-amber-400 via-amber-500 to-[var(--brand-teal)]" />
+        <div className="h-[3px]" style={{ background: "var(--kairos-gradient)" }} />
       )}
 
       {/* Mobile nav drawer */}
