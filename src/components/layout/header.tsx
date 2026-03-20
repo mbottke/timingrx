@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useTeachingMode } from "@/lib/hooks/use-teaching-mode";
 import { Switch } from "@/components/ui/switch";
 import { ThemeToggle } from "./theme-toggle";
+import { TimingRxLogo } from "./timing-rx-logo";
 
 const navLinks = [
   { href: "/conditions", label: "Conditions" },
@@ -33,10 +34,8 @@ export function Header() {
             <span className={`block h-0.5 w-5 bg-[var(--header-fg)] transition-transform duration-200 ${mobileOpen ? "-translate-y-1.5 -rotate-45" : ""}`} />
           </button>
 
-          <Link href="/" className="flex items-center gap-2 font-semibold">
-            <span className="text-lg tracking-tight text-[var(--header-fg)]">
-              TimingRx
-            </span>
+          <Link href="/" className="flex items-center gap-2">
+            <TimingRxLogo className="h-8" />
           </Link>
 
           <nav className="hidden items-center gap-5 text-sm md:flex">
