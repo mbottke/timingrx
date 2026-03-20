@@ -59,17 +59,10 @@ export function TimingRxLogo({
           </linearGradient>
         </defs>
 
-        {/* R vertical stem — thick and prominent */}
+        {/* R: stem + bowl as one continuous path (vertical-only lines
+            with zero-width bounding boxes break gradient rendering) */}
         <path
-          d="M3,40 L3,2"
-          stroke={`url(#${rxGrad})`}
-          strokeWidth={strokeW}
-          strokeLinecap="round"
-        />
-
-        {/* R bowl — wide, confident curve */}
-        <path
-          d="M3,2 L18,2 C27,2 32,7 32,14 C32,21 27,25 18,25 L3,25"
+          d="M3,40 L3,2 L18,2 C27,2 32,7 32,14 C32,21 27,25 18,25 L3,25"
           stroke={`url(#${rxGrad})`}
           strokeWidth={strokeW}
           fill="none"
