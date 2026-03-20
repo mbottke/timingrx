@@ -45,7 +45,7 @@ export function TimingRxLogo({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={isHero ? "h-9 w-9" : "h-5 w-5"}
-        style={{ marginBottom: isHero ? "-4px" : "-3px" }}
+        style={{ marginBottom: isHero ? "-6px" : "-5px" }}
       >
         <defs>
           <linearGradient id={rxGrad} x1="0" y1="0" x2="1" y2="0">
@@ -76,10 +76,10 @@ export function TimingRxLogo({
           strokeLinecap="round"
         />
 
-        {/* X cross stroke — intersects the leg */}
+        {/* X cross stroke — top-left starts from R's bowl junction corner */}
         <line
-          x1="32"
-          y1="22"
+          x1="34"
+          y1="23"
           x2="16"
           y2="38"
           stroke={`url(#${rxGrad})`}
