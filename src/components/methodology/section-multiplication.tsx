@@ -107,18 +107,18 @@ export function SectionMultiplication() {
                           const d = payload[0]?.payload as (typeof chartData)[0];
                           if (!d) return null;
                           return (
-                            <div className="rounded-lg border bg-background p-3 text-xs shadow-md space-y-1">
-                              <p className="font-medium">{d.ga}</p>
+                            <div className="rounded-lg border bg-card p-3 text-xs shadow-md space-y-1">
+                              <p className="font-semibold font-mono">{d.ga}</p>
                               <p className="text-muted-foreground">
-                                Baseline: {d.baseline.toFixed(2)} / 1,000
+                                Baseline: <span className="font-mono tabular-nums">{d.baseline.toFixed(2)}</span> / 1,000
                               </p>
                               {hasFactors && (
                                 <>
                                   <p style={{ color: chartColors.adjusted }} className="font-medium">
-                                    Adjusted: {d.adjusted.toFixed(2)} / 1,000
+                                    Adjusted: <span className="font-mono tabular-nums">{d.adjusted.toFixed(2)}</span> / 1,000
                                   </p>
                                   <p className="text-muted-foreground">
-                                    95% CI: {d.ciLow.toFixed(2)}–{d.ciHigh.toFixed(2)}
+                                    95% CI: <span className="font-mono tabular-nums">{d.ciLow.toFixed(2)}–{d.ciHigh.toFixed(2)}</span>
                                   </p>
                                 </>
                               )}
@@ -198,7 +198,7 @@ export function SectionMultiplication() {
                         />
                         {step.isInteraction ? "↳ " : ""}
                         {step.label}
-                        <span className="opacity-70">×{step.multiplier.toFixed(2)}</span>
+                        <span className="opacity-70 font-mono tabular-nums">×{step.multiplier.toFixed(2)}</span>
                       </span>
                     ))}
                   </div>

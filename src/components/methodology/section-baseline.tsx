@@ -144,13 +144,13 @@ export function SectionBaseline() {
                           const d = payload[0]?.payload as (typeof chartData)[0];
                           if (!d) return null;
                           return (
-                            <div className="rounded-lg border bg-background p-3 text-xs shadow-md">
-                              <p className="font-medium">{d.ga}</p>
+                            <div className="rounded-lg border bg-card p-3 text-xs shadow-md space-y-1">
+                              <p className="font-semibold font-mono">{d.ga}</p>
                               <p className="text-muted-foreground">
-                                Risk: {d.risk.toFixed(2)} / 1,000
+                                Risk: <span className="font-mono tabular-nums">{d.risk.toFixed(2)}</span> / 1,000
                               </p>
                               <p className="text-muted-foreground">
-                                95% CI: {d.ciLow.toFixed(2)}–{d.ciHigh.toFixed(2)}
+                                95% CI: <span className="font-mono tabular-nums">{d.ciLow.toFixed(2)}–{d.ciHigh.toFixed(2)}</span>
                               </p>
                             </div>
                           );
@@ -170,7 +170,7 @@ export function SectionBaseline() {
                         type="monotone"
                         dataKey="ciLow"
                         stroke="none"
-                        fill="var(--background)"
+                        fill="var(--card)"
                         fillOpacity={1}
                         isAnimationActive={!prefersReducedMotion}
                       />
@@ -192,15 +192,15 @@ export function SectionBaseline() {
                 {/* Zone legend */}
                 <div className="mt-2 flex flex-wrap gap-4 text-xs text-muted-foreground">
                   <span className="flex items-center gap-1">
-                    <span className="inline-block h-2 w-4 rounded" style={{ background: "rgba(34,197,94,0.25)" }} />
+                    <span className="inline-block h-2 w-4 rounded bg-[var(--ga-safe)] opacity-40" />
                     37–39w (lower risk)
                   </span>
                   <span className="flex items-center gap-1">
-                    <span className="inline-block h-2 w-4 rounded" style={{ background: "rgba(234,179,8,0.25)" }} />
+                    <span className="inline-block h-2 w-4 rounded bg-[var(--ga-caution)] opacity-40" />
                     39–41w (caution zone)
                   </span>
                   <span className="flex items-center gap-1">
-                    <span className="inline-block h-2 w-4 rounded" style={{ background: "rgba(239,68,68,0.25)" }} />
+                    <span className="inline-block h-2 w-4 rounded bg-[var(--ga-danger)] opacity-40" />
                     41–42w (higher risk)
                   </span>
                 </div>
@@ -222,7 +222,7 @@ export function SectionBaseline() {
                 <FormulaLine className="ml-4">
                   Ongoing pregnancies at start of week W
                 </FormulaLine>
-                <FormulaLine className="mt-2 text-muted-foreground text-xs">
+                <FormulaLine prose className="mt-2 text-muted-foreground text-xs">
                   × 1,000 → risk per 1,000 ongoing pregnancies
                 </FormulaLine>
               </FormulaBlock>
@@ -271,7 +271,7 @@ export function SectionBaseline() {
                 <p className="text-xs text-muted-foreground mb-1">
                   Baseline risk at {gaDisplay}
                 </p>
-                <p className="text-3xl font-bold text-primary">
+                <p className="text-3xl font-bold font-mono tabular-nums text-primary">
                   <AnimatedNumber
                     value={baselineRisk}
                     decimals={2}
@@ -280,7 +280,7 @@ export function SectionBaseline() {
                   />
                 </p>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  95% CI: {closestPoint.ci95Low.toFixed(2)}–{closestPoint.ci95High.toFixed(2)}
+                  95% CI: <span className="font-mono tabular-nums">{closestPoint.ci95Low.toFixed(2)}–{closestPoint.ci95High.toFixed(2)}</span>
                 </p>
               </div>
 

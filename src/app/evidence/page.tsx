@@ -7,20 +7,21 @@ export default function EvidencePage() {
     <div className="mx-auto max-w-4xl px-4 py-8 lg:px-6">
       <h1 className="text-2xl font-semibold tracking-tight">Evidence Library</h1>
       <p className="mt-1 mb-6 text-sm text-muted-foreground">
-        {allTrials.length} landmark trials that define modern delivery timing practice.
+        <span className="font-mono font-medium text-foreground/70">{allTrials.length}</span> landmark
+        trials that define modern delivery timing practice.
       </p>
       <div className="space-y-4">
         {allTrials.map((trial) => (
-          <Card key={trial.id}>
+          <Card key={trial.id} className="border-l-4 border-l-[var(--evidence-moderate)]">
             <CardHeader>
-              <div className="flex items-baseline gap-2">
+              <div className="flex items-baseline gap-2 flex-wrap">
                 <CardTitle className="text-base">{trial.name}</CardTitle>
-                <Badge variant="outline" className="text-xs">
+                <Badge variant="outline" className="text-xs font-mono">
                   {trial.year}
                 </Badge>
                 {trial.sampleSize && (
-                  <span className="text-xs text-muted-foreground">
-                    n={trial.sampleSize.toLocaleString()}
+                  <span className="text-[11px] font-mono bg-muted text-muted-foreground px-1.5 py-0.5 rounded">
+                    n = {trial.sampleSize.toLocaleString()}
                   </span>
                 )}
               </div>
@@ -33,7 +34,7 @@ export default function EvidencePage() {
               <ul className="space-y-1">
                 {trial.keyFindings.map((f, i) => (
                   <li key={i} className="text-xs text-muted-foreground flex gap-1.5">
-                    <span className="text-muted-foreground/50">•</span>
+                    <span className="text-muted-foreground/50">&bull;</span>
                     {f}
                   </li>
                 ))}

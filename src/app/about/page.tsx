@@ -3,7 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8 lg:px-6 space-y-8">
+    <div className="mx-auto max-w-4xl px-4 py-8 lg:px-6 space-y-8">
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">
           Methodology & Disclaimers
@@ -13,7 +13,7 @@ export default function AboutPage() {
         </p>
       </div>
 
-      <Card>
+      <Card className="border-l-4 border-l-primary">
         <CardHeader>
           <CardTitle className="text-base">
             ACOG CO 831 Foundational Principles
@@ -30,7 +30,7 @@ export default function AboutPage() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="border-l-4 border-l-[var(--brand-teal)]">
         <CardHeader>
           <CardTitle className="text-base">Risk Calculator Methodology</CardTitle>
         </CardHeader>
@@ -44,20 +44,20 @@ export default function AboutPage() {
           <p>
             Each risk factor applies a published adjusted odds ratio (aOR) or
             relative risk (RR) as a multiplier to the baseline curve. The
-            rare-disease assumption (OR \u2248 RR when prevalence {"<"}1%) holds for
+            rare-disease assumption (OR {"\u2248"} RR when prevalence {"<"}1%) holds for
             stillbirth at baseline, but is monitored and corrected using the
             Zhang & Yu (1998) formula when combined risk exceeds this threshold.
           </p>
           <p>
             The confidence score uses a 5-component multiplicative formula (EQ
-            \u00d7 MV \u00d7 IP \u00d7 MP \u00d7 RP) that accounts for evidence
+            {" \u00d7 "}MV{" \u00d7 "}IP{" \u00d7 "}MP{" \u00d7 "}RP) that accounts for evidence
             quality, model validity, interaction uncertainty, magnitude
             plausibility, and rare-disease assumption validity.
           </p>
         </CardContent>
       </Card>
 
-      <Card className="border-destructive">
+      <Card className="border-l-4 border-l-destructive border-destructive/30">
         <CardHeader>
           <CardTitle className="text-base text-destructive">
             Important Disclaimers

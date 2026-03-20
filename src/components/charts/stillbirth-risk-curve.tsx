@@ -124,18 +124,18 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }
               const d = payload[0]?.payload;
               if (!d) return null;
               return (
-                <div className="rounded-lg border bg-background p-3 shadow-md text-xs space-y-1">
-                  <p className="font-medium">{d.ga}</p>
+                <div className="rounded-lg border bg-card p-3 shadow-md text-xs space-y-1">
+                  <p className="font-semibold font-mono">{d.ga}</p>
                   <p className="text-muted-foreground">
-                    Baseline: {d.baseline.toFixed(2)} per 1,000
+                    Baseline: <span className="font-mono tabular-nums">{d.baseline.toFixed(2)}</span> per 1,000
                   </p>
                   {hasFactors && (
                     <>
                       <p className="text-[var(--risk-high)] font-medium">
-                        Adjusted: {d.adjusted.toFixed(2)} per 1,000
+                        Adjusted: <span className="font-mono tabular-nums">{d.adjusted.toFixed(2)}</span> per 1,000
                       </p>
                       <p className="text-muted-foreground">
-                        95% CI: {d.ciLow.toFixed(2)} – {d.ciHigh.toFixed(2)}
+                        95% CI: <span className="font-mono tabular-nums">{d.ciLow.toFixed(2)} – {d.ciHigh.toFixed(2)}</span>
                       </p>
                     </>
                   )}

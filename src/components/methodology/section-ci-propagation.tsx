@@ -70,7 +70,7 @@ export function SectionCIPropagation() {
     {
       label: "Baseline (Muglu)",
       variance: baselineVar,
-      color: "#94a3b8",
+      color: "var(--chart-baseline)",
     },
     ...factorEntries.map((e) => ({
       label: e.label,
@@ -111,7 +111,7 @@ export function SectionCIPropagation() {
                       {/* CI fill */}
                       <motion.div
                         className="absolute top-0 h-full rounded-full"
-                        style={{ background: "rgba(239,68,68,0.25)" }}
+                        style={{ background: "var(--chart-ci)" }}
                         initial={prefersReducedMotion ? false : { left: "50%", right: "50%" }}
                         animate={{
                           left: `${Math.max(0, ((ciLow / ciHigh) * 50))}%`,
@@ -166,7 +166,7 @@ export function SectionCIPropagation() {
                       </div>
                     </div>
                     <p className="mt-2 text-center text-xs text-muted-foreground">
-                      CI width: {ciWidth.toFixed(3)} per 1,000 (all values per 1,000 ongoing pregnancies)
+                      CI width: <span className="font-mono tabular-nums">{ciWidth.toFixed(3)}</span> per 1,000 (all values per 1,000 ongoing pregnancies)
                     </p>
                   </div>
                 ) : (
@@ -222,7 +222,7 @@ export function SectionCIPropagation() {
                       })}
                     </AnimatePresence>
                     <p className="pt-1 text-right text-xs text-muted-foreground">
-                      Total Var(ln) = {totalVar.toFixed(6)}
+                      Total Var(ln) = <span className="font-mono tabular-nums">{totalVar.toFixed(6)}</span>
                     </p>
                   </div>
                 ) : (
@@ -242,7 +242,7 @@ export function SectionCIPropagation() {
                 <FormulaLine className="ml-4">
                   Var(ln R_baseline) + Σᵢ Var(ln RR_i)
                 </FormulaLine>
-                <FormulaLine className="mt-2">where each:</FormulaLine>
+                <FormulaLine prose className="mt-2">where each:</FormulaLine>
                 <FormulaLine className="ml-4">
                   Var(ln RR_i) = [(ln(CI_upper) − ln(CI_lower))]²
                 </FormulaLine>

@@ -94,14 +94,14 @@
   --header-muted: oklch(0.70 0.015 245);
 
   /* Chart canvas tokens (overridden by .chart-dark) */
-  --chart-text: oklch(0.45 0.015 245);
-  --chart-grid: oklch(0.90 0.005 245);
-  --chart-baseline: oklch(0.65 0.02 245);
+  --chart-text: oklch(0.40 0.015 245);
+  --chart-grid: oklch(0.88 0.005 245);
+  --chart-baseline: oklch(0.50 0.06 245);
   --chart-adjusted: oklch(0.577 0.245 27.325);
-  --chart-ci: oklch(0.577 0.245 27.325 / 12%);
-  --chart-zone-safe: oklch(0.627 0.194 149.214 / 8%);
-  --chart-zone-caution: oklch(0.795 0.184 86.047 / 8%);
-  --chart-zone-danger: oklch(0.577 0.245 27.325 / 8%);
+  --chart-ci: oklch(0.577 0.245 27.325 / 15%);
+  --chart-zone-safe: oklch(0.627 0.194 149.214 / 12%);
+  --chart-zone-caution: oklch(0.795 0.184 86.047 / 12%);
+  --chart-zone-danger: oklch(0.577 0.245 27.325 / 12%);
 
   /* TimingRx medical color tokens */
   --risk-high: oklch(0.577 0.245 27.325);
@@ -197,26 +197,26 @@
   --evidence-source-registry: oklch(0.55 0.18 290);
 
   /* Chart tokens (dark) — brighter for dark backgrounds */
-  --chart-text: oklch(0.70 0.01 245);
-  --chart-grid: oklch(0.28 0.01 245);
-  --chart-baseline: oklch(0.55 0.02 245);
-  --chart-adjusted: oklch(0.70 0.22 27);
-  --chart-ci: oklch(0.70 0.22 27 / 15%);
-  --chart-zone-safe: oklch(0.627 0.194 149.214 / 10%);
-  --chart-zone-caution: oklch(0.795 0.184 86.047 / 10%);
-  --chart-zone-danger: oklch(0.577 0.245 27.325 / 10%);
+  --chart-text: oklch(0.82 0.01 245);
+  --chart-grid: oklch(0.35 0.008 245);
+  --chart-baseline: oklch(0.72 0.04 245);
+  --chart-adjusted: oklch(0.75 0.20 27);
+  --chart-ci: oklch(0.75 0.20 27 / 20%);
+  --chart-zone-safe: oklch(0.65 0.18 149 / 18%);
+  --chart-zone-caution: oklch(0.80 0.16 86 / 18%);
+  --chart-zone-danger: oklch(0.65 0.20 27 / 18%);
 }
 
 /* Dark chart canvas — used on the risk curve card */
 .chart-dark {
-  --chart-text: oklch(0.75 0.01 245);
-  --chart-grid: oklch(0.30 0.01 245);
-  --chart-baseline: oklch(0.60 0.02 245);
-  --chart-adjusted: oklch(0.70 0.22 27);
-  --chart-ci: oklch(0.70 0.22 27 / 15%);
-  --chart-zone-safe: oklch(0.627 0.194 149.214 / 10%);
-  --chart-zone-caution: oklch(0.795 0.184 86.047 / 10%);
-  --chart-zone-danger: oklch(0.577 0.245 27.325 / 10%);
+  --chart-text: oklch(0.85 0.008 245);
+  --chart-grid: oklch(0.38 0.008 245);
+  --chart-baseline: oklch(0.75 0.04 245);
+  --chart-adjusted: oklch(0.78 0.20 27);
+  --chart-ci: oklch(0.78 0.20 27 / 22%);
+  --chart-zone-safe: oklch(0.65 0.18 149 / 20%);
+  --chart-zone-caution: oklch(0.80 0.16 86 / 20%);
+  --chart-zone-danger: oklch(0.65 0.20 27 / 20%);
 }
 
 /* Page fade-in animation */

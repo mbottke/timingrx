@@ -79,7 +79,7 @@ export function SectionConfidence() {
                 <p className="text-xs text-muted-foreground mb-1">
                   Confidence Score
                 </p>
-                <p className="text-4xl font-bold" style={{ color: gradeColor(grade) }}>
+                <p className="text-4xl font-bold font-mono tabular-nums" style={{ color: gradeColor(grade) }}>
                   <AnimatedNumber value={score} decimals={0} stiffness={animStiffness} />
                   <span className="ml-1 text-2xl">/ 100</span>
                 </p>
@@ -150,7 +150,7 @@ export function SectionConfidence() {
                 <FormulaLine className="text-xs text-muted-foreground">
                   n = {n} → 1.0 − {(0.03 * n).toFixed(3)} − {(0.005 * n * n).toFixed(3)} = {mvRaw.toFixed(3)}
                 </FormulaLine>
-                <FormulaLine className="text-xs text-muted-foreground">
+                <FormulaLine prose className="text-xs text-muted-foreground">
                   {mvRaw < 0.4
                     ? "Clamped to floor 0.400 (extreme model strain)"
                     : n === 0
@@ -173,7 +173,7 @@ export function SectionConfidence() {
                   H (hypothesized) = {hypothesizedCount}, P (published) = {publishedCount}
                 </FormulaLine>
                 {!applyInteractions && (
-                  <FormulaLine className="text-xs text-muted-foreground">
+                  <FormulaLine prose className="text-xs text-muted-foreground">
                     Interactions not applied → IP = 1.000
                   </FormulaLine>
                 )}
@@ -184,11 +184,11 @@ export function SectionConfidence() {
 
               {/* MP detail */}
               <FormulaBlock title="MP — Magnitude Plausibility" accentColor="border-teal-500">
-                <FormulaLine>
+                <FormulaLine prose>
                   MP = stepwise function of combined multiplier M
                 </FormulaLine>
                 <FormulaLine className="text-xs text-muted-foreground">
-                  M &lt; 4 → 1.00 | 4–8 → 0.93 | 8–15 → 0.85 | 15–25 → 0.78 | &gt;25 → 0.72
+                  M {"<"} 4 → <span className="font-mono">1.00</span> | 4–8 → <span className="font-mono">0.93</span> | 8–15 → <span className="font-mono">0.85</span> | 15–25 → <span className="font-mono">0.78</span> | {">"}25 → <span className="font-mono">0.72</span>
                 </FormulaLine>
                 <FormulaLine className="text-xs text-muted-foreground">
                   Combined multiplier ={" "}
@@ -206,11 +206,11 @@ export function SectionConfidence() {
 
               {/* RP detail */}
               <FormulaBlock title="RP — Rare Disease Validity (OR≈RR)" accentColor="border-rose-500">
-                <FormulaLine>
+                <FormulaLine prose>
                   RP = stepwise function of adjusted risk proportion
                 </FormulaLine>
                 <FormulaLine className="text-xs text-muted-foreground">
-                  &lt;1% → 1.00 | 1–5% → 0.95 | 5–10% → 0.88 | 10–20% → 0.78 | &gt;20% → 0.65
+                  {"<"}1% → <span className="font-mono">1.00</span> | 1–5% → <span className="font-mono">0.95</span> | 5–10% → <span className="font-mono">0.88</span> | 10–20% → <span className="font-mono">0.78</span> | {">"}20% → <span className="font-mono">0.65</span>
                 </FormulaLine>
                 <FormulaLine className="text-xs text-muted-foreground">
                   Adjusted risk proportion ={" "}

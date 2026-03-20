@@ -11,12 +11,15 @@ export { AnimatePresence };
 export interface FormulaLineProps {
   children: React.ReactNode;
   highlight?: boolean;
+  /** Use sans-serif for prose/explanatory lines within a formula block */
+  prose?: boolean;
   className?: string;
 }
 
 export function FormulaLine({
   children,
   highlight = false,
+  prose = false,
   className,
 }: FormulaLineProps) {
   return (
@@ -26,7 +29,8 @@ export function FormulaLine({
       exit={{ opacity: 0, x: 8 }}
       transition={{ duration: 0.2 }}
       className={cn(
-        "font-mono text-sm leading-relaxed",
+        "text-sm leading-relaxed",
+        prose ? "font-sans" : "font-mono",
         highlight && "rounded bg-primary/10 px-1 font-semibold text-primary",
         className
       )}

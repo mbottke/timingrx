@@ -153,20 +153,29 @@ export function SectionGradeMapping() {
                     className="absolute -top-1 flex flex-col items-center"
                     animate={{ left: `${pointerPosition}%` }}
                     transition={springTransition}
-                    style={{ transform: "translateX(-50%)" }}
+                    style={{ transform: "translateX(-50%)", filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.35))" }}
                   >
                     {/* Triangle pointer */}
                     <div
                       className="w-0 h-0"
                       style={{
-                        borderLeft: "6px solid transparent",
-                        borderRight: "6px solid transparent",
-                        borderTop: `8px solid ${currentGradeColor}`,
+                        borderLeft: "7px solid transparent",
+                        borderRight: "7px solid transparent",
+                        borderTop: "9px solid white",
+                      }}
+                    />
+                    {/* Inner triangle (colored, sits on top of white outline) */}
+                    <div
+                      className="w-0 h-0 -mt-[9px]"
+                      style={{
+                        borderLeft: "5px solid transparent",
+                        borderRight: "5px solid transparent",
+                        borderTop: `7px solid ${currentGradeColor}`,
                       }}
                     />
                     {/* Score bubble */}
                     <div
-                      className="mt-1 rounded-md px-2 py-0.5 text-xs font-bold text-white whitespace-nowrap"
+                      className="mt-1 rounded-md px-2.5 py-1 text-xs font-bold font-mono text-white whitespace-nowrap ring-2 ring-white dark:ring-white/80"
                       style={{ background: currentGradeColor }}
                     >
                       {score}
@@ -189,7 +198,7 @@ export function SectionGradeMapping() {
                       {confidenceScore.label}
                     </p>
                     <p className="text-xs text-muted-foreground mt-0.5">
-                      Score: {score} / 100
+                      Score: <span className="font-mono tabular-nums">{score}</span> / 100
                     </p>
                   </div>
                 </div>
@@ -278,7 +287,7 @@ export function SectionGradeMapping() {
                 <FormulaLine>
                   A zone: 15% of bar (scores 85–100)
                 </FormulaLine>
-                <FormulaLine className="text-muted-foreground text-xs mt-2">
+                <FormulaLine prose className="text-muted-foreground text-xs mt-2">
                   F occupies more visual space because it spans 40 score points
                   vs 15 for upper grades — calibrated to reflect clinical
                   reality (high confidence is earned, not assumed).

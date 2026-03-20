@@ -57,7 +57,7 @@ export function GlassBoxDisplay({ result }: { result: RiskCalculation }) {
                 )}
               </div>
               {fullFactor && (
-                <span className="text-[11px] text-muted-foreground ml-2 whitespace-nowrap">
+                <span className="text-[11px] text-muted-foreground font-mono ml-2 whitespace-nowrap">
                   R={fc.dataReliability.toFixed(2)}
                 </span>
               )}

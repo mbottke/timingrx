@@ -24,7 +24,7 @@ export function ConfidenceDisplay({
           <Badge className={`text-xs ${gradeColors[confidence.grade]}`}>
             Grade {confidence.grade}
           </Badge>
-          <span className="text-xs text-muted-foreground">
+          <span className="text-xs text-muted-foreground font-mono tabular-nums">
             {confidence.score}/100
           </span>
         </div>

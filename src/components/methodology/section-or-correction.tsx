@@ -178,7 +178,7 @@ export function SectionOrCorrection() {
                         OR → RR correction applied
                       </p>
                       <p className="text-xs text-muted-foreground mt-0.5">
-                        Combined risk {adjustedPct.toFixed(2)}% exceeds 1% threshold.
+                        Combined risk <span className="font-mono tabular-nums">{adjustedPct.toFixed(2)}%</span> exceeds 1% threshold.
                         Zhang {"&"} Yu corrected estimate shown.
                       </p>
                     </div>
@@ -243,10 +243,10 @@ export function SectionOrCorrection() {
               {/* Zhang & Yu formula */}
               <FormulaBlock title="Zhang & Yu (1998) Correction" accentColor="border-amber-500">
                 <FormulaLine>RR = OR / [(1 − P₀) + (P₀ × OR)]</FormulaLine>
-                <FormulaLine className="text-xs text-muted-foreground mt-1">
+                <FormulaLine prose className="text-xs text-muted-foreground mt-1">
                   P₀ = baseline risk proportion
                 </FormulaLine>
-                <FormulaLine className="text-xs text-muted-foreground">
+                <FormulaLine prose className="text-xs text-muted-foreground">
                   OR = combined odds ratio (product of factor ORs)
                 </FormulaLine>
                 {triggered && (
@@ -275,8 +275,8 @@ export function SectionOrCorrection() {
                   </>
                 )}
                 {!triggered && (
-                  <FormulaLine className="text-xs text-muted-foreground mt-1">
-                    Correction not triggered (combined risk &lt; 1%)
+                  <FormulaLine prose className="text-xs text-muted-foreground mt-1">
+                    Correction not triggered (combined risk {"<"} 1%)
                   </FormulaLine>
                 )}
               </FormulaBlock>
