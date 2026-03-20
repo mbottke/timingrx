@@ -192,7 +192,7 @@ export function GAEntry({ currentGA, onGAChange }: Props) {
               onClick={() => setMethod(m.id)}
               className={`flex items-center gap-1 rounded-md px-2 py-1 text-[11px] border transition-colors ${
                 method === m.id
-                  ? "border-primary bg-primary/10 text-primary font-medium"
+                  ? "border-[var(--brand-pink)] bg-[var(--brand-pink)]/10 text-[var(--brand-pink)] font-medium"
                   : "border-transparent hover:bg-accent/50 text-muted-foreground"
               }`}
             >

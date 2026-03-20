@@ -19,6 +19,10 @@ export const chartColors = {
   meconium: "var(--ga-caution)",
   macrosomia: "var(--ga-safe)",
   stillbirth: "var(--chart-adjusted)",
+  // Brand gradient references (use url(#id) in stroke/fill)
+  baselineGradient: "url(#kairos-chart-baseline)",
+  adjustedGradient: "url(#kairos-chart-adjusted)",
+  ciGradient: "url(#kairos-chart-ci)",
 };
 
 export const chartFont = {

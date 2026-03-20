@@ -26,7 +26,7 @@ export function RiskDataTable({ riskData }: { riskData: RiskDataPoint[] }) {
     <Card className="border-l-4 border-l-[var(--brand-coral)]">
       <CardHeader
         className={
-          teachingMode ? "bg-primary/5" : undefined
+          teachingMode ? "bg-[var(--brand-pink)]/5" : undefined
         }
       >
         <div className="flex items-center justify-between">
@@ -115,7 +115,7 @@ export function RiskDataTable({ riskData }: { riskData: RiskDataPoint[] }) {
                     {showInterpretation && (
                       <tr>
                         <td colSpan={4} className="pb-2">
-                          <div className="border-l-[3px] border-primary/30 pl-3 text-sm italic text-primary">
+                          <div className="border-l-[3px] border-[var(--brand-pink)]/30 pl-3 text-sm italic text-[var(--brand-pink)]">
                             → {generateTeachingInterpretation(dp.statistic, dp.populationDescription)}
                           </div>
                         </td>

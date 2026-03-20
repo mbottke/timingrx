@@ -20,6 +20,7 @@ import { TeachingCallout } from "./teaching-callout";
 import { MobileTrackTabs } from "./mobile-track-tabs";
 import { baselineStillbirthCurve } from "@/data/risk-models/baseline-stillbirth";
 import { chartColors } from "@/components/charts/chart-theme";
+import { ChartGradientDefs } from "@/components/charts/chart-gradient-defs";
 import { gaToDisplay } from "@/lib/utils/ga-format";
 import { w } from "@/data/helpers";
 
@@ -76,6 +77,7 @@ export function SectionBaseline() {
                       data={chartData}
                       margin={{ top: 20, right: 20, bottom: 30, left: 10 }}
                     >
+                      <ChartGradientDefs />
                       <CartesianGrid
                         strokeDasharray="3 3"
                         stroke={chartColors.grid}
@@ -162,7 +164,7 @@ export function SectionBaseline() {
                         type="monotone"
                         dataKey="ciHigh"
                         stroke="none"
-                        fill={chartColors.ci}
+                        fill={chartColors.ciGradient}
                         fillOpacity={0.4}
                         isAnimationActive={!prefersReducedMotion}
                       />
@@ -179,9 +181,9 @@ export function SectionBaseline() {
                       <Line
                         type="monotone"
                         dataKey="risk"
-                        stroke={chartColors.baseline}
+                        stroke={chartColors.baselineGradient}
                         strokeWidth={2.5}
-                        dot={{ fill: chartColors.baseline, r: 4 }}
+                        dot={{ fill: "var(--brand-purple)", r: 4 }}
                         name="Baseline risk"
                         isAnimationActive={!prefersReducedMotion}
                       />

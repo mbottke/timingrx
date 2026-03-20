@@ -17,7 +17,7 @@ export function Attribution({ className }: AttributionProps) {
       )}
     >
       A clinical intelligence platform by{" "}
-      <span className="font-medium text-foreground/70">
+      <span className="font-medium text-[var(--brand-pink)]">
         Michael Bottke, MD
       </span>
     </p>

@@ -18,6 +18,7 @@ import { TeachingCallout } from "./teaching-callout";
 import { MobileTrackTabs } from "./mobile-track-tabs";
 import { baselineStillbirthCurve } from "@/data/risk-models/baseline-stillbirth";
 import { chartColors } from "@/components/charts/chart-theme";
+import { ChartGradientDefs } from "@/components/charts/chart-gradient-defs";
 import { gaToDisplay } from "@/lib/utils/ga-format";
 
 // ── Section Component ─────────────────────────────────────────────────────────
@@ -74,6 +75,7 @@ export function SectionMultiplication() {
                       data={chartData}
                       margin={{ top: 20, right: 20, bottom: 30, left: 10 }}
                     >
+                      <ChartGradientDefs />
                       <CartesianGrid
                         strokeDasharray="3 3"
                         stroke={chartColors.grid}
@@ -133,7 +135,7 @@ export function SectionMultiplication() {
                           type="monotone"
                           dataKey="ciHigh"
                           stroke="none"
-                          fill={chartColors.ci}
+                          fill={chartColors.ciGradient}
                           fillOpacity={1}
                           isAnimationActive={!prefersReducedMotion}
                           legendType="none"
@@ -144,10 +146,10 @@ export function SectionMultiplication() {
                       <Line
                         type="monotone"
                         dataKey="baseline"
-                        stroke={chartColors.baseline}
+                        stroke={chartColors.baselineGradient}
                         strokeWidth={hasFactors ? 1.5 : 2.5}
                         strokeDasharray={hasFactors ? "6 3" : undefined}
-                        dot={{ fill: chartColors.baseline, r: hasFactors ? 2 : 4 }}
+                        dot={{ fill: "var(--brand-purple)", r: hasFactors ? 2 : 4 }}
                         name="Baseline"
                         isAnimationActive={!prefersReducedMotion}
                       />
@@ -157,10 +159,10 @@ export function SectionMultiplication() {
                         <Line
                           type="monotone"
                           dataKey="adjusted"
-                          stroke={chartColors.adjusted}
+                          stroke={chartColors.adjustedGradient}
                           strokeWidth={2.5}
                           dot={{
-                            fill: chartColors.adjusted,
+                            fill: "var(--brand-pink)",
                             r: 4,
                             strokeWidth: 2,
                             stroke: "#fff",

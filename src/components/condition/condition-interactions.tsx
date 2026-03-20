@@ -51,7 +51,7 @@ export function ConditionInteractions({
               </div>
             )}
             {teachingMode && teachingExpanded && (
-              <div className="mt-2 border-l-[3px] border-primary/30 pl-3 text-sm italic text-primary">
+              <div className="mt-2 border-l-[3px] border-[var(--brand-pink)]/30 pl-3 text-sm italic text-[var(--brand-pink)]">
                 → This interaction affects delivery planning. {ix.description}
               </div>
             )}

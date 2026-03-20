@@ -16,6 +16,7 @@ import type { RiskCalculation } from "@/data/types";
 import { gaToDisplay } from "@/lib/utils/ga-format";
 import { baselineStillbirthCurve } from "@/data/risk-models/baseline-stillbirth";
 import { chartColors } from "./chart-theme";
+import { ChartGradientDefs } from "./chart-gradient-defs";
 import { w } from "@/data/helpers";
 
 interface Props {
@@ -46,6 +47,7 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }
     <div className="w-full" style={{ height: height ?? "350px" }}>
       <ResponsiveContainer width="100%" height="100%">
         <ComposedChart data={data} margin={{ top: 30, right: 30, bottom: 20, left: 10 }}>
+          <ChartGradientDefs />
           <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} />
 
           {/* Risk zone shading */}
@@ -150,7 +152,7 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }
               type="monotone"
               dataKey="ciHigh"
               stroke="none"
-              fill={chartColors.ci}
+              fill={chartColors.ciGradient}
               fillOpacity={1}
             />
           )}
@@ -159,10 +161,10 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }
           <Line
             type="monotone"
             dataKey="baseline"
-            stroke={chartColors.baseline}
+            stroke={chartColors.baselineGradient}
             strokeWidth={hasFactors ? 1.5 : 2.5}
             strokeDasharray={hasFactors ? "6 3" : undefined}
-            dot={{ fill: chartColors.baseline, r: hasFactors ? 2 : 4 }}
+            dot={{ fill: "var(--brand-purple)", r: hasFactors ? 2 : 4 }}
             name="Baseline"
           />
 
@@ -171,9 +173,9 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }
             <Line
               type="monotone"
               dataKey="adjusted"
-              stroke={chartColors.adjusted}
+              stroke={chartColors.adjustedGradient}
               strokeWidth={2.5}
-              dot={{ fill: chartColors.adjusted, r: 4, strokeWidth: 2, stroke: "#fff" }}
+              dot={{ fill: "var(--brand-pink)", r: 4, strokeWidth: 2, stroke: "#fff" }}
               name="Adjusted"
             />
           )}

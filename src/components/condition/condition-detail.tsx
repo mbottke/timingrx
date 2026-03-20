@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ObstetricCondition } from "@/data/types";
 import { CATEGORY_DISPLAY_NAMES } from "@/data/types";
 import { useTeachingMode } from "@/lib/hooks/use-teaching-mode";
@@ -190,8 +191,8 @@ export function ConditionDetail({
                   ))}
                 </ul>
                 {teachingMode && trial.relevantRiskData && trial.relevantRiskData.length > 0 && (
-                  <div className="mt-3 bg-primary/5 border border-primary/15 rounded-lg p-3">
-                    <p className="text-xs font-semibold text-primary mb-2">Trial Risk Data</p>
+                  <div className="mt-3 bg-[var(--brand-pink)]/5 border border-[var(--brand-pink)]/15 rounded-lg p-3">
+                    <p className="text-xs font-semibold text-[var(--brand-pink)] mb-2">Trial Risk Data</p>
                     <table className="w-full text-xs">
                       <thead>
                         <tr className="text-left text-muted-foreground border-b">
@@ -231,7 +232,7 @@ export function ConditionDetail({
                         })}
                       </tbody>
                     </table>
-                    <div className="mt-2 border-l-[3px] border-primary/30 pl-3 text-sm italic text-primary">
+                    <div className="mt-2 border-l-[3px] border-[var(--brand-pink)]/30 pl-3 text-sm italic text-[var(--brand-pink)]">
                       {trial.relevantRiskData.map((rd, j) => (
                         <p key={j} className="mb-1 last:mb-0">
                           &rarr; {generateTeachingInterpretation(rd.statistic, rd.populationDescription)}
@@ -284,7 +285,11 @@ export function ConditionDetail({
             {condition.subVariants.map((sv) => {
               const rec = sv.guidelineRecommendations[0];
               return (
-                <div key={sv.id} className="rounded-lg border bg-muted/30 p-3.5 transition-colors hover:bg-muted/50">
+                <Link
+                  key={sv.id}
+                  href={`/conditions/${sv.id}`}
+                  className="block rounded-lg border bg-muted/30 p-3.5 transition-colors hover:bg-muted/50 hover:border-[var(--brand-pink)]/40"
+                >
                   <div className="flex flex-wrap items-center gap-2 mb-1.5">
                     <span className="text-sm font-semibold">{sv.name}</span>
                     {rec && <GAWindowBadge timing={rec.timing} />}
@@ -295,7 +300,7 @@ export function ConditionDetail({
                       {rec.notes}
                     </p>
                   )}
-                </div>
+                </Link>
               );
             })}
           </CardContent>

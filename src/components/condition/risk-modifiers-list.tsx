@@ -54,7 +54,7 @@ export function RiskModifiersList({ modifiers }: { modifiers: RiskModifier[] }) 
                 </span>
               </div>
               {teachingMode && teachingExpanded && (
-                <div className="mt-1.5 ml-[calc(0.375rem+1.5rem)] border-l-[3px] border-primary/30 pl-3 text-sm italic text-primary">
+                <div className="mt-1.5 ml-[calc(0.375rem+1.5rem)] border-l-[3px] border-[var(--brand-pink)]/30 pl-3 text-sm italic text-[var(--brand-pink)]">
                   → Clinical mechanism: {mod.effect}
                   {mod.riskData &&
                     ` ${generateTeachingInterpretation(mod.riskData.statistic, mod.riskData.populationDescription)}`}
