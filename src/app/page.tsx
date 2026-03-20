@@ -3,6 +3,7 @@ import { conditionsByCategory, allConditions } from "@/data/conditions";
 import { CATEGORY_DISPLAY_NAMES, type ConditionCategory } from "@/data/types";
 import { allTrials } from "@/data/trials";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { TimingRxLogo } from "@/components/layout/timing-rx-logo";
 
 /** Subtle color tints per medical category for visual identity */
 const categoryAccents: Partial<Record<ConditionCategory, string>> = {
@@ -31,9 +32,7 @@ export default function Home() {
       {/* Hero */}
       <section className="text-center mb-14">
         <div className="mx-auto max-w-2xl">
-          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Timing<span className="text-primary">Rx</span>
-          </h1>
+          <TimingRxLogo variant="hero" />
           <p className="mt-4 text-base text-muted-foreground leading-relaxed">
             Evidence-based delivery timing for every maternal and fetal condition.
             Risk calculator with confidence scoring, and interactive
@@ -50,7 +49,7 @@ export default function Home() {
               href="/calculator"
               className="inline-flex h-11 items-center rounded-lg border bg-card px-7 text-sm font-medium shadow-sm transition-all hover:bg-accent hover:shadow-md"
             >
-              Risk Calculator
+              Risk Curve
             </Link>
           </div>
         </div>
