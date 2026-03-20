@@ -710,12 +710,20 @@ function GATimeline({ conditions }: { conditions: ObstetricCondition[] }) {
   }
 
   return (
-    <div className="space-y-3">
+    <div>
+      {/* Explanation */}
+      <p className="text-xs text-muted-foreground mb-4">
+        Each bar represents the recommended delivery window for a condition
+        {conditions.length > 1 ? "" : " per guideline"}. Longer bars indicate
+        wider acceptable ranges. Overlapping bars show where guidelines agree.
+      </p>
+
+      {/* Week axis header */}
       <div className="relative h-6 ml-48">
         {weekMarkers.map((wk) => (
           <span
             key={wk}
-            className="absolute text-[11px] text-muted-foreground tabular-nums -translate-x-1/2"
+            className="absolute text-xs font-medium text-muted-foreground tabular-nums -translate-x-1/2"
             style={{ left: `${gaToPercent(wk * 7)}%` }}
           >
             {wk}w
@@ -723,45 +731,58 @@ function GATimeline({ conditions }: { conditions: ObstetricCondition[] }) {
         ))}
       </div>
 
+      {/* Rows */}
       <div className="relative">
-        <div className="absolute inset-0 ml-48">
+        {/* Grid lines behind everything */}
+        <div className="absolute inset-0 ml-48 pointer-events-none">
           {weekMarkers.map((wk) => (
             <div
               key={wk}
-              className="absolute top-0 bottom-0 w-px bg-border"
+              className="absolute top-0 bottom-0 w-px bg-border/60"
               style={{ left: `${gaToPercent(wk * 7)}%` }}
             />
           ))}
         </div>
 
-        <div className="relative space-y-2 py-1">
+        {/* Bar rows */}
+        <div className="relative space-y-1 py-1">
           {bars.map((bar, i) => {
             const left = gaToPercent(bar.earliest);
             const right = gaToPercent(bar.latest);
-            const width = Math.max(right - left, 1);
+            const width = Math.max(right - left, 1.5);
             const color = CONDITION_COLORS[bar.colorIdx];
 
             return (
-              <div key={i} className="flex items-center gap-3 h-9">
-                <div className="w-44 shrink-0 text-right pr-1">
-                  <span className={`text-sm font-semibold truncate block ${color.text}`}>
+              <div
+                key={i}
+                className="flex items-center gap-3 rounded-md py-2 even:bg-muted/30"
+              >
+                {/* Left labels */}
+                <div className="w-44 shrink-0 text-right pr-2">
+                  <span
+                    className={`text-sm font-semibold leading-tight block ${color.text}`}
+                  >
                     {conditions.length > 1 ? bar.label : bar.body}
                   </span>
                   {conditions.length > 1 && (
-                    <span className="text-xs text-muted-foreground block truncate">
+                    <span className="text-xs text-muted-foreground block leading-tight">
                       {bar.body}
                     </span>
                   )}
                 </div>
-                <div className="relative flex-1 h-full">
+
+                {/* Bar area */}
+                <div className="relative flex-1 h-7">
+                  {/* The bar itself */}
                   <div
-                    className={`absolute top-1 bottom-1 rounded-md ${color.bg} opacity-80`}
+                    className={`absolute top-0.5 bottom-0.5 rounded ${color.bg}`}
                     style={{ left: `${left}%`, width: `${width}%` }}
                   />
-                  <span
-                    className="absolute top-1/2 -translate-y-1/2 text-[10px] font-mono text-white font-medium px-1.5 whitespace-nowrap"
-                    style={{ left: `${left}%` }}
-                  >
+                </div>
+
+                {/* GA range label — to the right, outside the bar area */}
+                <div className="w-28 shrink-0 pl-1">
+                  <span className="text-xs font-mono font-medium tabular-nums">
                     {gaRangeToDisplay(bar.earliest, bar.latest)}
                   </span>
                 </div>
