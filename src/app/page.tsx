@@ -37,8 +37,10 @@ export default function Home() {
         <HeroMotif className="absolute inset-0 w-full h-full pointer-events-none z-0" />
         <div className="relative z-10 mx-auto max-w-2xl">
           <KairosLogo variant="hero" />
-          <p className="mt-4 text-base text-muted-foreground leading-relaxed">
-            Delivery timing for every maternal and fetal condition.
+          <p className="mt-4 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">
+            Delivery timing for every maternal &amp; fetal condition
+          </p>
+          <p className="mt-3 text-sm text-muted-foreground/80 leading-relaxed">
             Risk calculator with confidence scoring, and interactive
             visualizations.
           </p>

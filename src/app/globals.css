@@ -324,4 +324,20 @@
   html {
     @apply font-sans;
   }
+  /* Phase 3: Tighter heading tracking to match Kairos wordmark feel */
+  h1, h2 {
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Phase 3: Dark mode — subtle gradient background wash */
+.dark body {
+  background: linear-gradient(180deg, oklch(0.14 0.01 260), oklch(0.12 0.015 280));
+  background-attachment: fixed;
+}
+
+/* Phase 3: Dark mode glass card surfaces */
+.dark .glass-card {
+  backdrop-filter: blur(8px);
+  background: oklch(0.18 0.01 260 / 0.6);
 }
