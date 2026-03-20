@@ -53,17 +53,17 @@ export function TimingRxLogo({
         </filter>
       </defs>
 
-      {/* ── "TIMING" ── bold, all caps, sans-serif */}
+      {/* ── "Timing" ── semibold, tight tracking, matches page title font */}
       <text
         x="2"
         y="27"
-        fontFamily="-apple-system, 'Helvetica Neue', 'Arial', sans-serif"
+        fontFamily="var(--font-geist-sans, -apple-system, 'Helvetica Neue', sans-serif)"
         fontSize="25"
-        fontWeight="700"
-        letterSpacing="1"
+        fontWeight="600"
+        letterSpacing="-0.5"
         fill="var(--header-fg, #f0f0f5)"
       >
-        TIMING
+        Timing
       </text>
 
       {/* ── Pharmacy ℞ symbol ── R with integrated x crossing at the leg */}
