@@ -32,8 +32,10 @@ export function TimingRxLogo({
     >
       {/* "Timing" — real HTML text, inherits Geist font from the page */}
       <span
-        className={`font-semibold tracking-tight text-[var(--header-fg,#f0f0f5)] ${
-          isHero ? "text-4xl" : "text-lg"
+        className={`font-semibold tracking-tight ${
+          isHero
+            ? "text-4xl text-foreground"
+            : "text-lg text-[var(--header-fg,#f0f0f5)]"
         }`}
       >
         Timing
@@ -44,8 +46,8 @@ export function TimingRxLogo({
         viewBox="0 0 38 40"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={isHero ? "h-9 w-9" : "h-5 w-5"}
-        style={{ marginBottom: isHero ? "-6px" : "-5px" }}
+        className={isHero ? "h-10 w-10" : "h-5 w-5"}
+        style={{ marginBottom: isHero ? "-7px" : "-5px" }}
       >
         <defs>
           <linearGradient id={rxGrad} x1="0" y1="0" x2="1" y2="0">

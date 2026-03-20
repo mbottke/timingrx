@@ -1,6 +1,7 @@
 import { conditionsByCategory, conditionGroups } from "@/data/conditions";
 import { CATEGORY_DISPLAY_NAMES, type ConditionCategory } from "@/data/types";
 import { ConditionCard } from "@/components/condition/condition-card";
+import { TimingRxLogo } from "@/components/layout/timing-rx-logo";
 
 export default function ConditionsPage() {
   const categories = conditionsByCategory();
@@ -10,6 +11,11 @@ export default function ConditionsPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 lg:px-6">
+      {/* Centered hero logo */}
+      <div className="mb-6 flex justify-center">
+        <TimingRxLogo variant="hero" />
+      </div>
+
       <div className="mb-8">
         <h1 className="text-2xl font-semibold tracking-tight">
           Delivery Timing by Condition
