@@ -153,18 +153,27 @@ export function SectionGradeMapping() {
                     className="absolute -top-1 flex flex-col items-center"
                     animate={{ left: `${pointerPosition}%` }}
                     transition={springTransition}
-                    style={{ transform: "translateX(-50%)", filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.35))" }}
+                    style={{ transform: "translateX(-50%)", filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.4)) drop-shadow(0 1px 2px rgba(0,0,0,0.25))" }}
                   >
-                    {/* Triangle pointer */}
+                    {/* Triangle pointer — dark outer border for contrast against all grade colors */}
                     <div
                       className="w-0 h-0"
+                      style={{
+                        borderLeft: "9px solid transparent",
+                        borderRight: "9px solid transparent",
+                        borderTop: "11px solid rgba(0,0,0,0.3)",
+                      }}
+                    />
+                    {/* White outline layer */}
+                    <div
+                      className="w-0 h-0 -mt-[11px]"
                       style={{
                         borderLeft: "7px solid transparent",
                         borderRight: "7px solid transparent",
                         borderTop: "9px solid white",
                       }}
                     />
-                    {/* Inner triangle (colored, sits on top of white outline) */}
+                    {/* Inner triangle (colored fill) */}
                     <div
                       className="w-0 h-0 -mt-[9px]"
                       style={{
@@ -175,8 +184,8 @@ export function SectionGradeMapping() {
                     />
                     {/* Score bubble */}
                     <div
-                      className="mt-1 rounded-md px-2.5 py-1 text-xs font-bold font-mono text-white whitespace-nowrap ring-2 ring-white dark:ring-white/80"
-                      style={{ background: currentGradeColor }}
+                      className="mt-1 rounded-md px-2.5 py-1 text-xs font-bold font-mono text-white whitespace-nowrap ring-2 ring-white/90 shadow-lg"
+                      style={{ background: currentGradeColor, border: "1.5px solid rgba(0,0,0,0.2)" }}
                     >
                       {score}
                     </div>

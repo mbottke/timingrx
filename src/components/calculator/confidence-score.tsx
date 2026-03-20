@@ -31,10 +31,13 @@ export function ConfidenceDisplay({
       </div>
 
       {/* Progress bar */}
-      <div className="h-2 rounded-full bg-muted overflow-hidden">
+      <div className="h-2.5 rounded-full bg-muted overflow-hidden ring-1 ring-border">
         <div
           className={`h-full rounded-full transition-all duration-300 ${gradeColors[confidence.grade].split(" ")[0]}`}
-          style={{ width: `${confidence.score}%` }}
+          style={{
+            width: `${confidence.score}%`,
+            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.25), 0 0 0 0.5px rgba(0,0,0,0.15)",
+          }}
         />
       </div>
 

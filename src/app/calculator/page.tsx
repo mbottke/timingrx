@@ -76,7 +76,7 @@ export default function CalculatorPage() {
         {/* Right: Chart + Glass Box */}
         <div className="flex-1 space-y-6">
           {/* Risk Curve — dark canvas */}
-          <Card className="chart-dark bg-[oklch(0.22_0.015_245)] border-[oklch(0.35_0.01_245)]">
+          <Card className="chart-dark bg-[oklch(0.26_0.015_245)] border-[oklch(0.35_0.01_245)]">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="text-base text-[oklch(0.95_0.005_245)]">
@@ -142,7 +142,7 @@ export default function CalculatorPage() {
                 </Button>
               </div>
               <div className="flex-1 px-6 pb-6">
-                <div className="chart-dark h-full rounded-lg bg-[oklch(0.22_0.015_245)] p-4">
+                <div className="chart-dark h-full rounded-lg bg-[oklch(0.26_0.015_245)] p-4">
                   <StillbirthRiskCurve
                     riskCurve={riskCurve}
                     currentGA={state.ga}
