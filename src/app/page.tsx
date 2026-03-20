@@ -75,7 +75,7 @@ export default function Home() {
             const accent = categoryAccents[cat] ?? "border-l-border";
             return (
               <Link key={cat} href="/conditions">
-                <Card className={`h-full border-l-4 ${accent} transition-all duration-200 hover:bg-accent/50 hover:shadow-md hover:-translate-y-0.5`}>
+                <Card className={`h-full border-l-4 ${accent} transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 dark:hover:shadow-[0_0_15px_rgba(139,92,246,0.3),0_0_30px_rgba(139,92,246,0.1)]`}>
                   <CardHeader className="p-4">
                     <CardTitle className="text-sm font-semibold">
                       {CATEGORY_DISPLAY_NAMES[cat]}

@@ -23,7 +23,7 @@ export function ConditionCard({
 
   return (
     <Link href={`/conditions/${condition.id}`}>
-      <Card className="h-full transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5">
+      <Card className="h-full transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 dark:hover:shadow-[0_0_15px_rgba(139,92,246,0.3),0_0_30px_rgba(139,92,246,0.1)]">
         <CardHeader className="space-y-2 p-4">
           <div className="flex items-start justify-between gap-2">
             <CardTitle className="text-base font-semibold leading-tight">
