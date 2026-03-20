@@ -80,9 +80,9 @@ export function ConditionDetail({
         )}
       </div>
 
-      {/* Guideline Recommendations — steel blue accent */}
+      {/* Guideline Recommendations */}
       {condition.guidelineRecommendations.length > 0 && (
-        <Card className="border-l-4 border-l-primary">
+        <Card className="border-l-4 border-l-[var(--brand-blue)]">
           <CardHeader>
             <CardTitle className="text-base font-semibold tracking-tight">
               Delivery Timing Recommendations
@@ -115,9 +115,9 @@ export function ConditionDetail({
         </Card>
       )}
 
-      {/* Clinical Notes — teal accent */}
+      {/* Clinical Notes */}
       {condition.clinicalNotes && (
-        <Card className="border-l-4 border-l-[var(--brand-teal)]">
+        <Card className="border-l-4 border-l-[var(--brand-purple)]">
           <CardHeader>
             <CardTitle className="text-base font-semibold tracking-tight">Clinical Notes</CardTitle>
           </CardHeader>
@@ -127,9 +127,9 @@ export function ConditionDetail({
         </Card>
       )}
 
-      {/* Physiology (Teaching Mode) — amber accent */}
+      {/* Physiology (Teaching Mode) */}
       {teachingMode && condition.physiologyExplanation && (
-        <Card className="border-l-4 border-l-[var(--ga-caution)] bg-[var(--ga-caution)]/5">
+        <Card className="border-l-4 border-l-[var(--brand-pink)] bg-[var(--brand-pink)]/5">
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
               <span className="text-xs bg-[var(--ga-caution)] text-black px-1.5 py-0.5 rounded font-semibold">
@@ -158,9 +158,9 @@ export function ConditionDetail({
       {/* Key Evidence Sources */}
       <EvidenceSourcesSection sources={condition.keyEvidenceSources} />
 
-      {/* Landmark Trials — blue accent */}
+      {/* Landmark Trials */}
       {condition.landmarkTrials.length > 0 && (
-        <Card className="border-l-4 border-l-[var(--evidence-moderate)]">
+        <Card className="border-l-4 border-l-[var(--brand-blue)]/70">
           <CardHeader>
             <CardTitle className="text-base font-semibold tracking-tight">Landmark Trials</CardTitle>
           </CardHeader>
@@ -247,9 +247,9 @@ export function ConditionDetail({
         </Card>
       )}
 
-      {/* Special Considerations — amber accent */}
+      {/* Special Considerations */}
       {condition.specialConsiderations.length > 0 && (
-        <Card className="border-l-4 border-l-[var(--ga-caution)]">
+        <Card className="border-l-4 border-l-[var(--brand-pink)]/60">
           <CardHeader>
             <CardTitle className="text-base font-semibold tracking-tight">
               Special Considerations
@@ -277,7 +277,7 @@ export function ConditionDetail({
 
       {/* Sub-variants */}
       {condition.subVariants && condition.subVariants.length > 0 && (
-        <Card className="border-l-4 border-l-muted-foreground/30">
+        <Card className="border-l-4 border-l-[var(--brand-blue)]/30">
           <CardHeader>
             <CardTitle className="text-base font-semibold tracking-tight">Sub-variants</CardTitle>
           </CardHeader>

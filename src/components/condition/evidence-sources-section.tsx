@@ -30,7 +30,7 @@ export function EvidenceSourcesSection({
   if (sources.length === 0) return null;
 
   return (
-    <Card className="border-l-4 border-l-[var(--evidence-high)]">
+    <Card className="border-l-4 border-l-[var(--brand-blue)]">
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="text-base font-semibold tracking-tight">

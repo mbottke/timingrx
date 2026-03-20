@@ -68,18 +68,18 @@ export function CalculatorForm({
                     onClick={() => toggleFactor(factor.id)}
                     className={`w-full flex items-center justify-between rounded-md border border-l-2 p-2 text-left transition-all ${
                       isActive
-                        ? "border-[var(--risk-high)] border-l-[var(--risk-high)] bg-[var(--risk-high)]/5 shadow-sm"
+                        ? "border-[var(--brand-pink)] border-l-[var(--brand-blue)] bg-[var(--brand-purple)]/5 shadow-sm"
                         : "border-border border-l-primary/30 hover:bg-accent/50 hover:shadow-sm"
                     }`}
                   >
                     <div className="flex items-center gap-2 flex-1 min-w-0">
                       {isActive && (
-                        <CheckIcon className="h-4 w-4 shrink-0 text-[var(--risk-high)]" />
+                        <CheckIcon className="h-4 w-4 shrink-0 text-[var(--brand-pink)]" />
                       )}
                       <div className="flex flex-col gap-0.5 flex-1 min-w-0">
                         <div className="flex items-center gap-1.5">
                           <span
-                            className={`text-sm font-semibold ${isActive ? "text-[var(--risk-high)]" : ""}`}
+                            className={`text-sm font-semibold ${isActive ? "text-[var(--brand-pink)]" : ""}`}
                           >
                             {factor.label}
                           </span>
@@ -101,7 +101,7 @@ export function CalculatorForm({
                     <span
                       className={`font-mono text-xs ml-2 whitespace-nowrap ${
                         isActive
-                          ? "font-bold text-[var(--risk-high)]"
+                          ? "font-bold text-[var(--brand-pink)]"
                           : "text-muted-foreground"
                       }`}
                     >

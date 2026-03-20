@@ -24,7 +24,7 @@ export function ConditionInteractions({
   if (interactions.length === 0) return null;
 
   return (
-    <Card className="border-l-4 border-l-[var(--ga-caution)]">
+    <Card className="border-l-4 border-l-[var(--brand-purple)]">
       <CardHeader>
         <CardTitle className="text-base font-semibold tracking-tight">
           Interactions
@@ -34,7 +34,7 @@ export function ConditionInteractions({
         {interactions.map((ix, i) => (
           <div key={i} className="rounded-lg border bg-muted/30 p-3.5">
             <div className="flex flex-wrap items-center gap-2 mb-1.5">
-              <Badge className="text-[11px] uppercase bg-[var(--ga-caution)]/20 text-foreground border-border">
+              <Badge className="text-[11px] uppercase bg-[var(--brand-purple)]/20 text-foreground border-border">
                 {INTERACTION_LABELS[ix.interactionType]}
               </Badge>
               <Link

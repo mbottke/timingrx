@@ -30,7 +30,7 @@ export function RiskModifiersList({ modifiers }: { modifiers: RiskModifier[] }) 
   if (modifiers.length === 0) return null;
 
   return (
-    <Card className="border-l-4 border-l-[var(--risk-moderate)]">
+    <Card className="border-l-4 border-l-[var(--brand-purple)]/70">
       <CardHeader>
         <CardTitle className="text-base font-semibold tracking-tight">
           Risk Modifiers

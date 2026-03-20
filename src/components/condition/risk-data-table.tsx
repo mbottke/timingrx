@@ -23,7 +23,7 @@ export function RiskDataTable({ riskData }: { riskData: RiskDataPoint[] }) {
   if (riskData.length === 0) return null;
 
   return (
-    <Card className="border-l-4 border-l-[var(--brand-coral)]">
+    <Card className="border-l-4 border-l-[var(--brand-pink)]">
       <CardHeader
         className={
           teachingMode ? "bg-[var(--brand-pink)]/5" : undefined
