@@ -702,7 +702,7 @@ export const flenadyMeta: LandmarkTrial = {
   summary:
     "Systematic review identifying the 5 major modifiable risk factors for " +
     "stillbirth in high-income countries. Source of multipliers for BMI, " +
-    "diabetes, chronic HTN, SGA, and smoking in the TimingRx risk calculator.",
+    "diabetes, chronic HTN, SGA, and smoking in the Kairos risk calculator.",
   keyFindings: [
     "Overweight/obese: population-attributable risk (PAR) 8-18% of stillbirths",
     "BMI 25-30: aOR 1.23 (1.09-1.38); BMI \u226530: aOR 1.63 (1.35-1.95)",
@@ -805,7 +805,7 @@ export const smithFetalRisk: LandmarkTrial = {
     "Ongoing-pregnancy denominator reveals true exponential risk increase",
     "Nulliparity aOR 1.3 (1.1-1.5) for stillbirth",
     "Framework adopted by all subsequent meta-analyses (including Muglu 2019)",
-    "Conceptual foundation for the TimingRx risk model",
+    "Conceptual foundation for the Kairos risk model",
   ],
   relevantRiskData: [
     {

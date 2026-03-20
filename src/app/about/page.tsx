@@ -9,7 +9,7 @@ export default function AboutPage() {
           Methodology & Disclaimers
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          How TimingRx works, its data sources, and important limitations.
+          How Kairos works, its data sources, and important limitations.
         </p>
       </div>
 
@@ -65,7 +65,7 @@ export default function AboutPage() {
         </CardHeader>
         <CardContent className="text-sm space-y-2">
           <p>
-            TimingRx is a clinical decision support tool for educational
+            Kairos is a clinical decision support tool for educational
             purposes. It is NOT a substitute for clinical judgment, institutional
             protocols, or individualized patient assessment.
           </p>

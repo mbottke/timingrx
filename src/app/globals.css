@@ -103,7 +103,7 @@
   --chart-zone-caution: oklch(0.795 0.184 86.047 / 20%);
   --chart-zone-danger: oklch(0.577 0.245 27.325 / 20%);
 
-  /* TimingRx medical color tokens */
+  /* Kairos medical color tokens */
   --risk-high: oklch(0.577 0.245 27.325);
   --risk-moderate: oklch(0.705 0.213 47.604);
   --risk-low: oklch(0.627 0.14 164.789);
@@ -171,7 +171,7 @@
   --header-fg: oklch(0.94 0.005 245);
   --header-muted: oklch(0.65 0.015 245);
 
-  /* TimingRx medical color tokens (dark) */
+  /* Kairos medical color tokens (dark) */
   --risk-high: oklch(0.704 0.191 22.216);
   --risk-moderate: oklch(0.795 0.184 86.047);
   --risk-low: oklch(0.627 0.14 164.789);

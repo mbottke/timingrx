@@ -13,7 +13,7 @@ import { SectionOrCorrection } from "@/components/methodology/section-or-correct
 import { SectionGradeMapping } from "@/components/methodology/section-grade-mapping";
 import { PipelineView } from "./pipeline/pipeline-view";
 import { TimelineView } from "./timeline/timeline-view";
-import { TimingRxLogo } from "@/components/layout/timing-rx-logo";
+import { KairosLogo } from "@/components/layout/kairos-logo";
 
 // ── Inner component (uses useSearchParams) ────────────────────────────────────
 
@@ -45,7 +45,7 @@ function MethodologyPageInner() {
       <div className="mx-auto max-w-6xl px-4 lg:px-6 xl:pl-16">
         <div className="py-8">
           <h1 className="text-2xl font-semibold tracking-tight flex items-baseline gap-1.5">
-            How <TimingRxLogo variant="heading" /> Works
+            How <KairosLogo variant="heading" /> Works
           </h1>
           <p className="mt-1 text-sm text-muted-foreground max-w-2xl">
             An interactive exploration of the risk calculation methodology.
@@ -68,7 +68,7 @@ function MethodologyPageInner() {
             <div className="py-12 border-t mt-12">
               <p className="text-xs text-muted-foreground text-center max-w-xl mx-auto">
                 This methodology page explains the mathematical model underlying
-                TimingRx. The model uses published risk ratios applied
+                Kairos. The model uses published risk ratios applied
                 multiplicatively to a meta-analytic baseline. The composite has
                 not been prospectively validated. The confidence scorer is a
                 novel feature designed to make model limitations transparent.

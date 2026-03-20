@@ -28,17 +28,17 @@ export function TeachingModeProvider({ children }: { children: ReactNode }) {
   const [teachingExpanded, setTeachingExpanded] = useState(false);
 
   useEffect(() => {
-    const storedMode = localStorage.getItem("timingrx-teaching-mode");
+    const storedMode = localStorage.getItem("kairos-teaching-mode");
     if (storedMode === "true") setTeachingMode(true);
 
-    const storedExpanded = localStorage.getItem("timingrx-teaching-expanded");
+    const storedExpanded = localStorage.getItem("kairos-teaching-expanded");
     if (storedExpanded === "true") setTeachingExpanded(true);
   }, []);
 
   const toggleTeachingMode = useCallback(() => {
     setTeachingMode((prev) => {
       const next = !prev;
-      localStorage.setItem("timingrx-teaching-mode", String(next));
+      localStorage.setItem("kairos-teaching-mode", String(next));
       return next;
     });
   }, []);
@@ -46,7 +46,7 @@ export function TeachingModeProvider({ children }: { children: ReactNode }) {
   const toggleTeachingExpanded = useCallback(() => {
     setTeachingExpanded((prev) => {
       const next = !prev;
-      localStorage.setItem("timingrx-teaching-expanded", String(next));
+      localStorage.setItem("kairos-teaching-expanded", String(next));
       return next;
     });
   }, []);

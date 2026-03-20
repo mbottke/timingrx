@@ -63,11 +63,11 @@ describe("useTeachingMode", () => {
     act(() => {
       screen.getByTestId("toggle-expanded").click();
     });
-    expect(localStorageMock.setItem).toHaveBeenCalledWith("timingrx-teaching-expanded", "true");
+    expect(localStorageMock.setItem).toHaveBeenCalledWith("kairos-teaching-expanded", "true");
   });
 
   it("reads teachingExpanded from localStorage on mount", () => {
-    store["timingrx-teaching-expanded"] = "true";
+    store["kairos-teaching-expanded"] = "true";
     render(
       <TeachingModeProvider>
         <TestConsumer />

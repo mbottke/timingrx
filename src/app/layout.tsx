@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TimingRx — Evidence-Based Delivery Timing",
+  title: "Kairos — Obstetric Decision Intelligence",
   description:
     "Comprehensive clinical decision support for obstetric delivery timing. " +
     "201+ conditions, risk calculator with confidence scoring, interactive visualizations.",

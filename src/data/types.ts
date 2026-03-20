@@ -1,5 +1,5 @@
 /**
- * TimingRx Core Type Definitions
+ * Kairos Core Type Definitions
  *
  * Every condition, recommendation, citation, and risk data point flows through
  * these types. TypeScript strict mode ensures no condition ships with missing fields.

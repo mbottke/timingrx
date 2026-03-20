@@ -12,7 +12,7 @@ import {
   type ObstetricCondition,
 } from "@/data/types";
 import { ConditionCard } from "@/components/condition/condition-card";
-import { TimingRxLogo } from "@/components/layout/timing-rx-logo";
+import { KairosLogo } from "@/components/layout/kairos-logo";
 
 type SortOption = "category" | "alphabetical" | "ga-earliest" | "ga-latest" | "grade";
 
@@ -138,7 +138,7 @@ export default function ConditionsPage() {
     <div className="mx-auto max-w-6xl px-4 py-8 lg:px-6">
       {/* Centered hero logo */}
       <div className="mb-6 flex justify-center">
-        <TimingRxLogo variant="hero" />
+        <KairosLogo variant="hero" />
       </div>
 
       <div className="mb-6">

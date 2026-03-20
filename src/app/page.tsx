@@ -3,7 +3,7 @@ import { conditionsByCategory, allConditions } from "@/data/conditions";
 import { CATEGORY_DISPLAY_NAMES, type ConditionCategory } from "@/data/types";
 import { allTrials } from "@/data/trials";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { TimingRxLogo } from "@/components/layout/timing-rx-logo";
+import { KairosLogo } from "@/components/layout/kairos-logo";
 
 /** Subtle color tints per medical category for visual identity */
 const categoryAccents: Partial<Record<ConditionCategory, { border: string; glow: string }>> = {
@@ -34,9 +34,9 @@ export default function Home() {
       {/* Hero */}
       <section className="text-center mb-14">
         <div className="mx-auto max-w-2xl">
-          <TimingRxLogo variant="hero" />
+          <KairosLogo variant="hero" />
           <p className="mt-4 text-base text-muted-foreground leading-relaxed">
-            Evidence-based delivery timing for every maternal and fetal condition.
+            Delivery timing for every maternal and fetal condition.
             Risk calculator with confidence scoring, and interactive
             visualizations.
           </p>

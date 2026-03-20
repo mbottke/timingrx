@@ -2,9 +2,9 @@ import { MethodologyProvider } from "@/components/methodology/methodology-provid
 import { MethodologyPageContent } from "@/components/methodology/methodology-page-content";
 
 export const metadata = {
-  title: "Methodology — TimingRx",
+  title: "Methodology — Kairos",
   description:
-    "Interactive visualization of how TimingRx calculates stillbirth risk, " +
+    "Interactive visualization of how Kairos calculates stillbirth risk, " +
     "propagates uncertainty, and scores confidence.",
 };
 

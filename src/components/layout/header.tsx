@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useTeachingMode } from "@/lib/hooks/use-teaching-mode";
 import { Switch } from "@/components/ui/switch";
 import { ThemeToggle } from "./theme-toggle";
-import { TimingRxLogo } from "./timing-rx-logo";
+import { KairosLogo } from "./kairos-logo";
 
 const navLinks = [
   { href: "/conditions", label: "Conditions" },
@@ -35,7 +35,7 @@ export function Header() {
           </button>
 
           <Link href="/" className="flex items-center">
-            <TimingRxLogo />
+            <KairosLogo />
           </Link>
 
           <nav className="hidden items-center gap-5 text-sm md:flex">

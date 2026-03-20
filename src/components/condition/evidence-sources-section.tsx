@@ -18,19 +18,19 @@ export function EvidenceSourcesSection({
   const [viewMode, setViewMode] = useState<ViewMode>("card");
 
   useEffect(() => {
-    const stored = localStorage.getItem("timingrx-evidence-view");
+    const stored = localStorage.getItem("kairos-evidence-view");
     if (stored === "list") setViewMode("list");
   }, []);
 
   function changeView(mode: ViewMode) {
     setViewMode(mode);
-    localStorage.setItem("timingrx-evidence-view", mode);
+    localStorage.setItem("kairos-evidence-view", mode);
   }
 
   if (sources.length === 0) return null;
 
   return (
-    <Card>
+    <Card className="border-l-4 border-l-[var(--evidence-high)]">
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="text-base font-semibold tracking-tight">
@@ -65,7 +65,7 @@ export function EvidenceSourcesSection({
             {sources.map((src) => (
               <div
                 key={src.id}
-                className="border rounded-lg p-3 bg-muted/20"
+                className="rounded-lg border bg-muted/20 p-3 transition-colors hover:bg-muted/40"
               >
                 <div className="flex items-center gap-1.5 mb-1">
                   <EvidenceSourceTypeBadge type={src.type} />
@@ -75,7 +75,7 @@ export function EvidenceSourcesSection({
                       href={src.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs text-blue-600 hover:underline ml-auto"
+                      className="text-xs text-primary hover:underline ml-auto"
                     >
                       ↗
                     </a>
@@ -116,7 +116,7 @@ export function EvidenceSourcesSection({
                       href={src.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs text-blue-600 hover:underline"
+                      className="text-xs text-primary hover:underline"
                     >
                       ↗
                     </a>

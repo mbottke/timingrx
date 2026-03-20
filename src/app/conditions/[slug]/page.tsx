@@ -17,7 +17,7 @@ export async function generateMetadata({
   const condition = conditionById.get(slug);
   if (!condition) return { title: "Condition Not Found" };
   return {
-    title: `${condition.name} — TimingRx`,
+    title: `${condition.name} — Kairos`,
     description: condition.clinicalNotes ?? `Delivery timing for ${condition.name}`,
   };
 }
