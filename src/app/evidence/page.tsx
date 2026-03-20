@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 export default function EvidencePage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 lg:px-6">
-      <h1 className="text-2xl font-semibold tracking-tight">Evidence Library</h1>
+      <h1 className="text-2xl font-semibold tracking-tight kairos-heading">Evidence Library</h1>
       <p className="mt-1 mb-6 text-sm text-muted-foreground">
         <span className="font-mono font-medium text-foreground/70">{allTrials.length}</span> landmark
         trials that define modern delivery timing practice.

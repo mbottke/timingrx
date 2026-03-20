@@ -47,7 +47,8 @@ export default function Home() {
           <div className="mt-8 flex items-center justify-center gap-3">
             <Link
               href="/conditions"
-              className="inline-flex h-11 items-center rounded-lg bg-primary px-7 text-sm font-medium text-primary-foreground shadow-md shadow-primary/25 transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30"
+              className="inline-flex h-11 items-center rounded-lg px-7 text-sm font-medium text-white shadow-md shadow-black/10 transition-all hover:shadow-lg hover:shadow-black/15"
+              style={{ background: "var(--kairos-gradient)" }}
             >
               Browse Conditions
             </Link>
@@ -65,10 +66,10 @@ export default function Home() {
 
       {/* Stats — hero numbers */}
       <section className="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-14">
-        <StatCard label="Conditions" value={String(allConditions.length)} accent="text-primary" />
-        <StatCard label="Categories" value={String(categories.size)} accent="text-[var(--brand-teal)]" />
-        <StatCard label="Landmark Trials" value={String(allTrials.length)} accent="text-[var(--evidence-moderate)]" />
-        <StatCard label="Risk Factors" value="13" accent="text-[var(--brand-coral)]" />
+        <StatCard label="Conditions" value={String(allConditions.length)} />
+        <StatCard label="Categories" value={String(categories.size)} />
+        <StatCard label="Landmark Trials" value={String(allTrials.length)} />
+        <StatCard label="Risk Factors" value="13" />
       </section>
 
       <hr className="kairos-divider mb-14" />
@@ -110,11 +111,11 @@ export default function Home() {
   );
 }
 
-function StatCard({ label, value, accent }: { label: string; value: string; accent: string }) {
+function StatCard({ label, value }: { label: string; value: string }) {
   return (
     <Card className="overflow-hidden">
       <CardHeader className="p-5 text-center">
-        <CardTitle className={`text-4xl font-bold font-mono tracking-tight ${accent}`}>
+        <CardTitle className="text-4xl font-bold font-mono tracking-tight kairos-gradient-text">
           {value}
         </CardTitle>
         <CardDescription className="text-xs uppercase tracking-wider font-medium mt-1">

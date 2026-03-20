@@ -292,7 +292,7 @@ export default function ComparePage() {
     <div className="mx-auto max-w-6xl px-4 py-8 lg:px-6">
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-2xl font-semibold tracking-tight">
+        <h1 className="text-2xl font-semibold tracking-tight kairos-heading">
           Cross-Guideline Comparison
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">

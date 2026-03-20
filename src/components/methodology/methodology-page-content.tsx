@@ -44,7 +44,7 @@ function MethodologyPageInner() {
 
       <div className="mx-auto max-w-6xl px-4 lg:px-6 xl:pl-16">
         <div className="py-8">
-          <h1 className="text-2xl font-semibold tracking-tight flex items-baseline gap-1.5">
+          <h1 className="text-2xl font-semibold tracking-tight flex items-baseline gap-1.5 kairos-heading">
             How <KairosLogo variant="heading" /> Works
           </h1>
           <p className="mt-1 text-sm text-muted-foreground max-w-2xl">
