@@ -133,12 +133,57 @@ export function PipelineView() {
       <div className="hidden md:block">
         {/* Fix 7: tablet responsive container */}
         <div className="mx-auto w-full md:max-w-[90%] lg:max-w-[800px]">
+
+        {/* Pipeline description */}
+        <div className="mb-4 rounded-lg border bg-card p-4">
+          <h3 className="text-sm font-semibold mb-1.5">How This Pipeline Works</h3>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Risk flows top-to-bottom through the pipeline. It starts with a{" "}
+            <strong className="text-foreground">baseline stillbirth rate</strong> from the Muglu 2019 meta-analysis
+            (n=15M), then each selected risk factor{" "}
+            <strong className="text-foreground">multiplies the risk</strong> by its
+            relative risk. A <strong className="text-foreground">95% confidence interval</strong> is
+            propagated, and confidence filters score the data quality. The final
+            output is a <strong className="text-foreground">graded risk estimate</strong> (A–F).
+            Animated dots trace the data flow. Click any stage for details.
+          </p>
+          <div className="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-[11px]">
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block w-3 h-2 rounded-sm border-2 border-[var(--primary)] bg-background" />
+              Baseline source
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block w-3 h-2 rounded-sm bg-blue-500/20 border border-blue-500" />
+              Risk factor (×multiplier)
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block w-3 h-2 rounded-sm border-2 border-violet-600 bg-background" />
+              Confidence interval
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block w-3 h-2 rounded-sm bg-emerald-500/20 border-2 border-emerald-500" />
+              Final graded output
+            </span>
+          </div>
+        </div>
+
         <div
           ref={containerRef}
           className="relative w-full"
           style={{ height: totalHeight }}
         >
-          {/* SVG layer: pipes + stage nodes */}
+          {/* Canvas particle layer — BEHIND the SVG stages */}
+          <ParticleSystem
+            stages={stages}
+            centerX={centerX}
+            totalHeight={totalHeight}
+            combinedMultiplier={combinedMultiplier}
+            activeFactorCount={activeFactorCount}
+            grade={grade}
+            containerWidth={containerWidth}
+          />
+
+          {/* SVG layer: pipes + stage nodes — ON TOP of particles */}
           <svg
             aria-hidden="true"
             width={containerWidth}
@@ -213,18 +258,7 @@ export function PipelineView() {
             })()}
           </svg>
 
-          {/* Canvas particle overlay */}
-          <ParticleSystem
-            stages={stages}
-            centerX={centerX}
-            totalHeight={totalHeight}
-            combinedMultiplier={combinedMultiplier}
-            activeFactorCount={activeFactorCount}
-            grade={grade}
-            containerWidth={containerWidth}
-          />
-
-          {/* Hover card */}
+          {/* Hover card — on top of everything */}
           <PipelineHoverCard
             stage={hoveredStage}
             confidenceScore={selectedGaCalculation.confidenceScore}
