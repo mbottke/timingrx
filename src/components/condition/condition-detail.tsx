@@ -54,7 +54,8 @@ export function ConditionDetail({
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="rounded-xl border bg-card p-5 shadow-sm">
+      <div className="rounded-xl border bg-card p-5 shadow-sm overflow-hidden relative">
+        <div className="absolute top-0 left-0 right-0 h-[2px] kairos-divider" />
         <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">
           <span className="inline-flex items-center gap-1.5">
             <span className="inline-block w-2 h-2 rounded-full bg-primary/60" />

@@ -513,6 +513,7 @@ export default function ComparePage() {
       {/* ── Comparison Content ─────────────────────────────────────────────── */}
       {selected.length > 0 && (
         <div className="space-y-8">
+          <hr className="kairos-divider" />
           {/* GA Timeline Visualization */}
           <Card>
             <CardHeader>

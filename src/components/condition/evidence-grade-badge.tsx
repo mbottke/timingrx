@@ -10,6 +10,19 @@ const gradeColors: Record<string, string> = {
 };
 
 export function EvidenceGradeBadge({ grade }: { grade: EvidenceGrade }) {
+  if (grade.strength === "high") {
+    return (
+      <span
+        className="inline-flex rounded-full p-[1px]"
+        style={{ background: "var(--kairos-gradient)" }}
+      >
+        <Badge className="text-[11px] bg-[var(--evidence-high)] text-white rounded-full">
+          Grade {grade.raw}
+        </Badge>
+      </span>
+    );
+  }
+
   return (
     <Badge className={`text-[11px] ${gradeColors[grade.strength] ?? ""}`}>
       Grade {grade.raw}
