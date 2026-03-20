@@ -3,27 +3,16 @@
 import { useId } from "react";
 
 /**
- * TimingRx SVG wordmark — adapted from the professional logo designs.
+ * TimingRx SVG wordmark — bold "TIMING" + integrated pharmacy ℞ symbol.
  *
- * Design DNA preserved:
- * - Italic "Timing" flowing into bold, gradient "Rx" with prescription ℞ slash
- * - Sweeping gradient arc underneath (signature flourish)
- * - Constellation accent dots on the right (data/precision motif)
- * - Blue → Purple → Magenta gradient spectrum
- *
- * Simplified for web:
- * - Pure SVG paths (no raster glow effects)
- * - Works at header scale (h-8) and hero scale
- * - Uses CSS custom properties for theme-aware text color
- * - useId() ensures gradient IDs are unique per instance
+ * The ℞ is drawn as one mark: the R's descending leg crosses with an x stroke,
+ * and the classic prescription slash cuts diagonally through — exactly how the
+ * pharmacy symbol works (R + x fused, not separate letters).
  */
 
 interface TimingRxLogoProps {
-  /** Height class — the width scales proportionally */
   className?: string;
-  /** Show the subtitle "Evidence-Based Obstetric Guidance" */
   showSubtitle?: boolean;
-  /** Show the sweeping arc and constellation dots */
   showFlourish?: boolean;
 }
 
@@ -41,7 +30,7 @@ export function TimingRxLogo({
 
   return (
     <svg
-      viewBox={`0 0 190 ${viewH}`}
+      viewBox={`0 0 195 ${viewH}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
@@ -49,112 +38,118 @@ export function TimingRxLogo({
       aria-label="TimingRx — Evidence-Based Obstetric Guidance"
     >
       <defs>
-        {/* Blue → Purple → Magenta — from the professional logo palette */}
         <linearGradient id={rxGrad} x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#5b8def" />
           <stop offset="50%" stopColor="#a855f7" />
           <stop offset="100%" stopColor="#d946a8" />
         </linearGradient>
-        {/* Arc gradient — cyan to magenta sweep */}
         <linearGradient id={arcGrad} x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.08" />
           <stop offset="40%" stopColor="#818cf8" stopOpacity="0.55" />
           <stop offset="100%" stopColor="#d946a8" stopOpacity="0.35" />
         </linearGradient>
-        {/* Soft glow for the accent dots */}
         <filter id={dotGlow} x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" />
         </filter>
       </defs>
 
-      {/* ── "Timing" ── italic serif, matching the pro logo typography */}
+      {/* ── "TIMING" ── bold, all caps, sans-serif */}
       <text
         x="2"
-        y="28"
-        fontFamily="'Georgia', 'Times New Roman', serif"
-        fontSize="26"
-        fontWeight="400"
-        fontStyle="italic"
-        letterSpacing="-0.5"
+        y="27"
+        fontFamily="-apple-system, 'Helvetica Neue', 'Arial', sans-serif"
+        fontSize="25"
+        fontWeight="700"
+        letterSpacing="1"
         fill="var(--header-fg, #f0f0f5)"
       >
-        Timing
+        TIMING
       </text>
 
-      {/* ── Prescription ℞ ── single continuous path for proper gradient rendering */}
-      <g transform="translate(100, 5)">
+      {/* ── Pharmacy ℞ symbol ── R with integrated x crossing at the leg */}
+      <g transform="translate(112, 3)">
         {/*
-          R drawn as one path: stem up → bowl across top → curve down → back to
-          junction → leg down-right. Single path ensures the gradient bounding box
-          spans the full letter width (fixing the zero-width vertical line bug).
+          The pharmacy ℞ drawn as one fused mark:
+          - Vertical stem (left side of R)
+          - Bowl curves across the top and back
+          - Leg descends from bowl junction (first stroke of X)
+          - Cross stroke intersects the leg (second stroke of X)
+          - Prescription slash diagonally through the leg area
         */}
+
+        {/* R body: stem + bowl + horizontal bar back to stem */}
         <path
-          d="M0,28 L0,0 L12,0 C20,0 24,4 24,10 C24,16 20,19 12,19 L0,19 M12,19 L26,30"
+          d="M0,30 L0,0 L14,0 C22,0 26,4.5 26,11 C26,17 22,21 14,21 L0,21"
           stroke={`url(#${rxGrad})`}
-          strokeWidth="2.6"
+          strokeWidth="2.8"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        {/* ℞ prescription slash — diagonal crossing through the leg */}
+
+        {/* R leg — descends from bowl junction (becomes first X stroke) */}
         <line
-          x1="8"
-          y1="32"
-          x2="22"
-          y2="15"
+          x1="14"
+          y1="21"
+          x2="32"
+          y2="35"
           stroke={`url(#${rxGrad})`}
-          strokeWidth="1.7"
+          strokeWidth="2.8"
           strokeLinecap="round"
-          opacity="0.65"
+        />
+
+        {/* X cross stroke — intersects the leg */}
+        <line
+          x1="30"
+          y1="20"
+          x2="14"
+          y2="35"
+          stroke={`url(#${rxGrad})`}
+          strokeWidth="2.8"
+          strokeLinecap="round"
+        />
+
+        {/* ℞ prescription slash — the classic diagonal */}
+        <line
+          x1="6"
+          y1="34"
+          x2="22"
+          y2="14"
+          stroke={`url(#${rxGrad})`}
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          opacity="0.6"
         />
       </g>
 
-      {/* ── "x" ── italic, gradient-filled to match the ℞ */}
-      <text
-        x="130"
-        y="28"
-        fontFamily="'Georgia', 'Times New Roman', serif"
-        fontSize="24"
-        fontWeight="400"
-        fontStyle="italic"
-        fill={`url(#${rxGrad})`}
-      >
-        x
-      </text>
-
       {showFlourish && (
         <>
-          {/* ── Sweeping arc underneath ── the signature flourish from the pro logos */}
+          {/* Sweeping arc flourish */}
           <path
-            d="M8,34 Q55,40 95,35 Q130,30 155,27 Q170,25 178,28"
+            d="M8,34 Q55,40 95,35 Q135,30 160,27 Q175,25 183,28"
             stroke={`url(#${arcGrad})`}
             strokeWidth="1.3"
             fill="none"
             strokeLinecap="round"
           />
 
-          {/* ── Constellation dots ── clinical data/precision motif */}
-          {/* Primary bright dot — cyan */}
-          <circle cx="162" cy="8" r="2" fill="#22d3ee" opacity="0.85" />
+          {/* Constellation accent dots */}
+          <circle cx="168" cy="8" r="2" fill="#22d3ee" opacity="0.85" />
           <circle
-            cx="162"
+            cx="168"
             cy="8"
             r="3.5"
             fill="#22d3ee"
             opacity="0.2"
             filter={`url(#${dotGlow})`}
           />
-          {/* Secondary — purple */}
-          <circle cx="170" cy="14" r="1.3" fill="#818cf8" opacity="0.65" />
-          {/* Tertiary — violet */}
-          <circle cx="166" cy="20" r="0.9" fill="#a855f7" opacity="0.45" />
-          {/* Tiny trailing accents */}
-          <circle cx="174" cy="7" r="0.6" fill="#22d3ee" opacity="0.35" />
-          <circle cx="175" cy="19" r="0.5" fill="#d946a8" opacity="0.25" />
+          <circle cx="176" cy="14" r="1.3" fill="#818cf8" opacity="0.65" />
+          <circle cx="172" cy="20" r="0.9" fill="#a855f7" opacity="0.45" />
+          <circle cx="180" cy="7" r="0.6" fill="#22d3ee" opacity="0.35" />
+          <circle cx="181" cy="19" r="0.5" fill="#d946a8" opacity="0.25" />
         </>
       )}
 
-      {/* ── Subtitle with decorative rule lines ── */}
       {showSubtitle && (
         <>
           <line
@@ -167,7 +162,7 @@ export function TimingRxLogo({
             opacity="0.4"
           />
           <text
-            x="95"
+            x="97"
             y="50"
             fontFamily="-apple-system, 'Helvetica Neue', sans-serif"
             fontSize="6.5"
@@ -180,9 +175,9 @@ export function TimingRxLogo({
             EVIDENCE-BASED OBSTETRIC GUIDANCE
           </text>
           <line
-            x1="160"
+            x1="164"
             y1="46"
-            x2="182"
+            x2="186"
             y2="46"
             stroke="var(--header-muted, #888)"
             strokeWidth="0.5"
