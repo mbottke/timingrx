@@ -4,7 +4,8 @@ import { KairosLogo } from "./kairos-logo";
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t py-6">
+    <footer className="mt-auto py-6">
+      <div className="kairos-divider mb-6" />
       <div className="mx-auto max-w-6xl px-4 lg:px-6">
         <div className="flex flex-col items-center justify-between gap-4 text-xs text-muted-foreground sm:flex-row">
           <div className="flex items-center gap-4">
