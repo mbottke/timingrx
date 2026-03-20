@@ -174,7 +174,7 @@ export function GAEntry({ currentGA, onGAChange }: Props) {
       <CardContent className="space-y-3">
         {/* Current GA display */}
         <div className="text-center">
-          <span className="text-2xl font-bold font-mono">
+          <span className="text-2xl font-bold">
             {gaToDisplay(currentGA)}
           </span>
           {computedGA !== null && computedGA !== currentGA && (

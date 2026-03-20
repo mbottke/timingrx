@@ -145,7 +145,7 @@ export function SectionBaseline() {
                           if (!d) return null;
                           return (
                             <div className="rounded-lg border bg-card p-3 text-xs shadow-md space-y-1">
-                              <p className="font-semibold font-mono">{d.ga}</p>
+                              <p className="font-semibold">{d.ga}</p>
                               <p className="text-muted-foreground">
                                 Risk: <span className="font-mono tabular-nums">{d.risk.toFixed(2)}</span> / 1,000
                               </p>
@@ -252,7 +252,7 @@ export function SectionBaseline() {
                               : "border-b last:border-0 odd:bg-muted/20"
                           }
                         >
-                          <td className="px-4 py-2 font-mono">{gaToDisplay(pt.ga)}</td>
+                          <td className="px-4 py-2">{gaToDisplay(pt.ga)}</td>
                           <td className="px-4 py-2 text-right font-mono">
                             {pt.riskPer1000.toFixed(2)}
                           </td>

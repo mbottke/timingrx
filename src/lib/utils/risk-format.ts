@@ -25,6 +25,43 @@ export function formatRiskStatistic(stat: RiskStatistic): string {
 }
 
 /**
+ * Returns a structured measure with separate label, value, and unit
+ * for clean tabular display.
+ *
+ * relative_risk  → { label: "RR",  value: "1.50", unit: "" }
+ * odds_ratio     → { label: "OR",  value: "2.30", unit: "" }
+ * absolute_risk  → { label: "",    value: "4.2",  unit: "/1 000" }
+ * incidence      → { label: "",    value: "12.5", unit: "%" }
+ * mortality_rate → { label: "Mort", value: "3.2", unit: "%" }
+ */
+export interface StructuredMeasure {
+  label: string;
+  value: string;
+  unit: string;
+}
+
+export function formatRiskStatisticStructured(stat: RiskStatistic): StructuredMeasure {
+  switch (stat.type) {
+    case "relative_risk":
+      return { label: "RR", value: String(stat.value), unit: "" };
+    case "odds_ratio":
+      return { label: "OR", value: String(stat.value), unit: "" };
+    case "absolute_risk":
+      return { label: "", value: String(stat.valuePer1000), unit: "/1,000" };
+    case "incidence":
+      return { label: "", value: String(stat.valuePercent), unit: "%" };
+    case "mortality_rate":
+      return { label: "Mort", value: String(stat.valuePercent), unit: "%" };
+  }
+}
+
+/** Capitalize the first letter of a string. */
+export function capitalizeFirst(s: string): string {
+  if (!s) return s;
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+/**
  * Returns severity level for color-coding risk statistics.
  *
  * Thresholds:

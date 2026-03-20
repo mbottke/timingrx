@@ -30,7 +30,7 @@ export function RiskModifiersList({ modifiers }: { modifiers: RiskModifier[] }) 
   if (modifiers.length === 0) return null;
 
   return (
-    <Card>
+    <Card className="border-l-4 border-l-[var(--risk-moderate)]">
       <CardHeader>
         <CardTitle className="text-base font-semibold tracking-tight">
           Risk Modifiers
@@ -41,10 +41,10 @@ export function RiskModifiersList({ modifiers }: { modifiers: RiskModifier[] }) 
           {modifiers.map((mod, i) => (
             <li key={i}>
               <div className="flex items-start gap-2">
-                <span className="shrink-0 text-[11px] uppercase font-semibold bg-[#555] text-white px-1.5 py-0.5 rounded-[3px]">
+                <span className="shrink-0 text-[11px] uppercase font-semibold bg-muted-foreground/80 text-background px-1.5 py-0.5 rounded-[3px]">
                   {FACTOR_LABELS[mod.factor]}
                 </span>
-                <span className="text-sm">
+                <span className="text-sm leading-relaxed">
                   {mod.effect}
                   {mod.riskData && (
                     <span className="ml-1.5 text-xs text-muted-foreground font-mono">
@@ -54,7 +54,7 @@ export function RiskModifiersList({ modifiers }: { modifiers: RiskModifier[] }) 
                 </span>
               </div>
               {teachingMode && teachingExpanded && (
-                <div className="mt-1.5 ml-[calc(0.375rem+1.5rem)] border-l-[3px] border-[#93b4f4] pl-3 text-sm italic text-[#1e40af]">
+                <div className="mt-1.5 ml-[calc(0.375rem+1.5rem)] border-l-[3px] border-primary/30 pl-3 text-sm italic text-primary">
                   → Clinical mechanism: {mod.effect}
                   {mod.riskData &&
                     ` ${generateTeachingInterpretation(mod.riskData.statistic, mod.riskData.populationDescription)}`}

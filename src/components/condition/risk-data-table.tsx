@@ -4,11 +4,12 @@ import { useState, Fragment } from "react";
 import type { RiskDataPoint } from "@/data/types";
 import { useTeachingMode } from "@/lib/hooks/use-teaching-mode";
 import {
-  formatRiskStatistic,
+  formatRiskStatisticStructured,
   getRiskSeverity,
   severityColorClass,
   formatCI95,
   generateTeachingInterpretation,
+  capitalizeFirst,
 } from "@/lib/utils/risk-format";
 import { formatCitation } from "@/lib/utils/citation-format";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -32,7 +33,7 @@ export function RiskDataTable({ riskData }: { riskData: RiskDataPoint[] }) {
           <CardTitle className="text-base font-semibold tracking-tight flex items-center gap-2">
             Risk Data
             {teachingMode && (
-              <span className="text-xs bg-amber-500 text-white px-1.5 py-0.5 rounded font-semibold">
+              <span className="text-xs bg-[var(--ga-caution)] text-black px-1.5 py-0.5 rounded font-semibold">
                 TEACHING
               </span>
             )}
@@ -67,6 +68,7 @@ export function RiskDataTable({ riskData }: { riskData: RiskDataPoint[] }) {
             <tbody>
               {riskData.map((dp, i) => {
                 const severity = getRiskSeverity(dp.statistic);
+                const measure = formatRiskStatisticStructured(dp.statistic);
                 const showInterpretation =
                   teachingMode &&
                   (teachingExpanded || hoveredRow === i);
@@ -78,21 +80,35 @@ export function RiskDataTable({ riskData }: { riskData: RiskDataPoint[] }) {
                       onMouseEnter={() => setHoveredRow(i)}
                       onMouseLeave={() => setHoveredRow(null)}
                     >
-                      <td className="py-2 pr-4">
-                        {dp.outcome}
+                      <td className="py-2.5 pr-4 text-sm">
+                        {capitalizeFirst(dp.outcome)}
                         {teachingMode && (
                           <span className="ml-1 text-xs text-muted-foreground">ⓘ</span>
                         )}
                       </td>
                       <td
-                        className={`py-2 pr-4 text-right font-mono tabular-nums font-bold whitespace-nowrap ${severityColorClass(severity)}`}
+                        className="py-2.5 pr-4 text-right whitespace-nowrap"
                       >
-                        {formatRiskStatistic(dp.statistic)}
+                        <span className="inline-flex items-baseline justify-end gap-1">
+                          {measure.label && (
+                            <span className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                              {measure.label}
+                            </span>
+                          )}
+                          <span className={`font-mono tabular-nums text-sm font-bold ${severityColorClass(severity)}`}>
+                            {measure.value}
+                          </span>
+                          {measure.unit && (
+                            <span className="text-[10px] text-muted-foreground font-medium">
+                              {measure.unit}
+                            </span>
+                          )}
+                        </span>
                       </td>
-                      <td className="py-2 pr-4 text-right text-muted-foreground font-mono tabular-nums whitespace-nowrap">
+                      <td className="py-2.5 pr-4 text-right text-muted-foreground font-mono tabular-nums text-xs whitespace-nowrap">
                         {formatCI95(dp.statistic)}
                       </td>
-                      <td className="py-2 text-xs text-muted-foreground whitespace-nowrap">
+                      <td className="py-2.5 text-xs text-muted-foreground whitespace-nowrap">
                         {dp.citation ? formatCitation(dp.citation) : "—"}
                       </td>
                     </tr>

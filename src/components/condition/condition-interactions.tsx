@@ -24,34 +24,34 @@ export function ConditionInteractions({
   if (interactions.length === 0) return null;
 
   return (
-    <Card className="bg-[#fef9ee] border-[#f0e4c4]">
+    <Card className="border-l-4 border-l-[var(--ga-caution)]">
       <CardHeader>
-        <CardTitle className="text-base font-semibold tracking-tight text-[#92610a]">
+        <CardTitle className="text-base font-semibold tracking-tight">
           Interactions
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
         {interactions.map((ix, i) => (
-          <div key={i} className="border border-[#f0e4c4] rounded-lg p-3 bg-white/60">
+          <div key={i} className="rounded-lg border bg-muted/30 p-3.5">
             <div className="flex flex-wrap items-center gap-2 mb-1.5">
-              <Badge className="text-[11px] uppercase bg-[#92610a]/20 text-[#92610a] border-[#f0e4c4]">
+              <Badge className="text-[11px] uppercase bg-[var(--ga-caution)]/20 text-foreground border-border">
                 {INTERACTION_LABELS[ix.interactionType]}
               </Badge>
               <Link
                 href={`/conditions/${ix.interactingConditionId}`}
-                className="text-sm font-medium text-blue-600 hover:underline"
+                className="text-sm font-medium text-primary hover:underline"
               >
                 {ix.interactingConditionId}
               </Link>
             </div>
-            <p className="text-sm">{ix.description}</p>
+            <p className="text-sm leading-relaxed">{ix.description}</p>
             {ix.combinedTimingGuidance && (
               <div className="mt-2">
                 <GAWindowBadge timing={ix.combinedTimingGuidance} />
               </div>
             )}
             {teachingMode && teachingExpanded && (
-              <div className="mt-2 border-l-[3px] border-[#93b4f4] pl-3 text-sm italic text-[#1e40af]">
+              <div className="mt-2 border-l-[3px] border-primary/30 pl-3 text-sm italic text-primary">
                 → This interaction affects delivery planning. {ix.description}
               </div>
             )}

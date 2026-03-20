@@ -49,7 +49,7 @@ TimelineView
 - `riskCurve` (all 6 GA points, 37–42w) drives the chart curves.
 - For smooth visual interpolation between weekly data points, additional points are interpolated client-side using the existing `interpolateBaseline` function from the risk engine.
 - `selectedGaCalculation` and `stepByStepBreakdown` from context drive the detail card.
-- Cross-GA equivalence is computed locally: for each week, find the baseline week whose uncomplicated risk ≈ this week's adjusted risk.
+- Cross-GA equivalence is computed locally: for each week, find the baseline week whose uncomplicated risk is the closest match to this week's adjusted risk. Strategy: find the baseline GA point with the minimum absolute difference to the adjusted risk. Only display the equivalence marker if a match exists at a later GA (earlier-GA equivalences aren't clinically useful) and the adjusted risk exceeds the baseline risk at the same GA.
 
 **No new data files or engine changes.** The only new logic is the equivalence finder and the playback timer.
 

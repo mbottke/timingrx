@@ -108,7 +108,7 @@ export function SectionMultiplication() {
                           if (!d) return null;
                           return (
                             <div className="rounded-lg border bg-card p-3 text-xs shadow-md space-y-1">
-                              <p className="font-semibold font-mono">{d.ga}</p>
+                              <p className="font-semibold">{d.ga}</p>
                               <p className="text-muted-foreground">
                                 Baseline: <span className="font-mono tabular-nums">{d.baseline.toFixed(2)}</span> / 1,000
                               </p>

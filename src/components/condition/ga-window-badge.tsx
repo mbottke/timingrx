@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 export function GAWindowBadge({ timing }: { timing: DeliveryTiming }) {
   if (timing.type === "range") {
     return (
-      <Badge variant="outline" className="font-mono text-xs">
+      <Badge variant="outline" className="text-xs">
         {gaRangeToDisplay(timing.range.earliest, timing.range.latest)}
       </Badge>
     );

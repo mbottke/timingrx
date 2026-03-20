@@ -7,11 +7,12 @@ import { GAWindowBadge } from "./ga-window-badge";
 import { EvidenceGradeBadge } from "./evidence-grade-badge";
 import { formatCitations } from "@/lib/utils/citation-format";
 import {
-  formatRiskStatistic,
+  formatRiskStatisticStructured,
   getRiskSeverity,
   severityColorClass,
   formatCI95,
   generateTeachingInterpretation,
+  capitalizeFirst,
 } from "@/lib/utils/risk-format";
 import { RiskDataTable } from "./risk-data-table";
 import { RiskModifiersList } from "./risk-modifiers-list";
@@ -53,22 +54,26 @@ export function ConditionDetail({
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div>
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
-          <span>{CATEGORY_DISPLAY_NAMES[condition.category]}</span>
+      <div className="rounded-xl border bg-card p-5 shadow-sm">
+        <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">
+          <span className="inline-flex items-center gap-1.5">
+            <span className="inline-block w-2 h-2 rounded-full bg-primary/60" />
+            {CATEGORY_DISPLAY_NAMES[condition.category]}
+          </span>
           {condition.parentConditionId && (
             <>
-              <span>/</span>
+              <span className="text-border">/</span>
               <span>Sub-variant</span>
             </>
           )}
         </div>
-        <h1 className="text-2xl font-semibold tracking-tight">
+        <h1 className="text-2xl font-bold tracking-tight">
           {condition.name}
         </h1>
         {condition.stratificationAxis && (
-          <p className="mt-1 text-sm text-muted-foreground">
-            Stratified by: {condition.stratificationAxis}
+          <p className="mt-1.5 text-sm text-muted-foreground">
+            Stratified by:{" "}
+            <span className="font-medium text-foreground/80">{condition.stratificationAxis}</span>
           </p>
         )}
       </div>
@@ -85,22 +90,22 @@ export function ConditionDetail({
             {condition.guidelineRecommendations.map((rec, i) => (
               <div
                 key={i}
-                className={`flex flex-col gap-2 ${
+                className={`flex flex-col gap-2.5 ${
                   i > 0 ? "border-t pt-4" : ""
                 }`}
               >
                 <div className="flex flex-wrap items-center gap-2">
                   <GAWindowBadge timing={rec.timing} />
-                  <Badge variant="outline" className="text-xs">
+                  <Badge variant="outline" className="text-xs font-medium">
                     {routeLabels[rec.route]}
                   </Badge>
                   <EvidenceGradeBadge grade={rec.grade} />
                 </div>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs text-muted-foreground font-mono">
                   {formatCitations(rec.citations)}
                 </p>
                 {rec.notes && (
-                  <p className="text-sm text-muted-foreground">{rec.notes}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{rec.notes}</p>
                 )}
               </div>
             ))}
@@ -122,17 +127,17 @@ export function ConditionDetail({
 
       {/* Physiology (Teaching Mode) — amber accent */}
       {teachingMode && condition.physiologyExplanation && (
-        <Card className="border-l-4 border-l-amber-400 bg-amber-50/30">
+        <Card className="border-l-4 border-l-[var(--ga-caution)] bg-[var(--ga-caution)]/5">
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
-              <span className="text-xs bg-amber-500 text-white px-1.5 py-0.5 rounded font-semibold">
+              <span className="text-xs bg-[var(--ga-caution)] text-black px-1.5 py-0.5 rounded font-semibold">
                 TEACHING
               </span>
-              Pathophysiology
+              <span className="font-semibold tracking-tight">Pathophysiology</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm leading-relaxed">
+            <p className="text-sm leading-relaxed text-foreground/90">
               {condition.physiologyExplanation}
             </p>
           </CardContent>
@@ -157,13 +162,13 @@ export function ConditionDetail({
           <CardHeader>
             <CardTitle className="text-base font-semibold tracking-tight">Landmark Trials</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            {condition.landmarkTrials.map((trial) => (
-              <div key={trial.id}>
+          <CardContent className="space-y-5">
+            {condition.landmarkTrials.map((trial, idx) => (
+              <div key={trial.id} className={idx > 0 ? "border-t pt-4" : ""}>
                 <div className="flex items-baseline gap-2 flex-wrap">
-                  <span className="font-medium text-sm">{trial.name}</span>
+                  <span className="font-semibold text-sm">{trial.name}</span>
                   {trial.sampleSize !== undefined && (
-                    <span className="text-[11px] font-mono bg-muted text-muted-foreground px-1.5 py-0.5 rounded">
+                    <span className="text-[11px] font-mono bg-primary/10 text-primary px-1.5 py-0.5 rounded font-medium">
                       n = {trial.sampleSize.toLocaleString()}
                     </span>
                   )}
@@ -171,14 +176,14 @@ export function ConditionDetail({
                     {trial.journalCitation}
                   </span>
                 </div>
-                <p className="text-sm mt-1">{trial.summary}</p>
+                <p className="text-sm mt-1.5 leading-relaxed">{trial.summary}</p>
                 <ul className="mt-2 space-y-1">
                   {trial.keyFindings.map((f, i) => (
                     <li
                       key={i}
                       className="text-xs text-muted-foreground flex gap-1.5"
                     >
-                      <span className="text-muted-foreground/50">&bull;</span>
+                      <span className="text-primary/40">&bull;</span>
                       {f}
                     </li>
                   ))}
@@ -195,17 +200,34 @@ export function ConditionDetail({
                         </tr>
                       </thead>
                       <tbody>
-                        {trial.relevantRiskData.map((rd, j) => (
-                          <tr key={j} className="border-b last:border-0">
-                            <td className="py-1 pr-3">{rd.outcome}</td>
-                            <td className={`py-1 pr-3 text-right font-mono tabular-nums font-bold ${severityColorClass(getRiskSeverity(rd.statistic))}`}>
-                              {formatRiskStatistic(rd.statistic)}
-                            </td>
-                            <td className="py-1 text-right text-muted-foreground font-mono tabular-nums">
-                              {formatCI95(rd.statistic)}
-                            </td>
-                          </tr>
-                        ))}
+                        {trial.relevantRiskData.map((rd, j) => {
+                          const m = formatRiskStatisticStructured(rd.statistic);
+                          return (
+                            <tr key={j} className="border-b last:border-0">
+                              <td className="py-1 pr-3">{capitalizeFirst(rd.outcome)}</td>
+                              <td className="py-1 pr-3 text-right whitespace-nowrap">
+                                <span className="inline-flex items-baseline justify-end gap-0.5">
+                                  {m.label && (
+                                    <span className="text-[9px] font-semibold uppercase tracking-wide text-muted-foreground">
+                                      {m.label}
+                                    </span>
+                                  )}
+                                  <span className={`font-mono tabular-nums font-bold ${severityColorClass(getRiskSeverity(rd.statistic))}`}>
+                                    {m.value}
+                                  </span>
+                                  {m.unit && (
+                                    <span className="text-[9px] text-muted-foreground">
+                                      {m.unit}
+                                    </span>
+                                  )}
+                                </span>
+                              </td>
+                              <td className="py-1 text-right text-muted-foreground font-mono tabular-nums">
+                                {formatCI95(rd.statistic)}
+                              </td>
+                            </tr>
+                          );
+                        })}
                       </tbody>
                     </table>
                     <div className="mt-2 border-l-[3px] border-primary/30 pl-3 text-sm italic text-primary">
@@ -233,14 +255,14 @@ export function ConditionDetail({
           </CardHeader>
           <CardContent className="space-y-3">
             {condition.specialConsiderations.map((sc, i) => (
-              <div key={i} className="flex gap-2">
-                <span className="text-sm">
+              <div key={i} className="flex gap-3 rounded-lg bg-muted/20 p-3">
+                <span className="text-base shrink-0 mt-0.5">
                   {specialIcons[sc.type] ?? "\u2139\uFE0F"}
                 </span>
                 <div>
-                  <p className="text-sm">{sc.description}</p>
+                  <p className="text-sm leading-relaxed">{sc.description}</p>
                   {sc.timing && (
-                    <p className="text-xs text-muted-foreground mt-0.5">
+                    <p className="text-xs text-muted-foreground mt-1 font-medium">
                       Timing: {sc.timing}
                     </p>
                   )}
@@ -253,7 +275,7 @@ export function ConditionDetail({
 
       {/* Sub-variants */}
       {condition.subVariants && condition.subVariants.length > 0 && (
-        <Card>
+        <Card className="border-l-4 border-l-muted-foreground/30">
           <CardHeader>
             <CardTitle className="text-base font-semibold tracking-tight">Sub-variants</CardTitle>
           </CardHeader>
@@ -261,14 +283,14 @@ export function ConditionDetail({
             {condition.subVariants.map((sv) => {
               const rec = sv.guidelineRecommendations[0];
               return (
-                <div key={sv.id} className="border rounded-lg p-3">
-                  <div className="flex flex-wrap items-center gap-2 mb-1">
-                    <span className="text-sm font-medium">{sv.name}</span>
+                <div key={sv.id} className="rounded-lg border bg-muted/30 p-3.5 transition-colors hover:bg-muted/50">
+                  <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span className="text-sm font-semibold">{sv.name}</span>
                     {rec && <GAWindowBadge timing={rec.timing} />}
                     {rec && <EvidenceGradeBadge grade={rec.grade} />}
                   </div>
                   {rec?.notes && (
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-xs text-muted-foreground leading-relaxed">
                       {rec.notes}
                     </p>
                   )}
