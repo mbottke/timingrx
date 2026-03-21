@@ -1,36 +1,32 @@
 "use client";
 
 /**
- * Animated decorative background — two diverging risk curves with organic,
- * non-repeating motion. Each control point is perturbed by 4 layered sine
- * waves with golden-ratio-derived frequencies, so the pattern never visibly
- * repeats. Paths and dots are updated every frame via useAnimationFrame for
- * buttery-smooth 60fps animation with zero React re-renders.
+ * Animated hero — two luminous diverging curves with ethereal, coordinated
+ * motion. Uses global wave functions so the entire curve breathes as one,
+ * with amplitude gently increasing along the length to suggest growing
+ * divergence. Solid glowing strokes with ghost echoes for depth.
  *
- * preserveAspectRatio="none" stretches the SVG edge-to-edge regardless of
- * viewport width.
+ * preserveAspectRatio="none" stretches edge-to-edge.
+ * All animation is 60fps via useAnimationFrame with direct DOM mutation.
  */
 
 import { useRef, useState, useEffect } from "react";
 import { useAnimationFrame } from "framer-motion";
 
-/* ── math helpers ────────────────────────────────────────────────── */
+/* ── constants ───────────────────────────────────────────────────── */
 
 const PHI = 1.618033988749895;
+const NUM_POINTS = 13;
+const VB_W = 1000;
+const VB_H = 200;
 
-/** Sum of sine waves — irrational frequency ratios prevent visible repetition */
-function wave(
-  t: number,
-  configs: readonly (readonly [amp: number, freq: number, phase: number])[]
-) {
-  let sum = 0;
-  for (let i = 0; i < configs.length; i++) {
-    sum += configs[i][0] * Math.sin(t * configs[i][1] + configs[i][2]);
-  }
-  return sum;
-}
+// Base Y positions — gentle rise (baseline) and steep rise (adjusted)
+const baseBaseY = [170, 169, 167, 164, 160, 155, 148, 140, 130, 118, 105, 91, 78];
+const adjBaseY = [168, 165, 160, 151, 138, 120, 98, 74, 52, 34, 20, 10, 5];
 
-/** Catmull-Rom → cubic-bezier SVG path for butter-smooth curves */
+/* ── math helpers ────────────────────────────────────────────────── */
+
+/** Catmull-Rom → cubic bezier SVG path */
 function smoothPath(pts: [number, number][]): string {
   const n = pts.length;
   if (n < 2) return "";
@@ -49,46 +45,40 @@ function smoothPath(pts: [number, number][]): string {
   return d;
 }
 
-/* ── per-point wave configs (pre-built once) ─────────────────────── */
-
-const NUM_POINTS = 11;
-const VB_W = 1000;
-const VB_H = 200;
-const X_STEP = VB_W / (NUM_POINTS - 1);
-
-// Base Y positions — baseline is a gentle rise, adjusted is steeper
-const baseBaseY = [168, 166, 163, 158, 152, 144, 134, 122, 108, 93, 78];
-const adjBaseY  = [166, 162, 155, 142, 124, 100, 74, 48, 28, 14, 5];
-
-// 4 sine layers per point, frequencies use PHI multiples so they never sync
-function buildWaveConfigs(seed: number) {
-  return Array.from({ length: NUM_POINTS }, (_, i) => [
-    [3.0 + i * 0.35,  0.47 * PHI + i * 0.031 + seed * 0.1,   i * PHI + seed],
-    [1.8 - i * 0.08,  0.83 + i * 0.053 + seed * 0.07,        i * 2.39 + 0.7 + seed * 1.3],
-    [1.0 + i * 0.1,   1.71 * PHI + i * 0.023 + seed * 0.05,  i * 0.91 + 1.4 + seed * 0.6],
-    [0.5,              0.23 + i * 0.017 + seed * 0.03,         i * 3.14 + 2.1 + seed * 2.2],
-  ] as [number, number, number][]);
+/**
+ * Global coordinated wave — the whole curve moves together.
+ * `positionScale` (0→1 along the curve) gently increases amplitude
+ * so the right side sways more, like a ribbon anchored at the left.
+ */
+function globalWave(t: number, positionScale: number): number {
+  const amp = 1.0 + positionScale * 2.5; // left: ±1, right: ±3.5
+  return (
+    amp * (
+      1.0  * Math.sin(t * 0.31)                          + // very slow primary sway
+      0.6  * Math.sin(t * 0.31 * PHI + 1.2)              + // secondary, phi-offset
+      0.3  * Math.sin(t * 0.31 * PHI * PHI + 2.8)        + // tertiary, slower still
+      0.15 * Math.sin(t * 0.13 + positionScale * 1.5)      // ultra-slow drift
+    )
+  );
 }
 
-const baselineWaves = buildWaveConfigs(0);
-const adjustedWaves = buildWaveConfigs(1.7);
-
-// Which point indices get visible dots
-const DOT_INDICES = [1, 3, 5, 7, 9];
-
 /* ── component ───────────────────────────────────────────────────── */
+
+// Dot positions: indices along the curves
+const DOT_INDICES = [3, 6, 9];
 
 export function AnimatedHero({ className }: { className?: string }) {
   const [visible, setVisible] = useState(false);
 
-  // Direct DOM refs — no re-renders during animation
+  // Path refs
   const baselineRef = useRef<SVGPathElement>(null);
+  const baselineGhostRef = useRef<SVGPathElement>(null);
   const adjustedRef = useRef<SVGPathElement>(null);
+  const adjustedGhostRef = useRef<SVGPathElement>(null);
   const zoneRef = useRef<SVGPathElement>(null);
   const bDotRefs = useRef<(SVGCircleElement | null)[]>([]);
   const aDotRefs = useRef<(SVGCircleElement | null)[]>([]);
 
-  // Fade in on mount
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 50);
     return () => clearTimeout(timer);
@@ -96,38 +86,42 @@ export function AnimatedHero({ className }: { className?: string }) {
 
   useAnimationFrame((time) => {
     if (!visible) return;
-    const t = time / 1000; // seconds
+    const t = time / 1000;
 
-    // ── compute point positions with organic perturbation ──
+    // ── compute points ──
     const bPts: [number, number][] = new Array(NUM_POINTS);
     const aPts: [number, number][] = new Array(NUM_POINTS);
 
     for (let i = 0; i < NUM_POINTS; i++) {
-      // Extend curves 20px past edges so they bleed off-screen
-      const x = -20 + (i / (NUM_POINTS - 1)) * (VB_W + 40);
-      bPts[i] = [x, baseBaseY[i] + wave(t, baselineWaves[i])];
-      aPts[i] = [x, adjBaseY[i] + wave(t, adjustedWaves[i])];
+      const frac = i / (NUM_POINTS - 1); // 0→1 along curve
+      const x = -10 + frac * (VB_W + 20);
+
+      // Both curves share the same global wave but with a phase offset
+      // so they move in gentle sympathy, not identically
+      const bWave = globalWave(t, frac);
+      const aWave = globalWave(t + 0.7, frac); // phase-shifted companion
+
+      bPts[i] = [x, baseBaseY[i] + bWave];
+      aPts[i] = [x, adjBaseY[i] + aWave];
     }
 
-    // ── build SVG paths ──
+    // ── paths ──
     const bPath = smoothPath(bPts);
     const aPath = smoothPath(aPts);
 
-    // Zone: baseline L→R, then adjusted R→L, close
+    // Zone between curves
     const aRev = [...aPts].reverse();
     const aRevPath = smoothPath(aRev);
     const zonePath = bPath + " " + aRevPath.replace("M", "L") + " Z";
 
-    // ── apply to DOM (no React renders) ──
+    // Apply to DOM
     baselineRef.current?.setAttribute("d", bPath);
+    baselineGhostRef.current?.setAttribute("d", bPath);
     adjustedRef.current?.setAttribute("d", aPath);
+    adjustedGhostRef.current?.setAttribute("d", aPath);
     zoneRef.current?.setAttribute("d", zonePath);
 
-    // Flowing dash offset — different speeds per curve
-    baselineRef.current?.style.setProperty("stroke-dashoffset", String(-t * 18));
-    adjustedRef.current?.style.setProperty("stroke-dashoffset", String(-t * 22));
-
-    // ── update dots: position, radius pulse, opacity pulse ──
+    // ── dots ──
     for (let di = 0; di < DOT_INDICES.length; di++) {
       const pi = DOT_INDICES[di];
       const bDot = bDotRefs.current[di];
@@ -136,18 +130,14 @@ export function AnimatedHero({ className }: { className?: string }) {
       if (bDot) {
         bDot.setAttribute("cx", bPts[pi][0].toFixed(1));
         bDot.setAttribute("cy", bPts[pi][1].toFixed(1));
-        const br = 3 + 0.8 * Math.sin(t * 1.3 + di * PHI);
-        bDot.setAttribute("r", br.toFixed(2));
-        const bo = 0.35 + 0.15 * Math.sin(t * 0.9 + di * 2.1);
+        // Gentle, slow pulse
+        const bo = 0.25 + 0.1 * Math.sin(t * 0.7 + di * PHI);
         bDot.setAttribute("opacity", bo.toFixed(3));
       }
-
       if (aDot) {
         aDot.setAttribute("cx", aPts[pi][0].toFixed(1));
         aDot.setAttribute("cy", aPts[pi][1].toFixed(1));
-        const ar = 3 + 0.8 * Math.sin(t * 1.1 + di * PHI * 1.3);
-        aDot.setAttribute("r", ar.toFixed(2));
-        const ao = 0.35 + 0.15 * Math.sin(t * 1.1 + di * 1.7);
+        const ao = 0.25 + 0.1 * Math.sin(t * 0.6 + di * PHI + 1.0);
         aDot.setAttribute("opacity", ao.toFixed(3));
       }
     }
@@ -162,83 +152,109 @@ export function AnimatedHero({ className }: { className?: string }) {
       preserveAspectRatio="none"
       style={{
         opacity: visible ? 1 : 0,
-        transition: "opacity 2s ease-in",
+        transition: "opacity 2.5s ease-in",
       }}
     >
       <defs>
-        {/* Curve stroke gradients */}
+        {/* Stroke gradients */}
         <linearGradient id="hero-stroke-purple" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="var(--brand-blue, #6b93ef)" />
-          <stop offset="50%" stopColor="var(--brand-purple, #b055f7)" />
-          <stop offset="100%" stopColor="var(--brand-purple, #b055f7)" stopOpacity="0.5" />
+          <stop offset="0%" stopColor="var(--brand-blue, #6b93ef)" stopOpacity="0.8" />
+          <stop offset="40%" stopColor="var(--brand-purple, #b055f7)" />
+          <stop offset="100%" stopColor="var(--brand-purple, #b055f7)" stopOpacity="0.3" />
         </linearGradient>
         <linearGradient id="hero-stroke-pink" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="var(--brand-purple, #b055f7)" />
-          <stop offset="50%" stopColor="var(--brand-pink, #e04cb0)" />
-          <stop offset="100%" stopColor="var(--brand-pink, #e04cb0)" stopOpacity="0.5" />
+          <stop offset="0%" stopColor="var(--brand-purple, #b055f7)" stopOpacity="0.8" />
+          <stop offset="40%" stopColor="var(--brand-pink, #e04cb0)" />
+          <stop offset="100%" stopColor="var(--brand-pink, #e04cb0)" stopOpacity="0.3" />
         </linearGradient>
 
-        {/* Fill gradient for divergence zone */}
+        {/* Divergence zone fill */}
         <linearGradient id="hero-fill-zone" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="var(--brand-purple, #b055f7)" stopOpacity="0" />
-          <stop offset="20%" stopColor="var(--brand-purple, #b055f7)" stopOpacity="0.06" />
-          <stop offset="55%" stopColor="var(--brand-pink, #e04cb0)" stopOpacity="0.1" />
-          <stop offset="100%" stopColor="var(--brand-pink, #e04cb0)" stopOpacity="0.04" />
+          <stop offset="25%" stopColor="var(--brand-purple, #b055f7)" stopOpacity="0.05" />
+          <stop offset="60%" stopColor="var(--brand-pink, #e04cb0)" stopOpacity="0.08" />
+          <stop offset="100%" stopColor="var(--brand-pink, #e04cb0)" stopOpacity="0.02" />
         </linearGradient>
 
-        {/* Soft glow */}
-        <filter id="hero-glow" x="-20%" y="-40%" width="140%" height="180%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+        {/* Ethereal glow — wide, soft blur */}
+        <filter id="hero-glow" x="-30%" y="-50%" width="160%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
+
+        {/* Ghost echo — even wider blur for the background echo lines */}
+        <filter id="hero-ghost" x="-40%" y="-60%" width="180%" height="220%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+        </filter>
+
+        {/* Dot glow */}
+        <filter id="hero-dot-glow" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="4" />
+        </filter>
       </defs>
 
-      {/* Divergence zone fill */}
+      {/* Divergence zone — soft fill between curves */}
       <path ref={zoneRef} fill="url(#hero-fill-zone)" />
 
-      {/* Baseline curve */}
+      {/* Ghost echo lines — wide diffuse glow behind the main curves */}
+      <path
+        ref={baselineGhostRef}
+        stroke="var(--brand-purple, #b055f7)"
+        strokeWidth="6"
+        strokeLinecap="round"
+        filter="url(#hero-ghost)"
+        opacity="0.15"
+      />
+      <path
+        ref={adjustedGhostRef}
+        stroke="var(--brand-pink, #e04cb0)"
+        strokeWidth="6"
+        strokeLinecap="round"
+        filter="url(#hero-ghost)"
+        opacity="0.15"
+      />
+
+      {/* Main curves — solid, glowing */}
       <path
         ref={baselineRef}
         stroke="url(#hero-stroke-purple)"
-        strokeWidth="2.5"
+        strokeWidth="2"
         strokeLinecap="round"
-        strokeDasharray="8 4"
         filter="url(#hero-glow)"
-        opacity="0.55"
+        opacity="0.5"
       />
-
-      {/* Adjusted curve */}
       <path
         ref={adjustedRef}
         stroke="url(#hero-stroke-pink)"
-        strokeWidth="2.5"
+        strokeWidth="2"
         strokeLinecap="round"
-        strokeDasharray="10 5"
         filter="url(#hero-glow)"
-        opacity="0.55"
+        opacity="0.5"
       />
 
-      {/* Data dots — baseline */}
+      {/* Glowing embers — baseline */}
       {DOT_INDICES.map((_, i) => (
         <circle
           key={`b${i}`}
           ref={(el) => { bDotRefs.current[i] = el; }}
-          r="3"
+          r="4"
           fill="var(--brand-purple, #b055f7)"
+          filter="url(#hero-dot-glow)"
           opacity="0"
         />
       ))}
 
-      {/* Data dots — adjusted */}
+      {/* Glowing embers — adjusted */}
       {DOT_INDICES.map((_, i) => (
         <circle
           key={`a${i}`}
           ref={(el) => { aDotRefs.current[i] = el; }}
-          r="3"
+          r="4"
           fill="var(--brand-pink, #e04cb0)"
+          filter="url(#hero-dot-glow)"
           opacity="0"
         />
       ))}
