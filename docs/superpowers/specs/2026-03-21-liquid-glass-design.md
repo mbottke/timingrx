@@ -157,7 +157,8 @@ In `src/components/layout/animated-hero.tsx`, a `useEffect` + `requestAnimationF
 
 The `.liquid-glass-highlight` span uses CSS custom properties `--tilt-x` and `--tilt-y` (default `0`) to position its gradient:
 
-**Static default** (no tilt hook attached, `--tilt-x` and `--tilt-y` are `0`):
+A single CSS rule using a radial gradient that reads `--tilt-x` and `--tilt-y` (default `0`). When no tilt hook is attached, the gradient centers at 50%/50% producing a centered highlight. When `useLiquidTilt()` sets the custom properties, the highlight tracks the cursor.
+
 ```css
 .liquid-glass-highlight {
   position: absolute;
@@ -165,18 +166,6 @@ The `.liquid-glass-highlight` span uses CSS custom properties `--tilt-x` and `--
   border-radius: inherit;
   pointer-events: none;
   z-index: 1;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    transparent 100%
-  );
-}
-```
-
-**Active** (when `useLiquidTilt()` is attached and sets `--tilt-x`/`--tilt-y`):
-```css
-.liquid-glass-highlight {
   background: radial-gradient(
     circle at calc(50% + var(--tilt-x, 0) * 60%) calc(50% + var(--tilt-y, 0) * 60%),
     rgba(255, 255, 255, 0.3) 0%,
@@ -184,8 +173,6 @@ The `.liquid-glass-highlight` span uses CSS custom properties `--tilt-x` and `--
   );
 }
 ```
-
-The transition between static and active happens naturally: when `--tilt-x`/`--tilt-y` are `0`, the radial gradient centers at 50%/50% which produces a similar visual to the linear default. Therefore, **always use the radial gradient** — it works for both states, simplifying the CSS to a single rule.
 
 **Dark mode:** `rgba(255,255,255,0.2)` center (vs `0.3` in light) but the contrast against the dark surface makes it *more* visible, not less.
 
@@ -255,7 +242,7 @@ The following existing CSS classes are preserved and layer on top of the glass m
 ```html
 <Card class="liquid-glass kairos-card-hover">
   <span class="liquid-glass-highlight" />
-  <CardHeader class="relative z-2">
+  <CardHeader class="relative z-[2]">
     <!-- content -->
   </CardHeader>
 </Card>
