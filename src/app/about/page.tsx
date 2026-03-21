@@ -13,7 +13,8 @@ export default function AboutPage() {
         </p>
       </div>
 
-      <Card className="glass-card border-l-4 border-l-primary">
+      <Card className="liquid-glass border-l-4 border-l-primary">
+        <span className="liquid-glass-highlight" />
         <CardHeader>
           <CardTitle className="text-base">
             ACOG CO 831 Foundational Principles
@@ -30,7 +31,8 @@ export default function AboutPage() {
         </CardContent>
       </Card>
 
-      <Card className="glass-card border-l-4 border-l-[var(--brand-blue)]">
+      <Card className="liquid-glass border-l-4 border-l-[var(--brand-blue)]">
+        <span className="liquid-glass-highlight" />
         <CardHeader>
           <CardTitle className="text-base">Risk Calculator Methodology</CardTitle>
         </CardHeader>
@@ -57,7 +59,8 @@ export default function AboutPage() {
         </CardContent>
       </Card>
 
-      <Card className="glass-card border-l-4 border-l-destructive border-destructive/30">
+      <Card className="liquid-glass border-l-4 border-l-destructive border-destructive/30">
+        <span className="liquid-glass-highlight" />
         <CardHeader>
           <CardTitle className="text-base text-destructive">
             Important Disclaimers
