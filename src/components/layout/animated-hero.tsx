@@ -84,6 +84,35 @@ export function AnimatedHero({ className }: { className?: string }) {
     return () => clearTimeout(timer);
   }, []);
 
+  // Animate the hero refraction filter's turbulence
+  useEffect(() => {
+    if (!visible) return;
+    let time = 0;
+    let animId: number;
+
+    function animate() {
+      time += 0.005;
+      const turbulence = document.getElementById("hero-refract-turbulence");
+      if (turbulence) {
+        const bfx = 0.008 + Math.sin(time) * 0.002;
+        const bfy = 0.008 + Math.cos(time * 0.7) * 0.002;
+        turbulence.setAttribute("baseFrequency", `${bfx} ${bfy}`);
+      }
+      animId = requestAnimationFrame(animate);
+    }
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (!prefersReducedMotion) {
+      animId = requestAnimationFrame(animate);
+    }
+
+    return () => {
+      if (animId) cancelAnimationFrame(animId);
+    };
+  }, [visible]);
+
   useAnimationFrame((time) => {
     if (!visible) return;
     const t = time / 1000;
