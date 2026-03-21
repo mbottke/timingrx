@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { riskFactorMultipliers } from "@/data/risk-models/risk-factor-multipliers";
 import type { CalculatorState } from "@/lib/hooks/use-calculator";
 import { EvidenceGradeBadge } from "@/components/condition/evidence-grade-badge";
@@ -7,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { GAEntry } from "@/components/calculator/ga-entry";
+import { FactorPreviewSparkline } from "@/components/calculator/factor-preview-sparkline";
 import { CheckIcon } from "lucide-react";
 
 interface Props {
@@ -36,6 +38,8 @@ export function CalculatorForm({
   toggleFactor,
   setApplyInteractions,
 }: Props) {
+  const [hoveredFactorId, setHoveredFactorId] = useState<string | null>(null);
+
   const factorsByCategory = new Map<string, typeof riskFactorMultipliers>();
   for (const f of riskFactorMultipliers) {
     const existing = factorsByCategory.get(f.category) ?? [];
@@ -66,6 +70,8 @@ export function CalculatorForm({
                   <button
                     key={factor.id}
                     onClick={() => toggleFactor(factor.id)}
+                    onMouseEnter={() => !isActive && setHoveredFactorId(factor.id)}
+                    onMouseLeave={() => setHoveredFactorId(null)}
                     className={`w-full flex items-center justify-between rounded-md border border-l-2 p-2 text-left transition-all ${
                       isActive
                         ? "border-[var(--brand-pink)] border-l-[var(--brand-blue)] bg-[var(--brand-purple)]/5 shadow-sm"
@@ -98,15 +104,23 @@ export function CalculatorForm({
                         </span>
                       </div>
                     </div>
-                    <span
-                      className={`font-mono text-xs ml-2 whitespace-nowrap ${
-                        isActive
-                          ? "font-bold text-[var(--brand-pink)]"
-                          : "text-muted-foreground"
-                      }`}
-                    >
-                      {`×${factor.multiplier}`}
-                    </span>
+                    <div className="flex items-center gap-2 ml-2 shrink-0">
+                      {hoveredFactorId === factor.id && !isActive && (
+                        <FactorPreviewSparkline
+                          factorId={factor.id}
+                          currentFactorIds={state.activeFactorIds}
+                        />
+                      )}
+                      <span
+                        className={`font-mono text-xs whitespace-nowrap ${
+                          isActive
+                            ? "font-bold text-[var(--brand-pink)]"
+                            : "text-muted-foreground"
+                        }`}
+                      >
+                        {`×${factor.multiplier}`}
+                      </span>
+                    </div>
                   </button>
                 );
               })}
