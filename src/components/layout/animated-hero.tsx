@@ -54,10 +54,10 @@ function globalWave(t: number, positionScale: number): number {
   const amp = 1.0 + positionScale * 2.5; // left: ±1, right: ±3.5
   return (
     amp * (
-      1.0  * Math.sin(t * 0.31)                          + // very slow primary sway
-      0.6  * Math.sin(t * 0.31 * PHI + 1.2)              + // secondary, phi-offset
-      0.3  * Math.sin(t * 0.31 * PHI * PHI + 2.8)        + // tertiary, slower still
-      0.15 * Math.sin(t * 0.13 + positionScale * 1.5)      // ultra-slow drift
+      1.0  * Math.sin(t * 0.41)                          + // slow primary sway
+      0.6  * Math.sin(t * 0.41 * PHI + 1.2)              + // secondary, phi-offset
+      0.3  * Math.sin(t * 0.41 * PHI * PHI + 2.8)        + // tertiary
+      0.15 * Math.sin(t * 0.18 + positionScale * 1.5)      // ultra-slow drift
     )
   );
 }
@@ -176,9 +176,9 @@ export function AnimatedHero({ className }: { className?: string }) {
           <stop offset="100%" stopColor="var(--brand-pink, #e04cb0)" stopOpacity="0.02" />
         </linearGradient>
 
-        {/* Ethereal glow — wide, soft blur */}
-        <filter id="hero-glow" x="-30%" y="-50%" width="160%" height="200%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+        {/* Line glow — soft halo around a crisp stroke */}
+        <filter id="hero-glow" x="-20%" y="-40%" width="140%" height="180%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
@@ -217,14 +217,14 @@ export function AnimatedHero({ className }: { className?: string }) {
         opacity="0.15"
       />
 
-      {/* Main curves — solid, glowing */}
+      {/* Main curves — solid, crisp with soft halo */}
       <path
         ref={baselineRef}
         stroke="url(#hero-stroke-purple)"
         strokeWidth="2"
         strokeLinecap="round"
         filter="url(#hero-glow)"
-        opacity="0.5"
+        opacity="0.6"
       />
       <path
         ref={adjustedRef}
@@ -232,7 +232,7 @@ export function AnimatedHero({ className }: { className?: string }) {
         strokeWidth="2"
         strokeLinecap="round"
         filter="url(#hero-glow)"
-        opacity="0.5"
+        opacity="0.6"
       />
 
       {/* Glowing embers — baseline */}
