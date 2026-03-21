@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef } from "react";
 import Link from "next/link";
 import type { ObstetricCondition } from "@/data/types";
 import { CATEGORY_DISPLAY_NAMES } from "@/data/types";
@@ -7,6 +10,7 @@ import { GAWindowBadge } from "./ga-window-badge";
 import { EvidenceGradeBadge } from "./evidence-grade-badge";
 import { GATimelineBar } from "./ga-timeline-bar";
 import { CategoryIcon } from "@/components/icons/category-icons";
+import { useLiquidTilt } from "@/lib/hooks/use-liquid-tilt";
 
 const pastFortyLabels: Record<string, { text: string; className: string }> = {
   yes: { text: "Can go past 40w", className: "bg-[var(--ga-safe)] text-white" },
@@ -20,13 +24,16 @@ export function ConditionCard({
 }: {
   condition: ObstetricCondition;
 }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  useLiquidTilt(cardRef);
   const primaryRec = condition.guidelineRecommendations[0];
   const p40 = pastFortyLabels[condition.pastFortyWeeks];
 
   return (
     <Link href={`/conditions/${condition.id}`}>
-      <Card className="white-glow kairos-card-hover h-full transition-all duration-200 hover:-translate-y-0.5">
-        <CardHeader className="space-y-2 p-4">
+      <Card ref={cardRef} className="liquid-glass white-glow kairos-card-hover h-full hover:-translate-y-0.5">
+        <span className="liquid-glass-highlight" />
+        <CardHeader className="relative z-[2] space-y-2 p-4">
           <div className="flex items-start justify-between gap-2">
             <CardTitle className="text-base font-semibold leading-tight flex items-center gap-1.5">
               <CategoryIcon category={condition.category} className="size-4 shrink-0 text-muted-foreground" />
