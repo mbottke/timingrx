@@ -6,6 +6,7 @@ import { CalculatorForm } from "@/components/calculator/calculator-form";
 import { GlassBoxDisplay } from "@/components/calculator/glass-box-display";
 import { StillbirthRiskCurve } from "@/components/charts/stillbirth-risk-curve";
 import { MortalityCrossoverChart } from "@/components/charts/mortality-crossover-chart";
+import { NNTPanel } from "@/components/calculator/nnt-panel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -265,6 +266,9 @@ export default function CalculatorPage() {
               </div>
             </CardContent>
           </Card>
+
+          {/* NNT Panel */}
+          <NNTPanel ga={state.ga} combinedMultiplier={combinedMultiplier} />
 
           {/* Disclaimer */}
           <p className="text-[11px] text-muted-foreground text-center px-4">
