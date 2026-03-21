@@ -24,6 +24,7 @@ import { ConditionInteractions } from "./condition-interactions";
 import { EvidenceSourcesSection } from "./evidence-sources-section";
 import { RecentLiterature } from "./recent-literature";
 import { ActiveTrials } from "./active-trials";
+import { RelatedConditions } from "./related-conditions";
 import { getIcdCodes } from "@/lib/utils/icd-codes";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -342,6 +343,9 @@ export function ConditionDetail({
           </CardContent>
         </Card>
       )}
+
+      {/* Related Conditions */}
+      <RelatedConditions conditionId={condition.id} />
     </div>
   );
 }
