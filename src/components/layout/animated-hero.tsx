@@ -69,8 +69,8 @@ export function AnimatedHero({ className }: { className?: string }) {
         d="M0 160 C200 155, 400 140, 600 120 S750 95, 800 80 L800 5 C680 15, 500 60, 350 100 S200 140, 0 155 Z"
         fill="url(#hero-fill-zone)"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2.5, ease: "easeOut", delay: 0.8 }}
+        animate={{ opacity: [1, 0.7, 1] }}
+        transition={{ duration: 6, ease: "easeInOut", delay: 0.8, repeat: Infinity }}
       />
 
       {/* Lower curve — baseline risk, purple, gentle rise */}
@@ -79,10 +79,16 @@ export function AnimatedHero({ className }: { className?: string }) {
         stroke="url(#hero-stroke-purple)"
         strokeWidth="2.5"
         strokeLinecap="round"
+        strokeDasharray="8 4"
         filter="url(#hero-glow)"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 0.55 }}
-        transition={{ duration: 2.2, ease: "easeInOut" }}
+        initial={{ pathLength: 0, opacity: 0, strokeDashoffset: 0, y: 0 }}
+        animate={{ pathLength: 1, opacity: 0.55, strokeDashoffset: -24, y: [0, -2, 0, 2, 0] }}
+        transition={{
+          pathLength: { duration: 2.2, ease: "easeInOut" },
+          opacity: { duration: 2.2, ease: "easeInOut" },
+          strokeDashoffset: { duration: 3, ease: "linear", repeat: Infinity, delay: 2.2 },
+          y: { duration: 8, ease: "easeInOut", repeat: Infinity, delay: 2.2 },
+        }}
       />
 
       {/* Upper curve — adjusted risk, pink, steeper rise */}
@@ -91,10 +97,16 @@ export function AnimatedHero({ className }: { className?: string }) {
         stroke="url(#hero-stroke-pink)"
         strokeWidth="2.5"
         strokeLinecap="round"
+        strokeDasharray="10 5"
         filter="url(#hero-glow)"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 0.55 }}
-        transition={{ duration: 2.2, ease: "easeInOut", delay: 0.3 }}
+        initial={{ pathLength: 0, opacity: 0, strokeDashoffset: 0, y: 0 }}
+        animate={{ pathLength: 1, opacity: 0.55, strokeDashoffset: -30, y: [0, -3, 0, 3, 0] }}
+        transition={{
+          pathLength: { duration: 2.2, ease: "easeInOut", delay: 0.3 },
+          opacity: { duration: 2.2, ease: "easeInOut", delay: 0.3 },
+          strokeDashoffset: { duration: 2.5, ease: "linear", repeat: Infinity, delay: 2.5 },
+          y: { duration: 7, ease: "easeInOut", repeat: Infinity, delay: 2.5 },
+        }}
       />
 
       {/* Divergence origin — where curves separate */}
