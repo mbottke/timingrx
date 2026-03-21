@@ -106,9 +106,10 @@ function CalculatorContent() {
       </div>
 
       {/* Evidence Grade Key */}
-      <div className="mb-6 rounded-lg border bg-card p-4">
-        <h2 className="text-sm font-semibold mb-3">Evidence & Confidence Grade Key</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
+      <div className="mb-6 rounded-lg liquid-glass p-4">
+        <span className="liquid-glass-highlight" />
+        <h2 className="relative z-[2] text-sm font-semibold mb-3">Evidence & Confidence Grade Key</h2>
+        <div className="relative z-[2] grid gap-4 sm:grid-cols-2">
           {/* Evidence Strength */}
           <div>
             <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wide">
@@ -171,7 +172,8 @@ function CalculatorContent() {
 
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Left: Inputs */}
-        <div className="lg:w-80 xl:w-96 lg:shrink-0">
+        <div className="lg:w-80 xl:w-96 lg:shrink-0 liquid-glass rounded-xl p-4">
+          <span className="liquid-glass-highlight" />
           <PresetSelector
             onSelect={(preset) =>
               loadPreset(preset.factorIds, preset.defaultGA)

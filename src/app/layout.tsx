@@ -51,6 +51,32 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {/* Liquid Glass SVG filters — hidden, referenced by CSS classes */}
+        <svg
+          aria-hidden="true"
+          style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}
+        >
+          <defs>
+            <filter id="liquid-glass-refract" x="-10%" y="-10%" width="120%" height="120%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.008 0.008" numOctaves={3} seed={1} result="noise" />
+              <feGaussianBlur in="noise" stdDeviation={2} result="smoothNoise" />
+              <feDisplacementMap in="SourceGraphic" in2="smoothNoise" scale={15} xChannelSelector="R" yChannelSelector="G" result="displaced" />
+              <feSpecularLighting in="smoothNoise" surfaceScale={3} specularConstant={0.75} specularExponent={20} lightingColor="#ffffff" result="specular">
+                <fePointLight x={-100} y={-200} z={300} />
+              </feSpecularLighting>
+              <feBlend in="displaced" in2="specular" mode="screen" />
+            </filter>
+            <filter id="liquid-glass-refract-hero" x="-10%" y="-10%" width="120%" height="120%">
+              <feTurbulence id="hero-refract-turbulence" type="fractalNoise" baseFrequency="0.008 0.008" numOctaves={3} seed={2} result="noise" />
+              <feGaussianBlur in="noise" stdDeviation={2} result="smoothNoise" />
+              <feDisplacementMap in="SourceGraphic" in2="smoothNoise" scale={15} xChannelSelector="R" yChannelSelector="G" result="displaced" />
+              <feSpecularLighting in="smoothNoise" surfaceScale={3} specularConstant={0.75} specularExponent={20} lightingColor="#ffffff" result="specular">
+                <fePointLight x={-100} y={-200} z={300} />
+              </feSpecularLighting>
+              <feBlend in="displaced" in2="specular" mode="screen" />
+            </filter>
+          </defs>
+        </svg>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
