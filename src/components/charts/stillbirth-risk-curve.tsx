@@ -11,13 +11,13 @@ import {
   ResponsiveContainer,
   ReferenceLine,
   ReferenceArea,
+  Label,
 } from "recharts";
 import type { RiskCalculation } from "@/data/types";
 import { gaToDisplay } from "@/lib/utils/ga-format";
 import { baselineStillbirthCurve } from "@/data/risk-models/baseline-stillbirth";
 import { chartColors } from "./chart-theme";
 import { ChartGradientDefs } from "./chart-gradient-defs";
-import { w } from "@/data/helpers";
 
 interface Props {
   riskCurve: RiskCalculation[];
@@ -25,6 +25,26 @@ interface Props {
   hasFactors: boolean;
   /** Override chart container height (CSS value, e.g. "250px" or "100%") */
   height?: string;
+}
+
+/** Custom label renderer for data points showing the adjusted risk value. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function AdjustedDotLabel(props: any) {
+  const { x, y, value } = props;
+  if (x == null || y == null || value == null) return null;
+  return (
+    <text
+      x={x}
+      y={y - 10}
+      textAnchor="middle"
+      fontSize={9}
+      fontFamily="var(--font-geist-mono), monospace"
+      fontWeight={600}
+      fill="var(--brand-pink)"
+    >
+      {Number(value).toFixed(2)}
+    </text>
+  );
 }
 
 export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }: Props) {
@@ -46,11 +66,11 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }
   return (
     <div className="w-full" style={{ height: height ?? "350px" }}>
       <ResponsiveContainer width="100%" height="100%">
-        <ComposedChart data={data} margin={{ top: 30, right: 30, bottom: 20, left: 10 }}>
+        <ComposedChart data={data} margin={{ top: 20, right: 30, bottom: 25, left: 20 }}>
           <ChartGradientDefs />
           <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} />
 
-          {/* Risk zone shading */}
+          {/* Risk zone shading — subtle tints */}
           <ReferenceArea
             x1="37w0d"
             x2="39w0d"
@@ -70,55 +90,59 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }
             fillOpacity={1}
           />
 
-          {/* ACOG guideline annotations */}
+          {/* ACOG guideline annotations — staggered vertically to avoid overlap */}
           <ReferenceLine
             x="41w0d"
             stroke={chartColors.text}
             strokeDasharray="4 4"
             label={{
-              value: "ACOG: Offer induction →",
-              position: "insideTopLeft",
+              value: "ACOG: Offer induction",
+              position: "insideTop",
               fill: chartColors.text,
-              fontSize: 10,
-              offset: 5,
+              fontSize: 9,
+              dy: 8,
             }}
           />
           <ReferenceLine
             x="42w0d"
-            stroke={chartColors.stillbirth}
+            stroke="var(--brand-pink)"
             strokeDasharray="4 4"
             label={{
-              value: "← Never beyond",
-              position: "insideTopRight",
-              fill: chartColors.stillbirth,
-              fontSize: 10,
-              offset: 5,
+              value: "Never beyond",
+              position: "insideTop",
+              fill: "var(--brand-pink)",
+              fontSize: 9,
+              dy: 22,
             }}
           />
 
           <XAxis
             dataKey="ga"
-            tick={{ fill: chartColors.text, fontSize: 12 }}
+            tick={{ fill: chartColors.text, fontSize: 11 }}
             label={{
               value: "Gestational Age",
               position: "bottom",
-              offset: 0,
+              offset: 5,
               fill: chartColors.text,
-              fontSize: 12,
+              fontSize: 11,
             }}
           />
           <YAxis
-            tick={{ fill: chartColors.text, fontSize: 12 }}
+            tick={{ fill: chartColors.text, fontSize: 11 }}
             domain={[0, yMax]}
-            label={{
-              value: "Stillbirth per 1,000",
-              angle: -90,
-              position: "insideLeft",
-              offset: 10,
-              fill: chartColors.text,
-              fontSize: 12,
-            }}
-          />
+            width={55}
+          >
+            {/* Custom centered Y-axis label */}
+            <Label
+              value="Stillbirth per 1,000"
+              angle={-90}
+              position="center"
+              dx={-18}
+              fill={chartColors.text}
+              fontSize={11}
+              style={{ textAnchor: "middle" }}
+            />
+          </YAxis>
 
           <Tooltip
             content={({ active, payload }) => {
@@ -133,7 +157,7 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }
                   </p>
                   {hasFactors && (
                     <>
-                      <p className="text-[var(--risk-high)] font-medium">
+                      <p className="text-[var(--brand-pink)] font-medium">
                         Adjusted: <span className="font-mono tabular-nums">{d.adjusted.toFixed(2)}</span> per 1,000
                       </p>
                       <p className="text-muted-foreground">
@@ -164,8 +188,20 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }
             stroke={chartColors.baselineGradient}
             strokeWidth={hasFactors ? 1.5 : 2.5}
             strokeDasharray={hasFactors ? "6 3" : undefined}
-            dot={{ fill: "var(--brand-purple)", r: hasFactors ? 2 : 4 }}
+            dot={{ fill: "var(--brand-purple)", r: hasFactors ? 2 : 3 }}
             name="Baseline"
+            label={
+              !hasFactors
+                ? (props: any) => (
+                    <AdjustedDotLabel
+                      x={props.x as number}
+                      y={props.y as number}
+                      value={props.value as number}
+                      index={props.index as number}
+                    />
+                  )
+                : undefined
+            }
           />
 
           {/* Adjusted curve (only when factors active) */}
@@ -175,8 +211,16 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }
               dataKey="adjusted"
               stroke={chartColors.adjustedGradient}
               strokeWidth={2.5}
-              dot={{ fill: "var(--brand-pink)", r: 4, strokeWidth: 2, stroke: "#fff" }}
+              dot={{ fill: "var(--brand-pink)", r: 4, strokeWidth: 2, stroke: "var(--background)" }}
               name="Adjusted"
+              label={(props: any) => (
+                <AdjustedDotLabel
+                  x={props.x as number}
+                  y={props.y as number}
+                  value={props.value as number}
+                  index={props.index as number}
+                />
+              )}
             />
           )}
         </ComposedChart>

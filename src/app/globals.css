@@ -101,15 +101,15 @@
   --header-fg: oklch(0.95 0.005 245);
   --header-muted: oklch(0.70 0.015 245);
 
-  /* Chart canvas tokens (overridden by .chart-dark) */
+  /* Chart canvas tokens */
   --chart-text: oklch(0.40 0.015 245);
   --chart-grid: oklch(0.88 0.005 245);
   --chart-baseline: oklch(0.50 0.06 245);
   --chart-adjusted: oklch(0.577 0.245 27.325);
   --chart-ci: oklch(0.577 0.245 27.325 / 15%);
-  --chart-zone-safe: oklch(0.627 0.194 149.214 / 20%);
-  --chart-zone-caution: oklch(0.795 0.184 86.047 / 20%);
-  --chart-zone-danger: oklch(0.577 0.245 27.325 / 20%);
+  --chart-zone-safe: oklch(0.627 0.194 149.214 / 8%);
+  --chart-zone-caution: oklch(0.795 0.184 86.047 / 8%);
+  --chart-zone-danger: oklch(0.577 0.245 27.325 / 8%);
 
   /* Kairos medical color tokens */
   --risk-high: oklch(0.577 0.245 27.325);
@@ -218,21 +218,9 @@
   --chart-baseline: oklch(0.72 0.04 245);
   --chart-adjusted: oklch(0.75 0.20 27);
   --chart-ci: oklch(0.75 0.20 27 / 20%);
-  --chart-zone-safe: oklch(0.65 0.18 149 / 28%);
-  --chart-zone-caution: oklch(0.80 0.16 86 / 28%);
-  --chart-zone-danger: oklch(0.65 0.20 27 / 28%);
-}
-
-/* Dark chart canvas — used on the risk curve card */
-.chart-dark {
-  --chart-text: oklch(0.88 0.006 245);
-  --chart-grid: oklch(0.42 0.008 245);
-  --chart-baseline: oklch(0.78 0.04 245);
-  --chart-adjusted: oklch(0.80 0.18 27);
-  --chart-ci: oklch(0.80 0.18 27 / 25%);
-  --chart-zone-safe: oklch(0.65 0.18 149 / 35%);
-  --chart-zone-caution: oklch(0.80 0.16 86 / 35%);
-  --chart-zone-danger: oklch(0.65 0.20 27 / 35%);
+  --chart-zone-safe: oklch(0.65 0.18 149 / 12%);
+  --chart-zone-caution: oklch(0.80 0.16 86 / 12%);
+  --chart-zone-danger: oklch(0.65 0.20 27 / 12%);
 }
 
 /* Page fade-in animation */

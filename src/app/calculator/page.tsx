@@ -139,17 +139,11 @@ export default function CalculatorPage() {
 
         {/* Right: Chart + Glass Box */}
         <div className="flex-1 space-y-6">
-          {/* Risk Curve — dark canvas with brand glow */}
-          <Card className="relative chart-dark bg-[oklch(0.26_0.015_245)] border-[oklch(0.35_0.01_245)] overflow-hidden">
-            {/* Gradient glow behind chart */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -inset-4 opacity-[0.07] blur-[40px]"
-              style={{ background: "var(--kairos-gradient)" }}
-            />
+          {/* Risk Curve */}
+          <Card className="relative overflow-hidden">
             <CardHeader>
               <div className="flex items-center justify-between">
-                <CardTitle className="text-base text-[oklch(0.95_0.005_245)]">
+                <CardTitle className="text-base">
                   Stillbirth Risk by Gestational Age
                 </CardTitle>
                 <div className="flex items-center gap-1">
@@ -159,7 +153,6 @@ export default function CalculatorPage() {
                       variant={chartSize === value ? "default" : "outline"}
                       size="xs"
                       onClick={() => setChartSize(value)}
-                      className={chartSize !== value ? "border-white/20 text-[oklch(0.75_0.01_245)] hover:bg-white/10 hover:text-white" : ""}
                     >
                       {label}
                     </Button>
@@ -174,7 +167,7 @@ export default function CalculatorPage() {
                 hasFactors={hasFactors}
                 height={chartSize === "fullscreen" ? "350px" : sizeHeights[chartSize]}
               />
-              <div className="mt-3 flex flex-wrap gap-3 text-[11px] text-[oklch(0.65_0.01_245)]">
+              <div className="mt-3 flex flex-wrap gap-3 text-[11px] text-muted-foreground">
                 <span className="flex items-center gap-1">
                   <span className="w-3 h-0.5 bg-[var(--chart-baseline)] inline-block" />
                   Baseline (Muglu 2019, n=15M)
@@ -212,7 +205,7 @@ export default function CalculatorPage() {
                 </Button>
               </div>
               <div className="flex-1 px-6 pb-6">
-                <div className="chart-dark h-full rounded-lg bg-[oklch(0.26_0.015_245)] p-4">
+                <div className="h-full rounded-lg bg-card border p-4">
                   <StillbirthRiskCurve
                     riskCurve={riskCurve}
                     currentGA={state.ga}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { w } from "@/data/helpers";
@@ -89,9 +89,23 @@ interface Props {
 
 function InfoBubble({ info }: { info: GAMethodInfo }) {
   const [open, setOpen] = useState(false);
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const [pos, setPos] = useState({ top: 0, left: 0 });
+
+  useEffect(() => {
+    if (open && btnRef.current) {
+      const rect = btnRef.current.getBoundingClientRect();
+      setPos({
+        top: rect.bottom + 6,
+        left: Math.max(8, Math.min(rect.left, window.innerWidth - 296)),
+      });
+    }
+  }, [open]);
+
   return (
-    <span className="relative inline-block">
+    <span className="inline-block">
       <button
+        ref={btnRef}
         onClick={(e) => { e.stopPropagation(); setOpen(!open); }}
         className="inline-flex items-center justify-center rounded-full size-4 text-[9px] bg-muted hover:bg-muted-foreground/20 transition-colors"
         aria-label={`Info about ${info.label}`}
@@ -101,7 +115,10 @@ function InfoBubble({ info }: { info: GAMethodInfo }) {
       {open && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-          <div className="absolute z-50 left-0 top-6 w-72 rounded-md border bg-popover p-3 shadow-lg text-xs text-popover-foreground">
+          <div
+            className="fixed z-50 w-72 rounded-md border bg-popover p-3 shadow-lg text-xs text-popover-foreground"
+            style={{ top: pos.top, left: pos.left }}
+          >
             <div className="flex items-center gap-1.5 mb-1.5">
               <span className="font-medium">{info.label}</span>
               <Badge variant="outline" className="text-[9px] px-1">
