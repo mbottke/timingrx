@@ -8,6 +8,7 @@ import { GlassBoxDisplay } from "@/components/calculator/glass-box-display";
 import { StillbirthRiskCurve } from "@/components/charts/stillbirth-risk-curve";
 import { MortalityCrossoverChart } from "@/components/charts/mortality-crossover-chart";
 import { NNTPanel } from "@/components/calculator/nnt-panel";
+import { ConditionRecommendations } from "@/components/calculator/condition-recommendations";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -302,6 +303,9 @@ export default function CalculatorPage() {
 
           {/* NNT Panel */}
           <NNTPanel ga={state.ga} combinedMultiplier={combinedMultiplier} />
+
+          {/* Condition Recommendations */}
+          <ConditionRecommendations activeFactorIds={state.activeFactorIds} />
 
           {/* Disclaimer */}
           <p className="text-[11px] text-muted-foreground text-center px-4">
