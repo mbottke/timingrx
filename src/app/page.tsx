@@ -2,7 +2,8 @@ import Link from "next/link";
 import { conditionsByCategory, allConditions } from "@/data/conditions";
 import { CATEGORY_DISPLAY_NAMES, type ConditionCategory } from "@/data/types";
 import { allTrials } from "@/data/trials";
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { LiquidGlassCard } from "@/components/layout/liquid-glass-card";
 import { KairosLogo } from "@/components/layout/kairos-logo";
 import { AnimatedHero } from "@/components/layout/animated-hero";
 import { CategoryIcon } from "@/components/icons/category-icons";
@@ -90,11 +91,11 @@ export default function Home() {
             const accent = categoryAccents[cat] ?? defaultAccent;
             return (
               <Link key={cat} href="/conditions">
-                <Card
-                  className={`glow-hover kairos-card-hover h-full border-l-4 ${accent.border} transition-all duration-200 hover:-translate-y-0.5`}
+                <LiquidGlassCard
+                  className={`glow-hover kairos-card-hover h-full border-l-4 ${accent.border} hover:-translate-y-0.5`}
                   style={{ "--card-glow": accent.glow } as React.CSSProperties}
                 >
-                  <CardHeader className="p-4">
+                  <CardHeader className="relative z-[2] p-4">
                     <CardTitle className="text-sm font-semibold flex items-center gap-2">
                       <CategoryIcon category={cat} className="size-5 shrink-0 text-muted-foreground" />
                       {CATEGORY_DISPLAY_NAMES[cat]}
@@ -106,7 +107,7 @@ export default function Home() {
                       {" "}condition{conditions.length !== 1 ? "s" : ""}
                     </CardDescription>
                   </CardHeader>
-                </Card>
+                </LiquidGlassCard>
               </Link>
             );
           })}
@@ -118,8 +119,8 @@ export default function Home() {
 
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
-    <Card className="overflow-hidden">
-      <CardHeader className="p-5 text-center">
+    <LiquidGlassCard transparent className="overflow-hidden">
+      <CardHeader className="relative z-[2] p-5 text-center">
         <CardTitle className="text-4xl font-bold font-mono tracking-tight kairos-gradient-text">
           {value}
         </CardTitle>
@@ -127,6 +128,6 @@ function StatCard({ label, value }: { label: string; value: string }) {
           {label}
         </CardDescription>
       </CardHeader>
-    </Card>
+    </LiquidGlassCard>
   );
 }
