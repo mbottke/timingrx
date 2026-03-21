@@ -22,6 +22,8 @@ import { RiskDataTable } from "./risk-data-table";
 import { RiskModifiersList } from "./risk-modifiers-list";
 import { ConditionInteractions } from "./condition-interactions";
 import { EvidenceSourcesSection } from "./evidence-sources-section";
+import { RecentLiterature } from "./recent-literature";
+import { ActiveTrials } from "./active-trials";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -175,6 +177,12 @@ export function ConditionDetail({
 
       {/* Key Evidence Sources */}
       <EvidenceSourcesSection sources={condition.keyEvidenceSources} />
+
+      {/* Recent Literature (PubMed) */}
+      <RecentLiterature conditionName={condition.name} />
+
+      {/* Active Clinical Trials */}
+      <ActiveTrials conditionName={condition.name} />
 
       {/* Landmark Trials */}
       {condition.landmarkTrials.length > 0 && (
