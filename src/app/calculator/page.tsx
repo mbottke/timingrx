@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { useCalculator } from "@/lib/hooks/use-calculator";
 import { CalculatorForm } from "@/components/calculator/calculator-form";
+import { PresetSelector } from "@/components/calculator/preset-selector";
 import { GlassBoxDisplay } from "@/components/calculator/glass-box-display";
 import { StillbirthRiskCurve } from "@/components/charts/stillbirth-risk-curve";
 import { MortalityCrossoverChart } from "@/components/charts/mortality-crossover-chart";
@@ -35,6 +36,7 @@ export default function CalculatorPage() {
     toggleFactor,
     setFactors,
     setApplyInteractions,
+    loadPreset,
     currentRisk,
     riskCurve,
   } = useCalculator();
@@ -161,6 +163,11 @@ export default function CalculatorPage() {
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Left: Inputs */}
         <div className="lg:w-80 lg:shrink-0">
+          <PresetSelector
+            onSelect={(preset) =>
+              loadPreset(preset.factorIds, preset.defaultGA)
+            }
+          />
           <CalculatorForm
             state={state}
             setGA={setGA}

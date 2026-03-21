@@ -48,6 +48,18 @@ export function useCalculator() {
     }));
   }, []);
 
+  const loadPreset = useCallback(
+    (factorIds: string[], ga: GestationalAgeDays) => {
+      setState((s) => ({
+        ...s,
+        ga,
+        activeFactorIds: factorIds,
+        applyInteractions: factorIds.length >= 2,
+      }));
+    },
+    []
+  );
+
   const toggleCondition = useCallback((conditionId: string) => {
     setState((s) => ({
       ...s,
@@ -82,6 +94,7 @@ export function useCalculator() {
     toggleFactor,
     setFactors,
     setApplyInteractions,
+    loadPreset,
     toggleCondition,
     currentRisk,
     riskCurve,
