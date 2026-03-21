@@ -24,6 +24,7 @@ import { ConditionInteractions } from "./condition-interactions";
 import { EvidenceSourcesSection } from "./evidence-sources-section";
 import { RecentLiterature } from "./recent-literature";
 import { ActiveTrials } from "./active-trials";
+import { getIcdCodes } from "@/lib/utils/icd-codes";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -77,6 +78,15 @@ export function ConditionDetail({
         <h1 className="text-2xl font-bold tracking-tight">
           {condition.name}
         </h1>
+        {getIcdCodes(condition.id).length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mt-1">
+            {getIcdCodes(condition.id).map((code) => (
+              <span key={code} className="inline-flex items-center rounded-md bg-muted px-2 py-0.5 text-xs font-mono text-muted-foreground">
+                {code}
+              </span>
+            ))}
+          </div>
+        )}
         {condition.stratificationAxis && (
           <p className="mt-1.5 text-sm text-muted-foreground">
             Stratified by:{" "}

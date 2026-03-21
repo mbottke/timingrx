@@ -14,6 +14,7 @@ import {
 import { ConditionCard } from "@/components/condition/condition-card";
 import { KairosLogo } from "@/components/layout/kairos-logo";
 import { detectDivergence } from "@/lib/utils/guideline-divergence";
+import { getIcdCodes } from "@/lib/utils/icd-codes";
 
 type SortOption = "category" | "alphabetical" | "ga-earliest" | "ga-latest" | "grade";
 
@@ -82,7 +83,8 @@ export default function ConditionsPage() {
           c.name.toLowerCase().includes(q) ||
           c.tags.some((t) => t.toLowerCase().includes(q)) ||
           CATEGORY_DISPLAY_NAMES[c.category].toLowerCase().includes(q) ||
-          c.clinicalNotes?.toLowerCase().includes(q)
+          c.clinicalNotes?.toLowerCase().includes(q) ||
+          getIcdCodes(c.id).some((code) => code.toLowerCase().includes(q))
       );
     }
 
@@ -181,7 +183,7 @@ export default function ConditionsPage() {
           </svg>
           <input
             type="text"
-            placeholder="Search conditions, tags, or categories..."
+            placeholder="Search conditions, tags, categories, or ICD-10 codes..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full rounded-lg border bg-background px-4 py-2.5 pl-10 text-sm outline-none ring-ring focus:ring-2 placeholder:text-muted-foreground/60"
