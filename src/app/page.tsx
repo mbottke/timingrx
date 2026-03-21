@@ -32,7 +32,7 @@ export default function Home() {
   const categories = conditionsByCategory();
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 lg:px-6">
+    <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8 xl:px-12">
       {/* Hero */}
       <section className="relative text-center mb-14">
         <AnimatedHero className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-screen h-full pointer-events-none z-0" />
@@ -66,7 +66,7 @@ export default function Home() {
       <hr className="kairos-divider mb-14" />
 
       {/* Stats — hero numbers */}
-      <section className="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-14">
+      <section className="grid grid-cols-2 gap-4 sm:grid-cols-4 xl:gap-6 mb-14">
         <StatCard label="Conditions" value={String(allConditions.length)} />
         <StatCard label="Categories" value={String(categories.size)} />
         <StatCard label="Landmark Trials" value={String(allTrials.length)} />
@@ -78,7 +78,7 @@ export default function Home() {
       {/* Category Grid */}
       <section>
         <h2 className="text-xl font-semibold mb-5">Browse by Category</h2>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-4">
           {(
             Object.keys(CATEGORY_DISPLAY_NAMES) as ConditionCategory[]
           ).map((cat) => {

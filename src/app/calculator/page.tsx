@@ -94,7 +94,7 @@ function CalculatorContent() {
   }, [chartSize, closeFullscreen]);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-6 lg:px-6">
+    <div className="mx-auto max-w-7xl px-4 py-6 lg:px-8 xl:px-12">
       <div className="mb-6">
         <h1 className="text-2xl font-semibold tracking-tight kairos-heading">
           Risk Curve
@@ -171,7 +171,7 @@ function CalculatorContent() {
 
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Left: Inputs */}
-        <div className="lg:w-80 lg:shrink-0">
+        <div className="lg:w-80 xl:w-96 lg:shrink-0">
           <PresetSelector
             onSelect={(preset) =>
               loadPreset(preset.factorIds, preset.defaultGA)

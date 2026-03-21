@@ -146,7 +146,7 @@ export default function ConditionsPage() {
     : sorted?.length ?? 0;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 lg:px-6">
+    <div className="mx-auto max-w-7xl px-4 py-8 lg:px-8 xl:px-12">
       {/* Centered hero logo */}
       <div className="mb-6 flex justify-center">
         <KairosLogo variant="hero" />
@@ -274,7 +274,7 @@ export default function ConditionsPage() {
                     ({conditions.length})
                   </span>
                 </h2>
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-4">
                   {conditions.map((condition) => (
                     <ConditionCard
                       key={condition.id}
@@ -287,7 +287,7 @@ export default function ConditionsPage() {
           })}
         </div>
       ) : sorted ? (
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-4">
           {sorted.map((condition) => (
             <ConditionCard
               key={condition.id}

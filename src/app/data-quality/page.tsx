@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function DataQualityPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8 lg:px-6">
+    <div className="mx-auto max-w-5xl px-4 py-8 lg:px-8 xl:px-12">
       <h1 className="text-2xl font-semibold tracking-tight kairos-heading">Data Quality</h1>
       <p className="mt-1 mb-6 text-sm text-muted-foreground">
         Transparency report on condition data completeness and evidence quality.
