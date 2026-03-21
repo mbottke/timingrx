@@ -21,15 +21,13 @@ Applied to every card, panel, and surface.
 **Light mode (`:root`):**
 - `background: rgba(255, 255, 255, 0.7)`
 - `backdrop-filter: blur(16px) saturate(1.6)`
-- `::before` — diagonal highlight gradient: `linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 50%, transparent 100%)`
-- `::after` — specular rim: `border: 1px solid` with `rgba(255,255,255,0.3)` top edge fading to transparent at bottom
+- `::after` — specular rim: `border: 1px solid` with `rgba(255,255,255,0.3)` top edge fading to transparent at bottom. `z-index: 1; pointer-events: none; position: absolute; inset: 0; border-radius: inherit.`
 - `inset box-shadow: 0 1px 0 rgba(255,255,255,0.4)` top edge catch light
 
 **Dark mode (`.dark`):**
 - `background: rgba(20, 20, 45, 0.45)` — purple-tinted to pick up brand gradient
 - `backdrop-filter: blur(20px) saturate(1.8)` — stronger than light mode
-- `::before` — highlight gradient: `rgba(200, 180, 255, 0.12)` → transparent (warm purple tint)
-- `::after` — specular rim: `rgba(255,255,255,0.15)` (dimmer than light mode)
+- `::after` — specular rim: `rgba(255,255,255,0.15)` (dimmer than light mode). Same structural properties as light mode.
 - Multi-layer depth shadow:
   ```
   box-shadow:
@@ -38,11 +36,14 @@ Applied to every card, panel, and surface.
     0 8px 24px rgba(0,0,0,0.3);
   ```
 
+**Specular highlight:** The specular highlight is NOT a pseudo-element. It is rendered by a dedicated `<span class="liquid-glass-highlight">` child element (see Section 8). This avoids collision with `kairos-card-hover::before`. The static default is a diagonal linear gradient; when `useLiquidTilt()` is attached, it becomes a radial gradient that tracks the cursor (see Section 4.2).
+
 **Structural requirements:**
-- Elements using `.liquid-glass` must have `position: relative` and `overflow: hidden` (for pseudo-elements)
-- `border-radius: inherit` on pseudo-elements
-- `pointer-events: none` on pseudo-elements
-- `z-index: 1` on pseudo-elements so they overlay content subtly
+- Elements using `.liquid-glass` must have `position: relative` and `overflow: hidden` (for `::after` rim and highlight span)
+- `::after` rim gets `z-index: 1; pointer-events: none`
+- Direct content children (e.g., `CardHeader`) get `position: relative; z-index: 2` so text sits above decorative layers
+- Glass surfaces inherit `border-radius` from their existing component styles (shadcn Card default via `--radius`)
+- `overflow: hidden` clips pseudo-element and highlight span overflow but does NOT clip `box-shadow`, so outer glow effects work as expected
 
 ### 2.2 `.liquid-glass-transparent` — Selective Transparency
 
@@ -58,13 +59,26 @@ Applied to surfaces where seeing-through is intentional: hero section, stat card
 
 Applied to hero section, CommandDialog, Dialog, Sheet overlays.
 
-- `filter: url(#liquid-glass-refract)` — references the shared inline SVG filter
+**Architecture:** `filter` and `backdrop-filter` cannot reliably coexist on the same DOM element (the `filter` property creates a new stacking context that interferes with `backdrop-filter` sampling). Therefore, `.liquid-glass-refract` must be applied to a **wrapper element** around the glass surface, NOT the same element that carries `.liquid-glass`.
+
+For overlays (CommandDialog, Dialog, Sheet): the refraction filter goes on the backdrop/overlay element (the dim background), while `.liquid-glass` goes on the content panel inside it.
+
+For the hero: the refraction filter goes on a wrapper `<div>` around the hero section, while `.liquid-glass-transparent` goes on the section itself.
+
+- Overlay wrapper: `filter: url(#liquid-glass-refract)` — static refraction
+- Hero wrapper: `filter: url(#liquid-glass-refract-hero)` — animated refraction (separate filter ID)
 
 ## 3. SVG Refraction Filter
 
 A single inline `<svg>` element added to `src/app/layout.tsx`. Hidden with `width="0" height="0"` and `position: absolute`.
 
-### 3.1 Filter Definition (`<filter id="liquid-glass-refract">`)
+### 3.1 Filter Definitions
+
+Two `<filter>` elements in the inline SVG:
+- `<filter id="liquid-glass-refract">` — static, used by overlay wrappers
+- `<filter id="liquid-glass-refract-hero">` — identical structure, but its `feTurbulence` `baseFrequency` is mutated by the animation loop (Section 3.2)
+
+Both share the same XML structure:
 
 ```xml
 <feTurbulence
@@ -122,7 +136,7 @@ In `src/components/layout/animated-hero.tsx`, a `useEffect` + `requestAnimationF
 
 **Signature:** `useLiquidTilt(ref: RefObject<HTMLElement | null>): void`
 
-**Desktop detection:** Checks `window.matchMedia('(pointer: fine)')` on mount. If false (touch device), hook is a complete no-op — no listeners, no computation.
+**Desktop detection:** Checks `window.matchMedia('(pointer: fine)')` and `window.matchMedia('(prefers-reduced-motion: reduce)')` on mount. If either is false/true respectively (touch device or reduced motion preference), hook is a complete no-op — no listeners, no computation.
 
 **Mouse interaction:**
 - `mousemove` on the ref element:
@@ -141,10 +155,28 @@ In `src/components/layout/animated-hero.tsx`, a `useEffect` + `requestAnimationF
 
 ### 4.2 Specular Highlight Tracking
 
-The `.liquid-glass::before` pseudo-element reads `--tilt-x` and `--tilt-y` to shift its gradient origin:
+The `.liquid-glass-highlight` span uses CSS custom properties `--tilt-x` and `--tilt-y` (default `0`) to position its gradient:
 
+**Static default** (no tilt hook attached, `--tilt-x` and `--tilt-y` are `0`):
 ```css
-.liquid-glass::before {
+.liquid-glass-highlight {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+}
+```
+
+**Active** (when `useLiquidTilt()` is attached and sets `--tilt-x`/`--tilt-y`):
+```css
+.liquid-glass-highlight {
   background: radial-gradient(
     circle at calc(50% + var(--tilt-x, 0) * 60%) calc(50% + var(--tilt-y, 0) * 60%),
     rgba(255, 255, 255, 0.3) 0%,
@@ -153,7 +185,9 @@ The `.liquid-glass::before` pseudo-element reads `--tilt-x` and `--tilt-y` to sh
 }
 ```
 
-**Dark mode:** Higher opacity shift — `rgba(255,255,255,0.2)` center (vs `0.3` in light) but the contrast against the dark surface makes it *more* visible, not less.
+The transition between static and active happens naturally: when `--tilt-x`/`--tilt-y` are `0`, the radial gradient centers at 50%/50% which produces a similar visual to the linear default. Therefore, **always use the radial gradient** — it works for both states, simplifying the CSS to a single rule.
+
+**Dark mode:** `rgba(255,255,255,0.2)` center (vs `0.3` in light) but the contrast against the dark surface makes it *more* visible, not less.
 
 ## 5. Surface Application Map
 
@@ -204,15 +238,30 @@ The following existing CSS classes are preserved and layer on top of the glass m
 **Removed:**
 - `.dark .glass-card` in globals.css — superseded by `.liquid-glass` dark mode variant
 
-## 8. Interaction with Existing Pseudo-Elements
+## 8. Pseudo-Element Strategy
 
-**Conflict:** `kairos-card-hover` already uses `::before` for gradient border masking. `.liquid-glass` also uses `::before` for the specular highlight.
+**Conflict:** `kairos-card-hover` uses `::before` for gradient border masking. The glass highlight also needs a positioned overlay.
 
-**Resolution:** Wrap the specular highlight in a child `<span>` element with class `.liquid-glass-highlight` instead of using `::before`, OR use `::before` for glass highlight and move the `kairos-card-hover` gradient border to use an `outline` or `box-shadow` approach instead.
+**Resolution (definitive):** The specular highlight is a `<span class="liquid-glass-highlight">` child element, NOT a pseudo-element. This avoids all collision with `kairos-card-hover::before`.
 
-**Recommended:** Use a dedicated `<span class="liquid-glass-highlight">` inside glass surfaces. This avoids pseudo-element collision entirely and allows both effects to coexist.
+**Layer stack on a glass card:**
+1. Card element — `.liquid-glass` (translucent bg + backdrop-filter)
+2. `::after` — specular rim border (z-index: 1, pointer-events: none)
+3. `<span class="liquid-glass-highlight">` — specular highlight (z-index: 1, pointer-events: none, position: absolute, inset: 0, border-radius: inherit)
+4. `::before` — `kairos-card-hover` gradient border mask (existing, z-index: 1)
+5. Content children — `position: relative; z-index: 2` so text sits above all decorative layers
 
-**Alternative for the `::after` specular rim:** This can remain as `::after` since `kairos-card-hover` only uses `::before`.
+**HTML structure for a glass card:**
+```html
+<Card class="liquid-glass kairos-card-hover">
+  <span class="liquid-glass-highlight" />
+  <CardHeader class="relative z-2">
+    <!-- content -->
+  </CardHeader>
+</Card>
+```
+
+The `::after` specular rim stays as a pseudo-element since `kairos-card-hover` only uses `::before`.
 
 ## 9. Files Modified
 
@@ -237,3 +286,4 @@ The following existing CSS classes are preserved and layer on top of the glass m
 - **Animated refraction:** Single `requestAnimationFrame` loop for the hero filter. Pauses when hero is not visible (could use IntersectionObserver, but hero is above-fold so this is optional).
 - **backdrop-filter on 167 cards:** This is the most expensive effect. Modern browsers handle this well for static content; scrolling performance may vary. If issues arise, `will-change: transform` on cards and `content-visibility: auto` on off-screen sections are fallback optimizations.
 - **`prefers-reduced-motion`:** All animations (tilt, refraction oscillation, hover transitions) should respect `prefers-reduced-motion: reduce` by disabling or reducing them.
+- **Theme transitions:** The app uses `disableTransitionOnChange: true` in ThemeProvider. Theme switches are intentionally instant — glass material properties snap between frosted-ice and smoky-glass without animated transitions. This is acceptable and consistent with existing behavior.
