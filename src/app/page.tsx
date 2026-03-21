@@ -4,7 +4,7 @@ import { CATEGORY_DISPLAY_NAMES, type ConditionCategory } from "@/data/types";
 import { allTrials } from "@/data/trials";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { KairosLogo } from "@/components/layout/kairos-logo";
-import { HeroMotif } from "@/components/layout/hero-motif";
+import { AnimatedHero } from "@/components/layout/animated-hero";
 import { CategoryIcon } from "@/components/icons/category-icons";
 
 /** Brand-spectrum left-border accents per medical category */
@@ -35,7 +35,7 @@ export default function Home() {
     <div className="mx-auto max-w-6xl px-4 py-12 lg:px-6">
       {/* Hero */}
       <section className="relative text-center mb-14 overflow-hidden">
-        <HeroMotif className="absolute inset-0 w-full h-full pointer-events-none z-0" />
+        <AnimatedHero className="absolute inset-0 w-full h-full pointer-events-none z-0" />
         <div className="relative z-10 mx-auto max-w-2xl">
           <KairosLogo variant="hero" />
           <p className="mt-4 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">
