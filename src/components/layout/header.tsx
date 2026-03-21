@@ -13,6 +13,7 @@ const navLinks: { href: string; label: string }[] = [
   { href: "/evidence", label: "Evidence" },
   { href: "/physiology", label: "Physiology" },
   { href: "/compare", label: "Compare" },
+  { href: "/scenarios", label: "Scenarios" },
   { href: "/methodology", label: "Methodology" },
 ];
 
