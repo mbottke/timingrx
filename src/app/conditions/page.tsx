@@ -13,6 +13,7 @@ import {
 } from "@/data/types";
 import { ConditionCard } from "@/components/condition/condition-card";
 import { KairosLogo } from "@/components/layout/kairos-logo";
+import { detectDivergence } from "@/lib/utils/guideline-divergence";
 
 type SortOption = "category" | "alphabetical" | "ga-earliest" | "ga-latest" | "grade";
 
@@ -62,6 +63,7 @@ export default function ConditionsPage() {
   const [sort, setSort] = useState<SortOption>("category");
   const [categoryFilter, setCategoryFilter] = useState<ConditionCategory | "all">("all");
   const [pastFortyFilter, setPastFortyFilter] = useState<string>("all");
+  const [divergentOnly, setDivergentOnly] = useState(false);
 
   const categories = conditionsByCategory();
   const categoryOrder: ConditionCategory[] = Object.keys(
@@ -94,8 +96,15 @@ export default function ConditionsPage() {
       list = list.filter((c) => c.pastFortyWeeks === pastFortyFilter);
     }
 
+    // Divergent guidelines filter
+    if (divergentOnly) {
+      list = list.filter(
+        (c) => detectDivergence(c.guidelineRecommendations).hasDivergence,
+      );
+    }
+
     return list;
-  }, [search, categoryFilter, pastFortyFilter]);
+  }, [search, categoryFilter, pastFortyFilter, divergentOnly]);
 
   // Sort conditions
   const sorted = useMemo(() => {
@@ -228,6 +237,19 @@ export default function ConditionsPage() {
             <option value="borderline">Borderline</option>
             <option value="case_by_case">Case-by-case</option>
           </select>
+
+          {/* Divergent guidelines toggle */}
+          <label className="flex items-center gap-1.5 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={divergentOnly}
+              onChange={(e) => setDivergentOnly(e.target.checked)}
+              className="h-3.5 w-3.5 rounded border-amber-400 accent-amber-500"
+            />
+            <span className="text-xs text-muted-foreground whitespace-nowrap">
+              Divergent guidelines only
+            </span>
+          </label>
 
           {/* Result count */}
           <span className="ml-auto text-xs text-muted-foreground">

@@ -7,6 +7,8 @@ import { useTeachingMode } from "@/lib/hooks/use-teaching-mode";
 import { hasCalculatorMapping, getFactorsForCondition } from "@/lib/utils/condition-factor-mapping";
 import { GAWindowBadge } from "./ga-window-badge";
 import { EvidenceGradeBadge } from "./evidence-grade-badge";
+import { DivergenceIndicator } from "./divergence-indicator";
+import { detectDivergence } from "@/lib/utils/guideline-divergence";
 import { formatCitations } from "@/lib/utils/citation-format";
 import {
   formatRiskStatisticStructured,
@@ -99,6 +101,12 @@ export function ConditionDetail({
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
+            {condition.guidelineRecommendations.length >= 2 && (() => {
+              const divergence = detectDivergence(condition.guidelineRecommendations);
+              return divergence.hasDivergence ? (
+                <DivergenceIndicator result={divergence} />
+              ) : null;
+            })()}
             {condition.guidelineRecommendations.map((rec, i) => (
               <div
                 key={i}
