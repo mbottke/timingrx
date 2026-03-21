@@ -34,8 +34,8 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 lg:px-6">
       {/* Hero */}
-      <section className="relative text-center mb-14 overflow-hidden">
-        <AnimatedHero className="absolute inset-0 w-full h-full pointer-events-none z-0" />
+      <section className="relative text-center mb-14">
+        <AnimatedHero className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-screen h-full pointer-events-none z-0" />
         <div className="relative z-10 mx-auto max-w-2xl">
           <KairosLogo variant="hero" />
           <p className="mt-4 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">
