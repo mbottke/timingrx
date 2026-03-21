@@ -5,6 +5,7 @@ import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/ca
 import { Badge } from "@/components/ui/badge";
 import { GAWindowBadge } from "./ga-window-badge";
 import { EvidenceGradeBadge } from "./evidence-grade-badge";
+import { GATimelineBar } from "./ga-timeline-bar";
 
 const pastFortyLabels: Record<string, { text: string; className: string }> = {
   yes: { text: "Can go past 40w", className: "bg-[var(--ga-safe)] text-white" },
@@ -68,6 +69,21 @@ export function ConditionCard({
             </p>
           )}
         </CardHeader>
+        {primaryRec &&
+          primaryRec.timing.type === "range" && (
+            <div className="px-4 pb-3">
+              <GATimelineBar
+                earliestGA={primaryRec.timing.range.earliest}
+                latestGA={primaryRec.timing.range.latest}
+              />
+            </div>
+          )}
+        {primaryRec &&
+          primaryRec.timing.type === "immediate" && (
+            <div className="px-4 pb-3">
+              <GATimelineBar earliestGA={34 * 7} latestGA={34 * 7 + 7} />
+            </div>
+          )}
       </Card>
     </Link>
   );
