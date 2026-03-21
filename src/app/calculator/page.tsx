@@ -9,6 +9,7 @@ import { MortalityCrossoverChart } from "@/components/charts/mortality-crossover
 import { NNTPanel } from "@/components/calculator/nnt-panel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 
 type ChartSize = "small" | "medium" | "large" | "fullscreen";
 
@@ -51,6 +52,7 @@ export default function CalculatorPage() {
   }, [currentRisk]);
 
   const [chartSize, setChartSize] = useState<ChartSize>("medium");
+  const [showNeonatalRisk, setShowNeonatalRisk] = useState(false);
 
   const closeFullscreen = useCallback(() => {
     setChartSize("large");
@@ -161,17 +163,26 @@ export default function CalculatorPage() {
                 <CardTitle className="text-base">
                   Stillbirth Risk by Gestational Age
                 </CardTitle>
-                <div className="flex items-center gap-1">
-                  {sizeLabels.map(({ value, label }) => (
-                    <Button
-                      key={value}
-                      variant={chartSize === value ? "default" : "outline"}
-                      size="xs"
-                      onClick={() => setChartSize(value)}
-                    >
-                      {label}
-                    </Button>
-                  ))}
+                <div className="flex items-center gap-3">
+                  <label className="flex items-center gap-1.5 text-xs text-muted-foreground cursor-pointer">
+                    <Switch
+                      checked={showNeonatalRisk}
+                      onCheckedChange={setShowNeonatalRisk}
+                    />
+                    Delivery risks
+                  </label>
+                  <div className="flex items-center gap-1">
+                    {sizeLabels.map(({ value, label }) => (
+                      <Button
+                        key={value}
+                        variant={chartSize === value ? "default" : "outline"}
+                        size="xs"
+                        onClick={() => setChartSize(value)}
+                      >
+                        {label}
+                      </Button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </CardHeader>
@@ -181,6 +192,7 @@ export default function CalculatorPage() {
                 currentGA={state.ga}
                 hasFactors={hasFactors}
                 height={chartSize === "fullscreen" ? "350px" : sizeHeights[chartSize]}
+                showNeonatalRisk={showNeonatalRisk}
               />
               <div className="mt-3 flex flex-wrap gap-3 text-[11px] text-muted-foreground">
                 <span className="flex items-center gap-1">
@@ -197,6 +209,12 @@ export default function CalculatorPage() {
                   <span className="flex items-center gap-1">
                     <span className="w-3 h-2 bg-[var(--chart-ci)] inline-block" />
                     95% CI (propagated)
+                  </span>
+                )}
+                {showNeonatalRisk && (
+                  <span className="flex items-center gap-1">
+                    <span className="w-3 h-0.5 bg-emerald-500 inline-block" style={{ borderTop: "1px dashed" }} />
+                    Neonatal death (if delivered)
                   </span>
                 )}
               </div>
@@ -226,6 +244,7 @@ export default function CalculatorPage() {
                     currentGA={state.ga}
                     hasFactors={hasFactors}
                     height="100%"
+                    showNeonatalRisk={showNeonatalRisk}
                   />
                 </div>
               </div>

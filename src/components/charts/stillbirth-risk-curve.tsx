@@ -16,6 +16,7 @@ import {
 import type { RiskCalculation } from "@/data/types";
 import { gaToDisplay } from "@/lib/utils/ga-format";
 import { baselineStillbirthCurve } from "@/data/risk-models/baseline-stillbirth";
+import { neonatalDeliveryRisk } from "@/data/risk-models/neonatal-delivery-risk";
 import { chartColors } from "./chart-theme";
 import { ChartGradientDefs } from "./chart-gradient-defs";
 
@@ -25,6 +26,8 @@ interface Props {
   hasFactors: boolean;
   /** Override chart container height (CSS value, e.g. "250px" or "100%") */
   height?: string;
+  /** When true, overlay neonatal delivery risk line */
+  showNeonatalRisk?: boolean;
 }
 
 /** Custom label renderer for data points showing the adjusted risk value. */
@@ -47,7 +50,7 @@ function AdjustedDotLabel(props: any) {
   );
 }
 
-export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }: Props) {
+export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height, showNeonatalRisk }: Props) {
   const data = riskCurve.map((point, i) => ({
     ga: gaToDisplay(point.ga),
     gaRaw: point.ga,
@@ -55,6 +58,9 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }
     adjusted: point.adjustedRiskPer1000,
     ciLow: point.adjustedRiskCI95[0],
     ciHigh: point.adjustedRiskCI95[1],
+    neonatal: showNeonatalRisk
+      ? (neonatalDeliveryRisk.find((n) => n.ga === point.ga)?.neonatalDeathPer1000 ?? null)
+      : null,
   }));
 
   const maxY = Math.max(
@@ -167,6 +173,11 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }
                       </p>
                     </>
                   )}
+                  {d.neonatal != null && (
+                    <p className="text-emerald-600 dark:text-emerald-400 font-medium">
+                      Neonatal death: <span className="font-mono tabular-nums">{d.neonatal.toFixed(2)}</span> per 1,000
+                    </p>
+                  )}
                 </div>
               );
             }}
@@ -223,6 +234,20 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }
                   index={props.index as number}
                 />
               )}
+            />
+          )}
+
+          {/* Neonatal death risk overlay (scissors counterbalance) */}
+          {showNeonatalRisk && (
+            <Line
+              type="monotone"
+              dataKey="neonatal"
+              stroke="#10b981"
+              strokeWidth={2}
+              strokeDasharray="4 2"
+              dot={{ fill: "#10b981", r: 3 }}
+              name="Neonatal death risk"
+              connectNulls
             />
           )}
         </ComposedChart>
