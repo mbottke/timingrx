@@ -54,10 +54,10 @@ function globalWave(t: number, positionScale: number): number {
   const amp = 1.0 + positionScale * 2.5; // left: ±1, right: ±3.5
   return (
     amp * (
-      1.0  * Math.sin(t * 0.41)                          + // slow primary sway
-      0.6  * Math.sin(t * 0.41 * PHI + 1.2)              + // secondary, phi-offset
-      0.3  * Math.sin(t * 0.41 * PHI * PHI + 2.8)        + // tertiary
-      0.15 * Math.sin(t * 0.18 + positionScale * 1.5)      // ultra-slow drift
+      1.0  * Math.sin(t * 0.55)                          + // primary sway
+      0.6  * Math.sin(t * 0.55 * PHI + 1.2)              + // secondary, phi-offset
+      0.3  * Math.sin(t * 0.55 * PHI * PHI + 2.8)        + // tertiary
+      0.15 * Math.sin(t * 0.24 + positionScale * 1.5)      // slow drift
     )
   );
 }
