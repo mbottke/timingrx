@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { Suspense, useState, useEffect, useCallback, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { useCalculator } from "@/lib/hooks/use-calculator";
 import { CalculatorForm } from "@/components/calculator/calculator-form";
@@ -31,6 +31,14 @@ const sizeLabels: { value: ChartSize; label: string }[] = [
 ];
 
 export default function CalculatorPage() {
+  return (
+    <Suspense>
+      <CalculatorContent />
+    </Suspense>
+  );
+}
+
+function CalculatorContent() {
   const {
     state,
     setGA,

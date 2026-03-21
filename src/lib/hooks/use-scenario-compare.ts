@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useRef } from "react";
 import { calculateRiskCurve } from "@/lib/calculator/risk-engine";
 import type { RiskCalculation } from "@/data/types";
 
@@ -15,24 +15,28 @@ export interface Scenario {
 const SCENARIO_COLORS = ["#3b82f6", "#10b981", "#f59e0b", "#f43f5e"];
 
 export function useScenarioCompare() {
+  const nextId = useRef(2);
   const [scenarios, setScenarios] = useState<Scenario[]>([
     { id: "1", name: "Scenario A", factorIds: [], applyInteractions: false, color: SCENARIO_COLORS[0] },
   ]);
 
   const addScenario = useCallback(() => {
-    if (scenarios.length >= 4) return;
-    const idx = scenarios.length;
-    setScenarios((s) => [
-      ...s,
-      {
-        id: String(idx + 1),
-        name: `Scenario ${String.fromCharCode(65 + idx)}`,
-        factorIds: [],
-        applyInteractions: false,
-        color: SCENARIO_COLORS[idx % SCENARIO_COLORS.length],
-      },
-    ]);
-  }, [scenarios.length]);
+    setScenarios((s) => {
+      if (s.length >= 4) return s;
+      const id = String(nextId.current++);
+      const idx = s.length;
+      return [
+        ...s,
+        {
+          id,
+          name: `Scenario ${String.fromCharCode(65 + idx)}`,
+          factorIds: [],
+          applyInteractions: false,
+          color: SCENARIO_COLORS[idx % SCENARIO_COLORS.length],
+        },
+      ];
+    });
+  }, []);
 
   const removeScenario = useCallback((id: string) => {
     setScenarios((s) => s.filter((sc) => sc.id !== id));
