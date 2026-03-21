@@ -7,13 +7,14 @@ import { Switch } from "@/components/ui/switch";
 import { ThemeToggle } from "./theme-toggle";
 import { KairosLogo } from "./kairos-logo";
 
-const navLinks = [
+const navLinks: { href: string; label: string }[] = [
   { href: "/conditions", label: "Conditions" },
   { href: "/calculator", label: "Risk Curve" },
   { href: "/evidence", label: "Evidence" },
+  { href: "/physiology", label: "Physiology" },
   { href: "/compare", label: "Compare" },
   { href: "/methodology", label: "Methodology" },
-] as const;
+];
 
 export function Header() {
   const { teachingMode, toggleTeachingMode } = useTeachingMode();
