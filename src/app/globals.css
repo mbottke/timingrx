@@ -444,8 +444,88 @@ html {
   background-attachment: fixed;
 }
 
-/* Phase 3: Dark mode glass card surfaces */
-.dark .glass-card {
-  backdrop-filter: blur(8px);
-  background: oklch(0.18 0.01 260 / 0.6);
+/* ═══ Liquid Glass Material System ═══════════════════════════════════ */
+
+/* Base glass material — translucent surface with backdrop blur */
+.liquid-glass {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px) saturate(1.6);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: transform 0.4s ease-out;
+}
+
+.liquid-glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  border: 1px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.3);
+  border-left-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark .liquid-glass {
+  background: rgba(20, 20, 45, 0.45);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.dark .liquid-glass::after {
+  border-top-color: rgba(255, 255, 255, 0.15);
+  border-left-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Selective transparency — for hero, stat cards, overlays */
+.liquid-glass-transparent {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.dark .liquid-glass-transparent {
+  background: rgba(20, 20, 45, 0.3);
+}
+
+/* Specular highlight span — tracks cursor via --tilt-x / --tilt-y */
+.liquid-glass-highlight {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    circle at calc(50% + var(--tilt-x, 0) * 60%) calc(50% + var(--tilt-y, 0) * 60%),
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 70%
+  );
+}
+
+.dark .liquid-glass-highlight {
+  background: radial-gradient(
+    circle at calc(50% + var(--tilt-x, 0) * 60%) calc(50% + var(--tilt-y, 0) * 60%),
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 70%
+  );
+}
+
+/* SVG refraction filter — applied to WRAPPER elements only */
+.liquid-glass-refract {
+  filter: url(#liquid-glass-refract);
+}
+
+.liquid-glass-refract-hero {
+  filter: url(#liquid-glass-refract-hero);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-glass {
+    transition: none;
+  }
 }
