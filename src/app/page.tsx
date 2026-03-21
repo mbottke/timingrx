@@ -5,6 +5,7 @@ import { allTrials } from "@/data/trials";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { KairosLogo } from "@/components/layout/kairos-logo";
 import { HeroMotif } from "@/components/layout/hero-motif";
+import { CategoryIcon } from "@/components/icons/category-icons";
 
 /** Brand-spectrum left-border accents per medical category */
 const categoryAccents: Partial<Record<ConditionCategory, { border: string; glow: string }>> = {
@@ -91,7 +92,8 @@ export default function Home() {
                   style={{ "--card-glow": accent.glow } as React.CSSProperties}
                 >
                   <CardHeader className="p-4">
-                    <CardTitle className="text-sm font-semibold">
+                    <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                      <CategoryIcon category={cat} className="size-5 shrink-0 text-muted-foreground" />
                       {CATEGORY_DISPLAY_NAMES[cat]}
                     </CardTitle>
                     <CardDescription className="text-xs">

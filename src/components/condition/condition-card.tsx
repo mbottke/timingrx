@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { GAWindowBadge } from "./ga-window-badge";
 import { EvidenceGradeBadge } from "./evidence-grade-badge";
 import { GATimelineBar } from "./ga-timeline-bar";
+import { CategoryIcon } from "@/components/icons/category-icons";
 
 const pastFortyLabels: Record<string, { text: string; className: string }> = {
   yes: { text: "Can go past 40w", className: "bg-[var(--ga-safe)] text-white" },
@@ -27,7 +28,8 @@ export function ConditionCard({
       <Card className="white-glow kairos-card-hover h-full transition-all duration-200 hover:-translate-y-0.5">
         <CardHeader className="space-y-2 p-4">
           <div className="flex items-start justify-between gap-2">
-            <CardTitle className="text-base font-semibold leading-tight">
+            <CardTitle className="text-base font-semibold leading-tight flex items-center gap-1.5">
+              <CategoryIcon category={condition.category} className="size-4 shrink-0 text-muted-foreground" />
               {condition.name}
             </CardTitle>
             {primaryRec && (
