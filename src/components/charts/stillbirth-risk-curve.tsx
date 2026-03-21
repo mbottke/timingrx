@@ -191,6 +191,9 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height, 
               stroke="none"
               fill={chartColors.ciGradient}
               fillOpacity={1}
+              isAnimationActive={true}
+              animationDuration={800}
+              animationEasing="ease-in-out"
             />
           )}
 
@@ -226,6 +229,9 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height, 
               strokeWidth={2.5}
               dot={{ fill: "var(--brand-pink)", r: 4, strokeWidth: 2, stroke: "var(--background)" }}
               name="Adjusted"
+              isAnimationActive={true}
+              animationDuration={600}
+              animationEasing="ease-in-out"
               label={(props: any) => (
                 <AdjustedDotLabel
                   x={props.x as number}
