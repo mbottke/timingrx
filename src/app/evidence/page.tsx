@@ -12,7 +12,7 @@ export default function EvidencePage() {
       </p>
       <div className="space-y-4">
         {allTrials.map((trial) => (
-          <Card key={trial.id} className="border-l-4 border-l-[var(--evidence-moderate)]">
+          <Card key={trial.id} className="border-l-4 border-l-[var(--brand-purple)]/70">
             <CardHeader>
               <div className="flex items-baseline gap-2 flex-wrap">
                 <CardTitle className="text-base">{trial.name}</CardTitle>

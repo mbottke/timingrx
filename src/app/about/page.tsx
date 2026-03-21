@@ -30,7 +30,7 @@ export default function AboutPage() {
         </CardContent>
       </Card>
 
-      <Card className="glass-card border-l-4 border-l-[var(--brand-teal)]">
+      <Card className="glass-card border-l-4 border-l-[var(--brand-blue)]">
         <CardHeader>
           <CardTitle className="text-base">Risk Calculator Methodology</CardTitle>
         </CardHeader>

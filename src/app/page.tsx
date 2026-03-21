@@ -6,26 +6,26 @@ import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/ca
 import { KairosLogo } from "@/components/layout/kairos-logo";
 import { HeroMotif } from "@/components/layout/hero-motif";
 
-/** Subtle color tints per medical category for visual identity */
+/** Brand-spectrum left-border accents per medical category */
 const categoryAccents: Partial<Record<ConditionCategory, { border: string; glow: string }>> = {
-  hypertensive: { border: "border-l-[var(--brand-coral)]", glow: "var(--brand-coral)" },
-  diabetes: { border: "border-l-[var(--ga-caution)]", glow: "var(--ga-caution)" },
-  cardiac_valvular: { border: "border-l-[var(--risk-high)]", glow: "var(--risk-high)" },
-  cardiac_aortopathy: { border: "border-l-[var(--risk-high)]", glow: "var(--risk-high)" },
-  cardiac_cardiomyopathy: { border: "border-l-[var(--risk-high)]", glow: "var(--risk-high)" },
-  cardiac_complex: { border: "border-l-[var(--risk-high)]", glow: "var(--risk-high)" },
-  renal: { border: "border-l-[var(--brand-teal)]", glow: "var(--brand-teal)" },
-  hepatic: { border: "border-l-[var(--brand-teal)]", glow: "var(--brand-teal)" },
-  hematologic: { border: "border-l-[var(--evidence-moderate)]", glow: "var(--evidence-moderate)" },
-  fetal_cardiac: { border: "border-l-[var(--evidence-source-surveillance)]", glow: "var(--evidence-source-surveillance)" },
-  fetal_growth_fluid: { border: "border-l-[var(--evidence-source-surveillance)]", glow: "var(--evidence-source-surveillance)" },
-  fetal_structural: { border: "border-l-[var(--evidence-source-surveillance)]", glow: "var(--evidence-source-surveillance)" },
-  infectious: { border: "border-l-[var(--evidence-source-protocol)]", glow: "var(--evidence-source-protocol)" },
-  neurologic: { border: "border-l-[var(--evidence-high)]", glow: "var(--evidence-high)" },
-  pulmonary: { border: "border-l-[var(--evidence-high)]", glow: "var(--evidence-high)" },
+  hypertensive: { border: "border-l-[var(--brand-pink)]", glow: "var(--brand-pink)" },
+  diabetes: { border: "border-l-[var(--brand-purple)]", glow: "var(--brand-purple)" },
+  cardiac_valvular: { border: "border-l-[var(--brand-pink)]/80", glow: "var(--brand-pink)" },
+  cardiac_aortopathy: { border: "border-l-[var(--brand-pink)]/80", glow: "var(--brand-pink)" },
+  cardiac_cardiomyopathy: { border: "border-l-[var(--brand-pink)]/80", glow: "var(--brand-pink)" },
+  cardiac_complex: { border: "border-l-[var(--brand-pink)]/80", glow: "var(--brand-pink)" },
+  renal: { border: "border-l-[var(--brand-blue)]", glow: "var(--brand-blue)" },
+  hepatic: { border: "border-l-[var(--brand-blue)]/80", glow: "var(--brand-blue)" },
+  hematologic: { border: "border-l-[var(--brand-purple)]/70", glow: "var(--brand-purple)" },
+  fetal_cardiac: { border: "border-l-[var(--brand-blue)]/70", glow: "var(--brand-blue)" },
+  fetal_growth_fluid: { border: "border-l-[var(--brand-blue)]/70", glow: "var(--brand-blue)" },
+  fetal_structural: { border: "border-l-[var(--brand-blue)]/70", glow: "var(--brand-blue)" },
+  infectious: { border: "border-l-[var(--brand-purple)]/60", glow: "var(--brand-purple)" },
+  neurologic: { border: "border-l-[var(--brand-purple)]/80", glow: "var(--brand-purple)" },
+  pulmonary: { border: "border-l-[var(--brand-blue)]/60", glow: "var(--brand-blue)" },
 };
 
-const defaultAccent = { border: "border-l-border", glow: "oklch(0.6 0.15 290)" };
+const defaultAccent = { border: "border-l-[var(--brand-purple)]/40", glow: "var(--brand-purple)" };
 
 export default function Home() {
   const categories = conditionsByCategory();

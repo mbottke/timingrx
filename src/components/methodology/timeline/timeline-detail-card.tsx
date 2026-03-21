@@ -11,9 +11,9 @@ import { Badge } from "@/components/ui/badge";
 
 // Severity → accent color for border-l-4
 function severityAccent(riskPer1000: number): string {
-  if (riskPer1000 >= 2.0) return "border-l-[var(--risk-high)]";
-  if (riskPer1000 >= 1.0) return "border-l-[var(--risk-moderate)]";
-  return "border-l-[var(--risk-low)]";
+  if (riskPer1000 >= 2.0) return "border-l-[var(--brand-pink)]";
+  if (riskPer1000 >= 1.0) return "border-l-[var(--brand-purple)]/70";
+  return "border-l-[var(--brand-blue)]/60";
 }
 
 // Severity → text color for the adjusted risk value
