@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useCalculator } from "@/lib/hooks/use-calculator";
 import { CalculatorForm } from "@/components/calculator/calculator-form";
 import { GlassBoxDisplay } from "@/components/calculator/glass-box-display";
 import { StillbirthRiskCurve } from "@/components/charts/stillbirth-risk-curve";
+import { MortalityCrossoverChart } from "@/components/charts/mortality-crossover-chart";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -34,6 +35,19 @@ export default function CalculatorPage() {
   } = useCalculator();
 
   const hasFactors = state.activeFactorIds.length > 0;
+
+  const combinedMultiplier = useMemo(() => {
+    if (!currentRisk) return 1;
+    const factorProduct = currentRisk.factorContributions.reduce(
+      (acc, fc) => acc * fc.multiplier,
+      1
+    );
+    const interactionProduct = currentRisk.interactionAdjustments.reduce(
+      (acc, ia) => acc * ia.adjustment,
+      1
+    );
+    return factorProduct * interactionProduct;
+  }, [currentRisk]);
 
   const [chartSize, setChartSize] = useState<ChartSize>("medium");
 
@@ -219,6 +233,38 @@ export default function CalculatorPage() {
 
           {/* Glass Box */}
           <GlassBoxDisplay result={currentRisk} />
+
+          {/* Mortality Index */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base">
+                Mortality Index — Expectant vs. Delivery Risk
+              </CardTitle>
+              <p className="text-xs text-muted-foreground mt-1">
+                Compares the stillbirth risk of waiting one more week (expectant
+                management) against the neonatal death risk of delivering now.
+                When the expectant line crosses above the delivery line, the
+                mortality balance favors delivery.
+              </p>
+            </CardHeader>
+            <CardContent>
+              <MortalityCrossoverChart
+                combinedMultiplier={combinedMultiplier}
+                currentGA={state.ga}
+                height="300px"
+              />
+              <div className="mt-3 flex flex-wrap gap-3 text-[11px] text-muted-foreground">
+                <span className="flex items-center gap-1">
+                  <span className="w-3 h-0.5 bg-[var(--chart-adjusted)] inline-block" />
+                  Expectant risk (stillbirth if waiting)
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="w-3 h-0.5 bg-[var(--chart-baseline)] inline-block" />
+                  Delivery risk (neonatal death)
+                </span>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Disclaimer */}
           <p className="text-[11px] text-muted-foreground text-center px-4">
