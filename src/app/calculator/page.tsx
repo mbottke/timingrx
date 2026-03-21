@@ -9,6 +9,7 @@ import { GlassBoxDisplay } from "@/components/calculator/glass-box-display";
 import { StillbirthRiskCurve } from "@/components/charts/stillbirth-risk-curve";
 import { MortalityCrossoverChart } from "@/components/charts/mortality-crossover-chart";
 import { NNTPanel } from "@/components/calculator/nnt-panel";
+import { RiskContextPanel } from "@/components/calculator/risk-context-panel";
 import { ConditionRecommendations } from "@/components/calculator/condition-recommendations";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -275,6 +276,9 @@ export default function CalculatorPage() {
 
           {/* Glass Box */}
           <GlassBoxDisplay result={currentRisk} />
+
+          {/* Risk Context */}
+          <RiskContextPanel result={currentRisk} />
 
           {/* Mortality Index */}
           <Card>
