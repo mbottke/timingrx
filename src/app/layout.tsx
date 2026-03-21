@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { CommandPalette } from "@/components/layout/command-palette";
 import { TeachingModeProvider } from "@/lib/hooks/use-teaching-mode";
 import "./globals.css";
 
@@ -43,6 +44,7 @@ export default function RootLayout({
         >
           <TeachingModeProvider>
             <Header />
+            <CommandPalette />
             <main className="flex-1 animate-fade-in">{children}</main>
             <Footer />
           </TeachingModeProvider>
