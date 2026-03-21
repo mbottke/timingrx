@@ -40,6 +40,14 @@ export function useCalculator() {
     setState((s) => ({ ...s, applyInteractions: apply }));
   }, []);
 
+  const setFactors = useCallback((ids: string[]) => {
+    setState((s) => ({
+      ...s,
+      activeFactorIds: ids,
+      applyInteractions: ids.length >= 2,
+    }));
+  }, []);
+
   const toggleCondition = useCallback((conditionId: string) => {
     setState((s) => ({
       ...s,
@@ -72,6 +80,7 @@ export function useCalculator() {
     state,
     setGA,
     toggleFactor,
+    setFactors,
     setApplyInteractions,
     toggleCondition,
     currentRisk,

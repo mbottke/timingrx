@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { ObstetricCondition } from "@/data/types";
 import { CATEGORY_DISPLAY_NAMES } from "@/data/types";
 import { useTeachingMode } from "@/lib/hooks/use-teaching-mode";
+import { hasCalculatorMapping, getFactorsForCondition } from "@/lib/utils/condition-factor-mapping";
 import { GAWindowBadge } from "./ga-window-badge";
 import { EvidenceGradeBadge } from "./evidence-grade-badge";
 import { formatCitations } from "@/lib/utils/citation-format";
@@ -77,6 +78,15 @@ export function ConditionDetail({
             Stratified by:{" "}
             <span className="font-medium text-foreground/80">{condition.stratificationAxis}</span>
           </p>
+        )}
+        {hasCalculatorMapping(condition.id) && (
+          <Link
+            href={`/calculator?factors=${getFactorsForCondition(condition.id).join(",")}`}
+            className="inline-flex h-9 items-center rounded-lg px-4 text-sm font-medium text-white shadow-sm transition-all hover:shadow-md mt-3"
+            style={{ background: "var(--kairos-gradient)" }}
+          >
+            Open in Risk Calculator
+          </Link>
         )}
       </div>
 

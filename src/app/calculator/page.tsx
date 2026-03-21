@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
+import { useSearchParams } from "next/navigation";
 import { useCalculator } from "@/lib/hooks/use-calculator";
 import { CalculatorForm } from "@/components/calculator/calculator-form";
 import { GlassBoxDisplay } from "@/components/calculator/glass-box-display";
@@ -31,10 +32,23 @@ export default function CalculatorPage() {
     state,
     setGA,
     toggleFactor,
+    setFactors,
     setApplyInteractions,
     currentRisk,
     riskCurve,
   } = useCalculator();
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const factors = searchParams.get("factors");
+    if (factors) {
+      const factorIds = factors.split(",").filter(Boolean);
+      if (factorIds.length > 0) {
+        setFactors(factorIds);
+      }
+    }
+  }, [searchParams, setFactors]);
 
   const hasFactors = state.activeFactorIds.length > 0;
 
