@@ -90,17 +90,18 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }
             fillOpacity={1}
           />
 
-          {/* ACOG guideline annotations — staggered vertically to avoid overlap */}
+          {/* ACOG guideline annotations — labels below the X-axis ticks */}
           <ReferenceLine
             x="41w0d"
             stroke={chartColors.text}
             strokeDasharray="4 4"
             label={{
-              value: "ACOG: Offer induction",
-              position: "insideTop",
+              value: "Offer induction →",
+              position: "insideBottomLeft",
               fill: chartColors.text,
               fontSize: 9,
-              dy: 8,
+              dy: -6,
+              dx: 2,
             }}
           />
           <ReferenceLine
@@ -108,11 +109,12 @@ export function StillbirthRiskCurve({ riskCurve, currentGA, hasFactors, height }
             stroke="var(--brand-pink)"
             strokeDasharray="4 4"
             label={{
-              value: "Never beyond",
-              position: "insideTop",
+              value: "← Never beyond",
+              position: "insideBottomRight",
               fill: "var(--brand-pink)",
               fontSize: 9,
-              dy: 22,
+              dy: -6,
+              dx: -2,
             }}
           />
 
