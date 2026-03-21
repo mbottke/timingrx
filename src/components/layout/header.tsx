@@ -22,7 +22,7 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-[var(--header-bg)] backdrop-blur supports-[backdrop-filter]:bg-[var(--header-bg)]/95">
+    <header className="sticky top-0 z-50 bg-[var(--header-bg)] backdrop-blur supports-[backdrop-filter]:bg-[var(--header-bg)]/95" style={{ paddingTop: "env(safe-area-inset-top)" }}>
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 lg:px-8 xl:px-12">
         <div className="flex items-center gap-6">
           {/* Mobile hamburger */}

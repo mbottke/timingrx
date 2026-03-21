@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Header } from "@/components/layout/header";
@@ -17,11 +17,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#2a2a3d" },
+    { media: "(prefers-color-scheme: dark)", color: "#1a1a2e" },
+  ],
+};
+
 export const metadata: Metadata = {
   title: "Kairos — Obstetric Decision Intelligence",
   description:
     "Comprehensive clinical decision support for obstetric delivery timing. " +
     "201+ conditions, risk calculator with confidence scoring, interactive visualizations.",
+  appleWebApp: {
+    capable: true,
+    title: "Kairos",
+    statusBarStyle: "black-translucent",
+  },
 };
 
 export default function RootLayout({
