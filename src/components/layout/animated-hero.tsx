@@ -250,18 +250,18 @@ export function AnimatedHero({ className }: { className?: string }) {
       <path
         ref={baselineRef}
         stroke="url(#hero-stroke-purple)"
-        strokeWidth="2"
+        strokeWidth="2.5"
         strokeLinecap="round"
         filter="url(#hero-glow)"
-        opacity="0.6"
+        opacity="0.5"
       />
       <path
         ref={adjustedRef}
         stroke="url(#hero-stroke-pink)"
-        strokeWidth="2"
+        strokeWidth="2.5"
         strokeLinecap="round"
         filter="url(#hero-glow)"
-        opacity="0.6"
+        opacity="0.5"
       />
 
       {/* Glowing embers — baseline */}

@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8 xl:px-12">
       {/* Hero */}
-        <section className="relative text-center mb-14 liquid-glass liquid-glass-transparent">
+        <section className="relative text-center mb-14 liquid-glass liquid-glass-transparent liquid-glass-no-border rounded-xl">
           <span className="liquid-glass-highlight" />
           <div className="relative z-[2] mx-auto max-w-2xl">
           <KairosLogo variant="hero" />

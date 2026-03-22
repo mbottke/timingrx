@@ -715,6 +715,24 @@ html {
   animation: gradient-shimmer 6s ease-in-out infinite;
 }
 
+/* Frosted glass hero text — dark semi-transparent fill */
+.kairos-hero-text-fill {
+  fill: oklch(0.20 0.01 245 / 0.75);
+}
+
+.dark .kairos-hero-text-fill {
+  fill: oklch(0.92 0.005 245 / 0.70);
+}
+
+/* Remove border from hero glass panel */
+.liquid-glass-no-border::after {
+  display: none;
+}
+
+.liquid-glass-no-border {
+  border: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .liquid-glass {
     transition: none;
