@@ -619,15 +619,13 @@ html {
 
 /* F) Dark mode — smoky glass with enhanced depth shadows */
 .dark .liquid-glass {
-  background: rgba(20, 20, 45, 0.82);
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(90px) saturate(2.4);
   -webkit-backdrop-filter: blur(90px) saturate(2.4);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.10),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-    0 1px 3px rgba(0, 0, 0, 0.25),
-    0 4px 12px rgba(0, 0, 0, 0.30),
-    0 12px 40px rgba(0, 0, 0, 0.25);
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .dark .liquid-glass::before {
@@ -635,8 +633,10 @@ html {
 }
 
 .dark .liquid-glass::after {
-  border-top-color: rgba(255, 255, 255, 0.12);
-  border-left-color: rgba(255, 255, 255, 0.06);
+  border-top-color: rgba(255, 255, 255, 0.10);
+  border-left-color: rgba(255, 255, 255, 0.05);
+  border-bottom-color: rgba(0, 0, 0, 0.15);
+  border-right-color: rgba(0, 0, 0, 0.08);
 }
 
 /* Selective transparency — for hero, stat cards, overlays */
@@ -645,7 +645,7 @@ html {
 }
 
 .dark .liquid-glass-transparent {
-  background: rgba(20, 20, 45, 0.78);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 /* Specular highlight span — tracks cursor via --tilt-x / --tilt-y */
@@ -663,11 +663,7 @@ html {
 }
 
 .dark .liquid-glass-highlight {
-  background: radial-gradient(
-    circle at calc(50% + var(--tilt-x, 0) * 60%) calc(50% + var(--tilt-y, 0) * 60%),
-    rgba(200, 180, 255, 0.18) 0%,
-    transparent 65%
-  );
+  background: none;
 }
 
 /* SVG refraction filter — applied to WRAPPER elements only */
