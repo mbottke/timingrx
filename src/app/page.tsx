@@ -34,9 +34,8 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8 xl:px-12">
       {/* Hero */}
-        <section className="relative text-center mb-14 liquid-glass liquid-glass-transparent liquid-glass-no-border rounded-xl">
-          <span className="liquid-glass-highlight" />
-          <div className="relative z-[2] mx-auto max-w-2xl">
+        <section className="relative text-center mb-14 py-12">
+          <div className="mx-auto max-w-2xl">
           <KairosLogo variant="hero" />
           <p className="mt-4 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">
             Delivery timing for every maternal &amp; fetal condition
@@ -45,7 +44,7 @@ export default function Home() {
             Risk calculator with confidence scoring, and interactive
             visualizations.
           </p>
-          <div className="mt-8 flex items-center justify-center gap-3">
+          <div className="mt-10 flex items-center justify-center gap-3">
             <Link
               href="/conditions"
               className="inline-flex h-11 items-center rounded-lg px-7 text-sm font-medium text-white shadow-md shadow-black/10 transition-all hover:shadow-lg hover:shadow-black/15"

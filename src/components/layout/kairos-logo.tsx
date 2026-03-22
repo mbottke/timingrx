@@ -49,51 +49,26 @@ export function KairosLogo({
       : "text-[var(--header-fg,#f0f0f5)]";
 
   // ── Hero variant: frosted glass wordmark ──────────────────────────────────
+  // Uses HTML text with backdrop-filter so background lines blur through letters
   if (isHero) {
-    const frostFilter = `kairos-frost-${uid}`;
     return (
       <div
         className={`flex flex-col items-center gap-1 ${className}`}
         role="img"
         aria-label="Kairos — Obstetric Decision Intelligence"
       >
-        <svg
-          width="230"
-          height="56"
-          viewBox="0 0 230 56"
-          fill="none"
-          className="w-[230px] h-[56px]"
-        >
-          <defs>
-            {/* Frosted glass text effect — slight blur + specular edge */}
-            <filter id={frostFilter} x="-5%" y="-15%" width="110%" height="130%">
-              <feGaussianBlur in="SourceAlpha" stdDeviation="0.6" result="softAlpha" />
-              <feSpecularLighting in="softAlpha" surfaceScale={4} specularConstant={0.6} specularExponent={30} lightingColor="#ffffff" result="specHighlight">
-                <fePointLight x={60} y={-30} z={200} />
-              </feSpecularLighting>
-              <feComposite in="specHighlight" in2="SourceAlpha" operator="in" result="clippedSpec" />
-              <feMerge>
-                <feMergeNode in="SourceGraphic" />
-                <feMergeNode in="clippedSpec" />
-              </feMerge>
-            </filter>
-          </defs>
-          {/* Wordmark — dark, semi-transparent for frosted glass feel */}
-          <text
-            x={8}
-            y={40}
-            fontFamily="var(--font-geist-sans), Inter, system-ui, sans-serif"
-            fontSize={42}
-            fontWeight={800}
-            letterSpacing={-2}
-            className="kairos-hero-text-fill"
-            filter={`url(#${frostFilter})`}
-          >
+        <div className="relative">
+          <span className="kairos-hero-frosted-text select-none">
             kairos
-          </text>
-          {/* Pink dot — period accent */}
-          <circle cx={134} cy={38} r={3} fill="#e04cb0" opacity={0.8} />
-        </svg>
+          </span>
+          <span
+            className="absolute text-[42px] font-extrabold tracking-[-0.06em] leading-none"
+            style={{ right: "-14px", bottom: "6px", color: "#e04cb0", opacity: 0.8 }}
+            aria-hidden="true"
+          >
+            .
+          </span>
+        </div>
         <span className="text-xs font-medium tracking-[0.2em] text-muted-foreground">
           OBSTETRIC DECISION INTELLIGENCE
         </span>
