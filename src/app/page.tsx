@@ -5,7 +5,6 @@ import { allTrials } from "@/data/trials";
 import { CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { LiquidGlassCard } from "@/components/layout/liquid-glass-card";
 import { KairosLogo } from "@/components/layout/kairos-logo";
-import { AnimatedHero } from "@/components/layout/animated-hero";
 import { CategoryIcon } from "@/components/icons/category-icons";
 
 /** Brand-spectrum left-border accents per medical category */
@@ -38,7 +37,6 @@ export default function Home() {
       <div className="liquid-glass-refract-hero">
         <section className="relative text-center mb-14 liquid-glass liquid-glass-transparent">
           <span className="liquid-glass-highlight" />
-          <AnimatedHero className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-screen h-full pointer-events-none z-0" />
           <div className="relative z-[2] mx-auto max-w-2xl">
           <KairosLogo variant="hero" />
           <p className="mt-4 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">
