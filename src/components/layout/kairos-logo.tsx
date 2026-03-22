@@ -49,26 +49,62 @@ export function KairosLogo({
       : "text-[var(--header-fg,#f0f0f5)]";
 
   // ── Hero variant: frosted glass wordmark ──────────────────────────────────
-  // Uses HTML text with backdrop-filter so background lines blur through letters
+  // SVG clipPath clips a foreignObject (with backdrop-filter) to the text shape.
+  // The blur only renders inside the letterforms — lines blur through the text.
   if (isHero) {
+    const clipId = `kairos-text-clip-${uid}`;
+    const textProps = {
+      x: 8,
+      y: 52,
+      fontFamily: "var(--font-geist-sans), Inter, system-ui, sans-serif",
+      fontSize: 56,
+      fontWeight: 800,
+      letterSpacing: -2.5,
+    };
     return (
       <div
         className={`flex flex-col items-center gap-1 ${className}`}
         role="img"
         aria-label="Kairos — Obstetric Decision Intelligence"
       >
-        <div className="relative">
-          <span className="kairos-hero-frosted-text select-none">
-            kairos
-          </span>
-          <span
-            className="absolute text-[42px] font-extrabold tracking-[-0.06em] leading-none"
-            style={{ right: "-14px", bottom: "6px", color: "#e04cb0", opacity: 0.8 }}
-            aria-hidden="true"
+        <svg
+          width="300"
+          height="70"
+          viewBox="0 0 300 70"
+          fill="none"
+          className="w-[300px] h-[70px] select-none"
+        >
+          <defs>
+            <clipPath id={clipId}>
+              <text {...textProps}>kairos.</text>
+            </clipPath>
+          </defs>
+          {/* Frosted blur clipped to letter shapes */}
+          <foreignObject
+            x="0" y="0" width="300" height="70"
+            clipPath={`url(#${clipId})`}
           >
-            .
-          </span>
-        </div>
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              style={{
+                width: "100%",
+                height: "100%",
+                backdropFilter: "blur(10px) saturate(1.4)",
+                WebkitBackdropFilter: "blur(10px) saturate(1.4)",
+                background: "rgba(180, 180, 200, 0.15)",
+              }}
+            />
+          </foreignObject>
+          {/* Subtle text outline for readability */}
+          <text
+            {...textProps}
+            className="kairos-hero-text-stroke"
+            fill="none"
+            strokeWidth={0.8}
+          >
+            kairos.
+          </text>
+        </svg>
         <span className="text-xs font-medium tracking-[0.2em] text-muted-foreground">
           OBSTETRIC DECISION INTELLIGENCE
         </span>

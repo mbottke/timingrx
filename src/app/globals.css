@@ -572,9 +572,9 @@ html {
 .liquid-glass {
   position: relative;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px) saturate(1.6);
-  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(14px) saturate(1.6);
+  -webkit-backdrop-filter: blur(14px) saturate(1.6);
   transition: transform 0.4s ease-out;
   /* F) Enhanced depth shadow system — light mode */
   box-shadow:
@@ -612,9 +612,9 @@ html {
 
 /* F) Dark mode — smoky glass with enhanced depth shadows */
 .dark .liquid-glass {
-  background: rgba(20, 20, 45, 0.45);
-  backdrop-filter: blur(20px) saturate(1.8);
-  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  background: rgba(20, 20, 45, 0.35);
+  backdrop-filter: blur(16px) saturate(1.8);
+  -webkit-backdrop-filter: blur(16px) saturate(1.8);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.10),
     inset 0 -1px 0 rgba(0, 0, 0, 0.2),
@@ -634,11 +634,11 @@ html {
 
 /* Selective transparency — for hero, stat cards, overlays */
 .liquid-glass-transparent {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .dark .liquid-glass-transparent {
-  background: rgba(20, 20, 45, 0.3);
+  background: rgba(20, 20, 45, 0.25);
 }
 
 /* Specular highlight span — tracks cursor via --tilt-x / --tilt-y */
@@ -715,22 +715,13 @@ html {
   animation: gradient-shimmer 6s ease-in-out infinite;
 }
 
-/* Frosted glass hero text — background lines blur through the letterforms */
-.kairos-hero-frosted-text {
-  font-size: 56px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  position: relative;
-  color: oklch(0.25 0.01 245 / 0.6);
-  -webkit-backdrop-filter: blur(8px) saturate(1.5);
-  backdrop-filter: blur(8px) saturate(1.5);
-  padding: 8px 16px 4px;
-  border-radius: 12px;
+/* Frosted glass hero text — outline stroke for readability */
+.kairos-hero-text-stroke {
+  stroke: oklch(0.30 0.01 245 / 0.35);
 }
 
-.dark .kairos-hero-frosted-text {
-  color: oklch(0.90 0.005 245 / 0.55);
+.dark .kairos-hero-text-stroke {
+  stroke: oklch(0.85 0.005 245 / 0.30);
 }
 
 /* Remove border from hero glass panel */
