@@ -4,7 +4,6 @@ import { CATEGORY_DISPLAY_NAMES, type ConditionCategory } from "@/data/types";
 import { allTrials } from "@/data/trials";
 import { CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { LiquidGlassCard } from "@/components/layout/liquid-glass-card";
-import { KairosLogo } from "@/components/layout/kairos-logo";
 import { CategoryIcon } from "@/components/icons/category-icons";
 
 /** Brand-spectrum left-border accents per medical category */
@@ -32,51 +31,69 @@ export default function Home() {
   const categories = conditionsByCategory();
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8 xl:px-12">
-      {/* Hero */}
-        <section className="relative text-center mb-14 py-12">
-          <div className="mx-auto max-w-2xl">
-          <KairosLogo variant="hero" />
-          <p className="mt-4 text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">
-            Delivery timing for every maternal &amp; fetal condition
+    <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8 xl:px-12">
+      {/* Hero — dramatic, minimal */}
+      <section className="relative text-center mb-20 py-16">
+        <div className="mx-auto max-w-2xl">
+          {/* Dominant wordmark — no curves, the background tells that story */}
+          <h1 className="text-[72px] sm:text-[80px] font-extrabold tracking-[-0.04em] leading-[0.9] text-foreground">
+            kairos<span className="text-[var(--brand-pink)]">.</span>
+          </h1>
+          <p className="mt-6 text-[9px] uppercase tracking-[0.25em] text-muted-foreground/60 font-medium">
+            Obstetric Decision Intelligence
           </p>
-          <p className="mt-3 text-sm text-muted-foreground/80 leading-relaxed">
-            Risk calculator with confidence scoring, and interactive
-            visualizations.
+          <p className="mt-5 text-base text-muted-foreground/70 leading-relaxed max-w-md mx-auto">
+            Delivery timing for every maternal &amp; fetal condition.
+            Risk calculator with confidence scoring and interactive visualizations.
           </p>
-          <div className="mt-10 flex items-center justify-center gap-3">
+          <div className="mt-12 flex items-center justify-center gap-4">
             <Link
               href="/conditions"
-              className="inline-flex h-11 items-center rounded-lg px-7 text-sm font-medium text-white shadow-md shadow-black/10 transition-all hover:shadow-lg hover:shadow-black/15"
+              className="kairos-cta-primary inline-flex h-12 items-center rounded-xl px-8 text-sm font-semibold text-white shadow-lg shadow-black/10 transition-all duration-300"
               style={{ background: "var(--kairos-gradient)" }}
             >
               Browse Conditions
             </Link>
             <Link
               href="/calculator"
-              className="inline-flex h-11 items-center rounded-lg border bg-card px-7 text-sm font-medium shadow-sm transition-all hover:bg-accent hover:shadow-md"
+              className="kairos-cta-glass inline-flex h-12 items-center rounded-xl px-8 text-sm font-semibold transition-all duration-300"
             >
               Risk Curve
             </Link>
           </div>
         </div>
-        </section>
-
-      <hr className="kairos-divider mb-14" />
-
-      {/* Stats — hero numbers */}
-      <section className="grid grid-cols-2 gap-4 sm:grid-cols-4 xl:gap-6 mb-14">
-        <StatCard label="Conditions" value={String(allConditions.length)} />
-        <StatCard label="Categories" value={String(categories.size)} />
-        <StatCard label="Landmark Trials" value={String(allTrials.length)} />
-        <StatCard label="Risk Factors" value="13" />
       </section>
 
-      <hr className="kairos-divider mb-14" />
+      <hr className="kairos-divider mb-16" />
+
+      {/* Stats — hero stat + supporting trio */}
+      <section className="mb-16">
+        <div className="grid gap-4 sm:grid-cols-3 xl:gap-6">
+          {/* Hero stat — full width on mobile, spans left on desktop */}
+          <div className="sm:row-span-2">
+            <LiquidGlassCard transparent className="overflow-hidden h-full">
+              <CardHeader className="relative z-[2] p-8 text-center flex flex-col items-center justify-center h-full">
+                <CardTitle className="text-6xl sm:text-7xl font-extrabold font-mono tracking-tight kairos-gradient-text">
+                  {String(allConditions.length)}
+                </CardTitle>
+                <CardDescription className="text-sm uppercase tracking-[0.2em] font-medium mt-3 text-muted-foreground">
+                  Conditions
+                </CardDescription>
+              </CardHeader>
+            </LiquidGlassCard>
+          </div>
+          {/* Supporting stats */}
+          <StatCard label="Categories" value={String(categories.size)} />
+          <StatCard label="Landmark Trials" value={String(allTrials.length)} />
+          <StatCard label="Risk Factors" value="13" className="sm:col-span-2" />
+        </div>
+      </section>
+
+      <hr className="kairos-divider mb-16" />
 
       {/* Category Grid */}
       <section>
-        <h2 className="text-xl font-semibold mb-5">Browse by Category</h2>
+        <h2 className="text-xl font-semibold mb-6 tracking-tight">Browse by Category</h2>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-4">
           {(
             Object.keys(CATEGORY_DISPLAY_NAMES) as ConditionCategory[]
@@ -112,14 +129,14 @@ export default function Home() {
   );
 }
 
-function StatCard({ label, value }: { label: string; value: string }) {
+function StatCard({ label, value, className = "" }: { label: string; value: string; className?: string }) {
   return (
-    <LiquidGlassCard transparent className="overflow-hidden">
+    <LiquidGlassCard transparent className={`overflow-hidden ${className}`}>
       <CardHeader className="relative z-[2] p-5 text-center">
-        <CardTitle className="text-4xl font-bold font-mono tracking-tight kairos-gradient-text">
+        <CardTitle className="text-3xl font-bold font-mono tracking-tight kairos-gradient-text">
           {value}
         </CardTitle>
-        <CardDescription className="text-xs uppercase tracking-wider font-medium mt-1">
+        <CardDescription className="text-[10px] uppercase tracking-[0.2em] font-medium mt-1">
           {label}
         </CardDescription>
       </CardHeader>

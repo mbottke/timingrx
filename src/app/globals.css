@@ -294,8 +294,7 @@
   border-radius: 1px 1px 0 0;
 }
 
-/* Card hover with gradient glow — base structure */
-/* C) Persistent glow + hover intensification handled below in Liquid Glass section */
+/* Card hover with gradient glow — pure frost at rest, gradient only on interaction */
 .kairos-card-hover {
   position: relative;
   overflow: hidden;
@@ -312,7 +311,7 @@
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  opacity: 0.25;
+  opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
   z-index: 1;
@@ -486,21 +485,29 @@ html {
   animation: mesh-drift-4 28s ease-in-out infinite;
 }
 
-/* Dark mode — deeper, more saturated */
+/* Dark mode — obsidian: deep, saturated, rich */
 .dark .gradient-mesh-blob-1 {
-  background: radial-gradient(circle, oklch(0.35 0.18 260 / 0.50), transparent 70%);
+  background: radial-gradient(circle, oklch(0.30 0.25 260 / 0.60), transparent 70%);
+  width: 700px;
+  height: 700px;
 }
 
 .dark .gradient-mesh-blob-2 {
-  background: radial-gradient(circle, oklch(0.30 0.22 310 / 0.45), transparent 70%);
+  background: radial-gradient(circle, oklch(0.25 0.28 310 / 0.55), transparent 70%);
+  width: 600px;
+  height: 600px;
 }
 
 .dark .gradient-mesh-blob-3 {
-  background: radial-gradient(circle, oklch(0.32 0.15 210 / 0.35), transparent 70%);
+  background: radial-gradient(circle, oklch(0.28 0.20 210 / 0.45), transparent 70%);
+  width: 650px;
+  height: 650px;
 }
 
 .dark .gradient-mesh-blob-4 {
-  background: radial-gradient(circle, oklch(0.38 0.12 340 / 0.30), transparent 70%);
+  background: radial-gradient(circle, oklch(0.32 0.18 340 / 0.40), transparent 70%);
+  width: 500px;
+  height: 500px;
 }
 
 @keyframes mesh-drift-1 {
@@ -546,13 +553,13 @@ html {
   height: 150%;
   background: conic-gradient(
     from 0deg at 50% 50%,
-    oklch(0.25 0.20 260 / 0.3),
-    oklch(0.20 0.18 310 / 0.2),
-    oklch(0.22 0.15 200 / 0.15),
-    oklch(0.28 0.22 280 / 0.25),
-    oklch(0.25 0.20 260 / 0.3)
+    oklch(0.30 0.25 260 / 0.40),
+    oklch(0.25 0.22 310 / 0.30),
+    oklch(0.27 0.18 200 / 0.20),
+    oklch(0.32 0.25 280 / 0.35),
+    oklch(0.30 0.25 260 / 0.40)
   );
-  filter: blur(100px);
+  filter: blur(90px);
   animation: aurora-rotate 60s linear infinite;
   mix-blend-mode: screen;
   will-change: transform;
@@ -672,23 +679,53 @@ html {
   filter: url(#liquid-glass-refract-hero);
 }
 
-/* ═══ C) Persistent Gradient Border Glow ════════════════════════════ */
-/* Gradient border visible at rest (dim), intensifies on hover */
-
-.kairos-card-hover::before {
-  opacity: 0.25;
-}
+/* ═══ C) Gradient Border — hidden at rest, appears on hover ═════════ */
 
 .kairos-card-hover:hover::before {
   opacity: 1;
 }
 
-.kairos-card-hover {
-  box-shadow: 0 0 12px oklch(0.58 0.23 300 / 0.06), 0 0 24px oklch(0.55 0.20 260 / 0.04);
+.kairos-card-hover:hover {
+  box-shadow: 0 0 20px oklch(0.58 0.23 300 / 0.12), 0 0 40px oklch(0.55 0.20 260 / 0.08);
 }
 
-.kairos-card-hover:hover {
-  box-shadow: 0 0 20px oklch(0.58 0.23 300 / 0.15), 0 0 40px oklch(0.55 0.20 260 / 0.10);
+/* ═══ CTA Button Micro-interactions ════════════════════════════════ */
+
+/* Primary CTA — subtle scale + glow on hover */
+.kairos-cta-primary {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.kairos-cta-primary:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 8px 30px oklch(0.58 0.23 300 / 0.25), 0 4px 12px oklch(0.55 0.20 260 / 0.15);
+  filter: brightness(1.08);
+}
+
+/* Glass CTA — becomes frosted glass on hover */
+.kairos-cta-glass {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+.kairos-cta-glass:hover {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.dark .kairos-cta-glass:hover {
+  background: rgba(20, 20, 45, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* ═══ D) Animated Gradient Text Shimmer ════════════════════════════ */
