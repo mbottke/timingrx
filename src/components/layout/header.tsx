@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { useTeachingMode } from "@/lib/hooks/use-teaching-mode";
 import { Switch } from "@/components/ui/switch";
 import { ThemeToggle } from "./theme-toggle";
@@ -27,6 +28,9 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+
+  const isMoreActive = moreLinks.some(({ href }) => pathname.startsWith(href));
 
   // Close "More" dropdown on outside click
   useEffect(() => {
@@ -40,6 +44,10 @@ export function Header() {
       return () => document.removeEventListener("mousedown", handleClick);
     }
   }, [moreOpen]);
+
+  function openCommandPalette() {
+    document.dispatchEvent(new KeyboardEvent("keydown", { key: "k", metaKey: true }));
+  }
 
   return (
     <header className="sticky top-0 z-50 liquid-glass" style={{ paddingTop: "env(safe-area-inset-top)" }}>
@@ -62,25 +70,34 @@ export function Header() {
           </Link>
 
           <nav className="hidden items-center gap-6 text-[13px] font-medium md:flex">
-            {primaryLinks.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className="text-[var(--header-muted)] transition-colors hover:text-[var(--header-fg)]"
-              >
-                {label}
-              </Link>
-            ))}
+            {primaryLinks.map(({ href, label }) => {
+              const isActive = pathname.startsWith(href);
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  className={`relative pb-1 transition-colors hover:text-[var(--header-fg)] ${isActive ? "text-[var(--header-fg)]" : "text-[var(--header-muted)]"}`}
+                >
+                  {label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full" style={{ background: "var(--kairos-gradient)" }} />
+                  )}
+                </Link>
+              );
+            })}
             {/* More dropdown */}
             <div ref={moreRef} className="relative">
               <button
                 onClick={() => setMoreOpen(!moreOpen)}
-                className="flex items-center gap-1 text-[var(--header-muted)] transition-colors hover:text-[var(--header-fg)]"
+                className={`relative flex items-center gap-1 pb-1 transition-colors hover:text-[var(--header-fg)] ${isMoreActive ? "text-[var(--header-fg)]" : "text-[var(--header-muted)]"}`}
               >
                 More
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className={`transition-transform duration-200 ${moreOpen ? "rotate-180" : ""}`}>
                   <path d="M2 4l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
+                {isMoreActive && (
+                  <span className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full" style={{ background: "var(--kairos-gradient)" }} />
+                )}
               </button>
               {moreOpen && (
                 <div className="absolute top-full left-0 mt-3 w-44 rounded-xl liquid-glass p-1.5 shadow-xl">
@@ -101,7 +118,7 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 rounded-full bg-white/10 px-3 py-1">
             <label
               htmlFor="teaching-mode"
               className="text-xs text-[var(--header-muted)]"
@@ -115,9 +132,12 @@ export function Header() {
             />
           </div>
           <ThemeToggle />
-          <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border border-white/20 bg-white/10 px-1.5 font-mono text-[11px] font-medium text-[var(--header-muted)] sm:flex">
+          <button
+            onClick={openCommandPalette}
+            className="hidden h-5 cursor-pointer select-none items-center gap-1 rounded border border-white/20 bg-white/10 px-1.5 font-mono text-[11px] font-medium text-[var(--header-muted)] hover:bg-white/20 transition-colors sm:flex"
+          >
             <span className="text-xs">⌘</span>K
-          </kbd>
+          </button>
         </div>
       </div>
 
@@ -130,16 +150,22 @@ export function Header() {
       {mobileOpen && (
         <nav className="border-t border-white/10 bg-[var(--header-bg)] px-4 py-3 md:hidden">
           <div className="flex flex-col gap-1">
-            {allLinks.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                onClick={() => setMobileOpen(false)}
-                className="rounded-md px-3 py-2 text-sm text-[var(--header-muted)] transition-colors hover:bg-white/10 hover:text-[var(--header-fg)]"
-              >
-                {label}
-              </Link>
-            ))}
+            {allLinks.map(({ href, label }) => {
+              const isActive = pathname.startsWith(href);
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`relative rounded-md px-3 py-2 text-sm transition-colors hover:bg-white/10 hover:text-[var(--header-fg)] ${isActive ? "text-[var(--header-fg)]" : "text-[var(--header-muted)]"}`}
+                >
+                  {label}
+                  {isActive && (
+                    <span className="absolute left-0 top-1/2 -translate-y-1/2 h-4 w-[2px] rounded-full" style={{ background: "var(--kairos-gradient)" }} />
+                  )}
+                </Link>
+              );
+            })}
             <div className="mt-2 flex items-center gap-2 border-t border-white/10 px-3 pt-3">
               <label className="text-xs text-[var(--header-muted)]">
                 Teaching Mode

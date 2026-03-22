@@ -31,7 +31,7 @@ export default function Home() {
   const categories = conditionsByCategory();
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8 xl:px-12">
+    <div className="mx-auto max-w-7xl px-4 py-10 lg:px-8 xl:px-12">
       {/* Hero — dramatic, minimal */}
       <section className="relative text-center mb-20 py-16">
         <div className="mx-auto max-w-2xl">
@@ -64,36 +64,30 @@ export default function Home() {
         </div>
       </section>
 
-      <hr className="kairos-divider mb-16" />
-
-      {/* Stats — hero stat + supporting trio */}
-      <section className="mb-16">
-        <div className="grid gap-4 sm:grid-cols-3 xl:gap-6">
-          {/* Hero stat — full width on mobile, spans left on desktop */}
-          <div className="sm:row-span-2">
-            <LiquidGlassCard transparent className="overflow-hidden h-full">
-              <CardHeader className="relative z-[2] p-8 text-center flex flex-col items-center justify-center h-full">
-                <CardTitle className="text-6xl sm:text-7xl font-extrabold font-mono tracking-tight kairos-gradient-text">
-                  {String(allConditions.length)}
-                </CardTitle>
-                <CardDescription className="text-sm uppercase tracking-[0.2em] font-medium mt-3 text-muted-foreground">
-                  Conditions
-                </CardDescription>
-              </CardHeader>
-            </LiquidGlassCard>
-          </div>
+      {/* Stats — single row of 4 */}
+      <section className="mb-20">
+        <div className="grid gap-4 sm:grid-cols-4 xl:gap-6">
+          {/* Hero stat — same size, larger number */}
+          <LiquidGlassCard transparent className="overflow-hidden">
+            <CardHeader className="relative z-[2] p-5 text-center">
+              <CardTitle className="text-5xl font-extrabold font-mono tracking-tight kairos-gradient-text kairos-gradient-text-slow">
+                {String(allConditions.length)}
+              </CardTitle>
+              <CardDescription className="text-[10px] uppercase tracking-[0.2em] font-medium mt-1">
+                Conditions
+              </CardDescription>
+            </CardHeader>
+          </LiquidGlassCard>
           {/* Supporting stats */}
           <StatCard label="Categories" value={String(categories.size)} />
           <StatCard label="Landmark Trials" value={String(allTrials.length)} />
-          <StatCard label="Risk Factors" value="13" className="sm:col-span-2" />
+          <StatCard label="Risk Factors" value="13" />
         </div>
       </section>
 
-      <hr className="kairos-divider mb-16" />
-
       {/* Category Grid */}
       <section>
-        <h2 className="text-xl font-semibold mb-6 tracking-tight">Browse by Category</h2>
+        <h2 className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground/60 font-semibold mb-8">Browse by Category</h2>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-4">
           {(
             Object.keys(CATEGORY_DISPLAY_NAMES) as ConditionCategory[]
@@ -113,7 +107,7 @@ export default function Home() {
                       {CATEGORY_DISPLAY_NAMES[cat]}
                     </CardTitle>
                     <CardDescription className="text-xs">
-                      <span className="font-mono font-medium text-foreground/70">
+                      <span className="text-sm font-mono font-bold kairos-gradient-text">
                         {conditions.length}
                       </span>
                       {" "}condition{conditions.length !== 1 ? "s" : ""}

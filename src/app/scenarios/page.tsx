@@ -80,7 +80,7 @@ export default function ScenariosPage() {
   }, [chartData]);
 
   return (
-    <main className="mx-auto max-w-7xl px-4 py-8 lg:px-8 xl:px-12">
+    <main className="mx-auto max-w-7xl px-4 py-10 lg:px-8 xl:px-12">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold tracking-tight">

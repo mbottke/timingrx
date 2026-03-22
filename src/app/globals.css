@@ -236,7 +236,7 @@
 }
 
 .animate-fade-in {
-  animation: fade-in-up 0.3s ease-out;
+  animation: fade-in-up 0.25s ease-out;
 }
 
 /* Neon glow on hover — reads --card-glow CSS variable set per card */
@@ -750,6 +750,10 @@ html {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: gradient-shimmer 6s ease-in-out infinite;
+}
+
+.kairos-gradient-text-slow {
+  animation-duration: 10s;
 }
 
 /* Remove border from hero glass panel */

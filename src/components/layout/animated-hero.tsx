@@ -201,7 +201,7 @@ export function AnimatedHero({ className }: { className?: string }) {
         <linearGradient id="hero-fill-zone" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="var(--brand-purple, #b055f7)" stopOpacity="0" />
           <stop offset="25%" stopColor="var(--brand-purple, #b055f7)" stopOpacity="0.05" />
-          <stop offset="60%" stopColor="var(--brand-pink, #e04cb0)" stopOpacity="0.08" />
+          <stop offset="60%" stopColor="var(--brand-pink, #e04cb0)" stopOpacity="0.04" />
           <stop offset="100%" stopColor="var(--brand-pink, #e04cb0)" stopOpacity="0.02" />
         </linearGradient>
 
@@ -235,7 +235,7 @@ export function AnimatedHero({ className }: { className?: string }) {
         strokeWidth="6"
         strokeLinecap="round"
         filter="url(#hero-ghost)"
-        opacity="0.15"
+        opacity="0.06"
       />
       <path
         ref={adjustedGhostRef}
@@ -243,7 +243,7 @@ export function AnimatedHero({ className }: { className?: string }) {
         strokeWidth="6"
         strokeLinecap="round"
         filter="url(#hero-ghost)"
-        opacity="0.15"
+        opacity="0.06"
       />
 
       {/* Main curves — solid, crisp with soft halo */}
@@ -253,7 +253,7 @@ export function AnimatedHero({ className }: { className?: string }) {
         strokeWidth="2.5"
         strokeLinecap="round"
         filter="url(#hero-glow)"
-        opacity="0.5"
+        opacity="0.2"
       />
       <path
         ref={adjustedRef}
@@ -261,7 +261,7 @@ export function AnimatedHero({ className }: { className?: string }) {
         strokeWidth="2.5"
         strokeLinecap="round"
         filter="url(#hero-glow)"
-        opacity="0.5"
+        opacity="0.2"
       />
 
       {/* Glowing embers — baseline */}

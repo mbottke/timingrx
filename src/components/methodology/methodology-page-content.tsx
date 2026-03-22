@@ -43,7 +43,7 @@ function MethodologyPageInner() {
       {activeTab === "explorer" && <SectionNav />}
 
       <div className="mx-auto max-w-7xl px-4 lg:px-8 xl:px-12">
-        <div className="py-8">
+        <div className="py-10">
           <h1 className="text-2xl font-semibold tracking-tight flex items-baseline gap-1.5 kairos-heading">
             How <KairosLogo variant="heading" /> Works
           </h1>

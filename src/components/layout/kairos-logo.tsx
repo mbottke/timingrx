@@ -102,7 +102,7 @@ export function KairosLogo({
             kairos
           </text>
           {/* Pink dot — period accent after "s" */}
-          <circle cx={107} cy={44} r={2.5} fill="#e04cb0" />
+          <circle cx={107} cy={44} r={2.5} fill="var(--brand-pink, #e04cb0)" />
         </svg>
         <span className="text-xs font-medium tracking-[0.2em] text-muted-foreground">
           OBSTETRIC DECISION INTELLIGENCE
@@ -167,7 +167,7 @@ export function KairosLogo({
             kairos
           </text>
           {/* Pink dot — period accent after "s" */}
-          <circle cx={113} cy={31} r={2} fill="#e04cb0" />
+          <circle cx={113} cy={31} r={2} fill="var(--brand-pink, #e04cb0)" />
         </svg>
       </span>
     );
@@ -219,7 +219,7 @@ export function KairosLogo({
         >
           kairos
         </text>
-        <circle cx={113} cy={31} r={2} fill="#e04cb0" />
+        <circle cx={113} cy={31} r={2} fill="var(--brand-pink, #e04cb0)" />
       </svg>
     </span>
   );

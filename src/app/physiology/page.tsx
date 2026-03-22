@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function PhysiologyPage() {
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8 lg:px-8 xl:px-12">
+    <div className="mx-auto max-w-5xl px-4 py-10 lg:px-8 xl:px-12">
       <h1 className="text-2xl font-semibold tracking-tight kairos-heading">
         Physiologic Risk Convergence
       </h1>
