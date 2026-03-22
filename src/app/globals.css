@@ -294,11 +294,12 @@
   border-radius: 1px 1px 0 0;
 }
 
-/* Card hover with gradient glow */
+/* Card hover with gradient glow — base structure */
+/* C) Persistent glow + hover intensification handled below in Liquid Glass section */
 .kairos-card-hover {
   position: relative;
   overflow: hidden;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 .kairos-card-hover::before {
   content: "";
@@ -311,24 +312,10 @@
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  opacity: 0.25;
+  transition: opacity 0.3s ease;
   pointer-events: none;
   z-index: 1;
-}
-.kairos-card-hover:hover::before {
-  opacity: 1;
-}
-.kairos-card-hover:hover {
-  box-shadow: 0 0 20px oklch(0.58 0.23 300 / 0.12), 0 0 40px oklch(0.55 0.20 260 / 0.08);
-}
-
-/* Gradient text — use on stat numbers, badges, or any inline text */
-.kairos-gradient-text {
-  background: var(--kairos-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 /* Page heading underline — 70px gradient bar below h1 elements */
@@ -444,7 +431,142 @@ html {
   background-attachment: fixed;
 }
 
+/* ═══ A) Gradient Mesh Background ═══════════════════════════════════ */
+/* Animated color blobs behind all content — gives glass something to blur */
+
+.gradient-mesh {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gradient-mesh-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+}
+
+/* Light mode blobs — soft pastels */
+.gradient-mesh-blob-1 {
+  width: 600px;
+  height: 600px;
+  top: -15%;
+  left: -10%;
+  background: radial-gradient(circle, oklch(0.82 0.12 260 / 0.35), transparent 70%);
+  animation: mesh-drift-1 25s ease-in-out infinite;
+}
+
+.gradient-mesh-blob-2 {
+  width: 500px;
+  height: 500px;
+  top: 10%;
+  right: -5%;
+  background: radial-gradient(circle, oklch(0.78 0.15 310 / 0.30), transparent 70%);
+  animation: mesh-drift-2 30s ease-in-out infinite;
+}
+
+.gradient-mesh-blob-3 {
+  width: 550px;
+  height: 550px;
+  bottom: 5%;
+  left: 20%;
+  background: radial-gradient(circle, oklch(0.80 0.10 210 / 0.25), transparent 70%);
+  animation: mesh-drift-3 35s ease-in-out infinite;
+}
+
+.gradient-mesh-blob-4 {
+  width: 400px;
+  height: 400px;
+  top: 40%;
+  right: 25%;
+  background: radial-gradient(circle, oklch(0.85 0.08 340 / 0.20), transparent 70%);
+  animation: mesh-drift-4 28s ease-in-out infinite;
+}
+
+/* Dark mode — deeper, more saturated */
+.dark .gradient-mesh-blob-1 {
+  background: radial-gradient(circle, oklch(0.35 0.18 260 / 0.50), transparent 70%);
+}
+
+.dark .gradient-mesh-blob-2 {
+  background: radial-gradient(circle, oklch(0.30 0.22 310 / 0.45), transparent 70%);
+}
+
+.dark .gradient-mesh-blob-3 {
+  background: radial-gradient(circle, oklch(0.32 0.15 210 / 0.35), transparent 70%);
+}
+
+.dark .gradient-mesh-blob-4 {
+  background: radial-gradient(circle, oklch(0.38 0.12 340 / 0.30), transparent 70%);
+}
+
+@keyframes mesh-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(80px, 40px) scale(1.1); }
+  50% { transform: translate(30px, 80px) scale(0.95); }
+  75% { transform: translate(-40px, 20px) scale(1.05); }
+}
+
+@keyframes mesh-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-60px, 50px) scale(1.08); }
+  50% { transform: translate(-30px, -40px) scale(1.12); }
+  75% { transform: translate(40px, -20px) scale(0.95); }
+}
+
+@keyframes mesh-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(50px, -30px) scale(1.05); }
+  66% { transform: translate(-40px, -60px) scale(1.1); }
+}
+
+@keyframes mesh-drift-4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  20% { transform: translate(-50px, 30px) scale(1.15); }
+  50% { transform: translate(30px, 60px) scale(0.9); }
+  80% { transform: translate(60px, -20px) scale(1.05); }
+}
+
+/* ═══ B) Aurora Effect (dark mode only) ════════════════════════════ */
+/* Conic gradient with slow rotation — northern lights aesthetic */
+
+.gradient-mesh-aurora {
+  display: none;
+}
+
+.dark .gradient-mesh-aurora {
+  display: block;
+  position: absolute;
+  top: -50%;
+  left: -25%;
+  width: 150%;
+  height: 150%;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    oklch(0.25 0.20 260 / 0.3),
+    oklch(0.20 0.18 310 / 0.2),
+    oklch(0.22 0.15 200 / 0.15),
+    oklch(0.28 0.22 280 / 0.25),
+    oklch(0.25 0.20 260 / 0.3)
+  );
+  filter: blur(100px);
+  animation: aurora-rotate 60s linear infinite;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+@keyframes aurora-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* ═══ Liquid Glass Material System ═══════════════════════════════════ */
+
+/* E) Noise texture — adds physical materiality to glass */
+/* Tiny 100x100 noise PNG as base64 data URI, tiled at 2-3% opacity */
 
 /* Base glass material — translucent surface with backdrop blur */
 .liquid-glass {
@@ -453,8 +575,27 @@ html {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px) saturate(1.6);
   -webkit-backdrop-filter: blur(16px) saturate(1.6);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
   transition: transform 0.4s ease-out;
+  /* F) Enhanced depth shadow system — light mode */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* E) Noise + top edge highlight via ::before pseudo */
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+  /* Noise texture as repeating SVG — lightweight, resolution-independent */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  opacity: 0.5;
 }
 
 .liquid-glass::after {
@@ -465,23 +606,30 @@ html {
   pointer-events: none;
   z-index: 1;
   border: 1px solid transparent;
-  border-top-color: rgba(255, 255, 255, 0.3);
-  border-left-color: rgba(255, 255, 255, 0.15);
+  border-top-color: rgba(255, 255, 255, 0.35);
+  border-left-color: rgba(255, 255, 255, 0.18);
 }
 
+/* F) Dark mode — smoky glass with enhanced depth shadows */
 .dark .liquid-glass {
   background: rgba(20, 20, 45, 0.45);
   backdrop-filter: blur(20px) saturate(1.8);
   -webkit-backdrop-filter: blur(20px) saturate(1.8);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 2px 4px rgba(0, 0, 0, 0.2),
-    0 8px 24px rgba(0, 0, 0, 0.3);
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 1px 3px rgba(0, 0, 0, 0.25),
+    0 4px 12px rgba(0, 0, 0, 0.30),
+    0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.dark .liquid-glass::before {
+  opacity: 0.35;
 }
 
 .dark .liquid-glass::after {
-  border-top-color: rgba(255, 255, 255, 0.15);
-  border-left-color: rgba(255, 255, 255, 0.08);
+  border-top-color: rgba(255, 255, 255, 0.12);
+  border-left-color: rgba(255, 255, 255, 0.06);
 }
 
 /* Selective transparency — for hero, stat cards, overlays */
@@ -499,19 +647,19 @@ html {
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  z-index: 1;
+  z-index: 3;
   background: radial-gradient(
     circle at calc(50% + var(--tilt-x, 0) * 60%) calc(50% + var(--tilt-y, 0) * 60%),
-    rgba(255, 255, 255, 0.3) 0%,
-    transparent 70%
+    rgba(255, 255, 255, 0.35) 0%,
+    transparent 65%
   );
 }
 
 .dark .liquid-glass-highlight {
   background: radial-gradient(
     circle at calc(50% + var(--tilt-x, 0) * 60%) calc(50% + var(--tilt-y, 0) * 60%),
-    rgba(255, 255, 255, 0.2) 0%,
-    transparent 70%
+    rgba(200, 180, 255, 0.18) 0%,
+    transparent 65%
   );
 }
 
@@ -524,8 +672,59 @@ html {
   filter: url(#liquid-glass-refract-hero);
 }
 
+/* ═══ C) Persistent Gradient Border Glow ════════════════════════════ */
+/* Gradient border visible at rest (dim), intensifies on hover */
+
+.kairos-card-hover::before {
+  opacity: 0.25;
+}
+
+.kairos-card-hover:hover::before {
+  opacity: 1;
+}
+
+.kairos-card-hover {
+  box-shadow: 0 0 12px oklch(0.58 0.23 300 / 0.06), 0 0 24px oklch(0.55 0.20 260 / 0.04);
+}
+
+.kairos-card-hover:hover {
+  box-shadow: 0 0 20px oklch(0.58 0.23 300 / 0.15), 0 0 40px oklch(0.55 0.20 260 / 0.10);
+}
+
+/* ═══ D) Animated Gradient Text Shimmer ════════════════════════════ */
+
+@keyframes gradient-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.kairos-gradient-text {
+  background: linear-gradient(
+    90deg,
+    var(--brand-blue),
+    var(--brand-purple),
+    var(--brand-pink),
+    var(--brand-purple),
+    var(--brand-blue)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shimmer 6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .liquid-glass {
     transition: none;
+  }
+  .gradient-mesh-blob,
+  .gradient-mesh-aurora {
+    animation: none !important;
+  }
+  .kairos-gradient-text {
+    animation: none;
+    background-size: 100% 100%;
   }
 }

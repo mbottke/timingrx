@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CommandPalette } from "@/components/layout/command-palette";
+import { GradientMesh } from "@/components/layout/gradient-mesh";
 import { TeachingModeProvider } from "@/lib/hooks/use-teaching-mode";
 import "./globals.css";
 
@@ -51,6 +52,8 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {/* A+B: Gradient mesh + aurora background */}
+        <GradientMesh />
         {/* Liquid Glass SVG filters — hidden, referenced by CSS classes */}
         <svg
           aria-hidden="true"
