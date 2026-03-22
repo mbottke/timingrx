@@ -48,19 +48,8 @@ export function KairosLogo({
       ? "text-foreground"
       : "text-[var(--header-fg,#f0f0f5)]";
 
-  // ── Hero variant: frosted glass wordmark ──────────────────────────────────
-  // SVG clipPath clips a foreignObject (with backdrop-filter) to the text shape.
-  // The blur only renders inside the letterforms — lines blur through the text.
+  // ── Hero variant: integrated dual-curve wordmark ──────────────────────────
   if (isHero) {
-    const clipId = `kairos-text-clip-${uid}`;
-    const textProps = {
-      x: 8,
-      y: 52,
-      fontFamily: "var(--font-geist-sans), Inter, system-ui, sans-serif",
-      fontSize: 56,
-      fontWeight: 800,
-      letterSpacing: -2.5,
-    };
     return (
       <div
         className={`flex flex-col items-center gap-1 ${className}`}
@@ -68,42 +57,52 @@ export function KairosLogo({
         aria-label="Kairos — Obstetric Decision Intelligence"
       >
         <svg
-          width="300"
-          height="70"
-          viewBox="0 0 300 70"
+          width="230"
+          height="68"
+          viewBox="0 0 230 68"
           fill="none"
-          className="w-[300px] h-[70px] select-none"
+          className="w-[230px] h-[68px]"
         >
           <defs>
-            <clipPath id={clipId}>
-              <text {...textProps}>kairos.</text>
-            </clipPath>
+            <linearGradient id={gFull} x1="0" y1="0" x2="230" y2="0">
+              <stop offset="0%" stopColor="#6b93ef" />
+              <stop offset="45%" stopColor="#b055f7" />
+              <stop offset="100%" stopColor="#e04cb0" />
+            </linearGradient>
           </defs>
-          {/* Frosted blur clipped to letter shapes */}
-          <foreignObject
-            x="0" y="0" width="300" height="70"
-            clipPath={`url(#${clipId})`}
-          >
-            <div
-              xmlns="http://www.w3.org/1999/xhtml"
-              style={{
-                width: "100%",
-                height: "100%",
-                backdropFilter: "blur(10px) saturate(1.4)",
-                WebkitBackdropFilter: "blur(10px) saturate(1.4)",
-                background: "rgba(180, 180, 200, 0.15)",
-              }}
-            />
-          </foreignObject>
-          {/* Subtle text outline for readability */}
-          <text
-            {...textProps}
-            className="kairos-hero-text-stroke"
+          {/* Baseline — dashed, gentle rise */}
+          <path
+            d="M6,58 C50,56 100,52 150,46 C180,42 200,38 224,34"
+            stroke="#6b93ef"
+            strokeWidth={1.8}
+            strokeLinecap="round"
             fill="none"
-            strokeWidth={0.8}
+            opacity={0.35}
+            strokeDasharray="4,5"
+          />
+          {/* Adjusted — solid, steep rise */}
+          <path
+            d="M6,58 C40,54 80,46 120,34 C150,24 180,14 220,4"
+            stroke={`url(#${gFull})`}
+            strokeWidth={2.8}
+            strokeLinecap="round"
+            fill="none"
+          />
+          {/* Wordmark */}
+          <text
+            x={8}
+            y={46}
+            fontFamily="var(--font-geist-sans), Inter, system-ui, sans-serif"
+            fontSize={34}
+            fontWeight={700}
+            letterSpacing={-1.5}
+            fill="currentColor"
+            className="fill-foreground"
           >
-            kairos.
+            kairos
           </text>
+          {/* Pink dot — period accent after "s" */}
+          <circle cx={107} cy={44} r={2.5} fill="#e04cb0" />
         </svg>
         <span className="text-xs font-medium tracking-[0.2em] text-muted-foreground">
           OBSTETRIC DECISION INTELLIGENCE
